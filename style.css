@@ -1,0 +1,67 @@
+/* Reset default styles for consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles: black background as per main colors */
+body {
+    font-family: Arial, sans-serif; /* Simple font */
+    background-color: #000000; /* Main black background */
+    color: #FFFFFF; /* White text as exception for readability */
+}
+
+/* Header styling: orange background */
+.header {
+    background-color: #FC6600; /* Primary orange */
+    padding: 20px;
+    text-align: center;
+    position: relative; /* For positioning the wave */
+    overflow: hidden; /* Hide overflow from animation */
+}
+
+/* Company name styling */
+.company-name {
+    font-size: 2.5rem; /* Large size */
+    color: #000000; /* Black text on orange */
+    margin-bottom: 20px; /* Space below name */
+}
+
+/* Wave container */
+.wave-container {
+    position: relative;
+    height: 50px; /* Height of the wave area */
+}
+
+/* The wave: curved line using border-radius */
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000; /* Black wave to contrast orange header */
+    border-top-left-radius: 50% 100%; /* Curved shape */
+    border-top-right-radius: 50% 100%; /* Curved shape */
+    animation: wave-animation 3s ease-in-out infinite; /* The animation */
+}
+
+/* The animation: smooth up/down movement like waves */
+@keyframes wave-animation {
+    0% {
+        transform: translateY(0); /* Start position */
+    }
+    50% {
+        transform: translateY(-10px); /* Move up smoothly */
+    }
+    100% {
+        transform: translateY(0); /* Back down */
+    }
+}
+
+/* Main content styling: for future sections */
+main {
+    padding: 20px;
+    color: #FFFFFF; /* White text */
+}
