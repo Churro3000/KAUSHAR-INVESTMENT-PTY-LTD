@@ -17,13 +17,12 @@ body {
     background-color: #FC6600; /* Orange */
     padding: 40px 20px;
     text-align: center;
-    text-size: 20px;
 }
 
 /* Company name.. Archivo Black, bold, centered */
 .company-name {
     font-family: 'Archivo Black', sans-serif; /* Strict bold thick font */
-    font-size: 2.8rem; /* Big & bold */
+    font-size: 1.9rem; /* Big & bold */
     color: #000000; /* Black text */
     margin: 0;
     letter-spacing: 1px;
