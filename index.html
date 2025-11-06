@@ -6,28 +6,39 @@
     <!-- Meta tags for responsiveness and charset -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Fonts: Archivo Black (thick bold font) -->
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    
     <!-- Link to CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header section with company name and wave -->
+    <!-- Header section with company name and animated wave border -->
     <header class="header">
-        <!-- Company name -->
+        <!-- Company name - top left, thick font -->
         <h1 class="company-name">KAUSHAR INVESTMENT (PTY) LTD</h1>
-        <!-- Animated wave container -->
-        <div class="wave-container">
-            <!-- The wave element (will be styled and animated in CSS) -->
-            <div class="wave"></div>
-        </div>
+        
+        <!-- Wave border at bottom: uses SVG for smooth ~~ curves -->
+        <svg class="wave-svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path class="wave-path" d="M0,60 Q360,20 720,60 T1440,60 L1440,120 L0,120 Z" fill="#000000">
+                <!-- Animation will move the path up/down -->
+                <animate attributeName="d" dur="4s" repeatCount="indefinite"
+                         values="
+                         M0,60 Q360,20 720,60 T1440,60 L1440,120 L0,120 Z;
+                         M0,60 Q360,40 720,60 T1440,60 L1440,120 L0,120 Z;
+                         M0,60 Q360,20 720,60 T1440,60 L1440,120 L0,120 Z"
+                         keyTimes="0;0.5;1"/>
+            </path>
+        </svg>
     </header>
 
-    <!-- Main content (add more sections later, like products) -->
+    <!-- Main content -->
     <main>
-        <!-- Placeholder for future content -->
         <p>Welcome to our company website. More content coming soon.</p>
     </main>
 
-    <!-- Link to JS file at the end for better loading -->
+    <!-- JS file -->
     <script src="main.js"></script>
 </body>
 </html>
