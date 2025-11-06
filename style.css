@@ -32,4 +32,5 @@ body {
 main {
     padding: 40px 20px;
     text-align: center;
+    top-padding: 80px;
 }
