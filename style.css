@@ -1,42 +1,35 @@
 /* Reset */
-* { margin:0; padding:0; box-sizing:border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* Body */
+/* Body: black background */
 body {
     font-family: Arial, sans-serif;
-    background:#000000;          /* black */
-    color:#FFFFFF;               /* white text */
+    background-color: #000000; /* Black */
+    color: #FFFFFF;
 }
 
-/* Header – full orange */
+/* Header: full orange */
 .header {
-    position:relative;
-    background:#FC6600;          /* orange */
-    padding:30px 20px 0;         /* space for title */
-    overflow:hidden;
+    background-color: #FC6600; /* Orange */
+    padding: 40px 20px;
+    text-align: center;
 }
 
-/* Company name – top-left, thick font */
+/* Company name: Archivo Black, bold, centered */
 .company-name {
-    position:absolute;
-    top:20px; left:30px;
-    font-family:'Archivo Black',sans-serif;
-    font-size:2.2rem;
-    color:#000000;               /* black text */
-    margin:0;
-    z-index:2;
-}
-
-/* SVG wave – thin line at bottom */
-.wave {
-    position:absolute;
-    bottom:0; left:0;
-    width:100%;
-    height:60px;                 /* wave height */
-    pointer-events:none;
+    font-family: 'Archivo Black', sans-serif; /* Strict bold thick font */
+    font-size: 2.8rem; /* Big & bold */
+    color: #000000; /* Black text */
+    margin: 0;
+    letter-spacing: 1px;
 }
 
 /* Main content */
 main {
-    padding:40px 20px;
+    padding: 40px 20px;
+    text-align: center;
 }
