@@ -1,67 +1,56 @@
-/* Reset default styles for consistency */
+/* Reset default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body styles: black background as per main colors */
+/* Body: black background */
 body {
-    font-family: Arial, sans-serif; /* Simple font */
-    background-color: #000000; /* Main black background */
-    color: #FFFFFF; /* White text as exception for readability */
+    font-family: Arial, sans-serif;
+    background-color: #000000; /* Black */
+    color: #FFFFFF; /* White text */
+    margin: 0;
 }
 
-/* Header styling: orange background */
+/* Header: full-width orange */
 .header {
-    background-color: #FC6600; /* Primary orange */
-    padding: 20px;
-    text-align: center;
-    position: relative; /* For positioning the wave */
-    overflow: hidden; /* Hide overflow from animation */
-}
-
-/* Company name styling */
-.company-name {
-    font-size: 2.5rem; /* Large size */
-    color: #000000; /* Black text on orange */
-    margin-bottom: 20px; /* Space below name */
-}
-
-/* Wave container */
-.wave-container {
+    background-color: #FC6600; /* Orange */
     position: relative;
-    height: 50px; /* Height of the wave area */
+    padding: 20px;
+    overflow: hidden;
+    min-height: 120px; /* Matches SVG height */
 }
 
-/* The wave: curved line using border-radius */
-.wave {
+/* Company name: top-left, thick bold font */
+.company-name {
+    font-family: 'Archivo Black', sans-serif; /* Thick bold font */
+    font-size: 2.2rem; /* Big but fits */
+    color: #000000; /* Black text */
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    z-index: 10; /* Above wave */
+    margin: 0;
+}
+
+/* SVG wave: full width, at bottom */
+.wave-svg {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: #000000; /* Black wave to contrast orange header */
-    border-top-left-radius: 50% 100%; /* Curved shape */
-    border-top-right-radius: 50% 100%; /* Curved shape */
-    animation: wave-animation 3s ease-in-out infinite; /* The animation */
+    height: 120px; /* Wave height */
+    z-index: 1;
 }
 
-/* The animation: smooth up/down movement like waves */
-@keyframes wave-animation {
-    0% {
-        transform: translateY(0); /* Start position */
-    }
-    50% {
-        transform: translateY(-10px); /* Move up smoothly */
-    }
-    100% {
-        transform: translateY(0); /* Back down */
-    }
+/* Wave path: black fill */
+.wave-path {
+    fill: #000000; /* Black wave */
 }
 
-/* Main content styling: for future sections */
+/* Main content */
 main {
-    padding: 20px;
-    color: #FFFFFF; /* White text */
+    padding: 40px 20px;
+    color: #FFFFFF;
 }
