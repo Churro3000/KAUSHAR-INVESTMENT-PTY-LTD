@@ -1,36 +1,57 @@
-/* Reset */
+/* Reset & Base */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Body: black background */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #000000; /* Black */
-    color: #FFFFFF;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000000;
+  color: #FFFFFF;
+  line-height: 1.6;
 }
 
-/* Header: full orange */
+/* Header & Title */
 .header {
-    background-color: #FC6600; /* Orange */
-    padding: 40px 20px;
-    text-align: center;
+  background-color: #FC6600;
+  padding: 2rem 1rem;
+  text-align: center;
 }
 
-/* Company name.. Archivo Black, bold, centered */
-.company-name {
-    font-family: 'Archivo Black', sans-serif; /* Strict bold thick font */
-    font-size: 1.9rem; /* Big & bold */
-    color: #000000; /* Black text */
-    margin: 0;
-    letter-spacing: 1px;
+.title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #000000;
+  letter-spacing: 1px;
 }
 
-/* Main content */
-main {
-    padding: 40px 20px;
-    text-align: center;
-    top-padding: 80px;
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #FC6600;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #FFFFFF;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  .hero h2 {
+    font-size: 1.5rem;
+  }
 }
