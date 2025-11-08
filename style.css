@@ -9,7 +9,7 @@ body {
 /* ===== Header ===== */
 header {
   background-color: #000000;
-  padding: 20px 20px;
+  padding: 10px 20px;
 }
 
 .header-container {
@@ -22,6 +22,7 @@ header {
   height: 75px; /* adjust based on your logo proportions */
   width: auto;
   cursor: pointer;
+  padding-left: 20px;
 }
 
 /* ===== Hero Section ===== */
