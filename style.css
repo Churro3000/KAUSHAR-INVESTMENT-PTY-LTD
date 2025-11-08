@@ -15,10 +15,11 @@ header {
 .header-container {
   display: flex;
   align-items: center;
+  justify-content: space-between; /* adds space between logo and future nav */
 }
 
 .logo {
-  height: 60px; /* adjust based on your logo proportions */
+  height: 75px; /* adjust based on your logo proportions */
   width: auto;
   cursor: pointer;
 }
