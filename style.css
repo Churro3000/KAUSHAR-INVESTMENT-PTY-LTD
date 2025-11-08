@@ -104,3 +104,59 @@ footer {
   padding: 15px 0;
   font-size: 0.9rem;
 }
+
+/* ===== Desktop Menu ===== */
+.nav-menu {
+  display: flex;
+  gap: 30px;
+  margin-left: auto; /* pushes menu to the right of logo */
+}
+
+.nav-menu a {
+  color: #FC6600;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.nav-menu a:hover {
+  color: #ffffff;
+}
+
+/* ===== Hamburger (Mobile) ===== */
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  color: #FC6600;
+  cursor: pointer;
+}
+
+/* ===== Mobile Dropdown Menu ===== */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background-color: #000000;
+}
+
+.mobile-menu a {
+  color: #FC6600;
+  padding: 12px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+}
+
+.mobile-menu a:hover {
+  color: #ffffff;
+}
+
+/* ===== Responsive ===== */
+@media screen and (max-width: 768px) {
+  .nav-menu {
+    display: none; /* hide desktop menu on mobile */
+  }
+
+  .hamburger {
+    display: block; /* show hamburger on mobile */
+  }
+}
