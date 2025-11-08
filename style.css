@@ -21,8 +21,9 @@ header {
   height: 75px; /* adjust based on your logo proportions */
   width: auto;
   cursor: pointer;
-  margin-left: 15px;
-  margin-bottom: 15px;
+  margin-left: 10px;
+  margin-bottom: 7px;
+  margin-top: 7px;
 }
 
 /* ===== Hero Section ===== */
