@@ -108,9 +108,9 @@ footer {
 /* ===== Desktop Menu ===== */
 .nav-menu {
   display: flex;
-  gap: 30px; /* space between menu items */
+  gap: 45px; /* space between menu items */
   margin-left: auto; /* push menu to right */
-  margin-right: 5px; /* small space from right edge */
+  margin-right: 10px; /* small space from right edge */
 }
 
 .nav-menu a {
@@ -130,7 +130,7 @@ footer {
 .nav-menu a:not(:last-child)::after {
   content: "";
   position: absolute;
-  right: 0;
+  right: 5px;
   top: 50%;
   transform: translateY(-50%);
   width: 1px;
