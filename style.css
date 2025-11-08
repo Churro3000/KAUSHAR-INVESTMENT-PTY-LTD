@@ -129,7 +129,6 @@ footer {
 /* Vertical line between items, except last */
 .nav-menu a:not(:last-child)::after {
   content: "";
-  position: absolute;
   right: 35px;
   top: 50%;
   transform: translateY(-50%);
