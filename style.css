@@ -108,8 +108,9 @@ footer {
 /* ===== Desktop Menu ===== */
 .nav-menu {
   display: flex;
-  gap: 30px;
-  margin-left: auto; /* pushes menu to the right of logo */
+  gap: 30px; /* space between menu items */
+  margin-left: auto; /* push menu to right */
+  margin-right: 5px; /* small space from right edge */
 }
 
 .nav-menu a {
@@ -117,10 +118,24 @@ footer {
   text-decoration: none;
   font-weight: bold;
   transition: 0.3s;
+  padding: 0 10px; /* extra space around text */
+  position: relative;
 }
 
 .nav-menu a:hover {
   color: #ffffff;
+}
+
+/* Vertical line between items, except last */
+.nav-menu a:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 18px;
+  background-color: #ffffff;
 }
 
 /* ===== Hamburger (Mobile) ===== */
@@ -129,12 +144,21 @@ footer {
   font-size: 2rem;
   color: #FC6600;
   cursor: pointer;
+  margin-left: auto;
+  margin-right: 3px; /* space from right edge */
 }
 
-.mobile-menu {  /* Mobile Dropdown Menu */
-  display: none;
+.mobile-menu {   /* Mobile Dropdown Menu */
+  display: flex;
   flex-direction: column;
   background-color: #000000;
+  overflow: hidden;
+  max-height: 0; /* hidden by default */
+  transition: max-height 0.4s ease; /* smooth open/close */
+}
+
+.mobile-menu.show {
+  max-height: 500px; /* adjust if menu grows */
 }
 
 .mobile-menu a {
@@ -142,7 +166,6 @@ footer {
   padding: 12px 20px;
   text-decoration: none;
   font-weight: bold;
-  display: block;
 }
 
 .mobile-menu a:hover {
