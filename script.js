@@ -8,5 +8,5 @@ function scrollToSection(id) {
 // Toggle mobile menu visibility with smooth animation
 function toggleMobileMenu() {
   const menu = document.getElementById('mobileMenu');
-  menu.classList.toggle('show'); // toggle the 'show' class
+  menu.classList.toggle('show'); 
 }
