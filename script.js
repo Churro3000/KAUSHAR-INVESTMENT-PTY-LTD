@@ -5,12 +5,8 @@ function scrollToSection(id) {
   }
 }
 
-// Toggle mobile menu visibility
+// Toggle mobile menu visibility with smooth animation
 function toggleMobileMenu() {
   const menu = document.getElementById('mobileMenu');
-  if (menu.style.display === 'flex') {
-    menu.style.display = 'none';
-  } else {
-    menu.style.display = 'flex';
-  }
+  menu.classList.toggle('show'); // toggle the 'show' class
 }
