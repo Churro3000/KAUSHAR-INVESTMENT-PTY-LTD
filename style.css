@@ -26,6 +26,11 @@ header {
   margin-left: 3px;
 }
 
+.logo {
+  cursor: default;     /* normal arrow, not hand */
+  pointer-events: none; /* disables clicking, dragging, and interactions */
+}
+
 /* ===== Hero Section ===== */
 .hero {
   text-align: center;
