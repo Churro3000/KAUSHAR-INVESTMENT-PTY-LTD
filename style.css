@@ -24,10 +24,7 @@ header {
   margin-bottom: 5px;
   margin-top: 5px;
   margin-left: 3px;
-}
-
-.logo {
-  cursor: default;     /* normal arrow, not hand */
+  cursor: default !important;     /* normal arrow, not hand */
   pointer-events: none; /* disables clicking, dragging, and interactions */
 }
 
