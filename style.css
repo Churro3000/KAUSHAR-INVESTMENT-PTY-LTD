@@ -15,7 +15,6 @@ header {
 .header-container {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* adds space between logo and future nav */
 }
 
 .logo {
