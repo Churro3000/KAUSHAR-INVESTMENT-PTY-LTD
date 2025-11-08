@@ -24,8 +24,8 @@ header {
   margin-bottom: 5px;
   margin-top: 5px;
   margin-left: 3px;
-  cursor: default;      /* arrow instead of hand */
-  pointer-events: none; /* disables any clicks or interactions */
+  cursor: default;      /* arrow instead of hand-pointer */
+  pointer-events: none; 
 }
 
 /* ===== Hero Section ===== */
