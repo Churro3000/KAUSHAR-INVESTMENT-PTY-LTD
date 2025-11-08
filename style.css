@@ -148,41 +148,42 @@ footer {
   margin-right: 3px; /* space from right edge */
 }
 
-.mobile-menu {   /* Mobile Dropdown Menu */
+/* ===== Mobile Dropdown Menu ===== */
+.mobile-menu {   
   display: flex;
   flex-direction: column;
   background-color: #000000;
   overflow: hidden;
-  max-height: 0; /* hidden by default */
-  transition: max-height 0.4s ease; /* smooth open/close */
+  max-height: 0; 
+  transition: max-height 0.4s ease; 
 }
 
 .mobile-menu.show {
-  max-height: 500px; /* adjust if menu grows */
+  max-height: 500px; 
 }
 
 .mobile-menu a {
-  color: #FC6600;
-  padding: 16px 20px;         /* top & bottom padding for spacing in drop-down menu */
-  text-decoration: none;
-  font-weight: normal;        /* not bold */
-  position: relative;         /* for horizontal line */
+  color: #FC6600 !important;   
+  padding: 20px 20px;              /* top & bottom padding for space */
+  text-decoration: none !important;
+  font-weight: 400 !important;      /* explicitly not bold */
+  position: relative;             
+  display: block;                  
 }
 
 /* Horizontal line between items, except last */
 .mobile-menu a:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: 20px;                 /* same as horizontal padding */
-  right: 20px;
-  top: 50%;                   /* center vertically between menu item space */
-  transform: translateY(50%);
+  left: 0;                         /* line spans full width */
+  right: 0;
+  bottom: 0;                       /* place line at bottom of menu item */
   height: 1px;
-  background-color: #ffffff;  /* thin white line */
+  background-color: #ffffff;       /* thin white line */
 }
 
 .mobile-menu a:hover {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 @media screen and (max-width: 768px) {  /* Responsive */
