@@ -105,7 +105,7 @@ footer {
   font-size: 0.9rem;
 }
 
-/* ===== Desktop Menu ===== */
+/* ====== Desktop Menu ====== */
 .nav-menu {
   display: flex;
   gap: 45px; /* space between menu items */
@@ -163,9 +163,22 @@ footer {
 
 .mobile-menu a {
   color: #FC6600;
-  padding: 12px 20px;
+  padding: 16px 20px;         /* top & bottom padding for spacing in drop-down menu */
   text-decoration: none;
-  font-weight: bold;
+  font-weight: normal;        /* not bold */
+  position: relative;         /* for horizontal line */
+}
+
+/* Horizontal line between items, except last */
+.mobile-menu a:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 20px;                 /* same as horizontal padding */
+  right: 20px;
+  top: 50%;                   /* center vertically between menu item space */
+  transform: translateY(50%);
+  height: 1px;
+  background-color: #ffffff;  /* thin white line */
 }
 
 .mobile-menu a:hover {
