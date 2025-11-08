@@ -1,4 +1,4 @@
-/* General setup */
+/* ===== General Setup ===== */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -6,27 +6,39 @@ body {
   color: #000000;
 }
 
-/* Header */
+/* ===== Header ===== */
 header {
   background-color: #000000;
-  color: #FC6600;
-  text-align: center;
-  padding: 20px 0;
+  padding: 10px 20px;
 }
 
-header h1 {
-  font-family: 'Archivo Black', sans-serif;
-  font-weight: bold;
-  margin: 0;
-  font-size: 2.2rem;
+.header-container {
+  display: flex;
+  align-items: center;
 }
 
-/* Hero Section */
+.logo {
+  height: 60px; /* adjust based on your logo proportions */
+  width: auto;
+  cursor: pointer;
+}
+
+/* ===== Hero Section ===== */
 .hero {
   text-align: center;
   padding: 100px 20px;
   background-color: #FC6600;
   color: #ffffff;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
 }
 
 .hero button {
@@ -45,7 +57,7 @@ header h1 {
   color: #000000;
 }
 
-/* About Section */
+/* ===== About Section ===== */
 .about {
   padding: 80px 20px;
   background-color: #ffffff;
@@ -53,12 +65,22 @@ header h1 {
   text-align: center;
 }
 
-/* Contact Section */
+.about h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* ===== Contact Section ===== */
 .contact {
   padding: 80px 20px;
   background-color: #000000;
   color: #FC6600;
   text-align: center;
+}
+
+.contact h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
 }
 
 .contact a {
@@ -71,7 +93,7 @@ header h1 {
   text-decoration: underline;
 }
 
-/* Footer */
+/* ===== Footer ===== */
 footer {
   background-color: #FC6600;
   color: #ffffff;
