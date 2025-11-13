@@ -197,3 +197,38 @@ footer {
     display: block; /* show hamburger on mobile */
   }
 }
+
+/* ========================================== Slideshow ==================================== */
+.slideshow-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  background: #000; /* optional */
+}
+
+.slideshow-track {
+  display: flex;
+  transition: transform 0.6s ease;
+  will-change: transform;
+}
+
+.slide {
+  flex: 0 0 calc(100% / 3); /* show 3 slides on large screens */
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Mobile: show only 1 image at a time */
+@media screen and (max-width: 768px) {
+  .slide {
+    flex: 0 0 100%;
+  }
+}
