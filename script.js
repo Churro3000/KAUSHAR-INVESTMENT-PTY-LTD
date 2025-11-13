@@ -30,3 +30,68 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// slide show --------------------------------------------------------------------------
+const track = document.querySelector('.slideshow-track');
+const slides = Array.from(document.querySelectorAll('.slide'));
+let index = 0;
+let slideInterval;
+let startX = 0;
+let isDragging = false;
+
+function startSlideshow() {
+  slideInterval = setInterval(nextSlide, 2000);
+}
+
+function stopSlideshow() {
+  clearInterval(slideInterval);
+}
+
+function nextSlide() {
+  const slidesPerView = window.innerWidth <= 768 ? 1 : 3;
+  index = (index + slidesPerView) % slides.length;
+  updateSlidePosition();
+}
+
+function prevSlide() {
+  const slidesPerView = window.innerWidth <= 768 ? 1 : 3;
+  index = (index - slidesPerView + slides.length) % slides.length;
+  updateSlidePosition();
+}
+
+function updateSlidePosition() {
+  const slideWidth = slides[0].offsetWidth;
+  track.style.transform = `translateX(-${index * slideWidth}px)`;
+}
+
+/* Touch events for swipe */
+track.addEventListener('touchstart', (e) => {
+  stopSlideshow();
+  startX = e.touches[0].clientX;
+  isDragging = true;
+});
+
+track.addEventListener('touchmove', (e) => {
+  if (!isDragging) return;
+  const currentX = e.touches[0].clientX;
+  const diff = startX - currentX;
+  if (diff > 50) {
+    nextSlide();
+    isDragging = false;
+  } else if (diff < -50) {
+    prevSlide();
+    isDragging = false;
+  }
+});
+
+track.addEventListener('touchend', () => {
+  isDragging = false;
+  startSlideshow();
+});
+
+window.addEventListener('resize', updateSlidePosition);
+window.addEventListener('load', () => {
+  updateSlidePosition();
+  startSlideshow();
+});
+
