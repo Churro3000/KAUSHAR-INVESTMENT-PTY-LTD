@@ -199,12 +199,17 @@ footer {
 }
 
 /* ========================================== Slideshow ==================================== */
+.slideshow-section {
+  background-color: #ffffff;
+  padding: 20px 0; /* space above and below slideshow */
+}
+
 .slideshow-container {
   width: 100%;
   overflow: hidden;
   position: relative;
   margin: 0 auto;
-  background: #000; /* optional */
+  background: transparent; /* no black background */
 }
 
 .slideshow-track {
