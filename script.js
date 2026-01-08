@@ -1,4 +1,4 @@
-//  Smooth Scroll to Section 
+// Smooth Scroll to Section
 function scrollToSection(id) {
   const section = document.getElementById(id);
   if (section) {
@@ -8,7 +8,7 @@ function scrollToSection(id) {
   }
 }
 
-// Toggle Mobile Menu Visibility 
+// Toggle Mobile Menu Visibility
 function toggleMobileMenu() {
   const menu = document.getElementById('mobileMenu');
   if (menu) {
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// slide show --------------------------------------------------------------------------
+// Slideshow --------------------------------------------------------------------------
 const track = document.querySelector('.slideshow-track');
 const slides = Array.from(document.querySelectorAll('.slide'));
 let index = 0;
@@ -40,7 +40,7 @@ let startX = 0;
 let isDragging = false;
 
 function startSlideshow() {
-  slideInterval = setInterval(nextSlide, 2000);
+  slideInterval = setInterval(nextSlide, 4000); // Changed to 4 seconds
 }
 
 function stopSlideshow() {
@@ -90,8 +90,8 @@ track.addEventListener('touchend', () => {
 });
 
 window.addEventListener('resize', updateSlidePosition);
+
 window.addEventListener('load', () => {
   updateSlidePosition();
   startSlideshow();
 });
-
