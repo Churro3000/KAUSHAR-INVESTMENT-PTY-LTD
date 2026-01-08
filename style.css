@@ -1,326 +1,300 @@
 /* ===== General Setup ===== */
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  color: #000000;
+ margin: 0;
+ font-family: Arial, sans-serif;
+ background-color: #ffffff;
+ color: #000000;
 }
 
 /* ===== Header ===== */
 header {
-  background-color: #000000;
-  padding: 10px 20px;
+ background-color: #000000;
+ padding: 10px 20px;
 }
 
 .header-container {
-  display: flex;
-  align-items: center;
+ display: flex;
+ align-items: center;
 }
 
 .logo {
-  height: 75px; /* adjust based on your logo proportions */
-  width: auto;
-  cursor: pointer;
-  margin-bottom: 5px;
-  margin-top: 5px;
-  margin-left: 3px;
-  cursor: default !important;     /* normal arrow, not hand */
-  pointer-events: none; /* disables clicking, dragging, and interactions */
+ height: 75px; /* adjust based on your logo proportions */
+ width: auto;
+ cursor: pointer;
+ margin-bottom: 5px;
+ margin-top: 5px;
+ margin-left: 3px;
+ cursor: default !important; /* normal arrow, not hand */
+ pointer-events: none; /* disables clicking, dragging, and interactions */
 }
 
 /* ===== Hero Section ===== */
 .hero {
-  text-align: center;
-  padding: 100px 20px;
-  background-color: #FC6600;
-  color: #ffffff;
+ text-align: center;
+ padding: 100px 20px;
+ background-color: #FC6600;
+ color: #ffffff;
 }
 
 .hero h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
+ font-size: 2rem;
+ margin-bottom: 10px;
 }
 
 .hero p {
-  font-size: 1.1rem;
-  margin-bottom: 25px;
+ font-size: 1.1rem;
+ margin-bottom: 25px;
 }
 
 .hero button {
-  background-color: #000000;
-  color: #ffffff;
-  border: none;
-  padding: 12px 25px;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: 0.3s ease;
+ background-color: #000000;
+ color: #ffffff;
+ border: none;
+ padding: 12px 25px;
+ font-size: 1rem;
+ cursor: pointer;
+ border-radius: 4px;
+ transition: 0.3s ease;
 }
 
 .hero button:hover {
-  background-color: #ffffff;
-  color: #000000;
+ background-color: #ffffff;
+ color: #000000;
 }
 
 /* ===== About Section ===== */
 .about {
-  padding: 80px 20px;
-  background-color: #ffffff;
-  color: #000000;
-  text-align: center;
+ padding: 80px 20px;
+ background-color: #ffffff;
+ color: #000000;
+ text-align: center;
 }
 
 .about h2 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
+ font-size: 1.8rem;
+ margin-bottom: 20px;
 }
 
 /* ===== Contact Section =====*/
 .contact {
-  padding: 80px 20px;
-  background-color: #000000;
-  color: #FC6600;
-  text-align: center;
+ padding: 80px 20px;
+ background-color: #000000;
+ color: #FC6600;
+ text-align: center;
 }
 
 .contact h2 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
+ font-size: 1.8rem;
+ margin-bottom: 15px;
 }
 
 .contact a {
-  color: #FC6600;
-  text-decoration: none;
-  font-weight: bold;
+ color: #FC6600;
+ text-decoration: none;
+ font-weight: bold;
 }
 
 .contact a:hover {
-  text-decoration: underline;
+ text-decoration: underline;
 }
 
 /* ===== Footer ===== */
 footer {
-  background-color: #FC6600;
-  color: #ffffff;
-  text-align: center;
-  padding: 15px 0;
-  font-size: 0.9rem;
+ background-color: #FC6600;
+ color: #ffffff;
+ text-align: center;
+ padding: 15px 0;
+ font-size: 0.9rem;
 }
 
 /* ====== Desktop Menu ====== */
 .nav-menu {
-  display: flex;
-  gap: 45px; /* space between menu items */
-  margin-left: auto; /* push menu to right */
-  margin-right: 10px; /* small space from right edge */
+ display: flex;
+ gap: 45px; /* space between menu items */
+ margin-left: auto; /* push menu to right */
+ margin-right: 10px; /* small space from right edge */
 }
 
 .nav-menu a {
-  color: #FC6600;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-  padding: 0 10px; /* extra space around text */
-  position: relative;
+ color: #FC6600;
+ text-decoration: none;
+ font-weight: bold;
+ transition: 0.3s;
+ padding: 0 10px; /* extra space around text */
+ position: relative;
 }
 
 .nav-menu a:hover {
-  color: #ffffff;
+ color: #ffffff;
 }
 
 /* Vertical line between items, except last */
 .nav-menu a:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: -22px;           /* move the line outside the <a> to sit between items */
-  transform: translateY(-50%);
-  width: 1px;
-  height: 18px;
-  background-color: #ffffff;
+ content: "";
+ position: absolute;
+ top: 50%;
+ right: -22px; /* move the line outside the <a> to sit between items */
+ transform: translateY(-50%);
+ width: 1px;
+ height: 18px;
+ background-color: #ffffff;
 }
 
 /* ===== Hamburger (Mobile) ===== */
 .hamburger {
-  display: none;
-  font-size: 2rem;
-  color: #FC6600;
-  cursor: pointer;
-  margin-left: auto;
-  margin-right: 3px; /* space from right edge */
+ display: none;
+ font-size: 2rem;
+ color: #FC6600;
+ cursor: pointer;
+ margin-left: auto;
+ margin-right: 3px; /* space from right edge */
 }
 
 /* ===== Mobile Dropdown Menu ===== */
-.mobile-menu {   
-  display: flex;
-  flex-direction: column;
-  background-color: #000000;
-  overflow: hidden;
-  max-height: 0; 
-  transition: max-height 0.4s ease; 
+.mobile-menu { 
+ display: flex;
+ flex-direction: column;
+ background-color: #000000;
+ overflow: hidden;
+ max-height: 0; 
+ transition: max-height 0.4s ease; 
 }
 
 .mobile-menu.show {
-  max-height: 500px; 
+ max-height: 500px; 
 }
 
 .mobile-menu a {
-  color: #FC6600 !important;   
-  padding: 20px 20px;              /* top & bottom padding for space */
-  text-decoration: none !important;
-  font-weight: 400 !important;      /* explicitly not bold */
-  position: relative;             
-  display: block;                  
+ color: #FC6600 !important; 
+ padding: 20px 20px; /* top & bottom padding for space */
+ text-decoration: none !important;
+ font-weight: 400 !important; /* explicitly not bold */
+ position: relative; 
+ display: block; 
 }
 
 /* Horizontal line between items, except last */
 .mobile-menu a:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: 0;                         /* line spans full width */
-  right: 0;
-  bottom: 0;                       /* place line at bottom of menu item */
-  height: 1px;
-  background-color: #ffffff;       /* thin white line */
+ content: "";
+ position: absolute;
+ left: 0; /* line spans full width */
+ right: 0;
+ bottom: 0; /* place line at bottom of menu item */
+ height: 1px;
+ background-color: #ffffff; /* thin white line */
 }
 
 .mobile-menu a:hover {
-  color: #ffffff !important;
+ color: #ffffff !important;
 }
 
-@media screen and (max-width: 768px) {  /* Responsive */
-  .nav-menu {
-    display: none; /* hide desktop menu on mobile */
-  }
+@media screen and (max-width: 768px) { /* Responsive */
+ .nav-menu {
+ display: none; /* hide desktop menu on mobile */
+ }
 
-  .hamburger {
-    display: block; /* show hamburger on mobile */
-  }
+ .hamburger {
+ display: block; /* show hamburger on mobile */
+ }
 }
 
 /* ========================================== Slideshow ==================================== */
 .slideshow-section {
-  background-color: #ffffff;
-  padding: 45px 0; /* space above and below slideshow */
+ background-color: #ffffff;
+ padding: 45px 0; /* space above and below slideshow */
 }
 
 .slideshow-container {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  margin: 0 auto;
-  background: transparent; /* no black background */
+ width: 100%;
+ overflow: hidden;
+ position: relative;
+ margin: 0 auto;
+ background: transparent; /* no black background */
 }
 
 .slideshow-track {
-  display: flex;
-  transition: transform 0.9s ease;
-  will-change: transform;
+ display: flex;
+ transition: transform 0.9s ease;
+ will-change: transform;
 }
 
 .slide {
-  flex: 0 0 calc(100% / 3); /* show 3 slides on large screens */
-  box-sizing: border-box;
-  padding: 5px;
+ flex: 0 0 calc(100% / 3); /* show 3 slides on large screens */
+ box-sizing: border-box;
+ padding: 5px;
 }
 
 .slide img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  display: block;
+ width: 100%;
+ height: auto;
+ border-radius: 12px;
+ display: block;
 }
 
 /* Mobile: show only 1 image at a time */
 @media screen and (max-width: 768px) {
-  .slide {
-    flex: 0 0 100%;
-  }
+ .slide {
+ flex: 0 0 100%;
+ }
 }
 
 /* ===== Product Category Buttons Section ===== */
 .category-buttons-section {
-  background-color: #ffffff;
-  padding: 40px 20px;
-  text-align: center;
+ background-color: #ffffff;
+ padding: 50px 20px 60px;
+ text-align: center;
 }
 
 .category-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  max-width: 1200px;
-  margin: 0 auto;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 30px; /* even spacing between buttons */
+ flex-wrap: wrap;
+ max-width: 1400px;
+ margin: 0 auto;
 }
 
 .category-btn {
-  background-color: #ffffff;
-  color: #808080; /* grey text */
-  border: 2px solid #808080; /* grey border */
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  min-width: 160px;
+ background-color: #ffffff;
+ color: #808080; /* grey text */
+ border: 2px solid #808080; /* grey border */
+ padding: 14px 28px;
+ font-size: 1.1rem;
+ font-weight: bold;
+ text-decoration: none;
+ border-radius: 8px;
+ transition: all 0.3s ease;
+ white-space: nowrap;
 }
 
 .category-btn:hover {
-  background-color: #f0f0f0;
-  color: #000000;
-  border-color: #000000;
+ background-color: #f0f0f0;
+ color: #000000;
+ border-color: #000000;
 }
 
-/* Responsive: stack buttons on very small screens */
-@media screen and (max-width: 480px) {
-  .category-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .category-btn {
-    width: 80%;
-  }
-}
-
-/* ========================================== Slideshow ==================================== */
-.slideshow-section {
-  background-color: #ffffff;
-  padding: 45px 0;
-}
-
-.slideshow-container {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  margin: 0 auto;
-  background: transparent;
-}
-
-.slideshow-track {
-  display: flex;
-  transition: transform 0.9s ease;
-  will-change: transform;
-}
-
-.slide {
-  flex: 0 0 calc(100% / 3); /* show 3 slides on large screens */
-  box-sizing: border-box;
-  padding: 5px;
-}
-
-.slide img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  display: block;
-}
-
-/* Mobile: show only 1 image at a time */
+/* On smaller screens, keep them horizontal as long as possible */
 @media screen and (max-width: 768px) {
-  .slide {
-    flex: 0 0 100%;
-  }
+ .category-buttons {
+ gap: 20px;
+ }
+ 
+ .category-btn {
+ padding: 12px 20px;
+ font-size: 1rem;
+ }
+}
+
+/* Stack vertically only on very small screens */
+@media screen and (max-width: 480px) {
+ .category-buttons {
+ flex-direction: column;
+ gap: 15px;
+ }
+ 
+ .category-btn {
+ width: 80%;
+ max-width: 300px;
+ }
 }
