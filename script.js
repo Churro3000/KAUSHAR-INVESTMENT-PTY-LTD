@@ -40,7 +40,7 @@ let startX = 0;
 let isDragging = false;
 
 function startSlideshow() {
-  slideInterval = setInterval(nextSlide, 8000); // Changed to 4 seconds
+  slideInterval = setInterval(nextSlide, 4000); // Now correctly set to 4 seconds
 }
 
 function stopSlideshow() {
@@ -60,6 +60,7 @@ function prevSlide() {
 }
 
 function updateSlidePosition() {
+  if (slides.length === 0) return;
   const slideWidth = slides[0].offsetWidth;
   track.style.transform = `translateX(-${index * slideWidth}px)`;
 }
@@ -89,6 +90,7 @@ track.addEventListener('touchend', () => {
   startSlideshow();
 });
 
+// Handle window resize and initial load
 window.addEventListener('resize', updateSlidePosition);
 
 window.addEventListener('load', () => {
