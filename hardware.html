@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hardware Products | Your Company Name</title>
+  <link rel="stylesheet" href="style.css" /> <!-- Shared main styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
+  <!-- Category-specific styles (overrides/adds to style.css) -->
+  <style>
+    /* Hardware category background */
+    body {
+      background-color: #f4f4f4; /* Light grey - industrial/clean feel */
+      color: #000000;
+    }
+
+    /* Page title */
+    .category-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 60px 20px 40px;
+      color: #000000;
+      font-weight: bold;
+    }
+
+    /* Products grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Individual product card */
+    .product-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-name {
+      font-size: 1.4rem;
+      margin: 0 0 10px;
+      color: #000000;
+    }
+
+    .product-desc {
+      font-size: 1rem;
+      color: #555555;
+      margin-bottom: 15px;
+    }
+
+    .product-price {
+      font-size: 1.3rem;
+      color: #FC6600;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .buy-btn {
+      background-color: #000000;
+      color: #ffffff;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .buy-btn:hover {
+      background-color: #FC6600;
+    }
+
+    /* Back button */
+    .back-btn {
+      display: block;
+      width: fit-content;
+      margin: 40px auto;
+      padding: 12px 30px;
+      background-color: #808080;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #000000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Reuse your existing header -->
+  <header>
+    <div class="header-container">
+      <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
+      <nav class="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About Us</a>
+        <a href="inquire.html">Inquire</a>
+        <a href="policy.html">Policy</a>
+      </nav>
+      <div class="hamburger" onclick="toggleMobileMenu()">
+        &#9776;
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About Us</a>
+      <a href="inquire.html">Inquire</a>
+      <a href="policy.html">Policy</a>
+    </div>
+  </header>
+
+  <!-- Category Title -->
+  <h1 class="category-title">Hardware</h1>
+
+  <!-- Products Grid - Add as many as you want -->
+  <section class="products-grid">
+
+    <!-- Example Product 1 -->
+    <div class="product-card">
+      <img src="images.web/hardware1.jpg" alt="Heavy Duty Drill" class="product-image">
+      <div class="product-info">
+        <h3 class="product-name">Heavy Duty Power Drill</h3>
+        <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
+        <p class="product-price">P 1,250.00</p>
+        <button class="buy-btn">Inquire Now</button>
+      </div>
+    </div>
+
+    <!-- Example Product 2 -->
+    <div class="product-card">
+      <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
+      <div class="product-info">
+        <h3 class="product-name">150-Piece Tool Kit</h3>
+        <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
+        <p class="product-price">P 2,800.00</p>
+        <button class="buy-btn">Inquire Now</button>
+      </div>
+    </div>
+
+    <!-- Add more product cards here -->
+
+  </section>
+
+  <!-- Back to Products Button -->
+  <a href="index.html" class="back-btn">← Back to Home</a>
+
+  <!-- Reuse your footer -->
+  <footer>
+    <p>© 2025 Your Company Name. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
