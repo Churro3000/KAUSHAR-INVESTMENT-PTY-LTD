@@ -10,7 +10,6 @@
   <header>
     <div class="header-container">
       <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
-
       <!-- Desktop Menu -->
       <nav class="nav-menu">
         <a href="products.html">Products</a>
@@ -18,13 +17,11 @@
         <a href="inquire.html">Inquire</a>
         <a href="policy.html">Policy</a>
       </nav>
-
       <!-- Mobile Hamburger Menu -->
       <div class="hamburger" onclick="toggleMobileMenu()">
         &#9776; <!-- 3 line menu -->
       </div>
     </div>
-
     <!-- Mobile dropdown menu -->
     <div class="mobile-menu" id="mobileMenu">
       <a href="products.html">Products</a>
@@ -34,17 +31,28 @@
     </div>
   </header>
 
-<!-- ===== Product Slideshow ===== -->
-<div class="slideshow-container">
-  <div class="slideshow-track">
-     <div class="slide"><img src="images.web/in_p1.jpg" alt="Product 1"></div> 
-    <div class="slide"><img src="images.web/in_p2.jpg" alt="Product 2"></div> 
-    <div class="slide"><img src="images.web/in_p3.jpg" alt="Product 3"></div> 
-    <div class="slide"><img src="images.web/in_p4.jpg" alt="Product 4"></div> 
-    <div class="slide"><img src="images.web/in_p5.jpg" alt="Product 5"></div> 
-    <div class="slide"><img src="images.web/in_p6.jpg" alt="Product 6"></div> 
+  <!-- ===== Product Slideshow ===== -->
+  <div class="slideshow-container">
+    <div class="slideshow-track">
+      <div class="slide"><img src="images.web/in_p1.jpg" alt="Product 1"></div>
+      <div class="slide"><img src="images.web/in_p2.jpg" alt="Product 2"></div>
+      <div class="slide"><img src="images.web/in_p3.jpg" alt="Product 3"></div>
+      <div class="slide"><img src="images.web/in_p4.jpg" alt="Product 4"></div>
+      <div class="slide"><img src="images.web/in_p5.jpg" alt="Product 5"></div>
+      <div class="slide"><img src="images.web/in_p6.jpg" alt="Product 6"></div>
+    </div>
   </div>
-</div>
+
+  <!-- ===== Product Category Buttons ===== -->
+  <section class="category-buttons-section">
+    <div class="category-buttons">
+      <a href="products.html#hardware" class="category-btn">Hardware</a>
+      <a href="products.html#electronics" class="category-btn">Electronics</a>
+      <a href="products.html#outdoor-camp" class="category-btn">Outdoor/Camp</a>
+      <a href="products.html#household" class="category-btn">Household</a>
+      <a href="products.html#vehicle-accessories" class="category-btn">Vehicle Accessories</a>
+    </div>
+  </section>
 
   <main>
     <section class="hero">
@@ -52,7 +60,6 @@
       <p>We build innovative solutions that shape the future.</p>
       <button onclick="scrollToSection('about')">Learn More</button>
     </section>
-
     <section id="about" class="about">
       <h2>About Us</h2>
       <p>
@@ -60,7 +67,6 @@
         Our mission is to deliver top-tier products and experiences.
       </p>
     </section>
-
     <section class="contact">
       <h2>Contact Us</h2>
       <p>Email: <a href="mailto:info@yourcompany.com">info@yourcompany.com</a></p>
@@ -70,7 +76,6 @@
   <footer>
     <p>© 2025 Your Company Name. All rights reserved.</p>
   </footer>
-
   <script src="script.js"></script>
 </body>
 </html>
