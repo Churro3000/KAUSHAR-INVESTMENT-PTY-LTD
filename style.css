@@ -237,3 +237,90 @@ footer {
     flex: 0 0 100%;
   }
 }
+
+/* ===== Product Category Buttons Section ===== */
+.category-buttons-section {
+  background-color: #ffffff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.category-btn {
+  background-color: #ffffff;
+  color: #808080; /* grey text */
+  border: 2px solid #808080; /* grey border */
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  min-width: 160px;
+}
+
+.category-btn:hover {
+  background-color: #f0f0f0;
+  color: #000000;
+  border-color: #000000;
+}
+
+/* Responsive: stack buttons on very small screens */
+@media screen and (max-width: 480px) {
+  .category-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .category-btn {
+    width: 80%;
+  }
+}
+
+/* ========================================== Slideshow ==================================== */
+.slideshow-section {
+  background-color: #ffffff;
+  padding: 45px 0;
+}
+
+.slideshow-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  background: transparent;
+}
+
+.slideshow-track {
+  display: flex;
+  transition: transform 0.9s ease;
+  will-change: transform;
+}
+
+.slide {
+  flex: 0 0 calc(100% / 3); /* show 3 slides on large screens */
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Mobile: show only 1 image at a time */
+@media screen and (max-width: 768px) {
+  .slide {
+    flex: 0 0 100%;
+  }
+}
