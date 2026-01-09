@@ -19,7 +19,7 @@
     .category-title {
       text-align: center;
       font-size: 2.5rem;
-      margin: 60px 20px 40px;
+      margin: 60px 20px 50px;
       color: #000000;
       font-weight: bold;
     }
@@ -27,10 +27,10 @@
     /* Products grid */
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(4, 1fr);        /* Default: 4 columns on large screens */
       gap: 30px;
-      padding: 20px;
-      max-width: 1400px;
+      padding: 0 20px 60px;
+      max-width: 1600px;
       margin: 0 auto;
     }
 
@@ -42,6 +42,8 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-align: center;
+      display: flex;
+      flex-direction: column;
     }
 
     .product-card:hover {
@@ -51,31 +53,39 @@
 
     .product-image {
       width: 100%;
-      height: 250px;
-      object-fit: cover;
+      aspect-ratio: 1 / 1;           /* Perfect square */
+      object-fit: contain;           /* Full image visible, no cropping */
+      background-color: #f9f9f9;     /* Light background if image has transparency */
+      padding: 15px;                 /* Breathing room around image */
+      box-sizing: border-box;
     }
 
     .product-info {
-      padding: 20px;
+      padding: 20px 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .product-name {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       margin: 0 0 10px;
       color: #000000;
+      font-weight: 600;
     }
 
     .product-desc {
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: #555555;
       margin-bottom: 15px;
+      flex-grow: 1;
     }
 
     .product-price {
       font-size: 1.3rem;
       color: #FC6600;
       font-weight: bold;
-      margin-bottom: 15px;
+      margin-bottom: 18px;
     }
 
     .buy-btn {
@@ -87,6 +97,7 @@
       border-radius: 6px;
       cursor: pointer;
       transition: 0.3s ease;
+      margin-top: auto; /* pushes button to bottom */
     }
 
     .buy-btn:hover {
@@ -97,7 +108,7 @@
     .back-btn {
       display: block;
       width: fit-content;
-      margin: 40px auto;
+      margin: 40px auto 60px;
       padding: 12px 30px;
       background-color: #808080;
       color: #ffffff;
@@ -109,6 +120,40 @@
 
     .back-btn:hover {
       background-color: #000000;
+    }
+
+    /* ────────────────────────────────────────
+       RESPONSIVE GRID BREAKPOINTS
+    ──────────────────────────────────────── */
+    @media (max-width: 1200px) {
+      .products-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile/tablet */
+        gap: 20px;
+        padding: 0 15px 50px;
+      }
+
+      .category-title {
+        font-size: 2rem;
+        margin: 50px 15px 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-name {
+        font-size: 1.2rem;
+      }
+      .product-desc {
+        font-size: 0.9rem;
+      }
+      .product-price {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
@@ -141,7 +186,7 @@
   <!-- Category Title -->
   <h1 class="category-title">Hardware</h1>
 
-  <!-- Products Grid - Add as many as you want -->
+  <!-- Products Grid -->
   <section class="products-grid">
 
     <!-- Example Product 1 -->
@@ -166,14 +211,14 @@
       </div>
     </div>
 
-    <!-- Add more product cards here -->
+    <!-- Add more product cards here as needed -->
 
   </section>
 
-  <!-- Back to Products Button -->
+  <!-- Back to Home Button -->
   <a href="index.html" class="back-btn">← Back to Home</a>
 
-  <!-- Reuse your footer -->
+  <!-- Footer -->
   <footer>
     <p>© 2025 Your Company Name. All rights reserved.</p>
   </footer>
