@@ -40,7 +40,7 @@ let startX = 0;
 let isDragging = false;
 
 function startSlideshow() {
-  slideInterval = setInterval(nextSlide, 4000); // Now correctly set to 4 seconds
+  slideInterval = setInterval(nextSlide, 6000); // Now correctly set to 6 seconds
 }
 
 function stopSlideshow() {
