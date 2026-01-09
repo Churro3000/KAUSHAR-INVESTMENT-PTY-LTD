@@ -1,142 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us | Your Company Name</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | Your Company Name</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <style>
+        .about-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .about-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+        .about-image {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+        }
+        .about-image img {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .about-text {
+            flex: 2;
+            min-width: 300px;
+        }
+        .about-text h2 {
+            color: #FC6600;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 1.2em;
+        }
+        .location-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
 
-  <style>
-    .about-container {
-      max-width: 1200px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
+        /* ── Protection for the big logo only ── */
+        .logo-protect {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            pointer-events: none;
+            -webkit-touch-callout: none;
+        }
+        .logo-protect img {
+            pointer-events: none;
+            user-drag: none;
+            -webkit-user-drag: none;
+            -moz-user-select: none;
+        }
+        /* ────────────────────────────────────── */
 
-    .about-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      align-items: center;
-      margin-bottom: 80px;
-    }
-
-    .about-image {
-      flex: 1;
-      min-width: 280px;
-      text-align: center;
-    }
-
-    .about-image img {
-      width: 100%;
-      max-width: 320px;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .about-text {
-      flex: 2;
-      min-width: 300px;
-    }
-
-    .about-text h2 {
-      color: #FC6600;
-      margin-bottom: 20px;
-      font-size: 2.2rem;
-    }
-
-    .about-text p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: #333;
-      margin-bottom: 1.2em;
-    }
-
-    .location-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      align-items: center;
-    }
-
-    @media (max-width: 768px) {
-      .about-section, .location-section {
-        flex-direction: column;
-        text-align: center;
-      }
-      
-      .about-image img {
-        max-width: 280px;
-      }
-    }
-  </style>
+        @media (max-width: 768px) {
+            .about-section, .location-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-image img {
+                max-width: 280px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="about.html">About Us</a>
+                <a href="inquire.html">Inquire</a>
+                <a href="policy.html">Policy</a>
+            </nav>
+            <div class="hamburger" onclick="toggleMobileMenu()">
+                &#9776;
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About Us</a>
+            <a href="inquire.html">Inquire</a>
+            <a href="policy.html">Policy</a>
+        </div>
+    </header>
 
-  <!-- Header -->
-  <header>
-    <div class="header-container">
-      <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
-      <nav class="nav-menu">
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="about.html">About Us</a>
-        <a href="inquire.html">Inquire</a>
-        <a href="policy.html">Policy</a>
-      </nav>
-      <div class="hamburger" onclick="toggleMobileMenu()">
-        &#9776;
-      </div>
+    <div class="about-container">
+        <section class="about-section">
+            <!-- Left: Logo / Store image -->
+            <div class="about-image">
+                <div class="logo-protect">
+                    <img src="images.web/THE_LOGO_BIG.png" alt="Your Company Name Logo" draggable="false">
+                </div>
+            </div>
+            <!-- Right: Description -->
+            <div class="about-text">
+                <h2>About Us</h2>
+                <p><strong>Your Company Name</strong> is a well stocked department store offering a wide range of quality products for home and business needs.</p>
+                <p>We specialize in hardware, electronics, electrical supplies, surveillance solutions, and practical everyday gadgets. We also carry a selection of camping and outdoor equipment designed for adventure, travel, and outdoor activities.</p>
+                <p>Our goal is to provide reliable, durable, and convenient products that meet the practical demands of modern life.</p>
+            </div>
+        </section>
+
+        <section class="location-section">
+            <!-- Left: Storefront / Location -->
+            <div class="about-image">
+                <img src="images.web/Mowana_park.webp" alt="Mowana Park, Phakalane">
+            </div>
+            <!-- Right: Address -->
+            <div class="about-text">
+                <h2>We Are Located At</h2>
+                <p><strong>Mowana Park Mall</strong><br>
+                    Opposite BMS, Phakalane, Mowana Park Mall, Shop 41C<br>
+                    Gaborone, Botswana</p>
+                <p>We look forward to welcoming you to our store!</p>
+            </div>
+        </section>
     </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html">Home</a>
-      <a href="products.html">Products</a>
-      <a href="about.html">About Us</a>
-      <a href="inquire.html">Inquire</a>
-      <a href="policy.html">Policy</a>
-    </div>
-  </header>
 
-  <div class="about-container">
-    <section class="about-section">
-      <!-- Left: Logo / Store image -->
-      <div class="about-image">
-        <img src="images.web/THE_LOGO_BIG.png" alt="Your Company Name Logo">
-      </div>
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Your Company Name. All rights reserved.</p>
+    </footer>
 
-      <!-- Right: Description -->
-      <div class="about-text">
-        <h2>About Us</h2>
-        <p><strong>Your Company Name</strong> is a well stocked department store offering a wide range of quality products for home and business needs.</p>
-        <p>We specialize in hardware, electronics, electrical supplies, surveillance solutions, and practical everyday gadgets. We also carry a selection of camping and outdoor equipment designed for adventure, travel, and outdoor activities.</p>
-        <p>Our goal is to provide reliable, durable, and convenient products that meet the practical demands of modern life.</p>
-      </div>
-    </section>
-
-    <section class="location-section">
-      <!-- Left: Storefront / Location -->
-      <div class="about-image">
-        <img src="images.web/Mowana_park.webp" alt="Mowana Park, Phakalane">
-      </div>
-
-      <!-- Right: Address -->
-      <div class="about-text">
-        <h2>We Are Located At</h2>
-        <p><strong>Mowana Park Mall</strong><br>
-            Opposite BMS, Phakalane, Mowana Park Mall, Shop 41C<br>
-           Gaborone, Botswana</p>
-        <p>We look forward to welcoming you to our store!</p>
-      </div>
-    </section>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 Your Company Name. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
