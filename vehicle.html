@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vehicle Accessories | Your Company Name</title>
+  <link rel="stylesheet" href="style.css" /> <!-- Shared main styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
+  <!-- Category-specific styles (overrides/adds to style.css) -->
+  <style>
+    /* Vehicle Accessories category background */
+    body {
+      background-color: #f8f9fa; /* Very light metallic gray - clean automotive feel */
+      color: #000000;
+    }
+
+    /* Page title */
+    .category-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 60px 20px 50px;
+      color: #000000;
+      font-weight: bold;
+    }
+
+    /* Products grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);        /* 4 columns on large screens */
+      gap: 30px;
+      padding: 0 20px 60px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    /* Individual product card */
+    .product-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;           /* Perfect square */
+      object-fit: contain;           /* Full image visible, no cropping */
+      background-color: #f9f9f9;     /* Light background for better presentation */
+      padding: 15px;                 /* Breathing room around image */
+      box-sizing: border-box;
+    }
+
+    .product-info {
+      padding: 20px 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-name {
+      font-size: 1.35rem;
+      margin: 0 0 10px;
+      color: #000000;
+      font-weight: 600;
+    }
+
+    .product-desc {
+      font-size: 0.95rem;
+      color: #555555;
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+
+    .product-price {
+      font-size: 1.3rem;
+      color: #FC6600;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .buy-btn {
+      background-color: #000000;
+      color: #ffffff;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      margin-top: auto; /* pushes button to bottom */
+    }
+
+    .buy-btn:hover {
+      background-color: #FC6600;
+    }
+
+    /* Back button */
+    .back-btn {
+      display: block;
+      width: fit-content;
+      margin: 40px auto 60px;
+      padding: 12px 30px;
+      background-color: #808080;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #000000;
+    }
+
+    /* ────────────────────────────────────────
+       RESPONSIVE GRID BREAKPOINTS
+    ──────────────────────────────────────── */
+    @media (max-width: 1200px) {
+      .products-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile/tablet */
+        gap: 20px;
+        padding: 0 15px 50px;
+      }
+
+      .category-title {
+        font-size: 2rem;
+        margin: 50px 15px 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-name {
+        font-size: 1.2rem;
+      }
+      .product-desc {
+        font-size: 0.9rem;
+      }
+      .product-price {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header (consistent across all pages) -->
+  <header>
+    <div class="header-container">
+      <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
+      <nav class="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About Us</a>
+        <a href="inquire.html">Inquire</a>
+        <a href="policy.html">Policy</a>
+      </nav>
+      <div class="hamburger" onclick="toggleMobileMenu()">
+        &#9776;
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About Us</a>
+      <a href="inquire.html">Inquire</a>
+      <a href="policy.html">Policy</a>
+    </div>
+  </header>
+
+  <!-- Category Title -->
+  <h1 class="category-title">Vehicle Accessories</h1>
+
+  <!-- Products Grid -->
+  <section class="products-grid">
+
+    <!-- Example Product 1 -->
+    <div class="product-card">
+      <img src="images.web/vehicle1.jpg" alt="Car Phone Mount" class="product-image">
+      <div class="product-info">
+        <h3 class="product-name">Universal Magnetic Car Phone Mount</h3>
+        <p class="product-desc">Strong magnet, 360° rotation, compatible with most smartphones.</p>
+        <p class="product-price">P 450.00</p>
+        <button class="buy-btn">Inquire Now</button>
+      </div>
+    </div>
+
+    <!-- Example Product 2 -->
+    <div class="product-card">
+      <img src="images.web/vehicle2.jpg" alt="LED Headlight Bulbs" class="product-image">
+      <div class="product-info">
+        <h3 class="product-name">H7 LED Headlight Bulbs (Pair)</h3>
+        <p class="product-desc">6000K cool white, 200% brighter, plug-and-play installation.</p>
+        <p class="product-price">P 1,280.00</p>
+        <button class="buy-btn">Inquire Now</button>
+      </div>
+    </div>
+
+    <!-- Example Product 3 -->
+    <div class="product-card">
+      <img src="images.web/vehicle3.jpg" alt="Car Dash Cam" class="product-image">
+      <div class="product-info">
+        <h3 class="product-name">4K Front & Rear Dash Cam</h3>
+        <p class="product-desc">Dual camera, night vision, loop recording, G-sensor.</p>
+        <p class="product-price">P 2,999.00</p>
+        <button class="buy-btn">Inquire Now</button>
+      </div>
+    </div>
+
+    <!-- Example Product 4 -->
+    <div class="product-card">
+      <img src="images.web/vehicle3.jpg" alt="Car Dash Cam" class="product-image">
+      <div class="product-info">
+        <h3 class="product-name">4K Front & Rear Dash Cam</h3>
+        <p class="product-desc">Dual camera, night vision, loop recording, G-sensor.</p>
+        <p class="product-price">P 2,999.00</p>
+        <button class="buy-btn">Inquire Now</button>
+      </div>
+    </div>
+
+    <!-- Add more vehicle accessories product cards here -->
+
+  </section>
+
+  <!-- Back to Home Button -->
+  <a href="index.html" class="back-btn">← Back to Home</a>
+
+  <!-- Footer (updated to 2026) -->
+  <footer>
+    <p>© 2026 Your Company Name. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
