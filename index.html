@@ -40,8 +40,8 @@
     </div>
   </div>
 
-  <!-- Category Buttons – now with black background -->
-  <section class="category-buttons-section" style="background-color: #000000; padding: 20px 0;">
+  <!-- Category Buttons – now dark charcoal with orange text -->
+  <section class="category-buttons-section" style="background-color: #1a1a1a; padding: 20px 0;">
     <div class="category-buttons">
       <a href="hardware.html" class="category-btn">Hardware</a>
       <a href="electronics.html" class="category-btn">Electronics</a>
@@ -105,7 +105,7 @@
       </div>
     </section>
 
-    <!-- === NEW: Latest Advertiser Section (now orange background) === -->
+    <!-- Latest Advertiser Section (orange background) -->
     <section class="latest-ads-section" style="background-color: #FC6600;">
       <h2>Latest Advertiser</h2>
       <div class="ads-carousel">
@@ -115,8 +115,6 @@
           <div class="ad-slide"><img src="images.web/THE_LOGO_BIG.png" alt="Advertiser 2"></div>
           <div class="ad-slide"><img src="images.web/THE_LOGO_BIG.png" alt="Advertiser 3"></div>
           <!-- Add more ads here as needed -->
-          <!-- <div class="ad-slide"><img src="images.web/ad4.jpg" alt="Advertiser 4"></div> -->
-          <!-- <div class="ad-slide"><img src="images.web/ad5.jpg" alt="Advertiser 5"></div> -->
         </div>
 
         <!-- Navigation Arrows -->
@@ -150,8 +148,31 @@
 
   <script src="script.js"></script>
 
-  <!-- Inline styles for featured products + new ads carousel -->
+  <!-- Inline styles – only updated category buttons -->
   <style>
+    /* Category buttons – dark charcoal + orange text */
+    .category-buttons-section {
+      background-color: #1a1a1a; /* dark gray instead of pure black */
+      padding: 20px 0;
+    }
+
+    .category-btn {
+      background-color: transparent;
+      color: #FC6600; /* bright orange text */
+      border: 2px solid #FC6600;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .category-btn:hover {
+      background-color: #FC6600;
+      color: #ffffff;
+    }
+
     /* Featured Products (unchanged) */
     .featured-products-grid {
       display: grid;
@@ -208,16 +229,16 @@
     @media (max-width: 1200px) { .featured-products-grid { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 768px) { .featured-products-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 0 15px; } }
 
-    /* === Latest Advertiser Section === */
+    /* Latest Advertiser Section */
     .latest-ads-section {
-      background-color: #FC6600; /* Now orange as requested */
+      background-color: #FC6600;
       padding: 60px 20px;
       text-align: center;
     }
 
     .latest-ads-section h2 {
       font-size: 2.2rem;
-      color: #ffffff; /* White text on orange for good contrast */
+      color: #ffffff;
       margin-bottom: 40px;
     }
 
@@ -245,7 +266,6 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.12);
     }
 
-    /* Arrows */
     .ad-prev, .ad-next {
       position: absolute;
       top: 50%;
@@ -268,7 +288,6 @@
       background-color: #ffffff;
     }
 
-    /* Dots */
     .ad-dots {
       text-align: center;
       padding: 20px 0 0;
