@@ -40,8 +40,8 @@
     </div>
   </div>
 
-  <!-- Category Buttons – reduced spacing -->
-  <section class="category-buttons-section" style="padding: 15px 0 30px;">
+  <!-- Category Buttons -->
+  <section class="category-buttons-section">
     <div class="category-buttons">
       <a href="hardware.html" class="category-btn">Hardware</a>
       <a href="electronics.html" class="category-btn">Electronics</a>
@@ -52,73 +52,89 @@
   </section>
 
   <main>
-    <!-- Featured Products – white bg, carousel with professional arrows -->
-    <section class="hero" style="padding: 30px 20px 60px; background-color: #ffffff;">
-      <h2 style="margin-bottom: 35px; text-align: center; font-size: 2.4rem;">Featured Products</h2>
+    <!-- Featured Products – white background, static 4-card grid -->
+    <section class="hero" style="padding: 40px 20px 60px; background-color: #ffffff;">
+      <h2 style="margin-bottom: 50px; text-align: center;">Featured Products</h2>
 
-      <div class="featured-carousel">
-        <!-- Navigation Arrows (professional style) -->
-        <button class="feat-prev">&#10094;</button>
-        <button class="feat-next">&#10095;</button>
-
-        <!-- Track with one slide (4 products on desktop, 2 on mobile) -->
-        <div class="featured-track">
-          <div class="featured-slide">
-            <div class="featured-products-grid">
-              <div class="product-card">
-                <img src="images.web/in_p1.jpg" alt="Featured Product 1" class="product-image">
-                <div class="product-info">
-                  <h3 class="product-name">Heavy Duty Power Drill</h3>
-                  <p class="product-desc">Professional-grade with variable speed</p>
-                  <p class="product-price">P 1,250.00</p>
-                  <button class="buy-btn">Inquire Now</button>
-                </div>
-              </div>
-              <div class="product-card">
-                <img src="images.web/in_p3.jpg" alt="Featured Product 2" class="product-image">
-                <div class="product-info">
-                  <h3 class="product-name">55" 4K Smart TV</h3>
-                  <p class="product-desc">Ultra HD with streaming apps</p>
-                  <p class="product-price">P 5,999.00</p>
-                  <button class="buy-btn">Inquire Now</button>
-                </div>
-              </div>
-              <div class="product-card">
-                <img src="images.web/in_p5.jpg" alt="Featured Product 3" class="product-image">
-                <div class="product-info">
-                  <h3 class="product-name">4-Season Dome Tent</h3>
-                  <p class="product-desc">Waterproof for all weather</p>
-                  <p class="product-price">P 3,450.00</p>
-                  <button class="buy-btn">Inquire Now</button>
-                </div>
-              </div>
-              <div class="product-card">
-                <img src="images.web/in_p4.jpg" alt="Featured Product 4" class="product-image">
-                <div class="product-info">
-                  <h3 class="product-name">Universal Car Phone Mount</h3>
-                  <p class="product-desc">Magnetic 360° rotation</p>
-                  <p class="product-price">P 450.00</p>
-                  <button class="buy-btn">Inquire Now</button>
-                </div>
-              </div>
-            </div>
+      <div class="featured-products-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <img src="images.web/in_p1.jpg" alt="Featured Product 1" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Heavy Duty Power Drill</h3>
+            <p class="product-desc">Professional-grade with variable speed</p>
+            <p class="product-price">P 1,250.00</p>
+            <button class="buy-btn">Inquire Now</button>
           </div>
         </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+          <img src="images.web/in_p3.jpg" alt="Featured Product 2" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">55" 4K Smart TV</h3>
+            <p class="product-desc">Ultra HD with streaming apps</p>
+            <p class="product-price">P 5,999.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+          <img src="images.web/in_p5.jpg" alt="Featured Product 3" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">4-Season Dome Tent</h3>
+            <p class="product-desc">Waterproof for all weather</p>
+            <p class="product-price">P 3,450.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+          <img src="images.web/in_p4.jpg" alt="Featured Product 4" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Universal Car Phone Mount</h3>
+            <p class="product-desc">Magnetic 360° rotation</p>
+            <p class="product-price">P 450.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+          <img src="images.web/in_p4.jpg" alt="Featured Product 4" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Universal Car Phone Mount</h3>
+            <p class="product-desc">Magnetic 360° rotation</p>
+            <p class="product-price">P 450.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
+        </div>
+
+        <!-- To add more products, copy-paste from above and change images/title/desc/price -->
       </div>
     </section>
 
-    <!-- Latest Advertiser – orange bg, restored original single-image carousel -->
-    <section class="latest-ads-section" style="background-color: #FC6600; color: #ffffff; padding: 50px 20px;">
-      <h2 style="margin-bottom: 35px;">Latest Advertiser</h2>
+    <!-- === NEW: Latest Advertiser Section === -->
+    <section class="latest-ads-section">
+      <h2>Latest Advertiser</h2>
       <div class="ads-carousel">
+        <!-- Slides -->
         <div class="ads-track">
           <div class="ad-slide"><img src="images.web/THE_LOGO_BIG.png" alt="Advertiser 1"></div>
           <div class="ad-slide"><img src="images.web/THE_LOGO_BIG.png" alt="Advertiser 2"></div>
           <div class="ad-slide"><img src="images.web/THE_LOGO_BIG.png" alt="Advertiser 3"></div>
+          <!-- Add more ads here as needed -->
+          <!-- <div class="ad-slide"><img src="images.web/ad4.jpg" alt="Advertiser 4"></div> -->
+          <!-- <div class="ad-slide"><img src="images.web/ad5.jpg" alt="Advertiser 5"></div> -->
         </div>
 
+        <!-- Navigation Arrows -->
         <button class="ad-prev">&#10094;</button>
         <button class="ad-next">&#10095;</button>
+
+        <!-- Dots -->
         <div class="ad-dots"></div>
       </div>
     </section>
@@ -145,152 +161,153 @@
 
   <script src="script.js"></script>
 
-  <!-- Inline styles – cleaned up & consistent -->
+  <!-- Inline styles for featured products + new ads carousel -->
   <style>
-    /* Reduced spacing between category buttons and featured products */
-    .category-buttons-section { padding: 15px 0 25px !important; }
-    @media (max-width: 768px) { .category-buttons-section { padding: 10px 0 20px !important; } }
-
-    /* Featured Products Carousel */
-    .featured-carousel {
-      position: relative;
-      max-width: 1600px;
-      margin: 0 auto;
-      overflow: hidden;
-    }
-
-    .featured-track {
-      display: flex;
-      transition: transform 0.6s ease;
-    }
-
-    .featured-slide {
-      flex: 0 0 100%;
-      width: 100%;
-    }
-
+    /* Featured Products (unchanged) */
     .featured-products-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
+      max-width: 1600px;
+      margin: 0 auto;
       padding: 0 20px;
     }
-
-    /* Professional arrows (same style as advertiser) */
-    .feat-prev, .feat-next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: white;
-      border: none;
-      font-size: 1.8rem;
-      width: 45px;
-      height: 45px;
-      line-height: 45px;
+    .product-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    .product-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      background-color: #f9f9f9;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+    .product-info {
+      padding: 20px 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-name { font-size: 1.35rem; margin: 0 0 10px; color: #000; font-weight: 600; }
+    .product-desc { font-size: 0.95rem; color: #555; margin-bottom: 15px; flex-grow: 1; }
+    .product-price { font-size: 1.3rem; color: #FC6600; font-weight: bold; margin-bottom: 18px; }
+    .buy-btn {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1rem;
+      border-radius: 6px;
       cursor: pointer;
-      border-radius: 50%;
-      z-index: 10;
       transition: 0.3s;
+      margin-top: auto;
+    }
+    .buy-btn:hover { background-color: #FC6600; }
+
+    @media (max-width: 1200px) { .featured-products-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 768px) { .featured-products-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 0 15px; } }
+
+    /* === Latest Advertiser Section === */
+    .latest-ads-section {
+      background-color: #ffffff;
+      padding: 60px 20px;
+      text-align: center;
     }
 
-    .feat-prev { left: 15px; }
-    .feat-next { right: 15px; }
-
-    .feat-prev:hover, .feat-next:hover {
-      background: #ffffff;
+    .latest-ads-section h2 {
+      font-size: 2.2rem;
       color: #000;
+      margin-bottom: 40px;
     }
 
-    @media (max-width: 768px) {
-      .featured-products-grid {
-        grid-template-columns: repeat(2, 1fr); /* Only 2 products on mobile */
-        gap: 15px;
-        padding: 0 10px;
-      }
-      .feat-prev, .feat-next {
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
-        font-size: 1.5rem;
-      }
+    .ads-carousel {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      overflow: hidden;
     }
 
-    /* Product card styles (unchanged) */
-    .product-card { background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.1); transition:0.3s; text-align:center; display:flex; flex-direction:column; }
-    .product-card:hover { transform:translateY(-10px); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
-    .product-image { width:100%; aspect-ratio:1/1; object-fit:contain; background:#f9f9f9; padding:15px; box-sizing:border-box; }
-    .product-info { padding:20px 15px; flex-grow:1; display:flex; flex-direction:column; }
-    .product-name { font-size:1.35rem; margin:0 0 10px; color:#000; font-weight:600; }
-    .product-desc { font-size:0.95rem; color:#555; margin-bottom:15px; flex-grow:1; }
-    .product-price { font-size:1.3rem; color:#FC6600; font-weight:bold; margin-bottom:18px; }
-    .buy-btn { background:#000; color:#fff; border:none; padding:12px 30px; font-size:1rem; border-radius:6px; cursor:pointer; transition:0.3s; margin-top:auto; }
-    .buy-btn:hover { background:#FC6600; }
+    .ads-track {
+      display: flex;
+      transition: transform 0.6s ease;
+    }
 
-    /* Latest Advertiser – restored original single-image carousel */
-    .latest-ads-section h2 { color: #ffffff; margin-bottom: 35px; text-align: center; }
-    .ads-carousel { position: relative; max-width: 900px; margin: 0 auto; overflow: hidden; }
-    .ads-track { display: flex; transition: transform 0.6s ease; }
-    .ad-slide { flex: 0 0 100%; width: 100%; }
-    .ad-slide img { width: 100%; height: auto; max-height: 400px; object-fit: contain; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+    .ad-slide {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+
+    .ad-slide img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    /* Arrows */
     .ad-prev, .ad-next {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255,255,255,0.4);
-      color: #fff;
+      background-color: rgba(0,0,0,0.5);
+      color: white;
       border: none;
       font-size: 2rem;
-      width: 50px;
-      height: 50px;
-      line-height: 50px;
+      padding: 12px 18px;
       cursor: pointer;
       border-radius: 50%;
-      z-index: 10;
       transition: 0.3s;
+      z-index: 10;
     }
+
     .ad-prev { left: 15px; }
     .ad-next { right: 15px; }
-    .ad-prev:hover, .ad-next:hover { background: #ffffff; color: #000; }
-    .ad-dots { text-align: center; padding: 15px 0 0; }
-    .dot { height: 12px; width: 12px; margin: 0 6px; background: #ddd; border-radius: 50%; display: inline-block; transition: 0.4s; cursor: pointer; }
-    .dot.active { background: #ffffff; }
+
+    .ad-prev:hover, .ad-next:hover {
+      background-color: #FC6600;
+    }
+
+    /* Dots */
+    .ad-dots {
+      text-align: center;
+      padding: 20px 0 0;
+    }
+
+    .dot {
+      height: 14px;
+      width: 14px;
+      margin: 0 8px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.4s ease;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: #FC6600;
+    }
 
     @media (max-width: 768px) {
-      .latest-ads-section { padding: 40px 15px; }
-      .ad-slide img { max-height: 300px; }
-      .ad-prev, .ad-next { font-size: 1.6rem; width: 40px; height: 40px; line-height: 40px; }
+      .latest-ads-section { padding: 50px 15px; }
+      .latest-ads-section h2 { font-size: 1.9rem; }
+      .ad-prev, .ad-next { font-size: 1.6rem; padding: 10px 14px; }
     }
   </style>
 
-  <!-- Featured Carousel JS -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const track = document.querySelector('.featured-track');
-      const slides = document.querySelectorAll('.featured-slide');
-      const prev = document.querySelector('.feat-prev');
-      const next = document.querySelector('.feat-next');
-
-      let currentIndex = 0;
-
-      function update() {
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
-      }
-
-      prev.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        update();
-      });
-
-      next.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        update();
-      });
-    });
-  </script>
-
-  <!-- Advertiser Carousel JS -->
+  <!-- JavaScript for the Advertiser Carousel -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const track = document.querySelector('.ads-track');
@@ -301,6 +318,7 @@
 
       let currentIndex = 0;
 
+      // Create dots
       slides.forEach((_, i) => {
         const dot = document.createElement('span');
         dot.classList.add('dot');
@@ -313,7 +331,9 @@
 
       function updateCarousel() {
         track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === currentIndex);
+        });
       }
 
       function goToSlide(index) {
