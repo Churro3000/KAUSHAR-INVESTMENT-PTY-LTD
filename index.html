@@ -7,29 +7,50 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
 
-  <!-- Inline styles – only added sticky header rules -->
+  <!-- Inline styles – fixed header visibility + sticky -->
   <style>
-    /* === Sticky Header === */
+    * { box-sizing: border-box; } /* Prevents padding overflow */
+
+    /* ===== Sticky Header ===== */
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 1000;
-      background-color: #000000; /* keeps black background */
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* subtle shadow for depth */
-      transition: all 0.3s ease;
+      background-color: #000000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      overflow-x: hidden; /* No horizontal scroll/cut-off */
     }
 
-    /* Push content down so it doesn't hide under fixed header */
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      flex-wrap: nowrap;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 20px; /* Reduced gap to fit all items */
+      white-space: nowrap;
+    }
+
     body {
-      padding-top: 100px; /* adjust this value based on your header height */
+      padding-top: 90px; /* Adjusted for new header height */
     }
 
-    /* Optional: shrink header slightly on scroll (uncomment if you want) */
-    /* header.scrolled { padding: 10px 0; } */
+    /* Mobile: tighter spacing + smaller logo to prevent cut-off */
+    @media (max-width: 768px) {
+      .logo { height: 60px; }
+      .nav-menu { gap: 12px; font-size: 0.95rem; }
+      .header-container { padding: 10px 15px; }
+    }
 
-    /* All other styles remain unchanged from your original */
+    /* All other styles unchanged */
     .featured-products-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -85,7 +106,6 @@
     @media (max-width: 1200px) { .featured-products-grid { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 768px) { .featured-products-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 0 15px; } }
 
-    /* === Latest Advertiser Section === */
     .latest-ads-section {
       background-color: #FC6600;
       padding: 60px 20px;
@@ -173,7 +193,7 @@
 </head>
 <body>
 
-  <!-- ===== HEADER (now sticky/fixed when scrolling) ===== -->
+  <!-- ===== HEADER (sticky + no cut-off) ===== -->
   <header>
     <div class="header-container">
       <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
