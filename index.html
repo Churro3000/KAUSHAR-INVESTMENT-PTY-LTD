@@ -3,33 +3,177 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Company Name</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
+      <nav class="nav-menu">
+        <a href="products.html">Products</a>
+        <a href="about.html">About Us</a>
+        <a href="inquire.html">Inquire</a>
+        <a href="policy.html">Policy</a>
+      </nav>
+      <div class="hamburger" onclick="toggleMobileMenu()">
+        &#9776;
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="products.html">Products</a>
+      <a href="about.html">About Us</a>
+      <a href="inquire.html">Inquire</a>
+      <a href="policy.html">Policy</a>
+    </div>
+  </header>
 
-  <!-- Inline styles – only added sticky header rules -->
+  <!-- Slideshow -->
+  <div class="slideshow-container">
+    <div class="slideshow-track">
+      <div class="slide"><img src="images.web/in_p1.jpg" alt="Product 1"></div>
+      <div class="slide"><img src="images.web/in_p2.jpg" alt="Product 2"></div>
+      <div class="slide"><img src="images.web/in_p3.jpg" alt="Product 3"></div>
+      <div class="slide"><img src="images.web/in_p4.jpg" alt="Product 4"></div>
+      <div class="slide"><img src="images.web/in_p5.jpg" alt="Product 5"></div>
+      <div class="slide"><img src="images.web/in_p6.jpg" alt="Product 6"></div>
+    </div>
+  </div>
+
+  <!-- Category Buttons – now dark charcoal with orange text -->
+  <section class="category-buttons-section" style="background-color: #1a1a1a; padding: 20px 0;">
+    <div class="category-buttons">
+      <a href="hardware.html" class="category-btn">Hardware</a>
+      <a href="electronics.html" class="category-btn">Electronics</a>
+      <a href="outdoor.html" class="category-btn">Outdoor/Camp</a>
+      <a href="household.html" class="category-btn">Household</a>
+      <a href="vehicle.html" class="category-btn">Vehicle Accessories</a>
+    </div>
+  </section>
+
+  <main>
+    <!-- Featured Products – white background, black title text -->
+    <section class="hero" style="padding: 40px 20px 60px; background-color: #ffffff;">
+      <h2 style="margin-bottom: 50px; text-align: center; color: #000000;">Featured Products</h2>
+
+      <div class="featured-products-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <img src="images.web/in_p1.jpg" alt="Featured Product 1" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Heavy Duty Power Drill</h3>
+            <p class="product-desc">Professional-grade with variable speed</p>
+            <p class="product-price">P 1,250.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+          <img src="images.web/in_p3.jpg" alt="Featured Product 2" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">55" 4K Smart TV</h3>
+            <p class="product-desc">Ultra HD with streaming apps</p>
+            <p class="product-price">P 5,999.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+          <img src="images.web/in_p5.jpg" alt="Featured Product 3" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">4-Season Dome Tent</h3>
+            <p class="product-desc">Waterproof for all weather</p>
+            <p class="product-price">P 3,450.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+          <img src="images.web/in_p4.jpg" alt="Featured Product 4" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Universal Car Phone Mount</h3>
+            <p class="product-desc">Magnetic 360° rotation</p>
+            <p class="product-price">P 450.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
+        </div>
+
+        <!-- To add more products, copy-paste from above and change images/title/desc/price -->
+      </div>
+    </section>
+
+    <!-- Latest Advertiser Section (orange background) -->
+    <section class="latest-ads-section" style="background-color: #FC6600;">
+      <h2>Latest Advertiser</h2>
+      <div class="ads-carousel">
+        <!-- Slides -->
+        <div class="ads-track">
+          <div class="ad-slide"><img src="images.web/THE_LOGO_BIG.png" alt="Advertiser 1"></div>
+          <div class="ad-slide"><img src="images.web/THE_LOGO_BIG.png" alt="Advertiser 2"></div>
+          <div class="ad-slide"><img src="images.web/THE_LOGO_BIG.png" alt="Advertiser 3"></div>
+          <!-- Add more ads here as needed -->
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button class="ad-prev">&#10094;</button>
+        <button class="ad-next">&#10095;</button>
+
+        <!-- Dots -->
+        <div class="ad-dots"></div>
+      </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="about">
+      <h2>About Us</h2>
+      <p>
+        At <strong>Your Company Name</strong>, we’re dedicated to excellence and creativity.
+        Our mission is to deliver top-tier products and experiences.
+      </p>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+      <h2>Contact Us</h2>
+      <p>Email: <a href="mailto:info@yourcompany.com">info@yourcompany.com</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Your Company Name. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <!-- Inline styles – only updated category buttons -->
   <style>
-    /* === Sticky Header === */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background-color: #000000; /* keeps black background */
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* subtle shadow for depth */
+    /* Category buttons – dark charcoal + orange text */
+    .category-buttons-section {
+      background-color: #1a1a1a; /* dark gray instead of pure black */
+      padding: 20px 0;
+    }
+
+    .category-btn {
+      background-color: transparent;
+      color: #FC6600; /* bright orange text */
+      border: 2px solid #FC6600;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 6px;
       transition: all 0.3s ease;
     }
 
-    /* Push content down so it doesn't hide under fixed header */
-    body {
-      padding-top: 100px; /* adjust this value based on your header height */
+    .category-btn:hover {
+      background-color: #FC6600;
+      color: #ffffff;
     }
 
-    /* Optional: shrink header slightly on scroll (uncomment if you want) */
-    /* header.scrolled { padding: 10px 0; } */
-
-    /* All other styles remain unchanged from your original */
+    /* Featured Products (unchanged) */
     .featured-products-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -85,7 +229,7 @@
     @media (max-width: 1200px) { .featured-products-grid { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 768px) { .featured-products-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 0 15px; } }
 
-    /* === Latest Advertiser Section === */
+    /* Latest Advertiser Section */
     .latest-ads-section {
       background-color: #FC6600;
       padding: 60px 20px;
@@ -170,153 +314,8 @@
       .ad-prev, .ad-next { font-size: 1.6rem; padding: 10px 14px; }
     }
   </style>
-</head>
-<body>
 
-  <!-- ===== HEADER (now sticky/fixed when scrolling) ===== -->
-  <header>
-    <div class="header-container">
-      <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
-      <nav class="nav-menu">
-        <a href="products.html">Products</a>
-        <a href="about.html">About Us</a>
-        <a href="inquire.html">Inquire</a>
-        <a href="policy.html">Policy</a>
-      </nav>
-      <div class="hamburger" onclick="toggleMobileMenu()">
-        &#9776;
-      </div>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="products.html">Products</a>
-      <a href="about.html">About Us</a>
-      <a href="inquire.html">Inquire</a>
-      <a href="policy.html">Policy</a>
-    </div>
-  </header>
-
-  <!-- ===== MAIN SLIDESHOW ===== -->
-  <div class="slideshow-container">
-    <div class="slideshow-track">
-      <div class="slide"><img src="images.web/in_p1.jpg" alt="Product 1"></div>
-      <div class="slide"><img src="images.web/in_p2.jpg" alt="Product 2"></div>
-      <div class="slide"><img src="images.web/in_p3.jpg" alt="Product 3"></div>
-      <div class="slide"><img src="images.web/in_p4.jpg" alt="Product 4"></div>
-      <div class="slide"><img src="images.web/in_p5.jpg" alt="Product 5"></div>
-      <div class="slide"><img src="images.web/in_p6.jpg" alt="Product 6"></div>
-    </div>
-  </div>
-
-  <!-- ===== CATEGORY BUTTONS ===== -->
-  <section class="category-buttons-section">
-    <div class="category-buttons">
-      <a href="hardware.html" class="category-btn">Hardware</a>
-      <a href="electronics.html" class="category-btn">Electronics</a>
-      <a href="outdoor.html" class="category-btn">Outdoor/Camp</a>
-      <a href="household.html" class="category-btn">Household</a>
-      <a href="vehicle.html" class="category-btn">Vehicle Accessories</a>
-    </div>
-  </section>
-
-  <main>
-    <!-- ===== FEATURED PRODUCTS ===== -->
-    <section class="hero" style="padding: 40px 20px 60px; background-color: #ffffff;">
-      <h2 style="margin-bottom: 50px; text-align: center; color: #000000;">Featured Products</h2>
-
-      <div class="featured-products-grid">
-        <!-- Product 1 -->
-        <div class="product-card">
-          <img src="images.web/in_p1.jpg" alt="Featured Product 1" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">Heavy Duty Power Drill</h3>
-            <p class="product-desc">Professional-grade with variable speed</p>
-            <p class="product-price">P 1,250.00</p>
-            <button class="buy-btn">Inquire Now</button>
-          </div>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="product-card">
-          <img src="images.web/in_p3.jpg" alt="Featured Product 2" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">55" 4K Smart TV</h3>
-            <p class="product-desc">Ultra HD with streaming apps</p>
-            <p class="product-price">P 5,999.00</p>
-            <button class="buy-btn">Inquire Now</button>
-          </div>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="product-card">
-          <img src="images.web/in_p5.jpg" alt="Featured Product 3" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">4-Season Dome Tent</h3>
-            <p class="product-desc">Waterproof for all weather</p>
-            <p class="product-price">P 3,450.00</p>
-            <button class="buy-btn">Inquire Now</button>
-          </div>
-        </div>
-
-        <!-- Product 4 -->
-        <div class="product-card">
-          <img src="images.web/in_p4.jpg" alt="Featured Product 4" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">Universal Car Phone Mount</h3>
-            <p class="product-desc">Magnetic 360° rotation</p>
-            <p class="product-price">P 450.00</p>
-            <button class="buy-btn">Inquire Now</button>
-          </div>
-        </div>
-
-        <!-- To add more products, copy-paste from above and change images/title/desc/price -->
-      </div>
-    </section>
-
-    <!-- ===== LATEST ADVERTISER SECTION ===== -->
-    <section class="latest-ads-section">
-      <h2>Latest Advertiser</h2>
-      <div class="ads-carousel">
-        <!-- Slides -->
-        <div class="ads-track">
-          <div class="ad-slide"><img src="images.web/THE_LOGO_BIG.png" alt="Advertiser 1"></div>
-          <div class="ad-slide"><img src="images.web/THE_LOGO_BIG.png" alt="Advertiser 2"></div>
-          <div class="ad-slide"><img src="images.web/THE_LOGO_BIG.png" alt="Advertiser 3"></div>
-          <!-- Add more ads here as needed -->
-        </div>
-
-        <!-- Navigation Arrows -->
-        <button class="ad-prev">&#10094;</button>
-        <button class="ad-next">&#10095;</button>
-
-        <!-- Dots -->
-        <div class="ad-dots"></div>
-      </div>
-    </section>
-
-    <!-- ===== ABOUT US ===== -->
-    <section id="about" class="about">
-      <h2>About Us</h2>
-      <p>
-        At <strong>Your Company Name</strong>, we’re dedicated to excellence and creativity.
-        Our mission is to deliver top-tier products and experiences.
-      </p>
-    </section>
-
-    <!-- ===== CONTACT ===== -->
-    <section class="contact">
-      <h2>Contact Us</h2>
-      <p>Email: <a href="mailto:info@yourcompany.com">info@yourcompany.com</a></p>
-    </section>
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <p>© 2026 Your Company Name. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
-
-  <!-- ===== JAVASCRIPT FOR ADVERTISER CAROUSEL ===== -->
+  <!-- JavaScript for the Advertiser Carousel -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const track = document.querySelector('.ads-track');
@@ -363,4 +362,3 @@
   </script>
 </body>
 </html>
-</div>
