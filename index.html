@@ -40,8 +40,8 @@
     </div>
   </div>
 
-  <!-- Category Buttons (reduced spacing) -->
-  <section class="category-buttons-section" style="padding: 20px 0 40px;">
+  <!-- Category Buttons – reduced spacing -->
+  <section class="category-buttons-section" style="padding: 15px 0 30px;">
     <div class="category-buttons">
       <a href="hardware.html" class="category-btn">Hardware</a>
       <a href="electronics.html" class="category-btn">Electronics</a>
@@ -52,18 +52,17 @@
   </section>
 
   <main>
-    <!-- Featured Products (now carousel + white bg) -->
-    <section class="hero" style="padding: 40px 20px 60px; background-color: #ffffff;">
-      <h2 style="margin-bottom: 40px; text-align: center;">Featured Products</h2>
+    <!-- Featured Products – white bg, carousel with professional arrows -->
+    <section class="hero" style="padding: 30px 20px 60px; background-color: #ffffff;">
+      <h2 style="margin-bottom: 35px; text-align: center; font-size: 2.4rem;">Featured Products</h2>
 
       <div class="featured-carousel">
-        <!-- Navigation Arrows -->
+        <!-- Navigation Arrows (professional style) -->
         <button class="feat-prev">&#10094;</button>
         <button class="feat-next">&#10095;</button>
 
-        <!-- Slides Container -->
+        <!-- Track with one slide (4 products on desktop, 2 on mobile) -->
         <div class="featured-track">
-          <!-- Slide 1 -->
           <div class="featured-slide">
             <div class="featured-products-grid">
               <div class="product-card">
@@ -104,19 +103,13 @@
               </div>
             </div>
           </div>
-
-          <!-- Slide 2 (add more products here if you want more rows) -->
-          <!-- <div class="featured-slide"> ... another 4 products ... </div> -->
         </div>
-
-        <!-- Dots (optional for multi-slide) -->
-        <!-- <div class="feat-dots"></div> -->
       </div>
     </section>
 
-    <!-- Latest Advertiser (now orange bg) -->
-    <section class="latest-ads-section" style="background-color: #FC6600; color: #ffffff;">
-      <h2>Latest Advertiser</h2>
+    <!-- Latest Advertiser – orange bg, restored original single-image carousel -->
+    <section class="latest-ads-section" style="background-color: #FC6600; color: #ffffff; padding: 50px 20px;">
+      <h2 style="margin-bottom: 35px;">Latest Advertiser</h2>
       <div class="ads-carousel">
         <div class="ads-track">
           <div class="ad-slide"><img src="images.web/THE_LOGO_BIG.png" alt="Advertiser 1"></div>
@@ -152,17 +145,11 @@
 
   <script src="script.js"></script>
 
-  <!-- Inline styles (updated) -->
+  <!-- Inline styles – cleaned up & consistent -->
   <style>
-    /* Category buttons spacing */
-    .category-buttons-section {
-      padding: 20px 0 40px !important;
-    }
-    @media (max-width: 768px) {
-      .category-buttons-section {
-        padding: 10px 0 30px !important;
-      }
-    }
+    /* Reduced spacing between category buttons and featured products */
+    .category-buttons-section { padding: 15px 0 25px !important; }
+    @media (max-width: 768px) { .category-buttons-section { padding: 10px 0 20px !important; } }
 
     /* Featured Products Carousel */
     .featured-carousel {
@@ -189,6 +176,7 @@
       padding: 0 20px;
     }
 
+    /* Professional arrows (same style as advertiser) */
     .feat-prev, .feat-next {
       position: absolute;
       top: 50%;
@@ -196,10 +184,10 @@
       background: rgba(0,0,0,0.5);
       color: white;
       border: none;
-      font-size: 2rem;
-      width: 50px;
-      height: 50px;
-      line-height: 50px;
+      font-size: 1.8rem;
+      width: 45px;
+      height: 45px;
+      line-height: 45px;
       text-align: center;
       cursor: pointer;
       border-radius: 50%;
@@ -207,23 +195,29 @@
       transition: 0.3s;
     }
 
-    .feat-prev { left: 10px; }
-    .feat-next { right: 10px; }
+    .feat-prev { left: 15px; }
+    .feat-next { right: 15px; }
 
     .feat-prev:hover, .feat-next:hover {
-      background: #FC6600;
+      background: #ffffff;
+      color: #000;
     }
 
     @media (max-width: 768px) {
       .featured-products-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* Only 2 products on mobile */
         gap: 15px;
         padding: 0 10px;
       }
-      .feat-prev, .feat-next { font-size: 1.6rem; width: 40px; height: 40px; line-height: 40px; }
+      .feat-prev, .feat-next {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 1.5rem;
+      }
     }
 
-    /* Existing product card styles (unchanged) */
+    /* Product card styles (unchanged) */
     .product-card { background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.1); transition:0.3s; text-align:center; display:flex; flex-direction:column; }
     .product-card:hover { transform:translateY(-10px); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
     .product-image { width:100%; aspect-ratio:1/1; object-fit:contain; background:#f9f9f9; padding:15px; box-sizing:border-box; }
@@ -234,8 +228,40 @@
     .buy-btn { background:#000; color:#fff; border:none; padding:12px 30px; font-size:1rem; border-radius:6px; cursor:pointer; transition:0.3s; margin-top:auto; }
     .buy-btn:hover { background:#FC6600; }
 
-    /* Latest Advertiser (orange bg already set inline) */
-    .latest-ads-section h2 { color: #ffffff; }
+    /* Latest Advertiser – restored original single-image carousel */
+    .latest-ads-section h2 { color: #ffffff; margin-bottom: 35px; text-align: center; }
+    .ads-carousel { position: relative; max-width: 900px; margin: 0 auto; overflow: hidden; }
+    .ads-track { display: flex; transition: transform 0.6s ease; }
+    .ad-slide { flex: 0 0 100%; width: 100%; }
+    .ad-slide img { width: 100%; height: auto; max-height: 400px; object-fit: contain; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+    .ad-prev, .ad-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.4);
+      color: #fff;
+      border: none;
+      font-size: 2rem;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+      transition: 0.3s;
+    }
+    .ad-prev { left: 15px; }
+    .ad-next { right: 15px; }
+    .ad-prev:hover, .ad-next:hover { background: #ffffff; color: #000; }
+    .ad-dots { text-align: center; padding: 15px 0 0; }
+    .dot { height: 12px; width: 12px; margin: 0 6px; background: #ddd; border-radius: 50%; display: inline-block; transition: 0.4s; cursor: pointer; }
+    .dot.active { background: #ffffff; }
+
+    @media (max-width: 768px) {
+      .latest-ads-section { padding: 40px 15px; }
+      .ad-slide img { max-height: 300px; }
+      .ad-prev, .ad-next { font-size: 1.6rem; width: 40px; height: 40px; line-height: 40px; }
+    }
   </style>
 
   <!-- Featured Carousel JS -->
@@ -264,7 +290,7 @@
     });
   </script>
 
-  <!-- Advertiser Carousel JS (unchanged) -->
+  <!-- Advertiser Carousel JS -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const track = document.querySelector('.ads-track');
