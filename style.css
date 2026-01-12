@@ -323,67 +323,6 @@ footer {
   color: #ffffff;
 }
 
-/* Featured Products Carousel – fixed */
-.featured-carousel {
-  position: relative;
-  max-width: 1600px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.featured-track {
-  display: flex;
-  transition: transform 0.6s ease;
-}
-
-.featured-slide {
-  flex: 0 0 100%;
-  width: 100%;
-}
-
-.featured-products-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  padding: 0 10px;
-}
-
-/* Arrows – EXACT same as Latest Advertiser */
-.feat-prev, .feat-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  font-size: 2rem;
-  padding: 12px 18px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: 0.3s;
-  z-index: 10;
-}
-
-.feat-prev { left: 15px; }
-.feat-next { right: 15px; }
-
-.feat-prev:hover, .feat-next:hover {
-  background-color: #FC6600;
-}
-
-/* Mobile: exactly 2 products per slide */
-@media (max-width: 768px) {
-  .featured-products-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    padding: 0 5px;
-  }
-  .feat-prev, .feat-next {
-    font-size: 1.6rem;
-    padding: 10px 14px;
-  }
-}
-
 /* Latest Advertiser Section */
 .latest-ads-section {
   background-color: #FC6600;
