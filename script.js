@@ -97,3 +97,49 @@ window.addEventListener('load', () => {
   updateSlidePosition();
   startSlideshow();
 });
+
+
+// THE INDEX FILE SCRIPT CODES (DO NOT CHANGE) 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const track = document.querySelector('.ads-track');
+  const slides = document.querySelectorAll('.ad-slide');
+  const dotsContainer = document.querySelector('.ad-dots');
+  const prevBtn = document.querySelector('.ad-prev');
+  const nextBtn = document.querySelector('.ad-next');
+
+  let currentIndex = 0;
+
+  // Create dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll('.dot');
+
+  function updateCarousel() {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  function goToSlide(index) {
+    currentIndex = index;
+    updateCarousel();
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateCarousel();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateCarousel();
+  });
+});
