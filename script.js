@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Featured Products Carousel
+// Featured Products Carousel (same logic as advertiser)
 document.addEventListener('DOMContentLoaded', () => {
   const featTrack = document.querySelector('.featured-track');
   const featSlides = document.querySelectorAll('.featured-slide');
