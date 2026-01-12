@@ -141,3 +141,33 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCarousel();
   });
 });
+
+// Featured Products Carousel
+document.addEventListener('DOMContentLoaded', () => {
+  const featTrack = document.querySelector('.featured-track');
+  const featSlides = document.querySelectorAll('.featured-slide');
+  const featPrev = document.querySelector('.feat-prev');
+  const featNext = document.querySelector('.feat-next');
+
+  let featIndex = 0;
+
+  function updateFeatured() {
+    if (featTrack && featSlides.length > 0) {
+      featTrack.style.transform = `translateX(-${featIndex * 100}%)`;
+    }
+  }
+
+  if (featPrev) {
+    featPrev.addEventListener('click', () => {
+      featIndex = (featIndex - 1 + featSlides.length) % featSlides.length;
+      updateFeatured();
+    });
+  }
+
+  if (featNext) {
+    featNext.addEventListener('click', () => {
+      featIndex = (featIndex + 1) % featSlides.length;
+      updateFeatured();
+    });
+  }
+});
