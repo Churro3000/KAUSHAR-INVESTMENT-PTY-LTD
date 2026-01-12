@@ -323,7 +323,7 @@ footer {
   color: #ffffff;
 }
 
-/* Featured Products Carousel */
+/* Featured Products Carousel – fixed */
 .featured-carousel {
   position: relative;
   max-width: 1600px;
@@ -348,7 +348,7 @@ footer {
   padding: 0 10px;
 }
 
-/* Arrows – EXACT same style as Latest Advertiser */
+/* Arrows – EXACT same as Latest Advertiser */
 .feat-prev, .feat-next {
   position: absolute;
   top: 50%;
@@ -371,7 +371,7 @@ footer {
   background-color: #FC6600;
 }
 
-/* Mobile: only 2 products visible per slide */
+/* Mobile: exactly 2 products per slide */
 @media (max-width: 768px) {
   .featured-products-grid {
     grid-template-columns: repeat(2, 1fr);
