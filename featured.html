@@ -1,1 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Featured Products</title>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <style>
+    /* Exact same product card styling as in your main style.css */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
 
+    .hero {
+      padding: 40px 20px 60px;
+      background-color: #ffffff;
+    }
+
+    .hero h2 {
+      margin-bottom: 50px;
+      text-align: center;
+      color: #000000;
+      font-size: 2.2rem; /* matches your typical heading size */
+    }
+
+    .featured-products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .product-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      background-color: #f9f9f9;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+
+    .product-info {
+      padding: 20px 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-name {
+      font-size: 1.35rem;
+      margin: 0 0 10px;
+      color: #000;
+      font-weight: 600;
+    }
+
+    .product-desc {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+
+    .product-price {
+      font-size: 1.3rem;
+      color: #FC6600;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .buy-btn {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: auto;
+    }
+
+    .buy-btn:hover {
+      background-color: #FC6600;
+    }
+
+    /* Responsive – same as main site */
+    @media (max-width: 1200px) {
+      .featured-products-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .featured-products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 0 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Featured Products – white background, black title text -->
+  <section class="hero">
+    <h2>Featured Products</h2>
+    <div class="featured-products-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <img src="images.web/in_p1.jpg" alt="Featured Product 1" class="product-image">
+        <div class="product-info">
+          <h3 class="product-name">Heavy Duty Power Drill</h3>
+          <p class="product-desc">Professional-grade with variable speed</p>
+          <p class="product-price">P 1,250.00</p>
+          <button class="buy-btn">Inquire Now</button>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <img src="images.web/in_p3.jpg" alt="Featured Product 2" class="product-image">
+        <div class="product-info">
+          <h3 class="product-name">55" 4K Smart TV</h3>
+          <p class="product-desc">Ultra HD with streaming apps</p>
+          <p class="product-price">P 5,999.00</p>
+          <button class="buy-btn">Inquire Now</button>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <img src="images.web/in_p5.jpg" alt="Featured Product 3" class="product-image">
+        <div class="product-info">
+          <h3 class="product-name">4-Season Dome Tent</h3>
+          <p class="product-desc">Waterproof for all weather</p>
+          <p class="product-price">P 3,450.00</p>
+          <button class="buy-btn">Inquire Now</button>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card">
+        <img src="images.web/in_p4.jpg" alt="Featured Product 4" class="product-image">
+        <div class="product-info">
+          <h3 class="product-name">Universal Car Phone Mount</h3>
+          <p class="product-desc">Magnetic 360° rotation</p>
+          <p class="product-price">P 450.00</p>
+          <button class="buy-btn">Inquire Now</button>
+        </div>
+      </div>
+
+      <!-- To add more products, copy-paste from above and change images/title/desc/price -->
+    </div>
+  </section>
+</body>
+</html>
