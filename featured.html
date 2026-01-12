@@ -12,19 +12,16 @@
       background-color: #ffffff;
       font-family: Arial, sans-serif;
     }
-
     .hero {
       padding: 40px 20px 60px;
       background-color: #ffffff;
     }
-
     .hero h2 {
       margin-bottom: 50px;
       text-align: center;
       color: #000000;
       font-size: 2.2rem; /* matches your typical heading size */
     }
-
     .featured-products-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -33,7 +30,6 @@
       margin: 0 auto;
       padding: 0 20px;
     }
-
     .product-card {
       background-color: #ffffff;
       border-radius: 12px;
@@ -44,12 +40,10 @@
       display: flex;
       flex-direction: column;
     }
-
     .product-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     }
-
     .product-image {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -58,35 +52,30 @@
       padding: 15px;
       box-sizing: border-box;
     }
-
     .product-info {
       padding: 20px 15px;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
     }
-
     .product-name {
       font-size: 1.35rem;
       margin: 0 0 10px;
       color: #000;
       font-weight: 600;
     }
-
     .product-desc {
       font-size: 0.95rem;
       color: #555;
       margin-bottom: 15px;
       flex-grow: 1;
     }
-
     .product-price {
       font-size: 1.3rem;
       color: #FC6600;
       font-weight: bold;
       margin-bottom: 18px;
     }
-
     .buy-btn {
       background-color: #000;
       color: #fff;
@@ -98,18 +87,15 @@
       transition: 0.3s;
       margin-top: auto;
     }
-
     .buy-btn:hover {
       background-color: #FC6600;
     }
-
     /* Responsive – same as main site */
     @media (max-width: 1200px) {
       .featured-products-grid {
         grid-template-columns: repeat(3, 1fr);
       }
     }
-
     @media (max-width: 768px) {
       .featured-products-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -122,7 +108,6 @@
 <body>
   <!-- Featured Products – white background, black title text -->
   <section class="hero">
-    <h2>Featured Products</h2>
     <div class="featured-products-grid">
       <!-- Product 1 -->
       <div class="product-card">
