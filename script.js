@@ -98,9 +98,7 @@ window.addEventListener('load', () => {
   startSlideshow();
 });
 
-
 // THE INDEX FILE SCRIPT CODES (DO NOT CHANGE) 
-
 document.addEventListener('DOMContentLoaded', () => {
   const track = document.querySelector('.ads-track');
   const slides = document.querySelectorAll('.ad-slide');
