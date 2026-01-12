@@ -53,19 +53,18 @@
   </section>
 
   <main>
-    <!-- Featured Products – now carousel with arrows -->
+    <!-- Featured Products – carousel with same-style arrows -->
     <section class="hero" style="padding: 40px 20px 60px; background-color: #ffffff;">
       <h2 style="margin-bottom: 50px; text-align: center; color: #000000;">Featured Products</h2>
 
       <div class="featured-carousel">
-        <!-- Left Arrow -->
+        <!-- Arrows (same style as advertiser) -->
         <button class="feat-prev">&#10094;</button>
-        <!-- Right Arrow -->
         <button class="feat-next">&#10095;</button>
 
-        <!-- Slides container -->
+        <!-- Track with slides -->
         <div class="featured-track">
-          <!-- Slide 1 (first 4 on desktop, first 2 on mobile) -->
+          <!-- Slide 1: first set -->
           <div class="featured-slide">
             <div class="featured-products-grid">
               <!-- Product 1 -->
@@ -90,7 +89,7 @@
                 </div>
               </div>
 
-              <!-- Product 3 (only visible on desktop) -->
+              <!-- Product 3 (visible on desktop only) -->
               <div class="product-card">
                 <img src="images.web/in_p5.jpg" alt="Featured Product 3" class="product-image">
                 <div class="product-info">
@@ -101,7 +100,7 @@
                 </div>
               </div>
 
-              <!-- Product 4 (only visible on desktop) -->
+              <!-- Product 4 (visible on desktop only) -->
               <div class="product-card">
                 <img src="images.web/in_p4.jpg" alt="Featured Product 4" class="product-image">
                 <div class="product-info">
@@ -114,13 +113,25 @@
             </div>
           </div>
 
-          <!-- Slide 2 – add your next products here (visible after clicking arrow) -->
-          <!-- Example: -->
-          <!-- <div class="featured-slide"> -->
-          <!--   <div class="featured-products-grid"> -->
-          <!--     ... next 4 products ... -->
-          <!--   </div> -->
-          <!-- </div> -->
+          <!-- Slide 2: next set – add more products here -->
+          <div class="featured-slide">
+            <div class="featured-products-grid">
+              <!-- Add next products here, e.g. Product 5, 6, 7, 8 -->
+              <!-- Example placeholders: -->
+              <div class="product-card">
+                <img src="images.web/in_p5.jpg" alt="Next Product 1" class="product-image">
+                <div class="product-info">
+                  <h3 class="product-name">Next Product 1</h3>
+                  <p class="product-desc">Description here</p>
+                  <p class="product-price">P 999.00</p>
+                  <button class="buy-btn">Inquire Now</button>
+                </div>
+              </div>
+              <!-- Repeat for more -->
+            </div>
+          </div>
+
+          <!-- Add more <div class="featured-slide"> blocks if you have more than 8 products -->
         </div>
       </div>
     </section>
