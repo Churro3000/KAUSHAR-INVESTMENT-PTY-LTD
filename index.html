@@ -41,7 +41,7 @@
     </div>
   </div>
 
-  <!-- Category Buttons – now dark charcoal with orange text -->
+  <!-- Category Buttons -->
   <section class="category-buttons-section" style="background-color: #1a1a1a; padding: 20px 0;">
     <div class="category-buttons">
       <a href="hardware.html" class="category-btn">Hardware</a>
@@ -53,76 +53,90 @@
   </section>
 
   <main>
-    <!-- Featured Products – white background, black title text -->
+    <!-- Featured Products – now carousel with arrows -->
     <section class="hero" style="padding: 40px 20px 60px; background-color: #ffffff;">
       <h2 style="margin-bottom: 50px; text-align: center; color: #000000;">Featured Products</h2>
 
-      <div class="featured-products-grid">
-        <!-- Product 1 -->
-        <div class="product-card">
-          <img src="images.web/in_p1.jpg" alt="Featured Product 1" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">Heavy Duty Power Drill</h3>
-            <p class="product-desc">Professional-grade with variable speed</p>
-            <p class="product-price">P 1,250.00</p>
-            <button class="buy-btn">Inquire Now</button>
-          </div>
-        </div>
+      <div class="featured-carousel">
+        <!-- Left Arrow -->
+        <button class="feat-prev">&#10094;</button>
+        <!-- Right Arrow -->
+        <button class="feat-next">&#10095;</button>
 
-        <!-- Product 2 -->
-        <div class="product-card">
-          <img src="images.web/in_p3.jpg" alt="Featured Product 2" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">55" 4K Smart TV</h3>
-            <p class="product-desc">Ultra HD with streaming apps</p>
-            <p class="product-price">P 5,999.00</p>
-            <button class="buy-btn">Inquire Now</button>
-          </div>
-        </div>
+        <!-- Slides container -->
+        <div class="featured-track">
+          <!-- Slide 1 (first 4 on desktop, first 2 on mobile) -->
+          <div class="featured-slide">
+            <div class="featured-products-grid">
+              <!-- Product 1 -->
+              <div class="product-card">
+                <img src="images.web/in_p1.jpg" alt="Featured Product 1" class="product-image">
+                <div class="product-info">
+                  <h3 class="product-name">Heavy Duty Power Drill</h3>
+                  <p class="product-desc">Professional-grade with variable speed</p>
+                  <p class="product-price">P 1,250.00</p>
+                  <button class="buy-btn">Inquire Now</button>
+                </div>
+              </div>
 
-        <!-- Product 3 -->
-        <div class="product-card">
-          <img src="images.web/in_p5.jpg" alt="Featured Product 3" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">4-Season Dome Tent</h3>
-            <p class="product-desc">Waterproof for all weather</p>
-            <p class="product-price">P 3,450.00</p>
-            <button class="buy-btn">Inquire Now</button>
-          </div>
-        </div>
+              <!-- Product 2 -->
+              <div class="product-card">
+                <img src="images.web/in_p3.jpg" alt="Featured Product 2" class="product-image">
+                <div class="product-info">
+                  <h3 class="product-name">55" 4K Smart TV</h3>
+                  <p class="product-desc">Ultra HD with streaming apps</p>
+                  <p class="product-price">P 5,999.00</p>
+                  <button class="buy-btn">Inquire Now</button>
+                </div>
+              </div>
 
-        <!-- Product 4 -->
-        <div class="product-card">
-          <img src="images.web/in_p4.jpg" alt="Featured Product 4" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">Universal Car Phone Mount</h3>
-            <p class="product-desc">Magnetic 360° rotation</p>
-            <p class="product-price">P 450.00</p>
-            <button class="buy-btn">Inquire Now</button>
-          </div>
-        </div>
+              <!-- Product 3 (only visible on desktop) -->
+              <div class="product-card">
+                <img src="images.web/in_p5.jpg" alt="Featured Product 3" class="product-image">
+                <div class="product-info">
+                  <h3 class="product-name">4-Season Dome Tent</h3>
+                  <p class="product-desc">Waterproof for all weather</p>
+                  <p class="product-price">P 3,450.00</p>
+                  <button class="buy-btn">Inquire Now</button>
+                </div>
+              </div>
 
-        <!-- To add more products, copy-paste from above and change images/title/desc/price -->
+              <!-- Product 4 (only visible on desktop) -->
+              <div class="product-card">
+                <img src="images.web/in_p4.jpg" alt="Featured Product 4" class="product-image">
+                <div class="product-info">
+                  <h3 class="product-name">Universal Car Phone Mount</h3>
+                  <p class="product-desc">Magnetic 360° rotation</p>
+                  <p class="product-price">P 450.00</p>
+                  <button class="buy-btn">Inquire Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 – add your next products here (visible after clicking arrow) -->
+          <!-- Example: -->
+          <!-- <div class="featured-slide"> -->
+          <!--   <div class="featured-products-grid"> -->
+          <!--     ... next 4 products ... -->
+          <!--   </div> -->
+          <!-- </div> -->
+        </div>
       </div>
     </section>
 
-    <!-- Latest Advertiser Section (orange background) -->
+    <!-- Latest Advertiser Section -->
     <section class="latest-ads-section" style="background-color: #FC6600;">
       <h2>Latest Advertiser</h2>
       <div class="ads-carousel">
-        <!-- Slides -->
         <div class="ads-track">
           <div class="ad-slide"><img src="images.web/camp_ad.png" alt="Advertiser 1"></div>
           <div class="ad-slide"><img src="images.web/THE_LOGO_BIG.png" alt="Advertiser 2"></div>
           <div class="ad-slide"><img src="images.web/THE_LOGO_BIG.png" alt="Advertiser 3"></div>
-          <!-- Add more ads here as needed -->
         </div>
 
-        <!-- Navigation Arrows -->
         <button class="ad-prev">&#10094;</button>
         <button class="ad-next">&#10095;</button>
-
-        <!-- Dots -->
         <div class="ad-dots"></div>
       </div>
     </section>
