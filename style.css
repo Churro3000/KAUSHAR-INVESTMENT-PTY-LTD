@@ -427,7 +427,7 @@ footer {
 /* On mobile (≤768px), keep images full-width as before */
 @media (max-width: 768px) {
   .ad-slide img {
-    max-width: 100%;  /* full width on mobile */
+    max-width: 100%; /* full width on mobile */
   }
   .latest-ads-section { padding: 50px 15px; }
   .latest-ads-section h2 { font-size: 1.9rem; }
