@@ -416,3 +416,78 @@ footer {
 .dot.active {
   background-color: #000000 !important;
 }
+
+/*----------- About / Location styles copied from about.html --*/
+  <style>
+    .about-container {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+    .about-image {
+      flex: 1;
+      min-width: 280px;
+      text-align: center;
+      margin-top: -15px;
+    }
+    .about-image img {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .about-text {
+      flex: 2;
+      min-width: 300px;
+    }
+    .about-text h2 {
+      color: #FC6600;
+      margin-bottom: 20px;
+      font-size: 2.2rem;
+    }
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 1.2em;
+    }
+    .location-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+    }
+    /* ── Protection for the big logo only ── */
+    .logo-protect {
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      pointer-events: none;
+      -webkit-touch-callout: none;
+    }
+    .logo-protect img {
+      pointer-events: none;
+      user-drag: none;
+      -webkit-user-drag: none;
+      -moz-user-select: none;
+    }
+    /* ────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .about-section, .location-section {
+        flex-direction: column;
+        text-align: center;
+      }
+      .about-image img {
+        max-width: 280px;
+      }
+    }
+  </style>
