@@ -13,15 +13,14 @@
       font-family: Arial, sans-serif;
     }
     .hero {
-  padding: 40px 20px 10px !important;   /* was 30px → now only 10px at bottom */
-  background-color: #ffffff;
-}
+      padding: 40px 20px 10px !important;
+      background-color: #ffffff;
     }
     .hero h2 {
-      margin-bottom: 20px;              /* Slightly reduced from 30px for tighter spacing */
+      margin-bottom: 20px;
       text-align: center;
       color: #000000;
-      font-size: 2.2rem; /* matches your typical heading size */
+      font-size: 2.2rem;
     }
     .featured-products-grid {
       display: grid;
@@ -30,7 +29,6 @@
       max-width: 1600px;
       margin: 0 auto;
       padding: 0 20px;
-      /* Removed negative margin-bottom – better to control spacing positively */
     }
     .product-card {
       background-color: #ffffff;
@@ -41,6 +39,7 @@
       text-align: center;
       display: flex;
       flex-direction: column;
+      cursor: pointer; /* Makes it clear the card is clickable */
     }
     .product-card:hover {
       transform: translateY(-10px);
@@ -92,7 +91,94 @@
     .buy-btn:hover {
       background-color: #FC6600;
     }
-    /* Responsive – same as main site */
+
+    /* ==================== MODAL POPUP (exact copy from hardware.html) ==================== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+
+    .modal-content {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 1000px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      padding: 30px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 2.4rem;
+      background: rgba(255,255,255,0.9);
+      border: none;
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      line-height: 42px;
+      text-align: center;
+      cursor: pointer;
+      color: #333;
+      font-weight: bold;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      transition: all 0.2s;
+    }
+    .modal-close:hover {
+      color: #000;
+      background: #fff;
+      transform: scale(1.1);
+    }
+
+    .modal-image-section { position: relative; }
+    .modal-main-image { width: 100%; aspect-ratio: 1/1; object-fit: contain; background: #f9f9f9; border-radius: 12px; }
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      width: 50px;
+      height: 50px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    .modal-prev { left: 10px; }
+    .modal-next { right: 10px; }
+
+    .modal-dots { text-align: center; margin-top: 15px; }
+    .modal-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #bbb;
+      border-radius: 50%;
+      margin: 0 6px;
+      cursor: pointer;
+    }
+    .modal-dot.active { background: #FC6600; }
+
+    .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
+    .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
+    .modal-price { font-size: 2rem; color: #FC6600; font-weight: bold; margin-bottom: 25px; }
+
+    /* Responsive – same as main site + modal mobile adjustments */
     @media (max-width: 1200px) {
       .featured-products-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -104,15 +190,29 @@
         gap: 20px;
         padding: 0 15px;
       }
+      .modal-content {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+      .modal-details h3 { font-size: 1.7rem; }
+      .modal-close {
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+        font-size: 2.8rem;
+        top: 10px;
+        right: 10px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Featured Products – white background, black title text -->
+  <!-- Featured Products – white background, no title -->
   <section class="hero">
     <div class="featured-products-grid">
+
       <!-- PRODUCT 1 -->
-      <div class="product-card" 
+      <div class="product-card"
         data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
         data-title="Heavy Duty Power Drill"
         data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
@@ -127,7 +227,7 @@
       </div>
 
       <!-- PRODUCT 2 -->
-      <div class="product-card" 
+      <div class="product-card"
         data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
         data-title="Heavy Duty Power Drill"
         data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
@@ -142,7 +242,7 @@
       </div>
 
       <!-- PRODUCT 3 -->
-      <div class="product-card" 
+      <div class="product-card"
         data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
         data-title="Heavy Duty Power Drill"
         data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
@@ -157,7 +257,7 @@
       </div>
 
       <!-- PRODUCT 4 -->
-      <div class="product-card" 
+      <div class="product-card"
         data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
         data-title="Heavy Duty Power Drill"
         data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
@@ -172,7 +272,85 @@
       </div>
 
       <!-- To add more products, copy-paste from above and change images/title/desc/price -->
+
     </div>
   </section>
+
+  <!-- MODAL (shared) – exact copy from hardware.html -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+
+      <div class="modal-image-section">
+        <img src="" alt="Product" class="modal-main-image" id="modalImage">
+        <button class="modal-nav modal-prev">&#10094;</button>
+        <button class="modal-nav modal-next">&#10095;</button>
+        <div class="modal-dots" id="modalDots"></div>
+      </div>
+
+      <div class="modal-details">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+        <p class="modal-price" id="modalPrice"></p>
+        <button class="buy-btn">Inquire Now</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Product Modal Logic (exact same as hardware.html)
+    const modal = document.getElementById('productModal');
+    const closeBtn = document.querySelector('.modal-close');
+    const modalImg = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalPrice = document.getElementById('modalPrice');
+    const dotsContainer = document.getElementById('modalDots');
+    let currentImages = [];
+    let currentIndex = 0;
+
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.addEventListener('click', () => {
+        currentImages = JSON.parse(card.dataset.images);
+        currentIndex = 0;
+
+        modalTitle.textContent = card.dataset.title;
+        modalDesc.textContent = card.dataset.desc;
+        modalPrice.textContent = card.dataset.price;
+        updateModalImage();
+
+        modal.classList.add('active');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+    modal.addEventListener('click', e => {
+      if (e.target === modal) modal.classList.remove('active');
+    });
+
+    document.querySelector('.modal-prev').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+      updateModalImage();
+    });
+    document.querySelector('.modal-next').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      updateModalImage();
+    });
+
+    function updateModalImage() {
+      modalImg.src = currentImages[currentIndex];
+      dotsContainer.innerHTML = '';
+      currentImages.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.classList.add('modal-dot');
+        if (i === currentIndex) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+          currentIndex = i;
+          updateModalImage();
+        });
+        dotsContainer.appendChild(dot);
+      });
+    }
+  </script>
 </body>
 </html>
