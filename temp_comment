@@ -648,3 +648,351 @@ footer {
     max-width: 240px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <style>
+    /* Exact same product card styling as in your main style.css */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+    .hero {
+      padding: 20px 20px 0 !important; /* Reduced top to 20px, bottom to 0 for minimal space below grid */
+      background-color: #ffffff;
+    }
+    .hero h2 {
+      margin: 0 0 10px; /* Tightened bottom space below title (if you add it back later) */
+      text-align: center;
+      color: #000000;
+      font-size: 2.2rem;
+    }
+    .featured-products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 20px 0 !important; /* No bottom padding on grid */
+      margin-bottom: 0 !important; /* Force no extra bottom margin */
+    }
+    .product-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    .product-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      background-color: #f9f9f9;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+    .product-info {
+      padding: 20px 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-name {
+      font-size: 1.35rem;
+      margin: 0 0 10px;
+      color: #000;
+      font-weight: 600;
+    }
+    .product-desc {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+    .product-price {
+      font-size: 1.3rem;
+      color: #FC6600;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+    .buy-btn {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: auto;
+    }
+    .buy-btn:hover {
+      background-color: #FC6600;
+    }
+    /* ==================== MODAL POPUP (unchanged) ==================== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-content {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 1000px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      padding: 30px;
+    }
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 2.4rem;
+      background: rgba(255,255,255,0.9);
+      border: none;
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      line-height: 42px;
+      text-align: center;
+      cursor: pointer;
+      color: #333;
+      font-weight: bold;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      transition: all 0.2s;
+    }
+    .modal-close:hover {
+      color: #000;
+      background: #fff;
+      transform: scale(1.1);
+    }
+    .modal-image-section { position: relative; }
+    .modal-main-image { width: 100%; aspect-ratio: 1/1; object-fit: contain; background: #f9f9f9; border-radius: 12px; }
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      width: 50px;
+      height: 50px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    .modal-prev { left: 10px; }
+    .modal-next { right: 10px; }
+    .modal-dots { text-align: center; margin-top: 15px; }
+    .modal-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #bbb;
+      border-radius: 50%;
+      margin: 0 6px;
+      cursor: pointer;
+    }
+    .modal-dot.active { background: #FC6600; }
+    .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
+    .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
+    .modal-price { font-size: 2rem; color: #FC6600; font-weight: bold; margin-bottom: 25px; }
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .featured-products-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 768px) {
+      .featured-products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 0 15px;
+      }
+      .modal-content {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+      .modal-details h3 { font-size: 1.7rem; }
+      .modal-close {
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+        font-size: 2.8rem;
+        top: 10px;
+        right: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Featured Products – white background, no title -->
+  <section class="hero">
+    <div class="featured-products-grid">
+      <!-- PRODUCT 1 -->
+      <div class="product-card"
+        data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+        data-title="Heavy Duty Power Drill"
+        data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+        data-price="P 1,250.00">
+        <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
+        <div class="product-info">
+          <h3 class="product-name">Heavy Duty Power Drill</h3>
+          <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
+          <p class="product-price">P 1,250.00</p>
+          <button class="buy-btn">Inquire Now</button>
+        </div>
+      </div>
+      <!-- PRODUCT 2 -->
+      <div class="product-card"
+        data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+        data-title="Heavy Duty Power Drill"
+        data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+        data-price="P 1,250.00">
+        <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
+        <div class="product-info">
+          <h3 class="product-name">Heavy Duty Power Drill</h3>
+          <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
+          <p class="product-price">P 1,250.00</p>
+          <button class="buy-btn">Inquire Now</button>
+        </div>
+      </div>
+      <!-- PRODUCT 3 -->
+      <div class="product-card"
+        data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+        data-title="Heavy Duty Power Drill"
+        data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+        data-price="P 1,250.00">
+        <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
+        <div class="product-info">
+          <h3 class="product-name">Heavy Duty Power Drill</h3>
+          <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
+          <p class="product-price">P 1,250.00</p>
+          <button class="buy-btn">Inquire Now</button>
+        </div>
+      </div>
+      <!-- PRODUCT 4 -->
+      <div class="product-card"
+        data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+        data-title="Heavy Duty Power Drill"
+        data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+        data-price="P 1,250.00">
+        <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
+        <div class="product-info">
+          <h3 class="product-name">Heavy Duty Power Drill</h3>
+          <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
+          <p class="product-price">P 1,250.00</p>
+          <button class="buy-btn">Inquire Now</button>
+        </div>
+      </div>
+      <!-- To add more products, copy-paste from above and change images/title/desc/price -->
+    </div>
+  </section>
+  <!-- MODAL (shared) – exact copy from hardware.html -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <div class="modal-image-section">
+        <img src="" alt="Product" class="modal-main-image" id="modalImage">
+        <button class="modal-nav modal-prev">&#10094;</button>
+        <button class="modal-nav modal-next">&#10095;</button>
+        <div class="modal-dots" id="modalDots"></div>
+      </div>
+      <div class="modal-details">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+        <p class="modal-price" id="modalPrice"></p>
+        <button class="buy-btn">Inquire Now</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Product Modal Logic (exact same as hardware.html)
+    const modal = document.getElementById('productModal');
+    const closeBtn = document.querySelector('.modal-close');
+    const modalImg = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalPrice = document.getElementById('modalPrice');
+    const dotsContainer = document.getElementById('modalDots');
+    let currentImages = [];
+    let currentIndex = 0;
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.addEventListener('click', () => {
+        currentImages = JSON.parse(card.dataset.images);
+        currentIndex = 0;
+        modalTitle.textContent = card.dataset.title;
+        modalDesc.textContent = card.dataset.desc;
+        modalPrice.textContent = card.dataset.price;
+        updateModalImage();
+        modal.classList.add('active');
+      });
+    });
+    closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+    modal.addEventListener('click', e => {
+      if (e.target === modal) modal.classList.remove('active');
+    });
+    document.querySelector('.modal-prev').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+      updateModalImage();
+    });
+    document.querySelector('.modal-next').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      updateModalImage();
+    });
+    function updateModalImage() {
+      modalImg.src = currentImages[currentIndex];
+      dotsContainer.innerHTML = '';
+      currentImages.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.classList.add('modal-dot');
+        if (i === currentIndex) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+          currentIndex = i;
+          updateModalImage();
+        });
+        dotsContainer.appendChild(dot);
+      });
+    }
+  </script>
+</body>
+</html>
