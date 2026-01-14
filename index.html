@@ -55,12 +55,12 @@
   <main>
 
     <!-- Featured Products – embedded from featured.html -->
-<section class="hero" style="padding: 40px 20px 20px; background-color: #ffffff;">
+<section class="hero" style="padding: 40px 20px 10px; background-color: #ffffff;">
   <h2 style="margin-bottom: 30px; text-align: center; color: #000000;">Featured Products</h2>
   <iframe
     src="featured.html"
     style="width:100%; border:none; overflow:hidden;"
-    onload="this.style.height = this.contentWindow.document.body.scrollHeight + 'px';"
+    onload="this.style.height = this.contentWindow.document.body.scrollHeight + 10 + 'px';"  <!-- +10 for tiny buffer if needed -->
     scrolling="no"
     title="Featured Products">
   </iframe>
