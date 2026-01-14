@@ -13,24 +13,34 @@
       font-family: Arial, sans-serif;
     }
     .hero {
-      padding: 20px 20px 0 !important; /* Reduced top to 20px, bottom to 0 for minimal space below grid */
+      padding: 20px 20px 0 !important;
       background-color: #ffffff;
+      position: relative; /* Needed for absolute arrows */
     }
     .hero h2 {
-      margin: 0 0 10px; /* Tightened bottom space below title (if you add it back later) */
+      margin: 0 0 10px;
       text-align: center;
       color: #000000;
       font-size: 2.2rem;
     }
-    .featured-products-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+
+    /* Carousel wrapper */
+    .featured-carousel {
+      position: relative;
       max-width: 1600px;
       margin: 0 auto;
-      padding: 0 20px 0 !important; /* No bottom padding on grid */
-      margin-bottom: 0 !important; /* Force no extra bottom margin */
+      overflow: hidden;
     }
+
+    .featured-products-grid {
+      display: flex; /* Changed from grid to flex for sliding */
+      flex-wrap: nowrap;
+      gap: 20px;
+      transition: transform 0.5s ease;
+      width: max-content; /* Allows sliding beyond viewport */
+      padding: 0 20px;
+    }
+
     .product-card {
       background-color: #ffffff;
       border-radius: 12px;
@@ -41,11 +51,15 @@
       display: flex;
       flex-direction: column;
       cursor: pointer;
+      flex: 0 0 calc(25% - 15px); /* 4 per row on large (with gap) */
+      min-width: 280px;
     }
+
     .product-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     }
+
     .product-image {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -54,30 +68,35 @@
       padding: 15px;
       box-sizing: border-box;
     }
+
     .product-info {
       padding: 20px 15px;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
     }
+
     .product-name {
       font-size: 1.35rem;
       margin: 0 0 10px;
       color: #000;
       font-weight: 600;
     }
+
     .product-desc {
       font-size: 0.95rem;
       color: #555;
       margin-bottom: 15px;
       flex-grow: 1;
     }
+
     .product-price {
       font-size: 1.3rem;
       color: #FC6600;
       font-weight: bold;
       margin-bottom: 18px;
     }
+
     .buy-btn {
       background-color: #000;
       color: #fff;
@@ -89,9 +108,61 @@
       transition: 0.3s;
       margin-top: auto;
     }
+
     .buy-btn:hover {
       background-color: #FC6600;
     }
+
+    /* Carousel arrows – same style as Latest Advertiser */
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      font-size: 2.2rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+    }
+
+    .carousel-arrow:hover {
+      background: rgba(0,0,0,0.8);
+    }
+
+    .carousel-prev {
+      left: 10px;
+    }
+
+    .carousel-next {
+      right: 10px;
+    }
+
+    .carousel-arrow.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      .product-card {
+        flex: 0 0 calc(33.33% - 13.33px); /* ~3 per row */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .product-card {
+        flex: 0 0 calc(50% - 10px); /* 2 per row on small screens */
+      }
+    }
+
     /* ==================== MODAL POPUP (unchanged) ==================== */
     .modal-overlay {
       display: none;
@@ -172,18 +243,8 @@
     .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
     .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
     .modal-price { font-size: 2rem; color: #FC6600; font-weight: bold; margin-bottom: 25px; }
-    /* Responsive */
-    @media (max-width: 1200px) {
-      .featured-products-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
+
     @media (max-width: 768px) {
-      .featured-products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        padding: 0 15px;
-      }
       .modal-content {
         grid-template-columns: 1fr;
         padding: 20px;
@@ -203,66 +264,136 @@
 <body>
   <!-- Featured Products – white background, no title -->
   <section class="hero">
-    <div class="featured-products-grid">
-      <!-- PRODUCT 1 -->
-      <div class="product-card"
-        data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-        data-title="Heavy Duty Power Drill"
-        data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
-        data-price="P 1,250.00">
-        <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Heavy Duty Power Drill</h3>
-          <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
-          <p class="product-price">P 1,250.00</p>
-          <button class="buy-btn">Inquire Now</button>
+    <div class="featured-carousel">
+      <div class="featured-products-grid" id="featuredGrid">
+        <!-- PRODUCT 1 -->
+        <div class="product-card"
+          data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+          data-title="Heavy Duty Power Drill"
+          data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+          data-price="P 1,250.00">
+          <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Heavy Duty Power Drill</h3>
+            <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
+            <p class="product-price">P 1,250.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
+        </div>
+
+        <!-- PRODUCT 2 -->
+        <div class="product-card"
+          data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+          data-title="Heavy Duty Power Drill"
+          data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+          data-price="P 1,250.00">
+          <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Heavy Duty Power Drill</h3>
+            <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
+            <p class="product-price">P 1,250.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
+        </div>
+
+        <!-- PRODUCT 3 -->
+        <div class="product-card"
+          data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+          data-title="Heavy Duty Power Drill"
+          data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+          data-price="P 1,250.00">
+          <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Heavy Duty Power Drill</h3>
+            <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
+            <p class="product-price">P 1,250.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
+        </div>
+
+        <!-- PRODUCT 4 -->
+        <div class="product-card"
+          data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+          data-title="Heavy Duty Power Drill"
+          data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+          data-price="P 1,250.00">
+          <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Heavy Duty Power Drill</h3>
+            <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
+            <p class="product-price">P 1,250.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
+        </div>
+
+        <!-- ADDITIONAL PRODUCT 5 (copy-pasted) -->
+        <div class="product-card"
+          data-images='["images.web/in_p2.jpg","images.web/in_p3.jpg"]'
+          data-title="Cordless Angle Grinder"
+          data-desc="Powerful 18V angle grinder with adjustable guard, side handle, and disc brake. Ideal for cutting, grinding, and polishing metal and stone."
+          data-price="P 980.00">
+          <img src="images.web/in_p2.jpg" alt="Angle Grinder" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Cordless Angle Grinder</h3>
+            <p class="product-desc">18V grinder for metal and stone work.</p>
+            <p class="product-price">P 980.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
+        </div>
+
+        <!-- ADDITIONAL PRODUCT 6 -->
+        <div class="product-card"
+          data-images='["images.web/in_p4.jpg","images.web/in_p5.jpg"]'
+          data-title="Digital Multimeter"
+          data-desc="Auto-ranging multimeter with True RMS, temperature measurement, and backlit display. Measures voltage, current, resistance, and continuity."
+          data-price="P 450.00">
+          <img src="images.web/in_p4.jpg" alt="Multimeter" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Digital Multimeter</h3>
+            <p class="product-desc">Professional auto-ranging tester with True RMS.</p>
+            <p class="product-price">P 450.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
+        </div>
+
+        <!-- ADDITIONAL PRODUCT 7 -->
+        <div class="product-card"
+          data-images='["images.web/in_p5.jpg","images.web/in_p6.jpg"]'
+          data-title="Workbench Vice"
+          data-desc="Heavy-duty 6-inch bench vice with swivel base, quick-release jaws, and anvil surface. Made from cast iron for durability."
+          data-price="P 1,650.00">
+          <img src="images.web/in_p5.jpg" alt="Workbench Vice" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Workbench Vice</h3>
+            <p class="product-desc">6-inch heavy-duty vice with swivel base.</p>
+            <p class="product-price">P 1,650.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
+        </div>
+
+        <!-- ADDITIONAL PRODUCT 8 -->
+        <div class="product-card"
+          data-images='["images.web/in_p6.jpg","images.web/in_p1.jpg"]'
+          data-title="LED Work Light"
+          data-desc="Rechargeable 2000-lumen LED floodlight with 3 brightness modes, 360° stand, and up to 10 hours runtime. Waterproof and impact-resistant."
+          data-price="P 850.00">
+          <img src="images.web/in_p6.jpg" alt="LED Work Light" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">LED Work Light</h3>
+            <p class="product-desc">Rechargeable 2000-lumen floodlight with stand.</p>
+            <p class="product-price">P 850.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
         </div>
       </div>
-      <!-- PRODUCT 2 -->
-      <div class="product-card"
-        data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-        data-title="Heavy Duty Power Drill"
-        data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
-        data-price="P 1,250.00">
-        <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Heavy Duty Power Drill</h3>
-          <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
-          <p class="product-price">P 1,250.00</p>
-          <button class="buy-btn">Inquire Now</button>
-        </div>
-      </div>
-      <!-- PRODUCT 3 -->
-      <div class="product-card"
-        data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-        data-title="Heavy Duty Power Drill"
-        data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
-        data-price="P 1,250.00">
-        <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Heavy Duty Power Drill</h3>
-          <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
-          <p class="product-price">P 1,250.00</p>
-          <button class="buy-btn">Inquire Now</button>
-        </div>
-      </div>
-      <!-- PRODUCT 4 -->
-      <div class="product-card"
-        data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-        data-title="Heavy Duty Power Drill"
-        data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
-        data-price="P 1,250.00">
-        <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Heavy Duty Power Drill</h3>
-          <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
-          <p class="product-price">P 1,250.00</p>
-          <button class="buy-btn">Inquire Now</button>
-        </div>
-      </div>
-      <!-- To add more products, copy-paste from above and change images/title/desc/price -->
+
+      <!-- Left Arrow -->
+      <button class="carousel-arrow carousel-prev hidden" id="prevBtn">&#10094;</button>
+      <!-- Right Arrow -->
+      <button class="carousel-arrow carousel-next" id="nextBtn">&#10095;</button>
     </div>
   </section>
+
   <!-- MODAL (shared) – exact copy from hardware.html -->
   <div class="modal-overlay" id="productModal">
     <div class="modal-content">
@@ -281,8 +412,42 @@
       </div>
     </div>
   </div>
+
   <script>
-    // Product Modal Logic (exact same as hardware.html)
+    // Carousel Logic
+    const grid = document.getElementById('featuredGrid');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let currentPosition = 0;
+    const cardWidth = document.querySelector('.product-card').offsetWidth + 20; // width + gap
+
+    function updateArrows() {
+      const maxScroll = grid.scrollWidth - grid.clientWidth;
+      prevBtn.classList.toggle('hidden', currentPosition <= 0);
+      nextBtn.classList.toggle('hidden', currentPosition >= maxScroll);
+    }
+
+    prevBtn.addEventListener('click', () => {
+      const cardsPerSlide = window.innerWidth > 768 ? 4 : 2;
+      currentPosition = Math.max(currentPosition - (cardsPerSlide * cardWidth), 0);
+      grid.style.transform = `translateX(-${currentPosition}px)`;
+      updateArrows();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const cardsPerSlide = window.innerWidth > 768 ? 4 : 2;
+      const maxScroll = grid.scrollWidth - grid.clientWidth;
+      currentPosition = Math.min(currentPosition + (cardsPerSlide * cardWidth), maxScroll);
+      grid.style.transform = `translateX(-${currentPosition}px)`;
+      updateArrows();
+    });
+
+    // Update arrows on resize (in case window size changes)
+    window.addEventListener('resize', updateArrows);
+    updateArrows(); // initial check
+
+    // Product Modal Logic (unchanged)
     const modal = document.getElementById('productModal');
     const closeBtn = document.querySelector('.modal-close');
     const modalImg = document.getElementById('modalImage');
@@ -292,6 +457,7 @@
     const dotsContainer = document.getElementById('modalDots');
     let currentImages = [];
     let currentIndex = 0;
+
     document.querySelectorAll('.product-card').forEach(card => {
       card.addEventListener('click', () => {
         currentImages = JSON.parse(card.dataset.images);
@@ -303,18 +469,22 @@
         modal.classList.add('active');
       });
     });
+
     closeBtn.addEventListener('click', () => modal.classList.remove('active'));
     modal.addEventListener('click', e => {
       if (e.target === modal) modal.classList.remove('active');
     });
+
     document.querySelector('.modal-prev').addEventListener('click', () => {
       currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
       updateModalImage();
     });
+
     document.querySelector('.modal-next').addEventListener('click', () => {
       currentIndex = (currentIndex + 1) % currentImages.length;
       updateModalImage();
     });
+
     function updateModalImage() {
       modalImg.src = currentImages[currentIndex];
       dotsContainer.innerHTML = '';
