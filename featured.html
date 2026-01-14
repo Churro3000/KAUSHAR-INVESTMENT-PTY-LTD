@@ -51,7 +51,7 @@
       display: flex;
       flex-direction: column;
       cursor: pointer;
-      flex: 0 0 calc(25% - 15px); /* 4 cards visible on large screens */
+      flex: 0 0 calc(25% - 15px); /* 4 cards visible on large screens, evenly spaced */
     }
 
     .product-card:hover {
@@ -87,6 +87,7 @@
       color: #555;
       margin-bottom: 15px;
       flex-grow: 1;
+      display: none; /* Hidden on main cards – only shown in modal */
     }
 
     .product-price {
@@ -106,6 +107,7 @@
       cursor: pointer;
       transition: 0.3s;
       margin-top: auto;
+      display: none; /* Hidden on main cards – only shown in modal */
     }
 
     .buy-btn:hover {
@@ -152,11 +154,11 @@
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .product-card {
-        flex: 0 0 calc(50% - 10px); /* 2 cards visible on small screens */
+        flex: 0 0 calc(50% - 10px); /* 2 cards visible on small screens, evenly spaced */
       }
     }
 
-    /* ==================== MODAL POPUP (unchanged) ==================== */
+    /* ==================== MODAL POPUP (unchanged – desc & button visible here) ==================== */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -319,7 +321,7 @@
           </div>
         </div>
 
-        <!-- ADDITIONAL PRODUCT 5 (copy-pasted) -->
+        <!-- ADDITIONAL PRODUCT 5 -->
         <div class="product-card"
           data-images='["images.web/in_p2.jpg","images.web/in_p3.jpg"]'
           data-title="Cordless Angle Grinder"
@@ -436,7 +438,7 @@
       updateArrows();
     });
 
-    // Update arrows on resize (in case window size changes)
+    // Update arrows on resize
     window.addEventListener('resize', updateArrows);
     updateArrows(); // initial check
 
