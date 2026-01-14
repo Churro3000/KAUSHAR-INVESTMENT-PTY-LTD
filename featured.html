@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
   <style>
-  /* Exact same product card styling as in your main style.css */
-  /* Exact same product card styling as in your main style.css */
+/* Exact same product card styling as in your main style.css */
 body {
   margin: 0;
   padding: 0;
@@ -41,7 +40,7 @@ body {
   gap: 20px;
   transition: transform 0.5s ease;
   width: max-content;
-  padding: 0 20px;
+  padding: 0 16px;          /* slightly reduced from 20px to help fit better */
 }
 
 .product-card {
@@ -54,9 +53,9 @@ body {
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  flex: 0 0 23%;           /* ≈4 per row with gap */
-  min-width: 240px;         /* prevents cards from becoming too tiny */
-  max-width: 320px;         /* caps maximum card size */
+  flex: 0 0 22.5%;          /* slightly smaller → better fit for 4 cards */
+  min-width: 230px;
+  max-width: 300px;         /* reduced max size a bit more */
   box-sizing: border-box;
 }
 
@@ -93,7 +92,7 @@ body {
   color: #555;
   margin-bottom: 15px;
   flex-grow: 1;
-  display: none;           /* already hidden – shows in modal */
+  display: none;
 }
 
 .product-price {
@@ -113,14 +112,14 @@ body {
   cursor: pointer;
   transition: 0.3s;
   margin-top: auto;
-  display: none;           /* already hidden – shows in modal */
+  display: none;
 }
 
 .buy-btn:hover {
   background-color: #FC6600;
 }
 
-/* Carousel arrows – same style as Latest Advertiser */
+/* Carousel arrows – kept exactly as before */
 .carousel-arrow {
   position: absolute;
   top: 50%;
@@ -156,6 +155,33 @@ body {
   opacity: 0;
   pointer-events: none;
 }
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .featured-products-grid {
+    gap: 12px;
+    padding: 0 12px;
+  }
+  .product-card {
+    flex: 0 0 47%;          /* slightly tighter than 48% to reduce cutoff risk */
+    min-width: 150px;
+    max-width: 210px;
+  }
+}
+
+/* ==================== MODAL POPUP (unchanged) ==================== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+/* ... rest of your modal styles remain unchanged ... */}
 
 /* ── Mobile adjustments ── */
 @media (max-width: 768px) {
