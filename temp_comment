@@ -127,3 +127,524 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+/* ===== General Setup ===== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* ===== Header ===== */
+header {
+  background-color: #000000;
+  padding: 10px 20px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 75px; /* adjust based on your logo proportions */
+  width: auto;
+  cursor: pointer;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-left: 3px;
+  cursor: default !important; /* normal arrow, not hand */
+  pointer-events: none; /* disables clicking, dragging, and interactions */
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background-color: #FC6600;
+  color: #ffffff;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+.hero button {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.3s ease;
+}
+
+.hero button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* ===== About Section ===== */
+.about {
+  padding: 80px 20px;
+  background-color: #ffffff;
+  color: #000000;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* ===== Contact Section =====*/
+.contact {
+  padding: 80px 20px;
+  background-color: #000000;
+  color: #FC6600;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.contact a {
+  color: #FC6600;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Footer ===== */
+footer {
+  background-color: #FC6600;
+  color: #ffffff;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.9rem;
+}
+
+/* ====== Desktop Menu ====== */
+.nav-menu {
+  display: flex;
+  gap: 45px; /* space between menu items */
+  margin-left: auto; /* push menu to right */
+  margin-right: 10px; /* small space from right edge */
+}
+
+.nav-menu a {
+  color: #FC6600;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  padding: 0 10px; /* extra space around text */
+  position: relative;
+}
+
+.nav-menu a:hover {
+  color: #ffffff;
+}
+
+/* Vertical line between items, except last */
+.nav-menu a:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -22px; /* move the line outside the <a> to sit between items */
+  transform: translateY(-50%);
+  width: 1px;
+  height: 18px;
+  background-color: #ffffff;
+}
+
+/* ===== Hamburger (Mobile) ===== */
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  color: #FC6600;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 3px; /* space from right edge */
+}
+
+/* ===== Mobile Dropdown Menu ===== */
+.mobile-menu { 
+  display: flex;
+  flex-direction: column;
+  background-color: #000000;
+  overflow: hidden;
+  max-height: 0; 
+  transition: max-height 0.4s ease; 
+}
+
+.mobile-menu.show {
+  max-height: 500px; 
+}
+
+.mobile-menu a {
+  color: #FC6600 !important; 
+  padding: 20px 20px; /* top & bottom padding for space */
+  text-decoration: none !important;
+  font-weight: 400 !important; /* explicitly not bold */
+  position: relative; 
+  display: block; 
+}
+
+/* Horizontal line between items, except last */
+.mobile-menu a:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0; /* line spans full width */
+  right: 0;
+  bottom: 0; /* place line at bottom of menu item */
+  height: 1px;
+  background-color: #ffffff; /* thin white line */
+}
+
+.mobile-menu a:hover {
+  color: #ffffff !important;
+}
+
+@media screen and (max-width: 768px) { /* Responsive */
+  .nav-menu {
+    display: none; /* hide desktop menu on mobile */
+  }
+
+  .hamburger {
+    display: block; /* show hamburger on mobile */
+  }
+}
+
+/* ========================================== Slideshow ==================================== */
+.slideshow-section {
+  background-color: #ffffff;
+  padding: 45px 0; /* space above and below slideshow */
+}
+
+.slideshow-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  background: transparent; /* no black background */
+}
+
+.slideshow-track {
+  display: flex;
+  transition: transform 0.9s ease;
+  will-change: transform;
+}
+
+.slide {
+  flex: 0 0 calc(100% / 3); /* show 3 slides on large screens */
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Mobile: show only 1 image at a time */
+@media screen and (max-width: 768px) {
+  .slide {
+    flex: 0 0 100%;
+  }
+}
+
+/* ===== Product Category Buttons Section ===== */
+.category-buttons-section {
+  background-color: #ffffff;
+  padding: 50px 20px 60px;
+  text-align: center;
+}
+
+.category-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px; /* even spacing between buttons */
+  flex-wrap: wrap;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.category-btn {
+  background-color: #ffffff;
+  color: #808080; /* grey text */
+  border: 2px solid #808080; /* grey border */
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.category-btn:hover {
+  background-color: #f0f0f0;
+  color: #000000;
+  border-color: #000000;
+}
+
+/* On smaller screens, keep them horizontal as long as possible */
+@media screen and (max-width: 768px) {
+  .category-buttons {
+    gap: 20px;
+  }
+  
+  .category-btn {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+}
+
+/* Stack vertically only on very small screens */
+@media screen and (max-width: 480px) {
+  .category-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .category-btn {
+    width: 80%;
+    max-width: 300px;
+  }
+}
+
+/* THE INDEX CSS STYLING (DO NOT CHANGE) */
+/* Category buttons – dark charcoal + orange text */
+.category-buttons-section {
+  background-color: #1a1a1a; /* dark gray instead of pure black */
+  padding: 20px 0;
+}
+
+.category-btn {
+  background-color: transparent;
+  color: #FC6600; /* bright orange text */
+  border: 2px solid #FC6600;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.category-btn:hover {
+  background-color: #FC6600;
+  color: #ffffff;
+}
+
+/* Latest Advertiser Section */
+.latest-ads-section {
+  background-color: #FC6600;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.latest-ads-section h2 {
+  font-size: 2.2rem;
+  color: #ffffff;
+  margin-bottom: 70px;
+  margin-top: 30px !important;
+}
+
+.ads-carousel {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.ads-track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+.ad-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  text-align: center; /* centers image */
+}
+
+.ad-slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  max-width: 500px; /* smaller on big screens */
+  margin: 0 auto;   /* center the image */
+}
+
+/* On mobile (≤768px), keep images full-width as before */
+@media (max-width: 768px) {
+  .ad-slide img {
+    max-width: 100%; /* full width on mobile */
+  }
+  .latest-ads-section { padding: 50px 15px; }
+  .latest-ads-section h2 { font-size: 1.9rem; }
+  .ad-prev, .ad-next { font-size: 1.6rem; padding: 10px 14px; }
+}
+
+/* Arrows, dots, etc. unchanged */
+.ad-prev, .ad-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 12px 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.3s;
+  z-index: 10;
+}
+
+.ad-prev { left: 15px; }
+.ad-next { right: 15px; }
+
+.ad-prev:hover, .ad-next:hover {
+  background-color: #ffffff;
+}
+
+.ad-dots {
+  text-align: center;
+  padding: 20px 0 0;
+}
+
+.dot {
+  height: 14px;
+  width: 14px;
+  margin: 0 8px;
+  background-color: #d94d00 !important;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.4s ease;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #000000 !important;
+}
+
+/*----------- About / Location styles (fixed for smaller logo + tighter spacing) -----------*/
+.about-container {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.about-section,
+.location-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;          /* Reduced from 40px for less empty space between text/image */
+  align-items: center;
+}
+
+.about-section {
+  margin-bottom: 80px;
+}
+
+.about-image {
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+  margin-top: -15px;   /* Keeps your upward pull; adjust to -10px / -20px if needed */
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 320px;    /* Good size for store photo in location section */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Specific override: Make the big logo MUCH smaller (only affects About Us section) */
+.about-section .about-image img {
+  max-width: 220px;    /* <-- Main fix: smaller logo. Try 200px or 180px if still too big */
+}
+
+.about-text {
+  flex: 2;
+  min-width: 300px;
+}
+
+.about-text h2 {
+  color: #FC6600;
+  margin-bottom: 20px;
+  font-size: 2.2rem;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 1.2em;
+}
+
+/* ── Protection for the big logo only ── */
+.logo-protect {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+  -webkit-touch-callout: none;
+}
+
+.logo-protect img {
+  pointer-events: none;
+  user-drag: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+}
+
+/* ────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .about-section,
+  .location-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;         /* Even tighter on mobile */
+  }
+  .about-image img {
+    max-width: 280px;  /* General mobile size */
+  }
+  /* Make logo even smaller on mobile if needed */
+  .about-section .about-image img {
+    max-width: 240px;
+  }
+}
