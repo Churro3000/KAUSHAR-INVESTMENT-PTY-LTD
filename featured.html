@@ -13,7 +13,7 @@
     font-family: Arial, sans-serif;
   }
   .hero {
-    padding: 20px 0 0 !important;
+    padding: 20px 0 0;
     background-color: #ffffff;
     position: relative;
   }
@@ -36,7 +36,8 @@
     gap: 20px;
     transition: transform 0.5s ease;
     width: max-content;
-    padding: 0 10px;
+    padding: 0 32px;          /* more breathing room on sides for arrows */
+    box-sizing: border-box;
   }
   .product-card {
     background-color: #ffffff;
@@ -48,10 +49,10 @@
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    width: 25% !important;
-    max-width: 25% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
+    flex: 0 0 22.5%;          /* main fix: smaller than 25% so 4 + gaps fit */
+    max-width: 320px;
+    min-width: 220px;
+    box-sizing: border-box;
   }
   .product-card:hover {
     transform: translateY(-10px);
@@ -105,12 +106,12 @@
   .buy-btn:hover {
     background-color: #FC6600;
   }
-  /* Carousel arrows – adjusted visibility & behavior */
+  /* Carousel arrows – visibility improvements */
   .carousel-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.55);
     color: white;
     border: none;
     font-size: 2.4rem;
@@ -118,29 +119,24 @@
     height: 60px;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 20;
-    display: flex;
+    z-index: 30;                 /* higher than most content */
+    display: flex !important;    /* strongest visibility enforcement */
     align-items: center;
     justify-content: center;
+    opacity: 1 !important;       /* force visible baseline */
     transition: all 0.25s ease;
-    opacity: 0.9;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.3);
   }
-
   .carousel-arrow:hover {
-    background: rgba(0,0,0,0.85);
-    opacity: 1;
-    transform: translateY(-50%) scale(1.1);
+    background: rgba(0,0,0,0.9);
+    transform: translateY(-50%) scale(1.12);
   }
-
   .carousel-prev {
-    left: -15px;
+    left: 8px;                   /* moved inward so visible even with padding */
   }
-
   .carousel-next {
-    right: -15px;
+    right: 8px;
   }
-
   .carousel-arrow.hidden {
     opacity: 0 !important;
     visibility: hidden !important;
@@ -150,21 +146,21 @@
   /* Force correct layout on mobile */
   @media (max-width: 768px) {
     .featured-products-grid {
-      gap: 12px !important;
-      padding: 0 8px !important;
+      gap: 16px;
+      padding: 0 20px;
     }
     .product-card {
-      width: 50% !important;
-      max-width: 50% !important;
-      min-width: 0 !important;
+      flex: 0 0 46%;
+      max-width: 48%;
+      min-width: 140px;
     }
     .carousel-arrow {
-      width: 48px;
-      height: 48px;
-      font-size: 2rem;
+      width: 50px;
+      height: 50px;
+      font-size: 2.1rem;
     }
-    .carousel-prev { left: -8px; }
-    .carousel-next { right: -8px; }
+    .carousel-prev { left: 4px; }
+    .carousel-next { right: 4px; }
   }
 
   /* ==================== MODAL POPUP (unchanged) ==================== */
