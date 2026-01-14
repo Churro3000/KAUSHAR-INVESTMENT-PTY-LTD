@@ -5,210 +5,264 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
   <style>
-/* Exact same product card styling as in your main style.css */
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #ffffff;
-  font-family: Arial, sans-serif;
-}
-
-.hero {
-  padding: 20px 20px 0;
-  background-color: #ffffff;
-  position: relative;
-}
-
-.hero h2 {
-  margin: 0 0 10px;
-  text-align: center;
-  color: #000000;
-  font-size: 2.2rem;
-}
-
-/* Carousel wrapper */
-.featured-carousel {
-  position: relative;
-  max-width: 1600px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.featured-products-grid {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 20px;
-  transition: transform 0.5s ease;
-  width: max-content;
-  padding: 0 16px;          /* slightly reduced from 20px to help fit better */
-}
-
-.product-card {
-  background-color: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  flex: 0 0 22.5%;          /* slightly smaller → better fit for 4 cards */
-  min-width: 230px;
-  max-width: 300px;         /* reduced max size a bit more */
-  box-sizing: border-box;
-}
-
-.product-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.product-image {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  background-color: #f9f9f9;
-  padding: 15px;
-  box-sizing: border-box;
-}
-
-.product-info {
-  padding: 20px 15px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.product-name {
-  font-size: 1.35rem;
-  margin: 0 0 10px;
-  color: #000;
-  font-weight: 600;
-}
-
-.product-desc {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 15px;
-  flex-grow: 1;
-  display: none;
-}
-
-.product-price {
-  font-size: 1.3rem;
-  color: #FC6600;
-  font-weight: bold;
-  margin-bottom: 18px;
-}
-
-.buy-btn {
-  background-color: #000;
-  color: #fff;
-  border: none;
-  padding: 12px 30px;
-  font-size: 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.3s;
-  margin-top: auto;
-  display: none;
-}
-
-.buy-btn:hover {
-  background-color: #FC6600;
-}
-
-/* Carousel arrows – kept exactly as before */
-.carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  font-size: 2.2rem;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-}
-
-.carousel-arrow:hover {
-  background: rgba(0,0,0,0.8);
-}
-
-.carousel-prev {
-  left: 10px;
-}
-
-.carousel-next {
-  right: 10px;
-}
-
-.carousel-arrow.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .featured-products-grid {
-    gap: 12px;
-    padding: 0 12px;
+  /* Exact same product card styling as in your main style.css */
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
   }
-  .product-card {
-    flex: 0 0 47%;          /* slightly tighter than 48% to reduce cutoff risk */
-    min-width: 150px;
-    max-width: 210px;
+  .hero {
+    padding: 20px 0 0 !important; /* Removed side padding here – moved to grid */
+    background-color: #ffffff;
+    position: relative;
   }
-}
+  .hero h2 {
+    margin: 0 0 10px;
+    text-align: center;
+    color: #000000;
+    font-size: 2.2rem;
+  }
 
-/* ==================== MODAL POPUP (unchanged) ==================== */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.8);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.modal-overlay.active { display: flex; }
-/* ... rest of your modal styles remain unchanged ... */}
+  /* Carousel wrapper */
+  .featured-carousel {
+    position: relative;
+    max-width: 1600px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
 
-/* ── Mobile adjustments ── */
-@media (max-width: 768px) {
   .featured-products-grid {
-    gap: 12px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    transition: transform 0.5s ease;
+    width: max-content;
+    padding: 0 10px; /* reduced side padding to prevent cutoff */
   }
 
   .product-card {
-    flex: 0 0 48%;         /* ≈2 per row with gap */
-    min-width: 160px;
-    max-width: 220px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    width: 25% !important; /* Force exactly 4 cards visible on large screens */
+    max-width: 25% !important;
+    min-width: 0 !important; /* Allow shrinking if needed */
+    box-sizing: border-box !important;
   }
-}
 
-/* ==================== MODAL POPUP (unchanged) ==================== */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.8);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.modal-overlay.active { display: flex; }
-/* ... rest of modal styles unchanged ... */
+  .product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .product-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    background-color: #f9f9f9;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  .product-info {
+    padding: 20px 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-name {
+    font-size: 1.35rem;
+    margin: 0 0 10px;
+    color: #000;
+    font-weight: 600;
+  }
+
+  .product-desc {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 15px;
+    flex-grow: 1;
+    display: none;
+  }
+
+  .product-price {
+    font-size: 1.3rem;
+    color: #FC6600;
+    font-weight: bold;
+    margin-bottom: 18px;
+  }
+
+  .buy-btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: auto;
+    display: none;
+  }
+
+  .buy-btn:hover {
+    background-color: #FC6600;
+  }
+
+  /* Carousel arrows – restored and centered with product boxes */
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    font-size: 2.2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+  }
+
+  .carousel-arrow:hover {
+    background: rgba(0,0,0,0.8);
+  }
+
+  .carousel-prev {
+    left: 0;
+  }
+
+  .carousel-next {
+    right: 0;
+  }
+
+  .carousel-arrow.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Force correct layout on mobile */
+  @media (max-width: 768px) {
+    .featured-products-grid {
+      gap: 12px !important;
+      padding: 0 8px !important;
+    }
+    .product-card {
+      width: 50% !important; /* Force exactly 2 cards visible on small screens */
+      max-width: 50% !important;
+      min-width: 0 !important;
+    }
+  }
+
+  /* ==================== MODAL POPUP (unchanged) ==================== */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal-content {
+    background: #fff;
+    border-radius: 16px;
+    max-width: 1000px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 30px;
+  }
+  .modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2.4rem;
+    background: rgba(255,255,255,0.9);
+    border: none;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    cursor: pointer;
+    color: #333;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transition: all 0.2s;
+  }
+  .modal-close:hover {
+    color: #000;
+    background: #fff;
+    transform: scale(1.1);
+  }
+  .modal-image-section { position: relative; }
+  .modal-main-image { width: 100%; aspect-ratio: 1/1; object-fit: contain; background: #f9f9f9; border-radius: 12px; }
+  .modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    border: none;
+    width: 50px;
+    height: 50px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  .modal-prev { left: 10px; }
+  .modal-next { right: 10px; }
+  .modal-dots { text-align: center; margin-top: 15px; }
+  .modal-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #bbb;
+    border-radius: 50%;
+    margin: 0 6px;
+    cursor: pointer;
+  }
+  .modal-dot.active { background: #FC6600; }
+  .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
+  .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
+  .modal-price { font-size: 2rem; color: #FC6600; font-weight: bold; margin-bottom: 25px; }
+
+  @media (max-width: 768px) {
+    .modal-content {
+      grid-template-columns: 1fr;
+      padding: 20px;
+    }
+    .modal-details h3 { font-size: 1.7rem; }
+    .modal-close {
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
+      font-size: 2.8rem;
+      top: 10px;
+      right: 10px;
+    }
+  }
 </style>
 </head>
 <body>
