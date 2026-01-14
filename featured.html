@@ -5,258 +5,215 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
   <style>
-  /* Exact same product card styling as in your main style.css */
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff;
-    font-family: Arial, sans-serif;
-  }
-  .hero {
-    padding: 20px 0 0 !important; /* Removed side padding here – moved to grid */
-    background-color: #ffffff;
-    position: relative;
-  }
-  .hero h2 {
-    margin: 0 0 10px;
-    text-align: center;
-    color: #000000;
-    font-size: 2.2rem;
-  }
-  /* Carousel wrapper */
-  .featured-carousel {
-    position: relative;
-    max-width: 1600px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  .featured-products-grid {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 20px;
-    transition: transform 0.5s ease;
-    width: max-content;
-    padding: 0 10px; /* reduced side padding to prevent cutoff */
-  }
-  .product-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    width: 25% !important; /* Force exactly 4 cards visible on large screens */
-    max-width: 25% !important;
-    min-width: 0 !important; /* Allow shrinking if needed */
-    box-sizing: border-box !important;
-  }
-  .product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  }
-  .product-image {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-    background-color: #f9f9f9;
-    padding: 15px;
-    box-sizing: border-box;
-  }
-  .product-info {
-    padding: 20px 15px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .product-name {
-    font-size: 1.35rem;
-    margin: 0 0 10px;
-    color: #000;
-    font-weight: 600;
-  }
-  .product-desc {
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 15px;
-    flex-grow: 1;
-    display: none;
-  }
-  .product-price {
-    font-size: 1.3rem;
-    color: #FC6600;
-    font-weight: bold;
-    margin-bottom: 18px;
-  }
-  .buy-btn {
-    background-color: #000;
-    color: #fff;
-    border: none;
-    padding: 12px 30px;
-    font-size: 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: auto;
-    display: none;
-  }
-  .buy-btn:hover {
-    background-color: #FC6600;
-  }
-  /* Carousel arrows – restored and centered with product boxes */
-  .carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    font-size: 2.2rem;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s;
-  }
-  .carousel-arrow:hover {
-    background: rgba(0,0,0,0.8);
-  }
-  .carousel-prev {
-    left: 0;
-  }
-  .carousel-next {
-    right: 0;
-  }
-  .carousel-arrow.hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
-  /* Force correct layout on mobile */
-  @media (max-width: 768px) {
-    .featured-products-grid {
-      gap: 12px !important;
-      padding: 0 8px !important;
-    }
-    .product-card {
-      width: 50% !important; /* Force exactly 2 cards visible on small screens */
-      max-width: 50% !important;
-      min-width: 0 !important;
-    }
-  }
-  /* ==================== MODAL POPUP (unchanged) ==================== */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.8);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  .modal-overlay.active { display: flex; }
-  .modal-content {
-    background: #fff;
-    border-radius: 16px;
-    max-width: 1000px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    padding: 30px;
-  }
-  .modal-close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 2.4rem;
-    background: rgba(255,255,255,0.9);
-    border: none;
-    border-radius: 50%;
-    width: 42px;
-    height: 42px;
-    line-height: 42px;
-    text-align: center;
-    cursor: pointer;
-    color: #333;
-    font-weight: bold;
-    z-index: 10;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    transition: all 0.2s;
-  }
-  .modal-close:hover {
-    color: #000;
-    background: #fff;
-    transform: scale(1.1);
-  }
-  .modal-image-section { position: relative; }
-  .modal-main-image { width: 100%; aspect-ratio: 1/1; object-fit: contain; background: #f9f9f9; border-radius: 12px; }
-  .modal-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    border: none;
-    width: 50px;
-    height: 50px;
-    font-size: 1.8rem;
-    cursor: pointer;
-    border-radius: 50%;
-  }
-  .modal-prev { left: 10px; }
-  .modal-next { right: 10px; }
-  .modal-dots { text-align: center; margin-top: 15px; }
-  .modal-dot {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background: #bbb;
-    border-radius: 50%;
-    margin: 0 6px;
-    cursor: pointer;
-  }
-  .modal-dot.active { background: #FC6600; }
-  .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
-  .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
-  .modal-price { font-size: 2rem; color: #FC6600; font-weight: bold; margin-bottom: 25px; }
-  @media (max-width: 768px) {
-    .modal-content {
-      grid-template-columns: 1fr;
-      padding: 20px;
-    }
-    .modal-details h3 { font-size: 1.7rem; }
-    .modal-close {
-      width: 48px;
-      height: 48px;
-      line-height: 48px;
-      font-size: 2.8rem;
-      top: 10px;
-      right: 10px;
-    }
-  }
-</style>
+    /* Exact same product card styling as in your main style.css */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+
+    .hero {
+      padding: 20px 0 0 !important; /* Removed side padding here – moved to grid */
+      background-color: #ffffff;
+      position: relative;
+    }
+
+    .hero h2 {
+      margin: 0 0 10px;
+      text-align: center;
+      color: #000000;
+      font-size: 2.2rem;
+    }
+
+    /* Carousel wrapper */
+    .featured-carousel {
+      position: relative;
+      max-width: 1600px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .featured-products-grid {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 20px;
+      transition: transform 0.5s ease;
+      width: max-content;
+      padding: 0 10px; /* reduced side padding to prevent cutoff */
+    }
+
+    .product-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      box-sizing: border-box !important;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      background-color: #f9f9f9;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+
+    .product-info {
+      padding: 20px 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-name {
+      font-size: 1.35rem;
+      margin: 0 0 10px;
+      color: #000;
+      font-weight: 600;
+    }
+
+    .product-desc {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 15px;
+      flex-grow: 1;
+      display: none;
+    }
+
+    .product-price {
+      font-size: 1.3rem;
+      color: #FC6600;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .buy-btn {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: auto;
+      display: none;
+    }
+
+    .buy-btn:hover {
+      background-color: #FC6600;
+    }
+
+    /* Carousel arrows – updated to triangle style */
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      font-size: 2.4rem;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+    }
+
+    .carousel-arrow:hover {
+      background: rgba(0,0,0,0.8);
+    }
+
+    .carousel-prev {
+      left: 10px;
+    }
+
+    .carousel-next {
+      right: 10px;
+    }
+
+    .carousel-arrow.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* ────────────────────────────────────────────────
+       RESPONSIVE LAYOUT
+    ──────────────────────────────────────────────── */
+
+    /* Large screens – show 4 cards */
+    @media (min-width: 1025px) {
+      .product-card {
+        width: calc(25% - 15px) !important;   /* 4 cards + gap */
+        flex: 0 0 calc(25% - 15px);
+        max-width: calc(25% - 15px);
+        min-width: calc(25% - 15px);
+      }
+    }
+
+    /* Medium screens – show 3 or 2 (optional fallback) */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .product-card {
+        width: calc(33.333% - 13.333px) !important;
+        flex: 0 0 calc(33.333% - 13.333px);
+        max-width: calc(33.333% - 13.333px);
+      }
+    }
+
+    /* Mobile – show 1 card */
+    @media (max-width: 768px) {
+      .featured-products-grid {
+        gap: 16px !important;
+        padding: 0 16px !important;
+      }
+
+      .product-card {
+        width: 100% !important;
+        flex: 0 0 100%;
+        max-width: 100% !important;
+        min-width: 100% !important;
+      }
+
+      .carousel-arrow {
+        width: 48px;
+        height: 48px;
+        font-size: 2rem;
+      }
+
+      .carousel-prev { left: 8px; }
+      .carousel-next { right: 8px; }
+    }
+  </style>
 </head>
 <body>
+
   <!-- Featured Products – white background, no title -->
   <section class="hero">
     <div class="featured-carousel">
       <div class="featured-products-grid" id="featuredGrid">
+
         <!-- PRODUCT 1 -->
         <div class="product-card"
-          data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-          data-title="Heavy Duty Power Drill"
-          data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
-          data-price="P 1,250.00">
+             data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+             data-title="Heavy Duty Power Drill"
+             data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+             data-price="P 1,250.00">
           <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Heavy Duty Power Drill</h3>
@@ -266,12 +223,12 @@
           </div>
         </div>
 
-        <!-- PRODUCT 2 -->
+        <!-- PRODUCT 2 --> 
         <div class="product-card"
-          data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-          data-title="Heavy Duty Power Drill"
-          data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
-          data-price="P 1,250.00">
+             data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+             data-title="Heavy Duty Power Drill"
+             data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+             data-price="P 1,250.00">
           <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Heavy Duty Power Drill</h3>
@@ -281,12 +238,12 @@
           </div>
         </div>
 
-        <!-- PRODUCT 3 -->
+        <!-- PRODUCT 2 --> 
         <div class="product-card"
-          data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-          data-title="Heavy Duty Power Drill"
-          data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
-          data-price="P 1,250.00">
+             data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+             data-title="Heavy Duty Power Drill"
+             data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+             data-price="P 1,250.00">
           <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Heavy Duty Power Drill</h3>
@@ -296,12 +253,12 @@
           </div>
         </div>
 
-        <!-- PRODUCT 4 -->
+        <!-- PRODUCT 3 --> 
         <div class="product-card"
-          data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-          data-title="Heavy Duty Power Drill"
-          data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
-          data-price="P 1,250.00">
+             data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+             data-title="Heavy Duty Power Drill"
+             data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+             data-price="P 1,250.00">
           <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Heavy Duty Power Drill</h3>
@@ -311,82 +268,98 @@
           </div>
         </div>
 
-        <!-- ADDITIONAL PRODUCT 5 -->
+        <!-- PRODUCT 4 --> 
         <div class="product-card"
-          data-images='["images.web/in_p2.jpg","images.web/in_p3.jpg"]'
-          data-title="Cordless Angle Grinder"
-          data-desc="Powerful 18V angle grinder with adjustable guard, side handle, and disc brake. Ideal for cutting, grinding, and polishing metal and stone."
-          data-price="P 980.00">
-          <img src="images.web/in_p2.jpg" alt="Angle Grinder" class="product-image">
+             data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+             data-title="Heavy Duty Power Drill"
+             data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+             data-price="P 1,250.00">
+          <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
           <div class="product-info">
-            <h3 class="product-name">Cordless Angle Grinder</h3>
-            <p class="product-desc">18V grinder for metal and stone work.</p>
-            <p class="product-price">P 980.00</p>
+            <h3 class="product-name">Heavy Duty Power Drill</h3>
+            <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
+            <p class="product-price">P 1,250.00</p>
             <button class="buy-btn">Inquire Now</button>
           </div>
         </div>
 
-        <!-- ADDITIONAL PRODUCT 6 -->
+        <!-- PRODUCT 5 --> 
         <div class="product-card"
-          data-images='["images.web/in_p4.jpg","images.web/in_p5.jpg"]'
-          data-title="Digital Multimeter"
-          data-desc="Auto-ranging multimeter with True RMS, temperature measurement, and backlit display. Measures voltage, current, resistance, and continuity."
-          data-price="P 450.00">
-          <img src="images.web/in_p4.jpg" alt="Multimeter" class="product-image">
+             data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+             data-title="Heavy Duty Power Drill"
+             data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+             data-price="P 1,250.00">
+          <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
           <div class="product-info">
-            <h3 class="product-name">Digital Multimeter</h3>
-            <p class="product-desc">Professional auto-ranging tester with True RMS.</p>
-            <p class="product-price">P 450.00</p>
+            <h3 class="product-name">Heavy Duty Power Drill</h3>
+            <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
+            <p class="product-price">P 1,250.00</p>
             <button class="buy-btn">Inquire Now</button>
           </div>
         </div>
 
-        <!-- ADDITIONAL PRODUCT 7 -->
+        <!-- PRODUCT 6 --> 
         <div class="product-card"
-          data-images='["images.web/in_p5.jpg","images.web/in_p6.jpg"]'
-          data-title="Workbench Vice"
-          data-desc="Heavy-duty 6-inch bench vice with swivel base, quick-release jaws, and anvil surface. Made from cast iron for durability."
-          data-price="P 1,650.00">
-          <img src="images.web/in_p5.jpg" alt="Workbench Vice" class="product-image">
+             data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+             data-title="Heavy Duty Power Drill"
+             data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+             data-price="P 1,250.00">
+          <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
           <div class="product-info">
-            <h3 class="product-name">Workbench Vice</h3>
-            <p class="product-desc">6-inch heavy-duty vice with swivel base.</p>
-            <p class="product-price">P 1,650.00</p>
+            <h3 class="product-name">Heavy Duty Power Drill</h3>
+            <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
+            <p class="product-price">P 1,250.00</p>
             <button class="buy-btn">Inquire Now</button>
           </div>
         </div>
 
-        <!-- ADDITIONAL PRODUCT 8 -->
+        <!-- PRODUCT 7 --> 
         <div class="product-card"
-          data-images='["images.web/in_p6.jpg","images.web/in_p1.jpg"]'
-          data-title="LED Work Light"
-          data-desc="Rechargeable 2000-lumen LED floodlight with 3 brightness modes, 360° stand, and up to 10 hours runtime. Waterproof and impact-resistant."
-          data-price="P 850.00">
-          <img src="images.web/in_p6.jpg" alt="LED Work Light" class="product-image">
+             data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+             data-title="Heavy Duty Power Drill"
+             data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+             data-price="P 1,250.00">
+          <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
           <div class="product-info">
-            <h3 class="product-name">LED Work Light</h3>
-            <p class="product-desc">Rechargeable 2000-lumen floodlight with stand.</p>
-            <p class="product-price">P 850.00</p>
+            <h3 class="product-name">Heavy Duty Power Drill</h3>
+            <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
+            <p class="product-price">P 1,250.00</p>
             <button class="buy-btn">Inquire Now</button>
           </div>
         </div>
+
+        <!-- PRODUCT 8 --> 
+        <div class="product-card"
+             data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+             data-title="Heavy Duty Power Drill"
+             data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+             data-price="P 1,250.00">
+          <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Heavy Duty Power Drill</h3>
+            <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
+            <p class="product-price">P 1,250.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Left Arrow -->
-      <button class="carousel-arrow carousel-prev hidden" id="prevBtn">&#10094;</button>
-      <!-- Right Arrow -->
-      <button class="carousel-arrow carousel-next" id="nextBtn">&#10095;</button>
+      <!-- Left Arrow (triangle) -->
+      <button class="carousel-arrow carousel-prev hidden" id="prevBtn">◀</button>
+      <!-- Right Arrow (triangle) -->
+      <button class="carousel-arrow carousel-next" id="nextBtn">▶</button>
     </div>
   </section>
 
   <!-- MODAL (shared) – exact copy from hardware.html -->
   <div class="modal-overlay" id="productModal">
     <div class="modal-content">
-      <button class="modal-close">&times;</button>
+      <button class="modal-close">×</button>
       <div class="modal-image-section">
         <img src="" alt="Product" class="modal-main-image" id="modalImage">
-        <button class="modal-nav modal-prev">&#10094;</button>
-        <button class="modal-nav modal-next">&#10095;</button>
+        <button class="modal-nav modal-prev">◀</button>
+        <button class="modal-nav modal-next">▶</button>
         <div class="modal-dots" id="modalDots"></div>
       </div>
       <div class="modal-details">
@@ -414,21 +387,21 @@
     }
 
     prevBtn.addEventListener('click', () => {
-      const cardsPerSlide = window.innerWidth > 768 ? 4 : 2;
+      const cardsPerSlide = window.innerWidth > 768 ? 4 : 1;
       currentPosition = Math.max(currentPosition - (cardsPerSlide * cardWidth), 0);
       grid.style.transform = `translateX(-${currentPosition}px)`;
       updateArrows();
     });
 
     nextBtn.addEventListener('click', () => {
-      const cardsPerSlide = window.innerWidth > 768 ? 4 : 2;
+      const cardsPerSlide = window.innerWidth > 768 ? 4 : 1;
       const maxScroll = grid.scrollWidth - grid.clientWidth;
       currentPosition = Math.min(currentPosition + (cardsPerSlide * cardWidth), maxScroll);
       grid.style.transform = `translateX(-${currentPosition}px)`;
       updateArrows();
     });
 
-    // Update arrows on resize
+    // Update arrows and card width on resize
     window.addEventListener('resize', () => {
       cardWidth = document.querySelector('.product-card').offsetWidth + 20;
       updateArrows();
