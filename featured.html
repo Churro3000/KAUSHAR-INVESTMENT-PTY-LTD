@@ -23,7 +23,6 @@
     color: #000000;
     font-size: 2.2rem;
   }
-
   /* Carousel wrapper */
   .featured-carousel {
     position: relative;
@@ -31,7 +30,6 @@
     margin: 0 auto;
     overflow: hidden;
   }
-
   .featured-products-grid {
     display: flex;
     flex-wrap: nowrap;
@@ -40,7 +38,6 @@
     width: max-content;
     padding: 0 10px;
   }
-
   .product-card {
     background-color: #ffffff;
     border-radius: 12px;
@@ -56,12 +53,10 @@
     min-width: 0 !important;
     box-sizing: border-box !important;
   }
-
   .product-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   }
-
   .product-image {
     width: 100%;
     aspect-ratio: 1 / 1;
@@ -70,21 +65,18 @@
     padding: 15px;
     box-sizing: border-box;
   }
-
   .product-info {
     padding: 20px 15px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
   }
-
   .product-name {
     font-size: 1.35rem;
     margin: 0 0 10px;
     color: #000;
     font-weight: 600;
   }
-
   .product-desc {
     font-size: 0.95rem;
     color: #555;
@@ -92,14 +84,12 @@
     flex-grow: 1;
     display: none;
   }
-
   .product-price {
     font-size: 1.3rem;
     color: #FC6600;
     font-weight: bold;
     margin-bottom: 18px;
   }
-
   .buy-btn {
     background-color: #000;
     color: #fff;
@@ -112,45 +102,48 @@
     margin-top: auto;
     display: none;
   }
-
   .buy-btn:hover {
     background-color: #FC6600;
   }
-
-  /* Carousel arrows – centered with product boxes */
+  /* Carousel arrows – adjusted visibility & behavior */
   .carousel-arrow {
-    position: absolute !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    background: rgba(0,0,0,0.5) !important;
-    color: white !important;
-    border: none !important;
-    font-size: 2.2rem !important;
-    width: 50px !important;
-    height: 50px !important;
-    border-radius: 50% !important;
-    cursor: pointer !important;
-    z-index: 10 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    transition: 0.3s !important;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    font-size: 2.4rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    opacity: 0.9;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
   }
 
   .carousel-arrow:hover {
-    background: rgba(0,0,0,0.8) !important;
+    background: rgba(0,0,0,0.85);
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
   }
 
   .carousel-prev {
-    left: -10px !important;
+    left: -15px;
   }
 
   .carousel-next {
-    right: -10px !important;
+    right: -15px;
   }
 
   .carousel-arrow.hidden {
     opacity: 0 !important;
+    visibility: hidden !important;
     pointer-events: none !important;
   }
 
@@ -165,6 +158,13 @@
       max-width: 50% !important;
       min-width: 0 !important;
     }
+    .carousel-arrow {
+      width: 48px;
+      height: 48px;
+      font-size: 2rem;
+    }
+    .carousel-prev { left: -8px; }
+    .carousel-next { right: -8px; }
   }
 
   /* ==================== MODAL POPUP (unchanged) ==================== */
@@ -247,7 +247,6 @@
   .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
   .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
   .modal-price { font-size: 2rem; color: #FC6600; font-weight: bold; margin-bottom: 25px; }
-
   @media (max-width: 768px) {
     .modal-content {
       grid-template-columns: 1fr;
