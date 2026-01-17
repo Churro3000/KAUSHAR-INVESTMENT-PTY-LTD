@@ -37,11 +37,10 @@
       gap: 30px;
       transition: transform 0.5s ease; /* Smooth slide animation */
       width: max-content; /* Allows sliding beyond viewport */
-
       /* Prevent stacking / wrapping into multiple rows */
       grid-auto-flow: column;
     }
-    /* ==================== PRODUCT CARD (exact match to hardware.html) ==================== */
+    /* ==================== PRODUCT CARD (slightly smaller to fit 4 comfortably) ==================== */
     .product-card {
       background: #fff;
       border-radius: 12px;
@@ -52,6 +51,7 @@
       display: flex;
       flex-direction: column;
       cursor: pointer;
+      max-width: 320px;           /* ← added: caps width so 4 fit nicely */
     }
     .product-card:hover {
       transform: translateY(-10px);
@@ -62,39 +62,39 @@
       aspect-ratio: 1 / 1;
       object-fit: contain;
       background: #f9f9f9;
-      padding: 15px;
+      padding: 12px;              /* ← reduced from 15px */
       box-sizing: border-box;
     }
     .product-info {
-      padding: 20px 15px;
+      padding: 16px 12px;         /* ← reduced from 20px 15px */
       flex-grow: 1;
       display: flex;
       flex-direction: column;
     }
     .product-name {
-      font-size: 1.35rem;
-      margin: 0 0 10px;
+      font-size: 1.28rem;         /* ← slightly smaller to help fit 4 */
+      margin: 0 0 8px;
       color: #000;
       font-weight: 600;
     }
     .product-desc {
-      font-size: 0.95rem;
+      font-size: 0.92rem;         /* ← slightly smaller */
       color: #555;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       flex-grow: 1;
     }
     .product-price {
-      font-size: 1.3rem;
-      color: #FC6600; /* Orange as requested */
+      font-size: 1.25rem;         /* ← slightly smaller */
+      color: #FC6600;
       font-weight: bold;
-      margin-bottom: 18px;
+      margin-bottom: 15px;
     }
     .buy-btn {
       background: #000;
       color: #fff;
       border: none;
-      padding: 12px 30px;
-      font-size: 1rem;
+      padding: 10px 25px;         /* ← reduced from 12px 30px */
+      font-size: 0.95rem;         /* ← slightly smaller */
       border-radius: 6px;
       cursor: pointer;
       transition: 0.3s;
@@ -106,7 +106,7 @@
     /* ==================== CAROUSEL ARROWS (styled same as modal nav) ==================== */
     .carousel-arrow {
       position: absolute;
-      top: calc(50% - 20px);           /* Slightly moved up for better visual centering with product boxes */
+      top: calc(50% - 20px); /* Slightly moved up for better visual centering with product boxes */
       transform: translateY(-50%);
       background: rgba(0,0,0,0.5);
       color: #fff;
@@ -224,8 +224,20 @@
         justify-items: center; /* Center the single card */
       }
       .product-card {
-        max-width: 90%; /* Prevent overflow on small screens */
+        max-width: 80%;           /* ← reduced from 90% so it's smaller & fits better */
+        max-height: 480px;        /* ← optional soft cap to prevent feeling too tall */
       }
+      .product-image {
+        padding: 10px;            /* ← smaller image padding on mobile */
+      }
+      .product-info {
+        padding: 14px 12px;       /* ← slightly tighter */
+      }
+      .product-name { font-size: 1.18rem; }
+      .product-desc { font-size: 0.88rem; }
+      .product-price { font-size: 1.18rem; }
+      .buy-btn { padding: 9px 22px; font-size: 0.92rem; }
+
       /* Hide arrows on very small screens if too cramped (optional) */
       .carousel-arrow {
         width: 40px;
@@ -234,9 +246,9 @@
       }
     }
     @media (max-width: 480px) {
-      .product-name { font-size: 1.2rem; }
-      .product-desc { font-size: 0.9rem; }
-      .product-price { font-size: 1.2rem; }
+      .product-name { font-size: 1.1rem; }
+      .product-desc { font-size: 0.85rem; }
+      .product-price { font-size: 1.1rem; }
     }
   </style>
 </head>
