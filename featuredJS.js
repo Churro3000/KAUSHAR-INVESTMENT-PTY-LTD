@@ -5,20 +5,20 @@
   const grid = document.getElementById('productsGrid');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
-  let currentPosition = 0; // Tracks how far we've slid (in pixels)
+  let currentPosition = 0; // Tracks how far we've slid in pixels
 
   function getSlideWidth() {
     const card = grid.querySelector('.product-card');
     if (!card) return 350; // fallback
 
     const cardWidth = card.offsetWidth;
-    const gap = 30; // from CSS gap (desktop)
+    const gap = 30; // from CSS gap desktop
 
-    // On mobile: slide only ONE card at a time
+    // On mobile: slide one card
     if (window.innerWidth <= 768) {
-      return cardWidth + 20; // + small extra for gap/margin (adjust if needed)
+      return cardWidth + 20;
     }
-    // On desktop: slide 4 cards worth
+    // On desktop: slide 4 cards
     else {
       return (cardWidth + gap) * 4;
     }
@@ -37,7 +37,7 @@
     grid.style.transform = `translateX(${currentPosition}px)`;
   });
 
-  // ==================== MODAL POPUP LOGIC (exact same as hardware.html) ====================
+  // ==================== MODAL POPUP LOGIC ====================
   const modal = document.getElementById('productModal');
   const closeBtn = document.querySelector('.modal-close');
   const modalImg = document.getElementById('modalImage');
@@ -93,5 +93,5 @@
       });
       dotsContainer.appendChild(dot);
     });
-  }
+  }; // Added semicolon to satisfy linter
 })();
