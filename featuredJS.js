@@ -7,15 +7,21 @@
   const nextBtn = document.getElementById('nextBtn');
   let currentPosition = 0; // Tracks how far we've slid (in pixels)
 
-  // Slide by the width of ~4 cards + gaps (adjust if you change gap/card width)
   function getSlideWidth() {
-    // On large screens: approx width of 4 cards + 3 gaps
-    // On mobile: width of 1 card (but we slide by full view anyway)
     const card = grid.querySelector('.product-card');
     if (!card) return 350; // fallback
+
     const cardWidth = card.offsetWidth;
-    const gap = 30; // from CSS gap
-    return (cardWidth + gap) * 4; // slide by 4 cards worth
+    const gap = 30; // from CSS gap (desktop)
+
+    // On mobile: slide only ONE card at a time
+    if (window.innerWidth <= 768) {
+      return cardWidth + 20; // + small extra for gap/margin (adjust if needed)
+    }
+    // On desktop: slide 4 cards worth
+    else {
+      return (cardWidth + gap) * 4;
+    }
   }
 
   nextBtn.addEventListener('click', () => {
@@ -88,5 +94,4 @@
       dotsContainer.appendChild(dot);
     });
   }
-
-})();  // End of IIFE wrapper
+})();
