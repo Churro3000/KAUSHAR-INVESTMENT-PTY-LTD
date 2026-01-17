@@ -662,44 +662,42 @@ footer {
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-  <style>
-    /* Exact same product card styling as in your main style.css */
+<style>
+    /* ==================== BASE STYLES ==================== */
     body {
       margin: 0;
       padding: 0;
       background-color: #ffffff;
+      color: #000;
       font-family: Arial, sans-serif;
     }
-    .hero {
-      padding: 20px 20px 0 !important; /* Reduced top to 20px, bottom to 0 for minimal space below grid */
-      background-color: #ffffff;
+    /* ==================== FEATURED SECTION WRAPPER ==================== */
+    .featured-section {
+      padding: 40px 20px;
+      max-width: 1600px;
+      margin: 0 auto;
     }
-    .hero h2 {
-      margin: 0 0 10px; /* Tightened bottom space below title (if you add it back later) */
-      text-align: center;
-      color: #000000;
-      font-size: 2.2rem;
+    /* ==================== CAROUSEL CONTAINER ==================== */
+    .carousel-wrapper {
+      position: relative; /* For absolute-positioned arrows */
+      overflow: hidden; /* Hide overflow during slide */
     }
     .featured-products-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      max-width: 1600px;
-      margin: 0 auto;
-      padding: 0 20px 0 !important; /* No bottom padding on grid */
-      margin-bottom: 0 !important; /* Force no extra bottom margin */
+      grid-template-columns: repeat(4, 1fr); /* 4 visible on large screens */
+      gap: 30px;
+      transition: transform 0.5s ease; /* Smooth slide animation */
+      width: max-content; /* Allows sliding beyond viewport */
+
+      /* Prevent stacking / wrapping into multiple rows */
+      grid-auto-flow: column;
     }
+    /* ==================== PRODUCT CARD (exact match to hardware.html) ==================== */
     .product-card {
-      background-color: #ffffff;
+      background: #fff;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-align: center;
       display: flex;
@@ -708,13 +706,13 @@ footer {
     }
     .product-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     }
     .product-image {
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: contain;
-      background-color: #f9f9f9;
+      background: #f9f9f9;
       padding: 15px;
       box-sizing: border-box;
     }
@@ -738,12 +736,12 @@ footer {
     }
     .product-price {
       font-size: 1.3rem;
-      color: #FC6600;
+      color: #FC6600; /* Orange as requested */
       font-weight: bold;
       margin-bottom: 18px;
     }
     .buy-btn {
-      background-color: #000;
+      background: #000;
       color: #fff;
       border: none;
       padding: 12px 30px;
@@ -754,9 +752,34 @@ footer {
       margin-top: auto;
     }
     .buy-btn:hover {
-      background-color: #FC6600;
+      background: #FC6600;
     }
-    /* ==================== MODAL POPUP (unchanged) ==================== */
+    /* ==================== CAROUSEL ARROWS (styled same as modal nav) ==================== */
+    .carousel-arrow {
+      position: absolute;
+      top: calc(50% - 20px);           /* Slightly moved up for better visual centering with product boxes */
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      width: 50px;
+      height: 50px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+      transition: all 0.2s;
+    }
+    .carousel-arrow:hover {
+      background: rgba(0,0,0,0.8);
+    }
+    .carousel-arrow.prev {
+      left: 10px;
+    }
+    .carousel-arrow.next {
+      right: 10px;
+    }
+    /* ==================== MODAL (copied exactly from hardware.html) ==================== */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -767,7 +790,9 @@ footer {
       justify-content: center;
       padding: 20px;
     }
-    .modal-overlay.active { display: flex; }
+    .modal-overlay.active {
+      display: flex;
+    }
     .modal-content {
       background: #fff;
       border-radius: 16px;
@@ -806,7 +831,13 @@ footer {
       transform: scale(1.1);
     }
     .modal-image-section { position: relative; }
-    .modal-main-image { width: 100%; aspect-ratio: 1/1; object-fit: contain; background: #f9f9f9; border-radius: 12px; }
+    .modal-main-image {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: contain;
+      background: #f9f9f9;
+      border-radius: 12px;
+    }
     .modal-nav {
       position: absolute;
       top: 50%;
@@ -836,694 +867,26 @@ footer {
     .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
     .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
     .modal-price { font-size: 2rem; color: #FC6600; font-weight: bold; margin-bottom: 25px; }
-    /* Responsive */
-    @media (max-width: 1200px) {
-      .featured-products-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
+    /* ==================== RESPONSIVE ADJUSTMENTS ==================== */
     @media (max-width: 768px) {
       .featured-products-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr); /* 1 card on mobile */
         gap: 20px;
-        padding: 0 15px;
+        justify-items: center; /* Center the single card */
       }
-      .modal-content {
-        grid-template-columns: 1fr;
-        padding: 20px;
-      }
-      .modal-details h3 { font-size: 1.7rem; }
-      .modal-close {
-        width: 48px;
-        height: 48px;
-        line-height: 48px;
-        font-size: 2.8rem;
-        top: 10px;
-        right: 10px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Featured Products – white background, no title -->
-  <section class="hero">
-    <div class="featured-products-grid">
-      <!-- PRODUCT 1 -->
-      <div class="product-card"
-        data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-        data-title="Heavy Duty Power Drill"
-        data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
-        data-price="P 1,250.00">
-        <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Heavy Duty Power Drill</h3>
-          <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
-          <p class="product-price">P 1,250.00</p>
-          <button class="buy-btn">Inquire Now</button>
-        </div>
-      </div>
-      <!-- PRODUCT 2 -->
-      <div class="product-card"
-        data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-        data-title="Heavy Duty Power Drill"
-        data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
-        data-price="P 1,250.00">
-        <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Heavy Duty Power Drill</h3>
-          <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
-          <p class="product-price">P 1,250.00</p>
-          <button class="buy-btn">Inquire Now</button>
-        </div>
-      </div>
-      <!-- PRODUCT 3 -->
-      <div class="product-card"
-        data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-        data-title="Heavy Duty Power Drill"
-        data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
-        data-price="P 1,250.00">
-        <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Heavy Duty Power Drill</h3>
-          <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
-          <p class="product-price">P 1,250.00</p>
-          <button class="buy-btn">Inquire Now</button>
-        </div>
-      </div>
-      <!-- PRODUCT 4 -->
-      <div class="product-card"
-        data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-        data-title="Heavy Duty Power Drill"
-        data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
-        data-price="P 1,250.00">
-        <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Heavy Duty Power Drill</h3>
-          <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
-          <p class="product-price">P 1,250.00</p>
-          <button class="buy-btn">Inquire Now</button>
-        </div>
-      </div>
-      <!-- To add more products, copy-paste from above and change images/title/desc/price -->
-    </div>
-  </section>
-  <!-- MODAL (shared) – exact copy from hardware.html -->
-  <div class="modal-overlay" id="productModal">
-    <div class="modal-content">
-      <button class="modal-close">&times;</button>
-      <div class="modal-image-section">
-        <img src="" alt="Product" class="modal-main-image" id="modalImage">
-        <button class="modal-nav modal-prev">&#10094;</button>
-        <button class="modal-nav modal-next">&#10095;</button>
-        <div class="modal-dots" id="modalDots"></div>
-      </div>
-      <div class="modal-details">
-        <h3 id="modalTitle"></h3>
-        <p id="modalDesc"></p>
-        <p class="modal-price" id="modalPrice"></p>
-        <button class="buy-btn">Inquire Now</button>
-      </div>
-    </div>
-  </div>
-  <script>
-    // Product Modal Logic (exact same as hardware.html)
-    const modal = document.getElementById('productModal');
-    const closeBtn = document.querySelector('.modal-close');
-    const modalImg = document.getElementById('modalImage');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalPrice = document.getElementById('modalPrice');
-    const dotsContainer = document.getElementById('modalDots');
-    let currentImages = [];
-    let currentIndex = 0;
-    document.querySelectorAll('.product-card').forEach(card => {
-      card.addEventListener('click', () => {
-        currentImages = JSON.parse(card.dataset.images);
-        currentIndex = 0;
-        modalTitle.textContent = card.dataset.title;
-        modalDesc.textContent = card.dataset.desc;
-        modalPrice.textContent = card.dataset.price;
-        updateModalImage();
-        modal.classList.add('active');
-      });
-    });
-    closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-    modal.addEventListener('click', e => {
-      if (e.target === modal) modal.classList.remove('active');
-    });
-    document.querySelector('.modal-prev').addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-      updateModalImage();
-    });
-    document.querySelector('.modal-next').addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % currentImages.length;
-      updateModalImage();
-    });
-    function updateModalImage() {
-      modalImg.src = currentImages[currentIndex];
-      dotsContainer.innerHTML = '';
-      currentImages.forEach((_, i) => {
-        const dot = document.createElement('span');
-        dot.classList.add('modal-dot');
-        if (i === currentIndex) dot.classList.add('active');
-        dot.addEventListener('click', () => {
-          currentIndex = i;
-          updateModalImage();
-        });
-        dotsContainer.appendChild(dot);
-      });
-    }
-  </script>
-</body>
-</html>
-
-
-
-
-
-/////////////////////     FEATURED.html    ////////////////////////////////////////////////////////////
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #ffffff;
-      font-family: Arial, sans-serif;
-    }
-
-    .featured-section {
-      background-color: #ffffff;
-      padding: 40px 0;
-      position: relative;
-    }
-
-    .featured-carousel {
-      position: relative;
-      max-width: 1600px;
-      margin: 0 auto;
-      overflow: hidden;
-    }
-
-    .featured-products-grid {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 24px;
-      transition: transform 0.5s ease;
-      width: max-content;
-      padding: 0 20px;
-      box-sizing: border-box;
-    }
-
-    .product-card {
-      background-color: #ffffff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-      flex: 0 0 auto;
-      box-sizing: border-box;
-    }
-
-    .product-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .product-image {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: contain;
-      background-color: #f9f9f9;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-
-    .product-info {
-      padding: 16px 12px 20px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .product-name {
-      font-size: 1.3rem;
-      margin: 0 0 8px;
-      color: #000;
-      font-weight: 600;
-      line-height: 1.3;
-    }
-
-    .product-price {
-      font-size: 1.35rem;
-      color: #FC6600;
-      font-weight: bold;
-      margin: 0;
-    }
-
-    /* Hide description & button in grid view */
-    .product-desc,
-    .buy-btn {
-      display: none;
-    }
-
-    /* Carousel arrows */
-    .carousel-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.55);
-      color: white;
-      border: none;
-      font-size: 2.6rem;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      cursor: pointer;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.25s;
-    }
-
-    .carousel-arrow:hover {
-      background: rgba(0,0,0,0.85);
-    }
-
-    .carousel-prev {
-      left: 10px;
-    }
-
-    .carousel-next {
-      right: 10px;
-    }
-
-    .carousel-arrow.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    /* ────────────────────────────────────────────────
-       RESPONSIVE
-    ──────────────────────────────────────────────── */
-
-    @media (min-width: 1025px) {
       .product-card {
-        width: calc(25% - 18px);   /* 4 cards - gap adjustment */
-        max-width: 380px;
+        max-width: 90%; /* Prevent overflow on small screens */
       }
-    }
-
-    @media (max-width: 1024px) and (min-width: 769px) {
-      .product-card {
-        width: calc(33.33% - 16px);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .featured-products-grid {
-        gap: 20px;
-        padding: 0 16px;
-      }
-
-      .product-card {
-        width: 100%;
-        max-width: 420px;
-        margin: 0 auto;
-      }
-
+      /* Hide arrows on very small screens if too cramped (optional) */
       .carousel-arrow {
-        width: 52px;
-        height: 52px;
-        font-size: 2.2rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1.4rem;
       }
-
-      .carousel-prev { left: 8px; }
-      .carousel-next { right: 8px; }
     }
-
-    /* Modal – same as your other files */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.8);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal-overlay.active { display: flex; }
-
-    .modal-content {
-      background: #fff;
-      border-radius: 16px;
-      max-width: 1000px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      padding: 30px;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 2.4rem;
-      background: rgba(255,255,255,0.9);
-      border: none;
-      border-radius: 50%;
-      width: 44px;
-      height: 44px;
-      line-height: 44px;
-      cursor: pointer;
-      color: #333;
-      font-weight: bold;
-      z-index: 10;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    }
-
-    .modal-close:hover {
-      color: #000;
-      background: #fff;
-      transform: scale(1.1);
-    }
-
-    .modal-image-section { position: relative; }
-    .modal-main-image { width: 100%; aspect-ratio: 1/1; object-fit: contain; background: #f9f9f9; border-radius: 12px; }
-
-    .modal-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: #fff;
-      border: none;
-      width: 50px;
-      height: 50px;
-      font-size: 1.8rem;
-      cursor: pointer;
-      border-radius: 50%;
-    }
-
-    .modal-prev { left: 12px; }
-    .modal-next { right: 12px; }
-
-    .modal-dots { text-align: center; margin-top: 16px; }
-
-    .modal-dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      background: #bbb;
-      border-radius: 50%;
-      margin: 0 6px;
-      cursor: pointer;
-    }
-
-    .modal-dot.active { background: #FC6600; }
-
-    .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
-    .modal-details p { font-size: 1.1rem; line-height: 1.6; color: #444; margin-bottom: 24px; }
-    .modal-price { font-size: 2.1rem; color: #FC6600; font-weight: bold; margin-bottom: 28px; }
-
-    .buy-btn {
-      background-color: #000;
-      color: #fff;
-      border: none;
-      padding: 14px 36px;
-      font-size: 1.05rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-top: 12px;
-    }
-
-    .buy-btn:hover {
-      background-color: #FC6600;
-    }
-
-    @media (max-width: 768px) {
-      .modal-content {
-        grid-template-columns: 1fr;
-        padding: 20px;
-      }
-      .modal-details h3 { font-size: 1.75rem; }
+    @media (max-width: 480px) {
+      .product-name { font-size: 1.2rem; }
+      .product-desc { font-size: 0.9rem; }
+      .product-price { font-size: 1.2rem; }
     }
   </style>
-</head>
-<body>
-
-  <section class="featured-section" id="featured-products">
-    <div class="featured-carousel">
-      <div class="featured-products-grid" id="featuredGrid">
-
-        <!-- PRODUCT 1 -->
-        <div class="product-card"
-             data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-             data-title="Heavy Duty Power Drill"
-             data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
-             data-price="P 1,250.00">
-          <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">Heavy Duty Power Drill</h3>
-            <p class="product-price">P 1,250.00</p>
-          </div>
-        </div>
-
-        <!-- PRODUCT 2 -->
-        <div class="product-card"
-             data-images='["images.web/in_p2.jpg","images.web/in_p3.jpg"]'
-             data-title="Cordless Angle Grinder"
-             data-desc="Powerful 18V angle grinder with adjustable guard, side handle, and disc brake. Ideal for cutting, grinding, and polishing metal and stone."
-             data-price="P 980.00">
-          <img src="images.web/in_p2.jpg" alt="Angle Grinder" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">Cordless Angle Grinder</h3>
-            <p class="product-price">P 980.00</p>
-          </div>
-        </div>
-
-        <!-- PRODUCT 3 -->
-        <div class="product-card"
-             data-images='["images.web/in_p4.jpg","images.web/in_p5.jpg"]'
-             data-title="Digital Multimeter"
-             data-desc="Auto-ranging multimeter with True RMS, temperature measurement, and backlit display. Measures voltage, current, resistance, and continuity."
-             data-price="P 450.00">
-          <img src="images.web/in_p4.jpg" alt="Multimeter" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">Digital Multimeter</h3>
-            <p class="product-price">P 450.00</p>
-          </div>
-        </div>
-
-        <!-- PRODUCT 4 -->
-        <div class="product-card"
-             data-images='["images.web/in_p5.jpg","images.web/in_p6.jpg"]'
-             data-title="Workbench Vice"
-             data-desc="Heavy-duty 6-inch bench vice with swivel base, quick-release jaws, and anvil surface. Made from cast iron for durability."
-             data-price="P 1,650.00">
-          <img src="images.web/in_p5.jpg" alt="Workbench Vice" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">Workbench Vice</h3>
-            <p class="product-price">P 1,650.00</p>
-          </div>
-        </div>
-
-        <!-- PRODUCT 5 -->
-        <div class="product-card"
-             data-images='["images.web/in_p5.jpg","images.web/in_p6.jpg"]'
-             data-title="Workbench Vice"
-             data-desc="Heavy-duty 6-inch bench vice with swivel base, quick-release jaws, and anvil surface. Made from cast iron for durability."
-             data-price="P 1,650.00">
-          <img src="images.web/in_p5.jpg" alt="Workbench Vice" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">Workbench Vice</h3>
-            <p class="product-price">P 1,650.00</p>
-          </div>
-        </div>
-
-        <!-- PRODUCT 6 -->
-        <div class="product-card"
-             data-images='["images.web/in_p5.jpg","images.web/in_p6.jpg"]'
-             data-title="Workbench Vice"
-             data-desc="Heavy-duty 6-inch bench vice with swivel base, quick-release jaws, and anvil surface. Made from cast iron for durability."
-             data-price="P 1,650.00">
-          <img src="images.web/in_p5.jpg" alt="Workbench Vice" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">Workbench Vice</h3>
-            <p class="product-price">P 1,650.00</p>
-          </div>
-        </div>
-
-        <!-- PRODUCT 7 -->
-        <div class="product-card"
-             data-images='["images.web/in_p5.jpg","images.web/in_p6.jpg"]'
-             data-title="Workbench Vice"
-             data-desc="Heavy-duty 6-inch bench vice with swivel base, quick-release jaws, and anvil surface. Made from cast iron for durability."
-             data-price="P 1,650.00">
-          <img src="images.web/in_p5.jpg" alt="Workbench Vice" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">Workbench Vice</h3>
-            <p class="product-price">P 1,650.00</p>
-          </div>
-        </div>
-
-        <!-- PRODUCT 8 -->
-        <div class="product-card"
-             data-images='["images.web/in_p5.jpg","images.web/in_p6.jpg"]'
-             data-title="Workbench Vice"
-             data-desc="Heavy-duty 6-inch bench vice with swivel base, quick-release jaws, and anvil surface. Made from cast iron for durability."
-             data-price="P 1,650.00">
-          <img src="images.web/in_p5.jpg" alt="Workbench Vice" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">Workbench Vice</h3>
-            <p class="product-price">P 1,650.00</p>
-          </div>
-        </div>
-
-        <!-- You can add more products here – they will slide -->
-
-      </div>
-
-      <button class="carousel-arrow carousel-prev hidden" id="prevBtn">◀</button>
-      <button class="carousel-arrow carousel-next" id="nextBtn">▶</button>
-    </div>
-  </section>
-
-  <!-- Modal (same as your other pages) -->
-  <div class="modal-overlay" id="productModal">
-    <div class="modal-content">
-      <button class="modal-close">×</button>
-      <div class="modal-image-section">
-        <img src="" alt="Product" class="modal-main-image" id="modalImage">
-        <button class="modal-nav modal-prev">◀</button>
-        <button class="modal-nav modal-next">▶</button>
-        <div class="modal-dots" id="modalDots"></div>
-      </div>
-      <div class="modal-details">
-        <h3 id="modalTitle"></h3>
-        <p id="modalDesc"></p>
-        <p class="modal-price" id="modalPrice"></p>
-        <button class="buy-btn">Inquire Now</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // Carousel sliding
-    const grid = document.getElementById('featuredGrid');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-
-    let currentPosition = 0;
-    let cardWidth;
-
-    function updateArrows() {
-      const maxScroll = grid.scrollWidth - grid.clientWidth;
-      prevBtn.classList.toggle('hidden', currentPosition <= 0);
-      nextBtn.classList.toggle('hidden', currentPosition >= maxScroll - 5);
-    }
-
-    function updateCardWidth() {
-      const card = document.querySelector('.product-card');
-      if (card) cardWidth = card.offsetWidth + 24; // including gap
-    }
-
-    prevBtn.addEventListener('click', () => {
-      currentPosition = Math.max(currentPosition - cardWidth, 0);
-      grid.style.transform = `translateX(-${currentPosition}px)`;
-      updateArrows();
-    });
-
-    nextBtn.addEventListener('click', () => {
-      const maxScroll = grid.scrollWidth - grid.clientWidth;
-      currentPosition = Math.min(currentPosition + cardWidth, maxScroll);
-      grid.style.transform = `translateX(-${currentPosition}px)`;
-      updateArrows();
-    });
-
-    window.addEventListener('resize', () => {
-      updateCardWidth();
-      updateArrows();
-    });
-
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        updateCardWidth();
-        updateArrows();
-      }, 100);
-    });
-
-    // Modal logic
-    const modal = document.getElementById('productModal');
-    const closeBtn = document.querySelector('.modal-close');
-    const modalImg = document.getElementById('modalImage');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalPrice = document.getElementById('modalPrice');
-    const dotsContainer = document.getElementById('modalDots');
-
-    let currentImages = [];
-    let currentIndex = 0;
-
-    document.querySelectorAll('.product-card').forEach(card => {
-      card.addEventListener('click', () => {
-        currentImages = JSON.parse(card.dataset.images);
-        currentIndex = 0;
-        modalTitle.textContent = card.dataset.title;
-        modalDesc.textContent = card.dataset.desc;
-        modalPrice.textContent = card.dataset.price;
-        updateModalImage();
-        modal.classList.add('active');
-      });
-    });
-
-    closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-    modal.addEventListener('click', e => {
-      if (e.target === modal) modal.classList.remove('active');
-    });
-
-    document.querySelector('.modal-prev').addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-      updateModalImage();
-    });
-
-    document.querySelector('.modal-next').addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % currentImages.length;
-      updateModalImage();
-    });
-
-    function updateModalImage() {
-      modalImg.src = currentImages[currentIndex];
-      dotsContainer.innerHTML = '';
-      currentImages.forEach((_, i) => {
-        const dot = document.createElement('span');
-        dot.classList.add('modal-dot');
-        if (i === currentIndex) dot.classList.add('active');
-        dot.addEventListener('click', () => {
-          currentIndex = i;
-          updateModalImage();
-        });
-        dotsContainer.appendChild(dot);
-      });
-    }
-  </script>
-
-</body>
-</html>
