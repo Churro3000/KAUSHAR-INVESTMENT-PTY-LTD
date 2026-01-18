@@ -51,7 +51,7 @@
       display: flex;
       flex-direction: column;
       cursor: pointer;
-      max-width: 320px;           /* cap width to help fit 4 cards */
+      max-width: 320px; /* cap width to help fit 4 cards */
     }
     .product-card:hover {
       transform: translateY(-10px);
@@ -62,29 +62,29 @@
       aspect-ratio: 1 / 1;
       object-fit: contain;
       background: #f9f9f9;
-      padding: 12px;              /* ← reduced from 15px */
+      padding: 12px; /* ← reduced from 15px */
       box-sizing: border-box;
     }
     .product-info {
-      padding: 16px 12px;         /* ← reduced from 20px 15px */
+      padding: 16px 12px; /* ← reduced from 20px 15px */
       flex-grow: 1;
       display: flex;
       flex-direction: column;
     }
     .product-name {
-      font-size: 1.28rem;         /* ← slightly smaller to help fit 4 */
+      font-size: 1.28rem; /* ← slightly smaller to help fit 4 */
       margin: 0 0 8px;
       color: #000;
       font-weight: 600;
     }
     .product-desc {
-      font-size: 0.92rem;         /* ← slightly smaller */
+      font-size: 0.92rem; /* ← slightly smaller */
       color: #555;
       margin-bottom: 12px;
       flex-grow: 1;
     }
     .product-price {
-      font-size: 1.25rem;         /* ← slightly smaller */
+      font-size: 1.25rem; /* ← slightly smaller */
       color: #FC6600;
       font-weight: bold;
       margin-bottom: 15px;
@@ -93,8 +93,8 @@
       background: #000;
       color: #fff;
       border: none;
-      padding: 10px 25px;         /* ← reduced from 12px 30px */
-      font-size: 0.95rem;         /* ← slightly smaller */
+      padding: 10px 25px; /* ← reduced from 12px 30px */
+      font-size: 0.95rem; /* ← slightly smaller */
       border-radius: 6px;
       cursor: pointer;
       transition: 0.3s;
@@ -224,20 +224,20 @@
         justify-items: center; /* Center the single card */
       }
       .product-card {
-        max-width: 80%;           /* ← reduced from 90% so it's smaller & fits better */
-        max-height: 480px;        /* ← optional soft cap to prevent feeling too tall */
+        max-width: 85vw;           /* ← adjusted: uses viewport width to fit fully without cropping */
+        margin: 0 auto;            /* ← added: ensures perfect centering */
+        max-height: 480px;         /* keep soft cap */
       }
       .product-image {
-        padding: 10px;            /* ← smaller image padding on mobile */
+        padding: 10px; /* ← smaller image padding on mobile */
       }
       .product-info {
-        padding: 14px 12px;       /* ← slightly tighter */
+        padding: 14px 12px; /* ← slightly tighter */
       }
       .product-name { font-size: 1.18rem; }
       .product-desc { font-size: 0.88rem; }
       .product-price { font-size: 1.18rem; }
       .buy-btn { padding: 9px 22px; font-size: 0.92rem; }
-
       /* Hide arrows on very small screens if too cramped (optional) */
       .carousel-arrow {
         width: 40px;
