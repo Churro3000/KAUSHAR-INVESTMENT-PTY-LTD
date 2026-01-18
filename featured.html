@@ -224,9 +224,9 @@
         justify-items: center; /* Center the single card */
       }
       .product-card {
-        max-width: 85vw;           /* ← adjusted: uses viewport width to fit fully without cropping */
-        margin: 0 auto;            /* ← added: ensures perfect centering */
-        max-height: 480px;         /* keep soft cap */
+        max-width: 85vw; /* ← adjusted: uses viewport width to fit fully without cropping */
+        margin: 0 auto; /* ← added: ensures perfect centering */
+        max-height: 480px; /* keep soft cap */
       }
       .product-image {
         padding: 10px; /* ← smaller image padding on mobile */
@@ -244,11 +244,51 @@
         height: 40px;
         font-size: 1.4rem;
       }
+
+      /* ── ADDED: Mobile modal stacking & spacing fixes ── */
+      .modal-content {
+        grid-template-columns: 1fr;           /* Stack image → text vertically */
+        gap: 20px;
+        padding: 20px;                        /* Less internal padding */
+      }
+      .modal-details h3 {
+        font-size: 1.7rem;                    /* Slightly smaller title */
+        margin-bottom: 16px;
+      }
+      .modal-details p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+      .modal-price {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+      }
+      .modal-close {
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+        font-size: 2.8rem;
+        top: 10px;
+        right: 10px;
+      }
+      .modal-nav {
+        width: 44px;
+        height: 44px;
+        font-size: 1.6rem;
+      }
     }
     @media (max-width: 480px) {
       .product-name { font-size: 1.1rem; }
       .product-desc { font-size: 0.85rem; }
       .product-price { font-size: 1.1rem; }
+
+      /* Extra breathing room on very small screens */
+      .modal-content {
+        padding: 16px;
+      }
+      .modal-details h3 { font-size: 1.5rem; }
+      .modal-price { font-size: 1.4rem; }
     }
   </style>
 </head>
