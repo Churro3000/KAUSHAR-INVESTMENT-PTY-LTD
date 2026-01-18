@@ -72,7 +72,7 @@ prevBtn.addEventListener('click', () => {
 });
 
 // ==================== MODAL POPUP LOGIC ====================
-// (unchanged – your original modal code)
+// Updated to match hardware.html version for better mobile display & consistency
 
 const modal = document.getElementById('productModal');
 const closeBtn = document.querySelector('.modal-close');
@@ -86,11 +86,11 @@ let currentIndex = 0;
 
 document.querySelectorAll('.product-card').forEach(card => {
   card.addEventListener('click', () => {
-    currentImages = JSON.parse(card.dataset.images || '[]');
+    currentImages = JSON.parse(card.dataset.images);  // hardware version doesn't use || '[]' — assumes data is clean
     currentIndex = 0;
-    modalTitle.textContent = card.dataset.title || 'Product';
-    modalDesc.textContent = card.dataset.desc || '';
-    modalPrice.textContent = card.dataset.price || '';
+    modalTitle.textContent = card.dataset.title;
+    modalDesc.textContent = card.dataset.desc;
+    modalPrice.textContent = card.dataset.price;
     updateModalImage();
     modal.classList.add('active');
   });
