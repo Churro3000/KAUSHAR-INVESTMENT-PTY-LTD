@@ -314,7 +314,8 @@
   /* See All Products button – mobile only */
 .see-all-wrapper {
     text-align: center;
-    margin: 50px 0 10px 0;   /* increased top space to 50px, reduced bottom to 10px */
+    margin: 50px 0 0 0 !important;   /* top = 50px (good), bottom forced to 0 */
+    padding-bottom: 0 !important;     /* strict no extra padding below */
     display: none; /* hidden by default */
 }
 
@@ -333,7 +334,7 @@
 
 .see-all-btn:hover,
 .see-all-btn:active {
-    background: #e65c00; /* slightly darker orange on interaction */
+    background: #e65c00;
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(252, 102, 0, 0.35);
 }
