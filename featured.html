@@ -11,7 +11,7 @@
   <!-- External stylesheet if you have one (optional) -->
   <!-- <link rel="stylesheet" href="style.css" /> -->
   
-  <style>
+ <style>
     /* ==================== BASE STYLES ==================== */
     body {
       margin: 0;
@@ -128,16 +128,16 @@
     .carousel-arrow.next {
       right: 10px;
     }
-    /* ==================== MODAL (copied exactly from hardware.html) ==================== */
+    /* ==================== MODAL (aligned closely to hardware.html behavior) ==================== */
     .modal-overlay {
       display: none;
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      inset: 0;
       background: rgba(0,0,0,0.8);
       z-index: 1000;
       align-items: center;
       justify-content: center;
-      padding: 16px;                      /* ← was 20px, slightly less outer padding */
+      padding: 12px;                      /* tighter outer padding on all sides */
     }
     .modal-overlay.active {
       display: flex;
@@ -145,166 +145,164 @@
     .modal-content {
       background: #fff;
       border-radius: 16px;
-      max-width: 1000px;
       width: 100%;
-      max-height: 85vh;                   /* ← reduced from 90vh to feel less dominating */
+      max-width: 520px;                   /* narrower max on all screens for better mobile fit */
+      max-height: 82vh;                   /* tighter height control */
       overflow-y: auto;
       position: relative;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;                          /* ← slightly smaller than 30px */
-      padding: 24px;                      /* ← was 30px */
+      display: flex;                      /* changed to flex for reliable vertical stack */
+      flex-direction: column;
+      gap: 18px;
+      padding: 18px;
     }
     .modal-close {
       position: absolute;
-      top: 12px;                          /* ← moved slightly closer to edge */
-      right: 16px;
-      font-size: 2.2rem;
-      background: rgba(255,255,255,0.9);
+      top: 10px;
+      right: 10px;
+      font-size: 2.4rem;
+      background: rgba(255,255,255,0.95);
       border: none;
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
-      text-align: center;
+      width: 42px;
+      height: 42px;
+      line-height: 42px;
       cursor: pointer;
-      color: #333;
+      color: #222;
       font-weight: bold;
       z-index: 10;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 1px 8px rgba(0,0,0,0.15);
       transition: all 0.2s;
     }
     .modal-close:hover {
-      color: #000;
-      background: #fff;
-      transform: scale(1.1);
+      transform: scale(1.08);
+      background: white;
     }
-    .modal-image-section { 
-      position: relative; 
-      max-height: 45vh;                   /* ← prevent image area from growing too much */
-      display: flex;
-      flex-direction: column;
+    .modal-image-section {
+      position: relative;
+      flex-shrink: 0;
+      max-height: 42vh;                   /* image won't dominate too much vertical space */
     }
     .modal-main-image {
       width: 100%;
-      aspect-ratio: 1/1;
+      aspect-ratio: 1 / 1;
       object-fit: contain;
       background: #f9f9f9;
-      border-radius: 12px;
-      max-height: 45vh;                   /* ← cap image height */
+      border-radius: 10px;
+      max-height: 42vh;
+      margin: 0 auto;
+      display: block;
     }
     .modal-nav {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: #fff;
+      background: rgba(0,0,0,0.55);
+      color: white;
       border: none;
-      width: 48px;
-      height: 48px;
-      font-size: 1.7rem;
+      width: 44px;
+      height: 44px;
+      font-size: 1.6rem;
       cursor: pointer;
       border-radius: 50%;
+      opacity: 0.9;
+      transition: opacity 0.2s;
     }
-    .modal-prev { left: 8px; }
-    .modal-next { right: 8px; }
-    .modal-dots { text-align: center; margin-top: 12px; }
+    .modal-nav:hover { opacity: 1; }
+    .modal-prev { left: 6px; }
+    .modal-next { right: 6px; }
+    .modal-dots {
+      text-align: center;
+      margin-top: 10px;
+      flex-shrink: 0;
+    }
     .modal-dot {
       display: inline-block;
-      width: 9px;
-      height: 9px;
-      background: #bbb;
+      width: 8px;
+      height: 8px;
+      background: #ccc;
       border-radius: 50%;
       margin: 0 5px;
       cursor: pointer;
+      transition: background 0.2s;
     }
     .modal-dot.active { background: #FC6600; }
-    .modal-details h3 { 
-      font-size: 2rem; 
-      margin: 0 0 16px;                   /* ← reduced bottom margin */
-      color: #000; 
+    .modal-details {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
-    .modal-details p { 
-      font-size: 1.05rem; 
-      line-height: 1.55;                  /* ← tighter line height */
-      color: #444; 
-      margin-bottom: 18px;                /* ← less space after paragraphs */
+    .modal-details h3 {
+      font-size: 1.75rem;
+      margin: 0;
+      color: #000;
+      line-height: 1.2;
     }
-    .modal-price { 
-      font-size: 1.9rem; 
-      color: #FC6600; 
-      font-weight: bold; 
-      margin: 0 0 20px;                   /* ← adjusted spacing */
+    .modal-details p {
+      font-size: 1rem;
+      line-height: 1.55;
+      color: #444;
+      margin: 0;
+    }
+    .modal-price {
+      font-size: 1.7rem;
+      color: #FC6600;
+      font-weight: bold;
+      margin: 6px 0 10px;
     }
     /* ==================== RESPONSIVE ADJUSTMENTS ==================== */
     @media (max-width: 768px) {
       .featured-products-grid {
-        grid-template-columns: repeat(1, 1fr); /* 1 card on mobile */
+        grid-template-columns: repeat(1, 1fr);
         gap: 20px;
-        justify-items: center; /* Center the single card */
+        justify-items: center;
       }
       .product-card {
-        max-width: 85vw; /* ← adjusted: uses viewport width to fit fully without cropping */
-        margin: 0 auto; /* ← added: ensures perfect centering */
-        max-height: 480px; /* keep soft cap */
+        max-width: 85vw;
+        margin: 0 auto;
+        max-height: 480px;
       }
-      .product-image {
-        padding: 10px; /* ← smaller image padding on mobile */
-      }
-      .product-info {
-        padding: 14px 12px; /* ← slightly tighter */
-      }
+      .product-image { padding: 10px; }
+      .product-info { padding: 14px 12px; }
       .product-name { font-size: 1.18rem; }
       .product-desc { font-size: 0.88rem; }
       .product-price { font-size: 1.18rem; }
       .buy-btn { padding: 9px 22px; font-size: 0.92rem; }
-      /* Hide arrows on very small screens if too cramped (optional) */
       .carousel-arrow {
         width: 40px;
         height: 40px;
         font-size: 1.4rem;
       }
-      /* ── Mobile modal stacking & spacing fixes ── */
+
+      /* Mobile modal – closer to hardware.html feel */
       .modal-content {
-        grid-template-columns: 1fr;
-        gap: 16px;                        /* even smaller gap */
-        padding: 16px;                    /* tighter padding */
-        max-height: 88vh;                 /* give a bit more room but still controlled */
+        max-width: 94vw;
+        max-height: 85vh;
+        padding: 16px;
+        gap: 14px;
+        border-radius: 14px;
       }
       .modal-image-section {
-        max-height: 38vh;                 /* ← make image take less vertical space on mobile */
+        max-height: 40vh;
       }
       .modal-main-image {
-        max-height: 38vh;
+        max-height: 40vh;
       }
-      .modal-details h3 {
-        font-size: 1.65rem;
-        margin-bottom: 12px;
-      }
-      .modal-details p {
-        font-size: 0.98rem;
-        line-height: 1.5;
-        margin-bottom: 16px;
-      }
-      .modal-price {
-        font-size: 1.55rem;
-        margin-bottom: 16px;
-      }
+      .modal-details h3 { font-size: 1.65rem; }
+      .modal-details p { font-size: 0.98rem; line-height: 1.5; }
+      .modal-price { font-size: 1.6rem; margin: 4px 0 12px; }
       .modal-close {
         width: 44px;
         height: 44px;
         line-height: 44px;
-        font-size: 2.6rem;
+        font-size: 2.5rem;
         top: 8px;
         right: 8px;
       }
       .modal-nav {
-        width: 42px;
-        height: 42px;
+        width: 40px;
+        height: 40px;
         font-size: 1.5rem;
-      }
-      .modal-dots {
-        margin-top: 10px;
       }
     }
     @media (max-width: 480px) {
@@ -312,17 +310,14 @@
       .product-desc { font-size: 0.85rem; }
       .product-price { font-size: 1.1rem; }
 
-      /* Extra breathing room + height control on very small screens */
       .modal-content {
         padding: 14px;
-        max-height: 92vh;                 /* allow slightly more % on tiny screens */
+        max-height: 88vh;
       }
-      .modal-image-section {
-        max-height: 35vh;
-      }
-      .modal-details h3 { font-size: 1.45rem; }
-      .modal-price { font-size: 1.35rem; }
-      .modal-details p { font-size: 0.95rem; }
+      .modal-image-section { max-height: 38vh; }
+      .modal-details h3 { font-size: 1.5rem; }
+      .modal-price { font-size: 1.45rem; }
+      .modal-details p { font-size: 0.96rem; }
     }
   </style>
 </head>
