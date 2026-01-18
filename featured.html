@@ -292,10 +292,9 @@
             height: 40px;
             font-size: 1.5rem;
         }
-        /* Respect mobile safe area (prevents bottom bar/ gesture area clipping the inquire button) */
+        /* Reduced bottom padding on mobile – back to standard 40px total, no extra safe-area buffer */
         .featured-section {
-            padding: 40px 20px 40px 20px; /* back to original */
-            padding-bottom: env(safe-area-inset-bottom, 0px); /* tiny auto buffer for iOS/Android bottom UI */
+            padding: 40px 20px 40px 20px;
         }
     }
     @media (max-width: 480px) {
