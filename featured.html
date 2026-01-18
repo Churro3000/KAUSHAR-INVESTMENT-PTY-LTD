@@ -62,29 +62,29 @@
       aspect-ratio: 1 / 1;
       object-fit: contain;
       background: #f9f9f9;
-      padding: 12px; /* ← reduced from 15px */
+      padding: 12px;
       box-sizing: border-box;
     }
     .product-info {
-      padding: 16px 12px; /* ← reduced from 20px 15px */
+      padding: 16px 12px;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
     }
     .product-name {
-      font-size: 1.28rem; /* ← slightly smaller to help fit 4 */
+      font-size: 1.28rem;
       margin: 0 0 8px;
       color: #000;
       font-weight: 600;
     }
     .product-desc {
-      font-size: 0.92rem; /* ← slightly smaller */
+      font-size: 0.92rem;
       color: #555;
       margin-bottom: 12px;
       flex-grow: 1;
     }
     .product-price {
-      font-size: 1.25rem; /* ← slightly smaller */
+      font-size: 1.25rem;
       color: #FC6600;
       font-weight: bold;
       margin-bottom: 15px;
@@ -93,8 +93,8 @@
       background: #000;
       color: #fff;
       border: none;
-      padding: 10px 25px; /* ← reduced from 12px 30px */
-      font-size: 0.95rem; /* ← slightly smaller */
+      padding: 10px 25px;
+      font-size: 0.95rem;
       border-radius: 6px;
       cursor: pointer;
       transition: 0.3s;
@@ -103,10 +103,10 @@
     .buy-btn:hover {
       background: #FC6600;
     }
-    /* ==================== CAROUSEL ARROWS (styled same as modal nav) ==================== */
+    /* ==================== CAROUSEL ARROWS ==================== */
     .carousel-arrow {
       position: absolute;
-      top: calc(50% - 20px); /* Slightly moved up for better visual centering with product boxes */
+      top: calc(50% - 20px);
       transform: translateY(-50%);
       background: rgba(0,0,0,0.5);
       color: #fff;
@@ -206,7 +206,7 @@
     .modal-next { right: 10px; }
     .modal-dots {
       text-align: center;
-      margin-top: 15px;
+      margin: 20px 0 0 0;                /* increased top margin to push away from title */
     }
     .modal-dot {
       display: inline-block;
@@ -214,7 +214,7 @@
       height: 10px;
       background: #bbb;
       border-radius: 50%;
-      margin: 0 6px;
+      margin: 0 7px;                     /* slightly more space between dots */
       cursor: pointer;
     }
     .modal-dot.active { background: #FC6600; }
@@ -231,7 +231,7 @@
     }
     .modal-price {
       font-size: 2rem;
-      color: #FC6600;
+      color: #FC6600 !important;         /* reinforced orange color */
       font-weight: bold;
       margin-bottom: 25px;
     }
@@ -251,16 +251,16 @@
       .product-info { padding: 14px 12px; }
       .product-name { font-size: 1.18rem; }
       .product-desc { font-size: 0.88rem; }
-      .product-price { font-size: 1.18rem; }
+      .product-price { font-size: 1.18rem; color: #FC6600; }
       .buy-btn { padding: 9px 22px; font-size: 0.92rem; }
       .carousel-arrow {
         width: 40px;
         height: 40px;
         font-size: 1.4rem;
       }
-      /* Mobile modal – keep your working version */
+      /* Mobile modal – your working version + requested fixes */
       .modal-content {
-        grid-template-columns: 1fr; /* stack vertically */
+        grid-template-columns: 1fr;
         max-width: 94vw;
         max-height: 85vh;
         padding: 16px;
@@ -273,9 +273,18 @@
       .modal-main-image {
         max-height: 40vh;
       }
-      .modal-details h3 { font-size: 1.65rem; }
+      .modal-dots {
+        margin: 16px 0 12px 0;           /* more space above title on mobile */
+      }
+      .modal-dot {
+        margin: 0 7px;                   /* more space between dots on mobile */
+      }
+      .modal-details h3 {
+        font-size: 1.65rem;
+        margin-top: 8px;                 /* extra top spacing from dots */
+      }
       .modal-details p { font-size: 0.98rem; line-height: 1.5; }
-      .modal-price { font-size: 1.6rem; margin: 4px 0 12px; }
+      .modal-price { font-size: 1.6rem; margin: 4px 0 12px; color: #FC6600 !important; }
       .modal-close {
         width: 44px;
         height: 44px;
@@ -293,14 +302,14 @@
     @media (max-width: 480px) {
       .product-name { font-size: 1.1rem; }
       .product-desc { font-size: 0.85rem; }
-      .product-price { font-size: 1.1rem; }
+      .product-price { font-size: 1.1rem; color: #FC6600; }
       .modal-content {
         padding: 14px;
         max-height: 88vh;
       }
       .modal-image-section { max-height: 38vh; }
       .modal-details h3 { font-size: 1.5rem; }
-      .modal-price { font-size: 1.45rem; }
+      .modal-price { font-size: 1.45rem; color: #FC6600 !important; }
       .modal-details p { font-size: 0.96rem; }
     }
   </style>
