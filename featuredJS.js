@@ -2,42 +2,37 @@
 const grid = document.getElementById('productsGrid');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
-let currentPosition = 0; // Tracks how far we've slid in pixels
+let currentPosition = 0;
 
 function getSlideWidth() {
   const card = grid.querySelector('.product-card');
-  if (!card) return 350; // fallback
+  if (!card) return 350;
   const cardWidth = card.offsetWidth;
-  const gap = 20; // smaller gap on mobile for better alignment
   
   if (window.innerWidth <= 768) {
-    return cardWidth + gap; // mobile: one full card + gap
+    const gap = 20;
+    return cardWidth + gap;           // mobile: 1 card
   } else {
-    return (cardWidth + 30) * 4; // desktop: 4 cards
+    const gap = 30;
+    return (cardWidth + gap) * 4;     // desktop: ~4 cards
   }
 }
 
-// Calculate max scroll position (negative value)
-function updateMaxPosition() {
-  const totalWidth = grid.scrollWidth;
-  const visibleWidth = grid.parentElement.offsetWidth;
-  let calculatedMax = -(totalWidth - visibleWidth);
-  
-  // Protect against tiny negative values due to rounding
-  if (calculatedMax > -1) calculatedMax = 0;
-  
-  return calculatedMax;
+function getMaxPosition() {
+  const totalWidth   = grid.scrollWidth;
+  const containerWidth = grid.parentElement.offsetWidth;
+  let maxPos = containerWidth - totalWidth;   // usually negative
+  if (maxPos > 0) maxPos = 0;                 // content fits → no scroll
+  return maxPos;
 }
 
-let maxPosition = updateMaxPosition();
+let maxPosition = getMaxPosition();
 
-// Run on load and resize
-window.addEventListener('load', () => {
-  maxPosition = updateMaxPosition();
-});
+// Recalculate on load, resize, and before important moves
+window.addEventListener('load', ()  => { maxPosition = getMaxPosition(); });
 window.addEventListener('resize', () => {
-  maxPosition = updateMaxPosition();
-  // Optional: snap back if window got much larger
+  maxPosition = getMaxPosition();
+  // Snap back if needed (window got wider)
   if (currentPosition < maxPosition) {
     currentPosition = maxPosition;
     grid.style.transform = `translateX(${currentPosition}px)`;
@@ -45,40 +40,39 @@ window.addEventListener('resize', () => {
 });
 
 nextBtn.addEventListener('click', () => {
-  const slideAmount = getSlideWidth();
-  const newPosition = currentPosition - slideAmount;
-  
-  // Recalculate fresh maxPosition before deciding (handles layout shifts)
-  maxPosition = updateMaxPosition();
-  
-  // Allow a few pixels of tolerance so last card isn't blocked by rounding
-  const tolerance = 4;
-  
-  if (newPosition >= maxPosition - tolerance) {
-    currentPosition = newPosition;
+  const slide = getSlideWidth();
+  const proposed = currentPosition - slide;
+  maxPosition = getMaxPosition();           // fresh calculation
+
+  // Allow small overshoot tolerance (subpixel, borders, rounding)
+  const tolerance = 6;
+
+  if (proposed >= maxPosition - tolerance) {
+    // Move, but never go beyond the actual end
+    currentPosition = Math.max(proposed, maxPosition);
     grid.style.transform = `translateX(${currentPosition}px)`;
   }
-  // If we're very close to the end, snap exactly to maxPosition
-  else if (newPosition < maxPosition && currentPosition > maxPosition) {
+  // Optional: snap exactly to end if very close
+  else if (Math.abs(proposed - maxPosition) < slide * 0.4) {
     currentPosition = maxPosition;
     grid.style.transform = `translateX(${currentPosition}px)`;
   }
 });
 
 prevBtn.addEventListener('click', () => {
-  if (currentPosition >= 0) return; // already at start
-  
-  const slideAmount = getSlideWidth();
-  currentPosition += slideAmount;
-  
-  // Don't go beyond start
+  if (currentPosition >= 0) return;
+
+  const slide = getSlideWidth();
+  currentPosition += slide;
+
+  // Never go positive
   if (currentPosition > 0) currentPosition = 0;
-  
+
   grid.style.transform = `translateX(${currentPosition}px)`;
 });
 
 // ==================== MODAL POPUP LOGIC ====================
-// (unchanged – keeping your original modal code exactly as is)
+// (unchanged – your original modal code)
 
 const modal = document.getElementById('productModal');
 const closeBtn = document.querySelector('.modal-close');
@@ -102,9 +96,7 @@ document.querySelectorAll('.product-card').forEach(card => {
   });
 });
 
-closeBtn.addEventListener('click', () => {
-  modal.classList.remove('active');
-});
+closeBtn.addEventListener('click', () => modal.classList.remove('active'));
 
 modal.addEventListener('click', e => {
   if (e.target === modal) modal.classList.remove('active');
