@@ -292,9 +292,10 @@
             height: 40px;
             font-size: 1.5rem;
         }
-        /* Tiny extra bottom space so buy button isn't cut off */
+        /* Respect mobile safe area (prevents bottom bar/ gesture area clipping the inquire button) */
         .featured-section {
-            padding: 40px 20px 100px 20px; /* bottom increased to 100px */
+            padding: 40px 20px 40px 20px; /* back to original */
+            padding-bottom: env(safe-area-inset-bottom, 0px); /* tiny auto buffer for iOS/Android bottom UI */
         }
     }
     @media (max-width: 480px) {
