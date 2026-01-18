@@ -310,6 +310,40 @@
         .modal-price { font-size: 1.45rem; color: #FC6600 !important; }
         .modal-details p { font-size: 0.96rem; }
     }
+
+   /* See All Products button – mobile only */
+.see-all-wrapper {
+    text-align: center;
+    margin: 30px 0 20px 0;
+    display: none; /* hidden by default */
+}
+
+.see-all-btn {
+    display: inline-block;
+    background: #FC6600;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 14px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(252, 102, 0, 0.25);
+}
+
+.see-all-btn:hover,
+.see-all-btn:active {
+    background: #e65c00; /* slightly darker orange on interaction */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(252, 102, 0, 0.35);
+}
+
+/* Show only on mobile */
+@media (max-width: 768px) {
+    .see-all-wrapper {
+        display: block;
+    }
+}
 </style>
 </head>
 <body>
@@ -319,10 +353,8 @@
       <!-- Carousel arrows (styled same as modal nav) -->
       <button class="carousel-arrow prev" id="prevBtn">&#10094;</button>
       <button class="carousel-arrow next" id="nextBtn">&#10095;</button>
-
       <!-- Products grid (slides horizontally) -->
       <div class="featured-products-grid" id="productsGrid">
-
         <!-- PRODUCT 1 -->
         <div class="product-card"
              data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
@@ -337,7 +369,6 @@
             <button class="buy-btn">Inquire Now</button>
           </div>
         </div>
-
         <!-- PRODUCT 2 -->
         <div class="product-card"
              data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
@@ -352,22 +383,20 @@
             <button class="buy-btn">Inquire Now</button>
           </div>
         </div>
-
-        <!-- PRODUCT 3 – duplicate or change as needed -->
-<div class="product-card"
-     data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-     data-title="Heavy Duty Power Drill"
-     data-desc="Professional-grade cordless drill with variable speed and hammer function."
-     data-price="P 1,250.00">
-  <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
-  <div class="product-info">
-    <h3 class="product-name">Heavy Duty Power Drill</h3>
-    <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
-    <p class="product-price">P 1,250.00</p>
-    <button class="buy-btn">Inquire Now</button>
-  </div>
-</div>
-
+        <!-- PRODUCT 3 -->
+        <div class="product-card"
+             data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+             data-title="Heavy Duty Power Drill"
+             data-desc="Professional-grade cordless drill with variable speed and hammer function."
+             data-price="P 1,250.00">
+          <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Heavy Duty Power Drill</h3>
+            <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
+            <p class="product-price">P 1,250.00</p>
+            <button class="buy-btn">Inquire Now</button>
+          </div>
+        </div>
         <!-- PRODUCT 4 -->
         <div class="product-card"
              data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
@@ -382,7 +411,6 @@
             <button class="buy-btn">Inquire Now</button>
           </div>
         </div>
-
         <!-- PRODUCT 5 -->
         <div class="product-card"
              data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
@@ -397,7 +425,6 @@
             <button class="buy-btn">Inquire Now</button>
           </div>
         </div>
-
         <!-- PRODUCT 6 -->
         <div class="product-card"
              data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
@@ -412,7 +439,6 @@
             <button class="buy-btn">Inquire Now</button>
           </div>
         </div>
-
         <!-- PRODUCT 7 -->
         <div class="product-card"
              data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
@@ -427,7 +453,6 @@
             <button class="buy-btn">Inquire Now</button>
           </div>
         </div>
-
         <!-- PRODUCT 8 -->
         <div class="product-card"
              data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
@@ -442,25 +467,26 @@
             <button class="buy-btn">Inquire Now</button>
           </div>
         </div>
-
         <!-- Add more products here if needed – they will slide in groups -->
-
       </div>
     </div>
-  </section>
 
+    <!-- See All Products button – mobile only (CSS already added separately) -->
+    <div class="see-all-wrapper">
+      <a href="products.html" class="see-all-btn">See All Products</a>
+    </div>
+
+  </section>
   <!-- ==================== MODAL POPUP (exact same as hardware.html) ==================== -->
   <div class="modal-overlay" id="productModal">
     <div class="modal-content">
       <button class="modal-close">&times;</button>
-
       <div class="modal-image-section">
         <img src="" alt="Product" class="modal-main-image" id="modalImage">
         <button class="modal-nav modal-prev">&#10094;</button>
         <button class="modal-nav modal-next">&#10095;</button>
         <div class="modal-dots" id="modalDots"></div>
       </div>
-
       <div class="modal-details">
         <h3 id="modalTitle"></h3>
         <p id="modalDesc"></p>
@@ -469,7 +495,6 @@
       </div>
     </div>
   </div>
-
   <!-- Link to external JS file -->
   <script src="featuredJS.js"></script>
 </body>
