@@ -137,7 +137,7 @@
       z-index: 1000;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 16px;                      /* ← was 20px, slightly less outer padding */
     }
     .modal-overlay.active {
       display: flex;
@@ -147,25 +147,25 @@
       border-radius: 16px;
       max-width: 1000px;
       width: 100%;
-      max-height: 90vh;
+      max-height: 85vh;                   /* ← reduced from 90vh to feel less dominating */
       overflow-y: auto;
       position: relative;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      padding: 30px;
+      gap: 24px;                          /* ← slightly smaller than 30px */
+      padding: 24px;                      /* ← was 30px */
     }
     .modal-close {
       position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 2.4rem;
+      top: 12px;                          /* ← moved slightly closer to edge */
+      right: 16px;
+      font-size: 2.2rem;
       background: rgba(255,255,255,0.9);
       border: none;
       border-radius: 50%;
-      width: 42px;
-      height: 42px;
-      line-height: 42px;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
       text-align: center;
       cursor: pointer;
       color: #333;
@@ -179,13 +179,19 @@
       background: #fff;
       transform: scale(1.1);
     }
-    .modal-image-section { position: relative; }
+    .modal-image-section { 
+      position: relative; 
+      max-height: 45vh;                   /* ← prevent image area from growing too much */
+      display: flex;
+      flex-direction: column;
+    }
     .modal-main-image {
       width: 100%;
       aspect-ratio: 1/1;
       object-fit: contain;
       background: #f9f9f9;
       border-radius: 12px;
+      max-height: 45vh;                   /* ← cap image height */
     }
     .modal-nav {
       position: absolute;
@@ -194,28 +200,42 @@
       background: rgba(0,0,0,0.5);
       color: #fff;
       border: none;
-      width: 50px;
-      height: 50px;
-      font-size: 1.8rem;
+      width: 48px;
+      height: 48px;
+      font-size: 1.7rem;
       cursor: pointer;
       border-radius: 50%;
     }
-    .modal-prev { left: 10px; }
-    .modal-next { right: 10px; }
-    .modal-dots { text-align: center; margin-top: 15px; }
+    .modal-prev { left: 8px; }
+    .modal-next { right: 8px; }
+    .modal-dots { text-align: center; margin-top: 12px; }
     .modal-dot {
       display: inline-block;
-      width: 10px;
-      height: 10px;
+      width: 9px;
+      height: 9px;
       background: #bbb;
       border-radius: 50%;
-      margin: 0 6px;
+      margin: 0 5px;
       cursor: pointer;
     }
     .modal-dot.active { background: #FC6600; }
-    .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
-    .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
-    .modal-price { font-size: 2rem; color: #FC6600; font-weight: bold; margin-bottom: 25px; }
+    .modal-details h3 { 
+      font-size: 2rem; 
+      margin: 0 0 16px;                   /* ← reduced bottom margin */
+      color: #000; 
+    }
+    .modal-details p { 
+      font-size: 1.05rem; 
+      line-height: 1.55;                  /* ← tighter line height */
+      color: #444; 
+      margin-bottom: 18px;                /* ← less space after paragraphs */
+    }
+    .modal-price { 
+      font-size: 1.9rem; 
+      color: #FC6600; 
+      font-weight: bold; 
+      margin: 0 0 20px;                   /* ← adjusted spacing */
+    }
     /* ==================== RESPONSIVE ADJUSTMENTS ==================== */
     @media (max-width: 768px) {
       .featured-products-grid {
@@ -244,38 +264,47 @@
         height: 40px;
         font-size: 1.4rem;
       }
-
-      /* ── ADDED: Mobile modal stacking & spacing fixes ── */
+      /* ── Mobile modal stacking & spacing fixes ── */
       .modal-content {
-        grid-template-columns: 1fr;           /* Stack image → text vertically */
-        gap: 20px;
-        padding: 20px;                        /* Less internal padding */
+        grid-template-columns: 1fr;
+        gap: 16px;                        /* even smaller gap */
+        padding: 16px;                    /* tighter padding */
+        max-height: 88vh;                 /* give a bit more room but still controlled */
+      }
+      .modal-image-section {
+        max-height: 38vh;                 /* ← make image take less vertical space on mobile */
+      }
+      .modal-main-image {
+        max-height: 38vh;
       }
       .modal-details h3 {
-        font-size: 1.7rem;                    /* Slightly smaller title */
-        margin-bottom: 16px;
+        font-size: 1.65rem;
+        margin-bottom: 12px;
       }
       .modal-details p {
-        font-size: 1rem;
-        line-height: 1.6;
-        margin-bottom: 20px;
+        font-size: 0.98rem;
+        line-height: 1.5;
+        margin-bottom: 16px;
       }
       .modal-price {
-        font-size: 1.6rem;
-        margin-bottom: 20px;
+        font-size: 1.55rem;
+        margin-bottom: 16px;
       }
       .modal-close {
-        width: 48px;
-        height: 48px;
-        line-height: 48px;
-        font-size: 2.8rem;
-        top: 10px;
-        right: 10px;
-      }
-      .modal-nav {
         width: 44px;
         height: 44px;
-        font-size: 1.6rem;
+        line-height: 44px;
+        font-size: 2.6rem;
+        top: 8px;
+        right: 8px;
+      }
+      .modal-nav {
+        width: 42px;
+        height: 42px;
+        font-size: 1.5rem;
+      }
+      .modal-dots {
+        margin-top: 10px;
       }
     }
     @media (max-width: 480px) {
@@ -283,12 +312,17 @@
       .product-desc { font-size: 0.85rem; }
       .product-price { font-size: 1.1rem; }
 
-      /* Extra breathing room on very small screens */
+      /* Extra breathing room + height control on very small screens */
       .modal-content {
-        padding: 16px;
+        padding: 14px;
+        max-height: 92vh;                 /* allow slightly more % on tiny screens */
       }
-      .modal-details h3 { font-size: 1.5rem; }
-      .modal-price { font-size: 1.4rem; }
+      .modal-image-section {
+        max-height: 35vh;
+      }
+      .modal-details h3 { font-size: 1.45rem; }
+      .modal-price { font-size: 1.35rem; }
+      .modal-details p { font-size: 0.95rem; }
     }
   </style>
 </head>
