@@ -19,15 +19,19 @@ function getSlideWidth() {
   }
 }
 
-// Calculate the max left position (negative) once cards are loaded
+// Calculate max scroll position (negative value)
 let maxPosition = 0;
-window.addEventListener('load', () => {
+function updateMaxPosition() {
   const totalWidth = grid.scrollWidth;
   const visibleWidth = grid.parentElement.offsetWidth;
   maxPosition = -(totalWidth - visibleWidth);
   // If content fits fully, disable next from start
   if (maxPosition >= 0) maxPosition = 0;
-});
+}
+
+// Run on load and resize (handles mobile orientation change / layout shift)
+window.addEventListener('load', updateMaxPosition);
+window.addEventListener('resize', updateMaxPosition);
 
 nextBtn.addEventListener('click', () => {
   const slideAmount = getSlideWidth();
