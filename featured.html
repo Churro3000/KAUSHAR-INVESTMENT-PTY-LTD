@@ -258,7 +258,7 @@
         height: 40px;
         font-size: 1.4rem;
       }
-      /* Mobile modal */
+      /* Mobile modal – tiny dots fix */
       .modal-content {
         grid-template-columns: 1fr;
         max-width: 94vw;
@@ -269,22 +269,23 @@
       }
       .modal-image-section {
         max-height: 40vh;
-        margin-bottom: 4px;               /* tiny space below image */
+        margin-bottom: 0;                 /* no extra space below image */
       }
       .modal-main-image {
         max-height: 40vh;
       }
       .modal-dots {
-        margin: 4px 0 12px 0;             /* very close to image + space below to title */
+        margin: 0 0 12px 0;               /* dots right below image, then space to title */
+        padding-top: 2px;                 /* tiny strict push down */
       }
       .modal-dot {
-        width: 7px;                       /* smaller dots on mobile */
-        height: 7px;
-        margin: 0 5px;                    /* slightly less spacing between them */
+        width: 6px;                       /* even tinier dots */
+        height: 6px;
+        margin: 0 4px;                    /* closer together but still visible */
       }
       .modal-details h3 {
         font-size: 1.65rem;
-        margin: 0 0 16px;                 /* no extra top margin needed now */
+        margin: 0 0 16px;                 /* title starts after dots' space */
       }
       .modal-details p { font-size: 0.98rem; line-height: 1.5; }
       .modal-price { font-size: 1.6rem; margin: 4px 0 12px; color: #FC6600 !important; }
@@ -310,9 +311,9 @@
         padding: 14px;
         max-height: 88vh;
       }
-      .modal-image-section { max-height: 38vh; margin-bottom: 4px; }
-      .modal-dots { margin: 4px 0 10px 0; }
-      .modal-dot { width: 6px; height: 6px; margin: 0 4px; }
+      .modal-image-section { max-height: 38vh; margin-bottom: 0; }
+      .modal-dots { margin: 0 0 10px 0; padding-top: 2px; }
+      .modal-dot { width: 5px; height: 5px; margin: 0 3px; }
       .modal-details h3 { font-size: 1.5rem; }
       .modal-price { font-size: 1.45rem; color: #FC6600 !important; }
       .modal-details p { font-size: 0.96rem; }
