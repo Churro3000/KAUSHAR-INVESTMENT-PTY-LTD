@@ -206,7 +206,7 @@
     .modal-next { right: 10px; }
     .modal-dots {
       text-align: center;
-      margin: 20px 0 0 0;                /* increased top margin to push away from title */
+      margin: 20px 0 0 0;
     }
     .modal-dot {
       display: inline-block;
@@ -214,7 +214,7 @@
       height: 10px;
       background: #bbb;
       border-radius: 50%;
-      margin: 0 7px;                     /* slightly more space between dots */
+      margin: 0 7px;
       cursor: pointer;
     }
     .modal-dot.active { background: #FC6600; }
@@ -231,7 +231,7 @@
     }
     .modal-price {
       font-size: 2rem;
-      color: #FC6600 !important;         /* reinforced orange color */
+      color: #FC6600 !important;
       font-weight: bold;
       margin-bottom: 25px;
     }
@@ -258,7 +258,7 @@
         height: 40px;
         font-size: 1.4rem;
       }
-      /* Mobile modal – your working version + requested fixes */
+      /* Mobile modal */
       .modal-content {
         grid-template-columns: 1fr;
         max-width: 94vw;
@@ -269,19 +269,22 @@
       }
       .modal-image-section {
         max-height: 40vh;
+        margin-bottom: 4px;               /* tiny space below image */
       }
       .modal-main-image {
         max-height: 40vh;
       }
       .modal-dots {
-        margin: 16px 0 12px 0;           /* more space above title on mobile */
+        margin: 4px 0 12px 0;             /* very close to image + space below to title */
       }
       .modal-dot {
-        margin: 0 7px;                   /* more space between dots on mobile */
+        width: 7px;                       /* smaller dots on mobile */
+        height: 7px;
+        margin: 0 5px;                    /* slightly less spacing between them */
       }
       .modal-details h3 {
         font-size: 1.65rem;
-        margin-top: 8px;                 /* extra top spacing from dots */
+        margin: 0 0 16px;                 /* no extra top margin needed now */
       }
       .modal-details p { font-size: 0.98rem; line-height: 1.5; }
       .modal-price { font-size: 1.6rem; margin: 4px 0 12px; color: #FC6600 !important; }
@@ -307,7 +310,9 @@
         padding: 14px;
         max-height: 88vh;
       }
-      .modal-image-section { max-height: 38vh; }
+      .modal-image-section { max-height: 38vh; margin-bottom: 4px; }
+      .modal-dots { margin: 4px 0 10px 0; }
+      .modal-dot { width: 6px; height: 6px; margin: 0 4px; }
       .modal-details h3 { font-size: 1.5rem; }
       .modal-price { font-size: 1.45rem; color: #FC6600 !important; }
       .modal-details p { font-size: 0.96rem; }
