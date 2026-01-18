@@ -11,25 +11,25 @@ function getSlideWidth() {
   
   if (window.innerWidth <= 768) {
     const gap = 20;
-    return cardWidth + gap;           // mobile: 1 card
+    return cardWidth + gap; // mobile: 1 card
   } else {
     const gap = 30;
-    return (cardWidth + gap) * 4;     // desktop: ~4 cards
+    return (cardWidth + gap) * 4; // desktop: ~4 cards
   }
 }
 
 function getMaxPosition() {
-  const totalWidth   = grid.scrollWidth;
+  const totalWidth = grid.scrollWidth;
   const containerWidth = grid.parentElement.offsetWidth;
-  let maxPos = containerWidth - totalWidth;   // usually negative
-  if (maxPos > 0) maxPos = 0;                 // content fits → no scroll
+  let maxPos = containerWidth - totalWidth; // usually negative
+  if (maxPos > 0) maxPos = 0; // content fits → no scroll
   return maxPos;
 }
 
 let maxPosition = getMaxPosition();
 
 // Recalculate on load, resize, and before important moves
-window.addEventListener('load', ()  => { maxPosition = getMaxPosition(); });
+window.addEventListener('load', () => { maxPosition = getMaxPosition(); });
 window.addEventListener('resize', () => {
   maxPosition = getMaxPosition();
   // Snap back if needed (window got wider)
@@ -42,7 +42,7 @@ window.addEventListener('resize', () => {
 nextBtn.addEventListener('click', () => {
   const slide = getSlideWidth();
   const proposed = currentPosition - slide;
-  maxPosition = getMaxPosition();           // fresh calculation
+  maxPosition = getMaxPosition(); // fresh calculation
 
   // Allow small overshoot tolerance (subpixel, borders, rounding)
   const tolerance = 6;
@@ -71,6 +71,42 @@ prevBtn.addEventListener('click', () => {
   grid.style.transform = `translateX(${currentPosition}px)`;
 });
 
+// ==================== MOBILE-ONLY TOUCH SWIPE SUPPORT ====================
+let touchStartX = 0;
+let touchEndX = 0;
+let isSwiping = false;
+
+grid.addEventListener('touchstart', (e) => {
+  if (window.innerWidth > 768) return; // mobile only
+  touchStartX = e.touches[0].clientX;
+  isSwiping = true;
+}, { passive: true });
+
+grid.addEventListener('touchmove', (e) => {
+  if (!isSwiping || window.innerWidth > 768) return;
+  // Optional: could add live drag preview here, but keeping simple for now
+}, { passive: true });
+
+grid.addEventListener('touchend', (e) => {
+  if (!isSwiping || window.innerWidth > 768) return;
+  isSwiping = false;
+  
+  touchEndX = e.changedTouches[0].clientX;
+  const diff = touchStartX - touchEndX; // positive = swipe left (next)
+  
+  const swipeThreshold = 50; // pixels needed to trigger slide
+  
+  if (Math.abs(diff) > swipeThreshold) {
+    if (diff > 0) {
+      // Swipe left → next
+      nextBtn.click(); // reuse existing next logic
+    } else {
+      // Swipe right → previous
+      prevBtn.click(); // reuse existing prev logic
+    }
+  }
+}, { passive: true });
+
 // ==================== MODAL POPUP LOGIC ====================
 // Updated to match hardware.html version for better mobile display & consistency
 
@@ -86,7 +122,7 @@ let currentIndex = 0;
 
 document.querySelectorAll('.product-card').forEach(card => {
   card.addEventListener('click', () => {
-    currentImages = JSON.parse(card.dataset.images);  // hardware version doesn't use || '[]' — assumes data is clean
+    currentImages = JSON.parse(card.dataset.images); // hardware version doesn't use || '[]' — assumes data is clean
     currentIndex = 0;
     modalTitle.textContent = card.dataset.title;
     modalDesc.textContent = card.dataset.desc;
