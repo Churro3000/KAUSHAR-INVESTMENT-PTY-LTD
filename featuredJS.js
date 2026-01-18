@@ -9,49 +9,77 @@ function getSlideWidth() {
   if (!card) return 350; // fallback
   const cardWidth = card.offsetWidth;
   const gap = 20; // smaller gap on mobile for better alignment
-  // On mobile: slide exactly one full card
+  
   if (window.innerWidth <= 768) {
-    return cardWidth + gap; // more precise – uses actual gap
-  }
-  // On desktop: slide 4 cards
-  else {
-    return (cardWidth + 30) * 4; // desktop gap is 30px
+    return cardWidth + gap; // mobile: one full card + gap
+  } else {
+    return (cardWidth + 30) * 4; // desktop: 4 cards
   }
 }
 
 // Calculate max scroll position (negative value)
-let maxPosition = 0;
 function updateMaxPosition() {
   const totalWidth = grid.scrollWidth;
   const visibleWidth = grid.parentElement.offsetWidth;
-  maxPosition = -(totalWidth - visibleWidth);
-  // If content fits fully, disable next from start
-  if (maxPosition >= 0) maxPosition = 0;
+  let calculatedMax = -(totalWidth - visibleWidth);
+  
+  // Protect against tiny negative values due to rounding
+  if (calculatedMax > -1) calculatedMax = 0;
+  
+  return calculatedMax;
 }
 
-// Run on load and resize (handles mobile orientation change / layout shift)
-window.addEventListener('load', updateMaxPosition);
-window.addEventListener('resize', updateMaxPosition);
+let maxPosition = updateMaxPosition();
+
+// Run on load and resize
+window.addEventListener('load', () => {
+  maxPosition = updateMaxPosition();
+});
+window.addEventListener('resize', () => {
+  maxPosition = updateMaxPosition();
+  // Optional: snap back if window got much larger
+  if (currentPosition < maxPosition) {
+    currentPosition = maxPosition;
+    grid.style.transform = `translateX(${currentPosition}px)`;
+  }
+});
 
 nextBtn.addEventListener('click', () => {
   const slideAmount = getSlideWidth();
   const newPosition = currentPosition - slideAmount;
-  // Only slide if we haven't reached the end yet
-  if (newPosition >= maxPosition) {
+  
+  // Recalculate fresh maxPosition before deciding (handles layout shifts)
+  maxPosition = updateMaxPosition();
+  
+  // Allow a few pixels of tolerance so last card isn't blocked by rounding
+  const tolerance = 4;
+  
+  if (newPosition >= maxPosition - tolerance) {
     currentPosition = newPosition;
     grid.style.transform = `translateX(${currentPosition}px)`;
   }
-  // else: already at end → do nothing (no more swipe)
+  // If we're very close to the end, snap exactly to maxPosition
+  else if (newPosition < maxPosition && currentPosition > maxPosition) {
+    currentPosition = maxPosition;
+    grid.style.transform = `translateX(${currentPosition}px)`;
+  }
 });
 
 prevBtn.addEventListener('click', () => {
   if (currentPosition >= 0) return; // already at start
+  
   const slideAmount = getSlideWidth();
   currentPosition += slideAmount;
+  
+  // Don't go beyond start
+  if (currentPosition > 0) currentPosition = 0;
+  
   grid.style.transform = `translateX(${currentPosition}px)`;
 });
 
 // ==================== MODAL POPUP LOGIC ====================
+// (unchanged – keeping your original modal code exactly as is)
+
 const modal = document.getElementById('productModal');
 const closeBtn = document.querySelector('.modal-close');
 const modalImg = document.getElementById('modalImage');
