@@ -7,10 +7,8 @@ let currentPosition = 0; // Tracks how far we've slid in pixels
 function getSlideWidth() {
   const card = grid.querySelector('.product-card');
   if (!card) return 350; // fallback
-
   const cardWidth = card.offsetWidth;
   const gap = 20; // smaller gap on mobile for better alignment
-
   // On mobile: slide exactly one full card
   if (window.innerWidth <= 768) {
     return cardWidth + gap; // more precise – uses actual gap
@@ -21,10 +19,25 @@ function getSlideWidth() {
   }
 }
 
+// Calculate the max left position (negative) once cards are loaded
+let maxPosition = 0;
+window.addEventListener('load', () => {
+  const totalWidth = grid.scrollWidth;
+  const visibleWidth = grid.parentElement.offsetWidth;
+  maxPosition = -(totalWidth - visibleWidth);
+  // If content fits fully, disable next from start
+  if (maxPosition >= 0) maxPosition = 0;
+});
+
 nextBtn.addEventListener('click', () => {
   const slideAmount = getSlideWidth();
-  currentPosition -= slideAmount;
-  grid.style.transform = `translateX(${currentPosition}px)`;
+  const newPosition = currentPosition - slideAmount;
+  // Only slide if we haven't reached the end yet
+  if (newPosition >= maxPosition) {
+    currentPosition = newPosition;
+    grid.style.transform = `translateX(${currentPosition}px)`;
+  }
+  // else: already at end → do nothing (no more swipe)
 });
 
 prevBtn.addEventListener('click', () => {
