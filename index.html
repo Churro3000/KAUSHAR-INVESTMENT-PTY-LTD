@@ -68,7 +68,7 @@
   </iframe>
 </section>
 
-   <!-- START Latest Advertiser Section -->
+   <!-- Latest Advertiser Section -->
 <section class="latest-ads-section" style="background-color: #FC6600; padding: 60px 20px; text-align: center;">
   <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 40px; margin-top: 30px;">Latest Advertiser</h2>
  
@@ -85,7 +85,6 @@
     </div>
     <button class="ad-prev" id="adPrev">&#10094;</button>
     <button class="ad-next" id="adNext">&#10095;</button>
-    <div class="ad-dots" id="adDots"></div>
   </div>
 </section>
 
@@ -139,24 +138,6 @@
     color: #000;
     transform: translateY(-50%) scale(1.1);
   }
-  .ad-dots {
-    text-align: center;
-    padding: 15px 0 0;
-  }
-  .dot {
-    height: 8px;
-    width: 8px;
-    margin: 0 5px;
-    background-color: #d94d00;
-    border-radius: 50%;
-    display: inline-block;
-    transition: all 0.3s;
-    cursor: pointer;
-  }
-  .dot.active {
-    background-color: #000000;
-    transform: scale(1.4);
-  }
   @media (max-width: 768px) {
     .latest-ads-section { padding: 50px 15px; }
     .latest-ads-section h2 { font-size: 1.9rem; }
@@ -165,92 +146,55 @@
 </style>
 
 <script>
-// Advert Carousel Logic – strict single execution
-(function() {
-  // Global lock – survives multiple runs/reloads
-  if (window.adCarouselInitialized) {
-    console.log('Advert carousel already initialized – skipping');
+// Advert Carousel Logic – no dots
+document.addEventListener('DOMContentLoaded', () => {
+  const track = document.getElementById('adsTrack');
+  const prevBtn = document.getElementById('adPrev');
+  const nextBtn = document.getElementById('adNext');
+
+  if (!track || !prevBtn || !nextBtn) {
+    console.warn('Advert carousel elements not found');
     return;
   }
 
-  const initialize = () => {
-    const track = document.getElementById('adsTrack');
-    const prevBtn = document.getElementById('adPrev');
-    const nextBtn = document.getElementById('adNext');
-    const dotsContainer = document.getElementById('adDots');
+  let currentIndex = 0;
+  const slides = track.children.length;
 
-    if (!track || !prevBtn || !nextBtn || !dotsContainer) {
-      console.warn('Advert carousel elements not found');
-      return;
-    }
-
-    // Force clear any existing dots (prevents doubling from previous runs)
-    dotsContainer.innerHTML = '';
-
-    let currentIndex = 0;
-    const slides = track.children.length;
-
-    // Create exactly one dot per image
-    for (let i = 0; i < slides; i++) {
-      const dot = document.createElement('span');
-      dot.classList.add('dot');
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => {
-        currentIndex = i;
-        updateCarousel();
-      });
-      dotsContainer.appendChild(dot);
-    }
-
-    const dots = dotsContainer.querySelectorAll('.dot');
-
-    function updateCarousel() {
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-      dots.forEach((dot, idx) => dot.classList.toggle('active', idx === currentIndex));
-    }
-
-    nextBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % slides;
-      updateCarousel();
-    });
-
-    prevBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + slides) % slides;
-      updateCarousel();
-    });
-
-    // Mobile swipe
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    track.addEventListener('touchstart', e => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    track.addEventListener('touchend', e => {
-      touchEndX = e.changedTouches[0].screenX;
-      const diff = touchStartX - touchEndX;
-      if (Math.abs(diff) > 60) {
-        currentIndex = diff > 0 
-          ? (currentIndex + 1) % slides 
-          : (currentIndex - 1 + slides) % slides;
-        updateCarousel();
-      }
-    }, { passive: true });
-
-    updateCarousel(); // initial
-
-    // Lock forever
-    window.adCarouselInitialized = true;
-  };
-
-  // Run now or wait for DOM
-  if (document.readyState !== 'loading') {
-    initialize();
-  } else {
-    document.addEventListener('DOMContentLoaded', initialize);
+  function updateCarousel() {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
   }
-})();
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % slides;
+    updateCarousel();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + slides) % slides;
+    updateCarousel();
+  });
+
+  // Mobile swipe
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  track.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  track.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 60) {
+      currentIndex = diff > 0 
+        ? (currentIndex + 1) % slides 
+        : (currentIndex - 1 + slides) % slides;
+      updateCarousel();
+    }
+  }, { passive: true });
+
+  updateCarousel(); // initial
+});
 </script>
 <!-- END Latest Advertiser Section -->
 
