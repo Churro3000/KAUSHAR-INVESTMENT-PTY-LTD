@@ -196,26 +196,24 @@ function updateModalImage() {
 }
 
 // ==================== WHATSAPP INQUIRE BUTTON HANDLER ====================
-// Works for both main page buttons AND modal popup button
+// Works for main page "Inquire Now" AND modal popup "Inquire Now"
 document.addEventListener('DOMContentLoaded', () => {
-  const phoneNumber = '26777478877'; // Your number – change if needed
+  const phoneNumber = '26777478877'; // ← your number – confirm it's correct
 
-  // Function to handle click on any Inquire button
   const handleInquireClick = (button) => {
-    // Find product title – try from card or from modal
     let productName = 'this product';
 
-    // 1. From main product card
+    // From main card
     const productInfo = button.closest('.product-info');
     if (productInfo) {
       const nameElem = productInfo.querySelector('.product-name');
       if (nameElem) productName = nameElem.textContent.trim();
     }
 
-    // 2. Fallback: from modal (if clicked inside popup)
-    const modalTitle = document.getElementById('modalTitle');
-    if (modalTitle && modalTitle.textContent.trim()) {
-      productName = modalTitle.textContent.trim();
+    // Fallback from modal title (when clicked inside popup)
+    const modalTitleElem = document.getElementById('modalTitle');
+    if (modalTitleElem && modalTitleElem.textContent.trim()) {
+      productName = modalTitleElem.textContent.trim();
     }
 
     const message = `Good day, I'd like to inquire about ${productName}`;
@@ -225,30 +223,20 @@ document.addEventListener('DOMContentLoaded', () => {
     window.open(whatsappUrl, '_blank');
   };
 
-  // Wait for buttons to exist (handles dynamic load)
+  // Attach to all existing Inquire buttons
   const attachListeners = () => {
-    // Main page buttons
-    document.querySelectorAll('.buy-btn').forEach(button => {
-      // Remove old listener if any (prevents double attach)
-      button.removeEventListener('click', handleInquireClick);
-      button.addEventListener('click', () => handleInquireClick(button));
+    document.querySelectorAll('.buy-btn').forEach(btn => {
+      btn.removeEventListener('click', handleInquireClick); // prevent duplicates
+      btn.addEventListener('click', () => handleInquireClick(btn));
     });
-
-    // Modal popup button (updates when modal opens)
-    const modalBuyBtn = document.querySelector('.modal-details .buy-btn');
-    if (modalBuyBtn) {
-      modalBuyBtn.removeEventListener('click', handleInquireClick);
-      modalBuyBtn.addEventListener('click', () => handleInquireClick(modalBuyBtn));
-    }
   };
 
-  // Run immediately + observe modal changes
   attachListeners();
 
-  // Re-attach when modal opens (since modal content loads dynamically)
+  // Watch for modal opening (since modal loads dynamically)
   const modal = document.getElementById('productModal');
   if (modal) {
     const observer = new MutationObserver(attachListeners);
-    observer.observe(modal, { attributes: true, childList: true, subtree: true });
+    observer.observe(modal, { childList: true, subtree: true });
   }
 });
