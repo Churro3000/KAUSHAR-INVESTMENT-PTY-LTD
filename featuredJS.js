@@ -83,22 +83,23 @@ grid.addEventListener('touchstart', (e) => {
  touchCurrentX = touchStartX;
  startPosition = currentPosition;
  isSwiping = true;
-}, { passive: true });
+}, { passive: true }); // passive true → allows vertical scroll to start
 
 grid.addEventListener('touchmove', (e) => {
  if (!isSwiping || window.innerWidth > 768) return;
  touchCurrentX = e.touches[0].clientX;
  
- // Live drag preview
+ // Live drag preview (horizontal only)
  const diff = touchCurrentX - touchStartX;
  const newPos = startPosition + diff;
  
- // Clamp during drag
+ // Clamp during drag to prevent going too far
  const max = getMaxPosition();
  currentPosition = Math.max(Math.min(newPos, 0), max);
  grid.style.transform = `translateX(${currentPosition}px)`;
- // NO e.preventDefault() here → allows vertical scroll / no freeze
-}, { passive: false }); // passive: false needed for smooth live drag on many devices
+ 
+ // NO e.preventDefault() here → vertical scroll works even on product area
+}, { passive: true }); // passive true is safe here since no preventDefault
 
 grid.addEventListener('touchend', (e) => {
  if (!isSwiping || window.innerWidth > 768) return;
@@ -112,7 +113,7 @@ grid.addEventListener('touchend', (e) => {
 
  if (Math.abs(diff) > swipeThreshold) {
   if (diff > 0) {
-   // Swipe left → next (move left = more negative position)
+   // Swipe left → next
    targetPosition = currentPosition - slide;
   } else {
    // Swipe right → previous
@@ -120,22 +121,22 @@ grid.addEventListener('touchend', (e) => {
   }
  }
 
- // Clamp target to valid range
+ // Clamp target
  const max = getMaxPosition();
  targetPosition = Math.max(Math.min(targetPosition, 0), max);
 
- // Snap to nearest full card (improved rounding)
+ // Force snap to full card (centers one product perfectly)
  const snapped = Math.round(targetPosition / slide) * slide;
  currentPosition = Math.max(Math.min(snapped, 0), max);
 
- // Apply with smooth transition
- grid.style.transition = 'transform 0.4s ease-out';
+ // Smooth snap animation
+ grid.style.transition = 'transform 0.35s ease-out';
  grid.style.transform = `translateX(${currentPosition}px)`;
 
- // Reset transition after animation (for next drag)
+ // Reset transition after snap (for future drags/clicks)
  setTimeout(() => {
-  grid.style.transition = 'transform 0.5s ease'; // match your original
- }, 400);
+  grid.style.transition = 'transform 0.5s ease';
+ }, 350);
 });
 
 // ==================== MODAL POPUP LOGIC ====================
