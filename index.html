@@ -145,19 +145,19 @@
     padding: 15px 0 0;
   }
   .dot {
-    height: 8px;           /* smaller dots */
-    width: 8px;
-    margin: 0 5px;         /* tighter spacing */
-    background-color: #d94d00;
-    border-radius: 50%;
-    display: inline-block;
-    transition: all 0.3s;
-    cursor: pointer;
-  }
-  .dot.active {
-    background-color: #000000;
-    transform: scale(1.4);  /* slightly bigger active dot for visibility */
-  }
+  height: 5px;           /* even smaller for neat look */
+  width: 5px;
+  margin: 0 4px;         /* minimal spacing */
+  background-color: #d94d00;
+  border-radius: 50%;
+  display: inline-block;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.dot.active {
+  background-color: #000000;
+  transform: scale(1.6);  /* more noticeable active state */
+}
   @media (max-width: 768px) {
     .latest-ads-section { padding: 50px 15px; }
     .latest-ads-section h2 { font-size: 1.9rem; }
@@ -166,77 +166,76 @@
 </style>
 
 <script>
-// Advert Carousel Logic
-document.addEventListener('DOMContentLoaded', () => {
-  const track = document.getElementById('adsTrack');
-  const prevBtn = document.getElementById('adPrev');
-  const nextBtn = document.getElementById('adNext');
-  const dotsContainer = document.getElementById('adDots');
+// Advert Carousel Logic – strict one-time execution
+if (!window.adDotsCreated) {
+  document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('adsTrack');
+    const prevBtn = document.getElementById('adPrev');
+    const nextBtn = document.getElementById('adNext');
+    const dotsContainer = document.getElementById('adDots');
 
-  if (!track || !prevBtn || !nextBtn || !dotsContainer) {
-    console.warn('Advert carousel elements not found');
-    return;
-  }
+    if (!track || !prevBtn || !nextBtn || !dotsContainer) {
+      console.warn('Advert carousel elements not found');
+      return;
+    }
 
-  // STRICT GUARD: only run if dots haven't been created yet
-  if (dotsContainer.children.length > 0) {
-    console.log('Dots already created – skipping');
-    return;
-  }
+    let currentIndex = 0;
+    const slides = track.children.length;
 
-  let currentIndex = 0;
-  const slides = track.children.length;
+    // Create exactly one dot per image (only once)
+    for (let i = 0; i < slides; i++) {
+      const dot = document.createElement('span');
+      dot.classList.add('dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        currentIndex = i;
+        updateCarousel();
+      });
+      dotsContainer.appendChild(dot);
+    }
 
-  // Create exactly one dot per slide/image (runs only once)
-  for (let i = 0; i < slides; i++) {
-    const dot = document.createElement('span');
-    dot.classList.add('dot');
-    if (i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => {
-      currentIndex = i;
+    const dots = dotsContainer.querySelectorAll('.dot');
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      dots.forEach((dot, idx) => dot.classList.toggle('active', idx === currentIndex));
+    }
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % slides;
       updateCarousel();
     });
-    dotsContainer.appendChild(dot);
-  }
 
-  const dots = dotsContainer.querySelectorAll('.dot');
-
-  function updateCarousel() {
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
-    dots.forEach((dot, idx) => dot.classList.toggle('active', idx === currentIndex));
-  }
-
-  nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % slides;
-    updateCarousel();
-  });
-
-  prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + slides) % slides;
-    updateCarousel();
-  });
-
-  // Mobile swipe
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  track.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-
-  track.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    const diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 60) {
-      currentIndex = diff > 0 
-        ? (currentIndex + 1) % slides 
-        : (currentIndex - 1 + slides) % slides;
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + slides) % slides;
       updateCarousel();
-    }
-  }, { passive: true });
+    });
 
-  updateCarousel(); // initial
-});
+    // Mobile swipe
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 60) {
+        currentIndex = diff > 0 
+          ? (currentIndex + 1) % slides 
+          : (currentIndex - 1 + slides) % slides;
+        updateCarousel();
+      }
+    }, { passive: true });
+
+    updateCarousel(); // initial
+
+    // Mark as created – prevents re-running even if script fires again
+    window.adDotsCreated = true;
+  });
+}
 </script>
 <!-- END Latest Advertiser Section -->
 
