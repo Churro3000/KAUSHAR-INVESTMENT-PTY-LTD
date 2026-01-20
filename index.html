@@ -178,10 +178,16 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  // STRICT GUARD: only run if dots haven't been created yet
+  if (dotsContainer.children.length > 0) {
+    console.log('Dots already created – skipping');
+    return;
+  }
+
   let currentIndex = 0;
   const slides = track.children.length;
 
-  // Create dots dynamically based on number of slides/images
+  // Create exactly one dot per slide/image (runs only once)
   for (let i = 0; i < slides; i++) {
     const dot = document.createElement('span');
     dot.classList.add('dot');
