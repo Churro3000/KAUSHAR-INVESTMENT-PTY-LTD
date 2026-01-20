@@ -66,16 +66,19 @@
   </iframe>
 </section>
 
-    <!-- Latest Advertiser Section – embedded from Advert.html -->
+   <!-- Latest Advertiser Section – embedded from Advert.html -->
 <section class="latest-ads-section-wrapper" style="background-color: #FC6600; padding: 0; margin: 0;">
   <object 
     data="Advert.html" 
     type="text/html" 
     width="100%" 
-    height="520px" 
+    height="580px"  <!-- increased slightly to avoid cutoff – adjust if needed -->
     style="border: none; overflow: hidden; display: block;">
-    <!-- Fallback if object fails (very rare) -->
-    <p>Your browser does not support embedding this content. <a href="Advert.html">View Latest Advertiser</a></p>
+    <!-- Improved fallback link -->
+    <p style="text-align: center; padding: 40px 20px; color: #fff;">
+      Unable to load advertiser carousel. 
+      <a href="Advert.html" style="color: #000; font-weight: bold; text-decoration: underline;">View Latest Advertiser</a>
+    </p>
   </object>
 </section>
 
