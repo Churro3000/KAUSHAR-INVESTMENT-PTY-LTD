@@ -66,21 +66,38 @@
   </iframe>
 </section>
 
-   <!-- Latest Advertiser Section – embedded from Advert.html -->
-<section class="latest-ads-section-wrapper" style="background-color: #FC6600; padding: 0; margin: 0;">
-  <object 
-    data="Advert.html" 
-    type="text/html" 
-    width="100%" 
-    height="580px"  <!-- increased slightly to avoid cutoff – adjust if needed -->
-    style="border: none; overflow: hidden; display: block;">
-    <!-- Improved fallback link -->
-    <p style="text-align: center; padding: 40px 20px; color: #fff;">
-      Unable to load advertiser carousel. 
-      <a href="Advert.html" style="color: #000; font-weight: bold; text-decoration: underline;">View Latest Advertiser</a>
-    </p>
-  </object>
-</section>
+   <!-- Latest Advertiser Section – dynamically loaded -->
+<section id="ads-container" style="background-color: #FC6600; min-height: 500px; padding: 0; margin: 0;"></section>
+
+<script>
+  fetch('Advert.html')
+    .then(response => response.text())
+    .then(html => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      
+      // Extract only the <section> content (body minus head/script if needed)
+      const section = doc.querySelector('.latest-ads-section');
+      if (section) {
+        document.getElementById('ads-container').innerHTML = section.outerHTML;
+      } else {
+        document.getElementById('ads-container').innerHTML = '<p style="text-align:center;padding:40px;color:#fff;">Failed to load advertiser carousel. <a href="Advert.html" style="color:#000;">View here</a></p>';
+      }
+      
+      // Re-run any inline scripts if needed (rare, but safe)
+      const scripts = section.querySelectorAll('script');
+      scripts.forEach(oldScript => {
+        const newScript = document.createElement('script');
+        Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+        newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+        oldScript.parentNode.replaceChild(newScript, oldScript);
+      });
+    })
+    .catch(err => {
+      console.error('Failed to load Advert.html:', err);
+      document.getElementById('ads-container').innerHTML = '<p style="text-align:center;padding:40px;color:#fff;">Unable to load advertiser carousel. <a href="Advert.html" style="color:#000;">View Latest Advertiser</a></p>';
+    });
+</script>
 
     <!-- About Us / Location -->
     <div class="about-container">
