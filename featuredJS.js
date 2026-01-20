@@ -83,51 +83,63 @@ grid.addEventListener('touchstart', (e) => {
  touchCurrentX = touchStartX;
  startPosition = currentPosition;
  isSwiping = true;
- e.preventDefault(); // helps on some devices
-});
+}, { passive: true });
 
 grid.addEventListener('touchmove', (e) => {
  if (!isSwiping || window.innerWidth > 768) return;
  touchCurrentX = e.touches[0].clientX;
  
- // Live drag preview (makes swipe feel immediate and reliable)
+ // Live drag preview
  const diff = touchCurrentX - touchStartX;
  const newPos = startPosition + diff;
  
- // Clamp to valid range during drag
+ // Clamp during drag
  const max = getMaxPosition();
  currentPosition = Math.max(Math.min(newPos, 0), max);
  grid.style.transform = `translateX(${currentPosition}px)`;
- 
- e.preventDefault(); // prevents page scroll during swipe
-});
+ // NO e.preventDefault() here → allows vertical scroll / no freeze
+}, { passive: false }); // passive: false needed for smooth live drag on many devices
 
 grid.addEventListener('touchend', (e) => {
  if (!isSwiping || window.innerWidth > 768) return;
  isSwiping = false;
  
  const diff = touchStartX - touchCurrentX;
- const swipeThreshold = 60; // slightly higher threshold for reliability
+ const swipeThreshold = 60;
  
+ const slide = getSlideWidth();
+ let targetPosition = currentPosition;
+
  if (Math.abs(diff) > swipeThreshold) {
   if (diff > 0) {
-   // Swipe left → next
-   nextBtn.click();
+   // Swipe left → next (move left = more negative position)
+   targetPosition = currentPosition - slide;
   } else {
    // Swipe right → previous
-   prevBtn.click();
+   targetPosition = currentPosition + slide;
   }
- } else {
-  // Snap back to nearest position if swipe was too small
-  const slide = getSlideWidth();
-  const target = Math.round(currentPosition / slide) * slide;
-  currentPosition = Math.max(Math.min(target, 0), getMaxPosition());
-  grid.style.transform = `translateX(${currentPosition}px)`;
  }
+
+ // Clamp target to valid range
+ const max = getMaxPosition();
+ targetPosition = Math.max(Math.min(targetPosition, 0), max);
+
+ // Snap to nearest full card (improved rounding)
+ const snapped = Math.round(targetPosition / slide) * slide;
+ currentPosition = Math.max(Math.min(snapped, 0), max);
+
+ // Apply with smooth transition
+ grid.style.transition = 'transform 0.4s ease-out';
+ grid.style.transform = `translateX(${currentPosition}px)`;
+
+ // Reset transition after animation (for next drag)
+ setTimeout(() => {
+  grid.style.transition = 'transform 0.5s ease'; // match your original
+ }, 400);
 });
 
 // ==================== MODAL POPUP LOGIC ====================
-// Updated to match hardware.html version for better mobile display & consistency
+// (unchanged – your original code remains exactly as is)
 
 const modal = document.getElementById('productModal');
 const closeBtn = document.querySelector('.modal-close');
@@ -141,7 +153,7 @@ let currentIndex = 0;
 
 document.querySelectorAll('.product-card').forEach(card => {
  card.addEventListener('click', () => {
-  currentImages = JSON.parse(card.dataset.images); // hardware version doesn't use || '[]' — assumes data is clean
+  currentImages = JSON.parse(card.dataset.images);
   currentIndex = 0;
   modalTitle.textContent = card.dataset.title;
   modalDesc.textContent = card.dataset.desc;
