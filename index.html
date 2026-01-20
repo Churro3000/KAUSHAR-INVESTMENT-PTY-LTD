@@ -117,7 +117,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0,0,0,0.6); /* stays the same on hover */
     color: white;
     border: none;
     font-size: 1.6rem;
@@ -134,14 +134,21 @@
   .ad-prev { left: 15px; }
   .ad-next { right: 15px; }
   .ad-prev:hover, .ad-next:hover {
-    background-color: #ffffff;
-    color: #000;
+    background-color: rgba(0,0,0,0.6) !important; /* strict: no white change */
+    color: white !important;
     transform: translateY(-50%) scale(1.1);
   }
+
   @media (max-width: 768px) {
     .latest-ads-section { padding: 50px 15px; }
     .latest-ads-section h2 { font-size: 1.9rem; }
     .ad-slide img { max-width: 100%; }
+    .ad-prev, .ad-next {
+      font-size: 1.4rem;      /* slightly smaller on mobile */
+      width: 44px;
+      height: 44px;
+      line-height: 44px;
+    }
   }
 </style>
 
@@ -151,48 +158,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const track = document.getElementById('adsTrack');
   const prevBtn = document.getElementById('adPrev');
   const nextBtn = document.getElementById('adNext');
-
   if (!track || !prevBtn || !nextBtn) {
     console.warn('Advert carousel elements not found');
     return;
   }
-
   let currentIndex = 0;
   const slides = track.children.length;
-
   function updateCarousel() {
     track.style.transform = `translateX(-${currentIndex * 100}%)`;
   }
-
   nextBtn.addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % slides;
     updateCarousel();
   });
-
   prevBtn.addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + slides) % slides;
     updateCarousel();
   });
-
   // Mobile swipe
   let touchStartX = 0;
   let touchEndX = 0;
-
   track.addEventListener('touchstart', e => {
     touchStartX = e.changedTouches[0].screenX;
   }, { passive: true });
-
   track.addEventListener('touchend', e => {
     touchEndX = e.changedTouches[0].screenX;
     const diff = touchStartX - touchEndX;
     if (Math.abs(diff) > 60) {
-      currentIndex = diff > 0 
-        ? (currentIndex + 1) % slides 
+      currentIndex = diff > 0
+        ? (currentIndex + 1) % slides
         : (currentIndex - 1 + slides) % slides;
       updateCarousel();
     }
   }, { passive: true });
-
   updateCarousel(); // initial
 });
 </script>
