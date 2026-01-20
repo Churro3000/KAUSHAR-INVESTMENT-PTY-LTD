@@ -97,7 +97,6 @@ grid.addEventListener('touchmove', (e) => {
  const max = getMaxPosition();
  currentPosition = Math.max(Math.min(newPos, 0), max);
  grid.style.transform = `translateX(${currentPosition}px)`;
- 
  // NO e.preventDefault() here → vertical scroll works even on product area
 }, { passive: true }); // passive true is safe here since no preventDefault
 
@@ -141,7 +140,6 @@ grid.addEventListener('touchend', (e) => {
 
 // ==================== MODAL POPUP LOGIC ====================
 // (unchanged – your original code remains exactly as is)
-
 const modal = document.getElementById('productModal');
 const closeBtn = document.querySelector('.modal-close');
 const modalImg = document.getElementById('modalImage');
@@ -196,3 +194,26 @@ function updateModalImage() {
   dotsContainer.appendChild(dot);
  });
 }
+
+// ==================== WHATSAPP INQUIRE BUTTON HANDLER ====================
+// (added at the end – copy this whole block to other pages if needed)
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.buy-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+      // Find the product title in the same card
+      const productNameElement = button.closest('.product-info').querySelector('.product-name');
+      const productName = productNameElement ? productNameElement.textContent.trim() : 'this product';
+
+      // Your WhatsApp number (CHANGE THIS!)
+      const phoneNumber = '26777478877'; // e.g. '26771234567' – international format, no spaces/+ 
+
+      // Professional pre-filled message
+      const message = `Good day, I'd like to inquire about ${productName}`;
+      const encodedMessage = encodeURIComponent(message);
+
+      // Open WhatsApp in new tab
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+      window.open(whatsappUrl, '_blank');
+    });
+  });
+});
