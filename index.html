@@ -76,22 +76,22 @@
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, 'text/html');
       
-      // Extract only the <section> content (body minus head/script if needed)
+      // Extract the section content
       const section = doc.querySelector('.latest-ads-section');
       if (section) {
         document.getElementById('ads-container').innerHTML = section.outerHTML;
       } else {
         document.getElementById('ads-container').innerHTML = '<p style="text-align:center;padding:40px;color:#fff;">Failed to load advertiser carousel. <a href="Advert.html" style="color:#000;">View here</a></p>';
+        return;  // stop if no section
       }
       
-      // Re-run any inline scripts if needed (rare, but safe)
-      const scripts = section.querySelectorAll('script');
-      scripts.forEach(oldScript => {
+      // Extract and run the <script> from Advert.html (this makes dots, arrows, swipe work)
+      const fetchedScript = doc.querySelector('script');
+      if (fetchedScript) {
         const newScript = document.createElement('script');
-        Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
-        newScript.appendChild(document.createTextNode(oldScript.innerHTML));
-        oldScript.parentNode.replaceChild(newScript, oldScript);
-      });
+        newScript.textContent = fetchedScript.textContent;
+        document.body.appendChild(newScript);  // append to body to execute
+      }
     })
     .catch(err => {
       console.error('Failed to load Advert.html:', err);
