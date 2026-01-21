@@ -1,0 +1,127 @@
+<!-- Latest Advertiser Section -->
+<section class="latest-ads-section" style="background-color: #FC6600; padding: 60px 20px; text-align: center;">
+  <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 40px; margin-top: 30px;">Latest Advertiser</h2>
+ 
+  <div class="ads-carousel">
+    <div class="ads-track" id="adsTrack">
+      <div class="ad-slide"><img src="images.web/Camera_ad.png" alt="Advertiser 1"></div>
+      <div class="ad-slide"><img src="images.web/Controllers_ad.png" alt="Advertiser 2"></div>
+      <div class="ad-slide"><img src="images.web/Drone_ad.png" alt="Advertiser 3"></div>
+      <div class="ad-slide"><img src="images.web/Koosda_ad.png" alt="Advertiser 4"></div>
+      <div class="ad-slide"><img src="images.web/Tools_ad.png" alt="Advertiser 5"></div>
+      <div class="ad-slide"><img src="images.web/Generator_ad.png" alt="Advertiser 6"></div>
+      <div class="ad-slide"><img src="images.web/mixed_hardware_ad.png" alt="Advertiser 7"></div>
+      <div class="ad-slide"><img src="images.web/Camp-chairs_ad.png" alt="Advertiser 8"></div>
+    </div>
+    <button class="ad-prev" id="adPrev">&#10094;</button>
+    <button class="ad-next" id="adNext">&#10095;</button>
+  </div>
+</section>
+
+<style>
+  .ads-carousel {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .ads-track {
+    display: flex;
+    transition: transform 0.6s ease;
+  }
+  .ad-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    text-align: center;
+  }
+  .ad-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    max-width: 500px;
+    margin: 0 auto;
+    display: block;
+  }
+  .ad-prev, .ad-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.6); /* stays the same on hover */
+    color: white;
+    border: none;
+    font-size: 1.6rem;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.3s;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+  .ad-prev { left: 15px; }
+  .ad-next { right: 15px; }
+  .ad-prev:hover, .ad-next:hover {
+    background-color: rgba(0,0,0,0.6) !important; /* strict: no white change */
+    color: white !important;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    .latest-ads-section { padding: 50px 15px; }
+    .latest-ads-section h2 { font-size: 1.9rem; }
+    .ad-slide img { max-width: 100%; }
+    .ad-prev, .ad-next {
+      font-size: 1.4rem;      /* slightly smaller on mobile */
+      width: 44px;
+      height: 44px;
+      line-height: 44px;
+    }
+  }
+</style>
+
+<script>
+// Advert Carousel Logic – no dots
+document.addEventListener('DOMContentLoaded', () => {
+  const track = document.getElementById('adsTrack');
+  const prevBtn = document.getElementById('adPrev');
+  const nextBtn = document.getElementById('adNext');
+  if (!track || !prevBtn || !nextBtn) {
+    console.warn('Advert carousel elements not found');
+    return;
+  }
+  let currentIndex = 0;
+  const slides = track.children.length;
+  function updateCarousel() {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % slides;
+    updateCarousel();
+  });
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + slides) % slides;
+    updateCarousel();
+  });
+  // Mobile swipe
+  let touchStartX = 0;
+  let touchEndX = 0;
+  track.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  track.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 60) {
+      currentIndex = diff > 0
+        ? (currentIndex + 1) % slides
+        : (currentIndex - 1 + slides) % slides;
+      updateCarousel();
+    }
+  }, { passive: true });
+  updateCarousel(); // initial
+});
+</script>
+<!-- END Latest Advertiser Section -->
