@@ -311,6 +311,52 @@
         dotsContainer.appendChild(dot);
       });
     }
+
+    // ==================== WHATSAPP INQUIRE BUTTON HANDLER ====================
+// Works for main page "Inquire Now" AND modal popup "Inquire Now"
+document.addEventListener('DOMContentLoaded', () => {
+  const phoneNumber = '26777478877'; // ← your number – confirm it's correct
+
+  const handleInquireClick = (button) => {
+    let productName = 'this product';
+
+    // From main card
+    const productInfo = button.closest('.product-info');
+    if (productInfo) {
+      const nameElem = productInfo.querySelector('.product-name');
+      if (nameElem) productName = nameElem.textContent.trim();
+    }
+
+    // Fallback from modal title (when clicked inside popup)
+    const modalTitleElem = document.getElementById('modalTitle');
+    if (modalTitleElem && modalTitleElem.textContent.trim()) {
+      productName = modalTitleElem.textContent.trim();
+    }
+
+    const message = `Good day, I'd like to inquire about ${productName}`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    window.open(whatsappUrl, '_blank');
+  };
+
+  // Attach to all existing Inquire buttons
+  const attachListeners = () => {
+    document.querySelectorAll('.buy-btn').forEach(btn => {
+      btn.removeEventListener('click', handleInquireClick); // prevent duplicates
+      btn.addEventListener('click', () => handleInquireClick(btn));
+    });
+  };
+
+  attachListeners();
+
+  // Watch for modal opening (since modal loads dynamically)
+  const modal = document.getElementById('productModal');
+  if (modal) {
+    const observer = new MutationObserver(attachListeners);
+    observer.observe(modal, { childList: true, subtree: true });
+  }
+});
   </script>
 </body>
 </html>
