@@ -33,6 +33,7 @@
       /* Keep price visible but slightly smaller */
       .product-price { font-size: 1.1rem; margin-bottom: 0; }
       .product-info { padding: 15px; }
+      .product-name { font-size: 1.25rem; } /* slightly smaller title on mobile */
     }
     @media (max-width:480px) {
       .product-name { font-size:1.2rem; }
@@ -125,7 +126,12 @@
 
     .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
     .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
-    .modal-price { font-size: 2rem; color: #FC6600; font-weight: bold; margin-bottom: 25px; }
+    .modal-price { 
+      font-size: 2rem; 
+      color: #FC6600 !important; /* strict: always orange in modal */
+      font-weight: bold; 
+      margin-bottom: 25px; 
+    }
 
     /* Ensure Inquire button is visible in modal */
     .modal-details .buy-btn {
