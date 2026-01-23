@@ -25,16 +25,356 @@
     .back-btn:hover { background:#000; }
 
     @media (max-width:1200px) { .products-grid { grid-template-columns:repeat(3,1fr); } }
-    @media (max-width:768px) { 
-      .products-grid { grid-template-columns:repeat(2,1fr); gap:20px; padding:0 15px 50px; } 
+    @media (max-width:768px) {
+      .products-grid { grid-template-columns:repeat(2,1fr); gap:20px; padding:0 15px 50px; }
       .category-title { font-size:2rem; margin:50px 15px 40px; }
       /* MOBILE ONLY: Hide description & Inquire button in grid view */
       .product-desc, .buy-btn { display: none; }
-      /* Keep price visible for quick view */
-      .product-price { margin-bottom: 0; }
+      /* Keep price visible but slightly smaller */
+      .product-price { font-size: 1.18rem; margin-bottom: 0; }
       .product-info { padding: 15px; }
     }
-    @media (max-width:480px) { 
+    @media (max-width:480px) {
+      .product-name { font-size:1.2rem; }
+      .product-price { font-size: 1.1rem; } /* even smaller on very small screens */
+    }
+
+    /* ==================== MODAL POPUP ==================== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+
+    .modal-content {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 1000px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      padding: 30px;
+    }
+
+    /* Close button */
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 2.4rem;
+      background: rgba(255,255,255,0.9);
+      border: none;
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      line-height: 42px;
+      text-align: center;
+      cursor: pointer;
+      color: #333;
+      font-weight: bold;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      color: #000;
+      background: #fff;
+      transform: scale(1.1);
+    }
+
+    .modal-image-section { position: relative; }
+    .modal-main-image { width: 100%; aspect-ratio: 1/1; object-fit: contain; background: #f9f9f9; border-radius: 12px; }
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      width: 50px;
+      height: 50px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    .modal-prev { left: 10px; }
+    .modal-next { right: 10px; }
+
+    .modal-dots { text-align: center; margin-top: 15px; }
+    .modal-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #bbb;
+      border-radius: 50%;
+      margin: 0 6px;
+      cursor: pointer;
+    }
+    .modal-dot.active { background: #FC6600; }
+
+    .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
+    .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
+    .modal-price { font-size: 2rem; color: #FC6600; font-weight: bold; margin-bottom: 25px; }
+
+    /* Ensure Inquire button is visible in modal */
+    .modal-details .buy-btn {
+      display: block !important;
+      margin-top: 20px;
+    }
+
+    /* Mobile adjustments - smaller circle on mobile */
+    @media (max-width: 768px) {
+      .modal-content {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+      .modal-details h3 { font-size: 1.7rem; }
+
+      .modal-close {
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+        font-size: 2.8rem;
+        top: 10px;
+        right: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
+      <nav class="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="inquire.html">Inquire</a>
+        <a href="Advert.html">Advertiser</a>
+        <a href="about.html">About Us</a>
+        <a href="policy.html">Policy</a>
+      </nav>
+      <div class="hamburger" onclick="toggleMobileMenu()">&#9776;</div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="inquire.html">Inquire</a>
+      <a href="Advert.html">Advertiser</a>
+      <a href="about.html">About Us</a>
+      <a href="policy.html">Policy</a>
+    </div>
+  </header>
+
+  <h1 class="category-title">Hardware</h1>
+
+  <section class="products-grid">
+
+    <!-- PRODUCT 1 -->
+    <div class="product-card" 
+         data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+         data-title="Heavy Duty Power Drill"
+         data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+         data-price="P 1,250.00">
+      <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
+      <div class="product-info">
+        <h3 class="product-name">Heavy Duty Power Drill</h3>
+        <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
+        <p class="product-price">P 1,250.00</p>
+        <button class="buy-btn">Inquire Now</button>
+      </div>
+    </div>
+
+    <!-- PRODUCT 2 -->
+    <div class="product-card"
+         data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
+         data-title="150-Piece Tool Kit"
+         data-desc="Complete mechanic and home repair set including sockets, wrenches, screwdrivers, pliers, hammer, tape measure, and more. All tools made from chrome vanadium steel. Comes in a sturdy blow-molded case."
+         data-price="P 2,800.00">
+      <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
+      <div class="product-info">
+        <h3 class="product-name">150-Piece Tool Kit</h3>
+        <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
+        <p class="product-price">P 2,800.00</p>
+        <button class="buy-btn">Inquire Now</button>
+      </div>
+    </div>
+
+    <!-- PRODUCT 3 -->
+    <div class="product-card"
+         data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
+         data-title="150-Piece Tool Kit"
+         data-desc="Complete mechanic and home repair set including sockets, wrenches, screwdrivers, pliers, hammer, tape measure, and more. All tools made from chrome vanadium steel. Comes in a sturdy blow-molded case."
+         data-price="P 2,800.00">
+      <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
+      <div class="product-info">
+        <h3 class="product-name">150-Piece Tool Kit</h3>
+        <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
+        <p class="product-price">P 2,800.00</p>
+        <button class="buy-btn">Inquire Now</button>
+      </div>
+    </div>
+
+    <!-- PRODUCT 4 -->
+    <div class="product-card"
+         data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
+         data-title="150-Piece Tool Kit"
+         data-desc="Complete mechanic and home repair set including sockets, wrenches, screwdrivers, pliers, hammer, tape measure, and more. All tools made from chrome vanadium steel. Comes in a sturdy blow-molded case."
+         data-price="P 2,800.00">
+      <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
+      <div class="product-info">
+        <h3 class="product-name">150-Piece Tool Kit</h3>
+        <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
+        <p class="product-price">P 2,800.00</p>
+        <button class="buy-btn">Inquire Now</button>
+      </div>
+    </div>
+
+    <!-- Add more products here -->
+
+  </section>
+
+  <a href="index.html" class="back-btn">← Back to Home</a>
+
+  <footer>
+    <p>© 2026 Your Company Name. All rights reserved.</p>
+  </footer>
+
+  <!-- MODAL (shared) -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+
+      <div class="modal-image-section">
+        <img src="" alt="Product" class="modal-main-image" id="modalImage">
+        <button class="modal-nav modal-prev">&#10094;</button>
+        <button class="modal-nav modal-next">&#10095;</button>
+        <div class="modal-dots" id="modalDots"></div>
+      </div>
+
+      <div class="modal-details">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+        <p class="modal-price" id="modalPrice"></p>
+        <button class="buy-btn">Inquire Now</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+    // Product Modal Logic
+    const modal = document.getElementById('productModal');
+    const closeBtn = document.querySelector('.modal-close');
+    const modalImg = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalPrice = document.getElementById('modalPrice');
+    const dotsContainer = document.getElementById('modalDots');
+    let currentImages = [];
+    let currentIndex = 0;
+
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.addEventListener('click', () => {
+        currentImages = JSON.parse(card.dataset.images);
+        currentIndex = 0;
+
+        modalTitle.textContent = card.dataset.title;
+        modalDesc.textContent = card.dataset.desc;
+        modalPrice.textContent = card.dataset.price;
+        updateModalImage();
+
+        modal.classList.add('active');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+    modal.addEventListener('click', e => {
+      if (e.target === modal) modal.classList.remove('active');
+    });
+
+    document.querySelector('.modal-prev').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+      updateModalImage();
+    });
+
+    document.querySelector('.modal-next').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      updateModalImage();
+    });
+
+    function updateModalImage() {
+      modalImg.src = currentImages[currentIndex];
+      dotsContainer.innerHTML = '';
+      currentImages.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.classList.add('modal-dot');
+        if (i === currentIndex) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+          currentIndex = i;
+          updateModalImage();
+        });
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    // ==================== WHATSAPP INQUIRE BUTTON HANDLER ====================
+    document.addEventListener('DOMContentLoaded', () => {
+      const phoneNumber = '26777478877';
+
+      const handleInquireClick = (button) => {
+        let productName = 'this product';
+
+        // From main card
+        const productInfo = button.closest('.product-info');
+        if (productInfo) {
+          const nameElem = productInfo.querySelector('.product-name');
+          if (nameElem) productName = nameElem.textContent.trim();
+        }
+
+        // Fallback from modal title
+        const modalTitleElem = document.getElementById('modalTitle');
+        if (modalTitleElem && modalTitleElem.textContent.trim()) {
+          productName = modalTitleElem.textContent.trim();
+        }
+
+        const message = `Good day, I'd like to inquire about ${productName}`;
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+        window.open(whatsappUrl, '_blank');
+      };
+
+      const attachListeners = () => {
+        document.querySelectorAll('.buy-btn').forEach(btn => {
+          btn.removeEventListener('click', handleInquireClick);
+          btn.addEventListener('click', () => handleInquireClick(btn));
+        });
+      };
+
+      attachListeners();
+
+      const modal = document.getElementById('productModal');
+      if (modal) {
+        const observer = new MutationObserver(attachListeners);
+        observer.observe(modal, { childList: true, subtree: true });
+      }
+    });
+  </script>
+</body>
+</html>    @media (max-width:480px) { 
       .product-name{font-size:1.2rem;} 
     }
 
