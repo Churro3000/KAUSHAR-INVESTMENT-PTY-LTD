@@ -25,8 +25,18 @@
     .back-btn:hover { background:#000; }
 
     @media (max-width:1200px) { .products-grid { grid-template-columns:repeat(3,1fr); } }
-    @media (max-width:768px) { .products-grid { grid-template-columns:repeat(2,1fr); gap:20px; padding:0 15px 50px; } .category-title { font-size:2rem; margin:50px 15px 40px; } }
-    @media (max-width:480px) { .product-name{font-size:1.2rem;} .product-desc{font-size:0.9rem;} .product-price{font-size:1.2rem;} }
+    @media (max-width:768px) { 
+      .products-grid { grid-template-columns:repeat(2,1fr); gap:20px; padding:0 15px 50px; } 
+      .category-title { font-size:2rem; margin:50px 15px 40px; }
+      /* MOBILE ONLY: Hide description & Inquire button in grid view */
+      .product-desc, .buy-btn { display: none; }
+      /* Keep price visible for quick view */
+      .product-price { margin-bottom: 0; }
+      .product-info { padding: 15px; }
+    }
+    @media (max-width:480px) { 
+      .product-name{font-size:1.2rem;} 
+    }
 
     /* ==================== MODAL POPUP ==================== */
     .modal-overlay {
@@ -125,10 +135,10 @@
       .modal-details h3 { font-size: 1.7rem; }
 
       .modal-close {
-        width: 48px;           /* Smaller circle on mobile */
+        width: 48px; /* Smaller circle on mobile */
         height: 48px;
         line-height: 48px;
-        font-size: 2.8rem;     /* Slightly smaller X symbol to fit */
+        font-size: 2.8rem; /* Slightly smaller X symbol to fit */
         top: 10px;
         right: 10px;
       }
@@ -153,10 +163,10 @@
     <div class="mobile-menu" id="mobileMenu">
       <a href="index.html">Home</a>
       <a href="products.html">Products</a>
-        <a href="inquire.html">Inquire</a>
-        <a href="Advert.html">Advertiser</a>
-        <a href="about.html">About Us</a>
-        <a href="policy.html">Policy</a>
+      <a href="inquire.html">Inquire</a>
+      <a href="Advert.html">Advertiser</a>
+      <a href="about.html">About Us</a>
+      <a href="policy.html">Policy</a>
     </div>
   </header>
 
@@ -292,6 +302,7 @@
       currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
       updateModalImage();
     });
+
     document.querySelector('.modal-next').addEventListener('click', () => {
       currentIndex = (currentIndex + 1) % currentImages.length;
       updateModalImage();
@@ -313,50 +324,50 @@
     }
 
     // ==================== WHATSAPP INQUIRE BUTTON HANDLER ====================
-// Works for main page "Inquire Now" AND modal popup "Inquire Now"
-document.addEventListener('DOMContentLoaded', () => {
-  const phoneNumber = '26777478877'; // ← your number – confirm it's correct
+    // Works for main page "Inquire Now" AND modal popup "Inquire Now"
+    document.addEventListener('DOMContentLoaded', () => {
+      const phoneNumber = '26777478877'; // ← your number – confirm it's correct
 
-  const handleInquireClick = (button) => {
-    let productName = 'this product';
+      const handleInquireClick = (button) => {
+        let productName = 'this product';
 
-    // From main card
-    const productInfo = button.closest('.product-info');
-    if (productInfo) {
-      const nameElem = productInfo.querySelector('.product-name');
-      if (nameElem) productName = nameElem.textContent.trim();
-    }
+        // From main card
+        const productInfo = button.closest('.product-info');
+        if (productInfo) {
+          const nameElem = productInfo.querySelector('.product-name');
+          if (nameElem) productName = nameElem.textContent.trim();
+        }
 
-    // Fallback from modal title (when clicked inside popup)
-    const modalTitleElem = document.getElementById('modalTitle');
-    if (modalTitleElem && modalTitleElem.textContent.trim()) {
-      productName = modalTitleElem.textContent.trim();
-    }
+        // Fallback from modal title (when clicked inside popup)
+        const modalTitleElem = document.getElementById('modalTitle');
+        if (modalTitleElem && modalTitleElem.textContent.trim()) {
+          productName = modalTitleElem.textContent.trim();
+        }
 
-    const message = `Good day, I'd like to inquire about ${productName}`;
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        const message = `Good day, I'd like to inquire about ${productName}`;
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-    window.open(whatsappUrl, '_blank');
-  };
+        window.open(whatsappUrl, '_blank');
+      };
 
-  // Attach to all existing Inquire buttons
-  const attachListeners = () => {
-    document.querySelectorAll('.buy-btn').forEach(btn => {
-      btn.removeEventListener('click', handleInquireClick); // prevent duplicates
-      btn.addEventListener('click', () => handleInquireClick(btn));
+      // Attach to all existing Inquire buttons
+      const attachListeners = () => {
+        document.querySelectorAll('.buy-btn').forEach(btn => {
+          btn.removeEventListener('click', handleInquireClick); // prevent duplicates
+          btn.addEventListener('click', () => handleInquireClick(btn));
+        });
+      };
+
+      attachListeners();
+
+      // Watch for modal opening (since modal loads dynamically)
+      const modal = document.getElementById('productModal');
+      if (modal) {
+        const observer = new MutationObserver(attachListeners);
+        observer.observe(modal, { childList: true, subtree: true });
+      }
     });
-  };
-
-  attachListeners();
-
-  // Watch for modal opening (since modal loads dynamically)
-  const modal = document.getElementById('productModal');
-  if (modal) {
-    const observer = new MutationObserver(attachListeners);
-    observer.observe(modal, { childList: true, subtree: true });
-  }
-});
   </script>
 </body>
 </html>
