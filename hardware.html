@@ -23,7 +23,6 @@
     .buy-btn:hover { background:#FC6600; }
     .back-btn { display:block; width:fit-content; margin:40px auto 60px; padding:12px 30px; background:#808080; color:#fff; text-decoration:none; border-radius:6px; font-weight:bold; transition:0.3s; }
     .back-btn:hover { background:#000; }
-
     @media (max-width:1200px) { .products-grid { grid-template-columns:repeat(3,1fr); } }
     @media (max-width:768px) {
       .products-grid { grid-template-columns:repeat(2,1fr); gap:20px; padding:0 15px 50px; }
@@ -33,13 +32,16 @@
       /* Keep price visible but slightly smaller */
       .product-price { font-size: 1.1rem; margin-bottom: 0; }
       .product-info { padding: 15px; }
-      .product-name { font-size: 1.25rem; } /* slightly smaller title on mobile */
+      .product-name { 
+        font-size: 1.2rem; /* slightly smaller title on mobile */
+        font-family: 'Helvetica Neue', Arial, sans-serif; /* professional, clean font */
+        font-weight: 700; /* a bit bolder for nice look */
+      }
     }
     @media (max-width:480px) {
-      .product-name { font-size:1.2rem; }
-      .product-price { font-size: 1.05rem; } /* even smaller on very small screens */
+      .product-name { font-size: 1.15rem; } /* even smaller on very small screens */
+      .product-price { font-size: 1.05rem; }
     }
-
     /* ==================== MODAL POPUP ==================== */
     .modal-overlay {
       display: none;
@@ -52,7 +54,6 @@
       padding: 20px;
     }
     .modal-overlay.active { display: flex; }
-
     .modal-content {
       background: #fff;
       border-radius: 16px;
@@ -66,7 +67,6 @@
       gap: 30px;
       padding: 30px;
     }
-
     /* Close button */
     .modal-close {
       position: absolute;
@@ -87,13 +87,11 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
       transition: all 0.2s;
     }
-
     .modal-close:hover {
       color: #000;
       background: #fff;
       transform: scale(1.1);
     }
-
     .modal-image-section { position: relative; }
     .modal-main-image { width: 100%; aspect-ratio: 1/1; object-fit: contain; background: #f9f9f9; border-radius: 12px; }
     .modal-nav {
@@ -111,7 +109,6 @@
     }
     .modal-prev { left: 10px; }
     .modal-next { right: 10px; }
-
     .modal-dots { text-align: center; margin-top: 15px; }
     .modal-dot {
       display: inline-block;
@@ -123,7 +120,6 @@
       cursor: pointer;
     }
     .modal-dot.active { background: #FC6600; }
-
     .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
     .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
     .modal-price { 
@@ -132,13 +128,11 @@
       font-weight: bold; 
       margin-bottom: 25px; 
     }
-
     /* Ensure Inquire button is visible in modal */
     .modal-details .buy-btn {
       display: block !important;
       margin-top: 20px;
     }
-
     /* Mobile adjustments - smaller circle on mobile */
     @media (max-width: 768px) {
       .modal-content {
@@ -146,7 +140,6 @@
         padding: 20px;
       }
       .modal-details h3 { font-size: 1.7rem; }
-
       .modal-close {
         width: 48px;
         height: 48px;
