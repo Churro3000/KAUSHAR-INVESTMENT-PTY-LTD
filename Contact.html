@@ -13,7 +13,7 @@
       color: #ffffff;
     }
     .contact-follow-container {
-      padding: 40px 20px;
+      padding: 30px 20px; /* reduced top/bottom for even spacing */
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -123,20 +123,27 @@
       }
     }
 
-    /* Mobile-only adjustments */
+    /* Mobile adjustments only */
     @media (max-width: 768px) {
-      /* Remove the "Reach out to us..." paragraph text */
-      .contact-block p { display: none; }
-
-      /* Make WhatsApp button slightly smaller so text doesn't wrap */
+      /* Remove the small descriptive text on mobile */
+      .contact-block p, .follow-block p {
+        display: none;
+      }
+      /* Make WhatsApp button slightly smaller so text fits in one line */
       .whatsapp-btn {
-        font-size: 1.05rem;
+        font-size: 1rem;
         padding: 12px 28px;
-        gap: 10px;
       }
       .whatsapp-logo {
         width: 24px;
         height: 24px;
+      }
+      /* Slightly tighter overall spacing */
+      .contact-follow-container {
+        padding: 30px 15px;
+      }
+      .contact-follow-wrapper {
+        gap: 40px;
       }
     }
   </style>
