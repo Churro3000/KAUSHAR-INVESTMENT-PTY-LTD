@@ -122,6 +122,23 @@
         justify-content: flex-start;
       }
     }
+
+    /* Mobile-only adjustments */
+    @media (max-width: 768px) {
+      /* Remove the "Reach out to us..." paragraph text */
+      .contact-block p { display: none; }
+
+      /* Make WhatsApp button slightly smaller so text doesn't wrap */
+      .whatsapp-btn {
+        font-size: 1.05rem;
+        padding: 12px 28px;
+        gap: 10px;
+      }
+      .whatsapp-logo {
+        width: 24px;
+        height: 24px;
+      }
+    }
   </style>
 </head>
 <body>
