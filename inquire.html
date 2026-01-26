@@ -6,12 +6,183 @@
   <title>Contact & Follow Us</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    .contact-follow-container {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2.section-title {
+      font-size: 2rem;
+      margin: 0 0 30px;
+      text-align: center;
+      color: #FC6600;
+      font-weight: bold;
+    }
+
+    .contact-follow-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      text-align: center;
+    }
+
+    .contact-block p, .follow-block p {
+      font-size: 1.1rem;
+      margin: 0 0 25px;
+      color: #444444;
+    }
+
+    /* WhatsApp button */
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background-color: #25D366;
+      color: white;
+      font-weight: 600;
+      font-size: 1.15rem;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #20b858;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+    }
+
+    .whatsapp-logo {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* Social buttons */
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 12px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      color: white;
+    }
+
+    .facebook-btn {
+      background: linear-gradient(135deg, #3b5998, #192f6a);
+    }
+    .facebook-btn:hover {
+      background: linear-gradient(135deg, #2a4373, #0f1e45);
+      transform: translateY(-2px);
+    }
+
+    .instagram-btn {
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+    .instagram-btn:hover {
+      background: linear-gradient(135deg, #d9822e, #d15c34, #c5203c, #b71e5c, #a81578);
+      transform: translateY(-2px);
+    }
+
+    .social-logo {
+      width: 26px;
+      height: 26px;
+    }
+
+    /* Desktop: side-by-side layout */
+    @media (min-width: 769px) {
+      .contact-follow-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 60px;
+      }
+      .contact-block, .follow-block {
+        flex: 1;
+        text-align: left;
+      }
+      h2.section-title {
+        text-align: left;
+      }
+      .social-buttons {
+        justify-content: flex-start;
+      }
+      .contact-follow-container {
+        padding: 80px 20px;
+      }
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .contact-block p, .follow-block p {
+        display: none;
+      }
+      .whatsapp-btn {
+        font-size: 1rem;
+        padding: 12px 28px;
+      }
+      .whatsapp-logo {
+        width: 24px;
+        height: 24px;
+      }
+      .contact-follow-container {
+        padding: 40px 15px;
+      }
+      .contact-follow-wrapper {
+        gap: 50px;
+      }
+    }
+
+    /* Footer links */
+    .footer-links {
+      text-align: center;
+      margin: 60px 0 40px;
+      font-size: 0.9rem;
+      color: #555555;
+      font-weight: normal;
+    }
+
+    .footer-links a {
+      color: #555555;
+      text-decoration: none;
+      margin: 0 15px;
+    }
+
+    .footer-links a:hover {
+      color: #FC6600;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
+
   <header>
     <div class="header-container">
-      <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
+      <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo" style="height: 60px;">
       <nav class="nav-menu">
+        <a href="index.html">Home</a>
         <a href="products.html">Products</a>
         <a href="inquire.html">Contact Us</a>
         <a href="Advert.html">Advertiser</a>
@@ -21,6 +192,7 @@
       <div class="hamburger" onclick="toggleMobileMenu()">&#9776;</div>
     </div>
     <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
       <a href="products.html">Products</a>
       <a href="inquire.html">Contact Us</a>
       <a href="Advert.html">Advertiser</a>
@@ -60,7 +232,7 @@
 
     </div>
 
-    <!-- Small footer links – professional order, non-bold, light grey -->
+    <!-- Small footer links -->
     <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="products.html">Products</a>
@@ -72,9 +244,8 @@
 
   </div>
 
-  <!-- Script moved inside body – fixes GitHub validation error -->
+  <!-- Script for links -->
   <script>
-    // Replace these placeholders with your real links/numbers
     document.getElementById('whatsappLink').href = 'https://wa.me/26777478877?text=Good%20day%2C%20I%27d%20like%20to%20get%20in%20touch';
     document.getElementById('facebookLink').href = 'https://facebook.com/YOURPAGE';
     document.getElementById('instagramLink').href = 'https://instagram.com/YOURHANDLE';
@@ -86,30 +257,16 @@
 
   <script src="script.js"></script>
 
-  <!-- ================================================= -->
-  <!-- Fast loading boost – paste this at bottom of every page -->
-  <!-- ================================================= -->
-
+  <!-- Fast loading boost -->
   <script>
-    // 1. Tell browser to lazy-load images that are not yet visible (most images)
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('img:not([loading])').forEach(img => {
-        if (!img.hasAttribute('loading')) {
-          img.setAttribute('loading', 'lazy');
-        }
-        // Add decoding="async" if missing (faster image decoding)
-        if (!img.hasAttribute('decoding')) {
-          img.setAttribute('decoding', 'async');
-        }
+        if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
+        if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
       });
     });
 
-    // 2. Preconnect to important domains you use (fonts, images, etc.)
-    const preconnects = [
-      'https://fonts.googleapis.com',
-      'https://fonts.gstatic.com',
-      'https://upload.wikimedia.org'
-    ];
+    const preconnects = ['https://fonts.googleapis.com', 'https://fonts.gstatic.com', 'https://upload.wikimedia.org'];
     preconnects.forEach(domain => {
       const link = document.createElement('link');
       link.rel = 'preconnect';
@@ -118,7 +275,6 @@
       document.head.appendChild(link);
     });
 
-    // 3. Smooth scrolling
     document.documentElement.style.scrollBehavior = 'smooth';
   </script>
 
