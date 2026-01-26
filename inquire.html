@@ -1,1 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact & Follow Us</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
+      <nav class="nav-menu">
+        <a href="products.html">Products</a>
+        <a href="inquire.html">Contact Us</a>
+        <a href="Advert.html">Advertiser</a>
+        <a href="about.html">About Us</a>
+        <a href="policy.html">Policy</a>
+      </nav>
+      <div class="hamburger" onclick="toggleMobileMenu()">&#9776;</div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="products.html">Products</a>
+      <a href="inquire.html">Contact Us</a>
+      <a href="Advert.html">Advertiser</a>
+      <a href="about.html">About Us</a>
+      <a href="policy.html">Policy</a>
+    </div>
+  </header>
 
+  <div class="contact-follow-container">
+    
+    <div class="contact-follow-wrapper">
+
+      <!-- Contact Us -->
+      <div class="contact-block">
+        <h2 class="section-title">Contact Us</h2>
+        <a href="#" class="whatsapp-btn" id="whatsappLink">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-logo">
+          Message us on WhatsApp
+        </a>
+      </div>
+
+      <!-- Follow Us -->
+      <div class="follow-block">
+        <h2 class="section-title">Follow Us</h2>
+        <p>Stay updated with our latest products and offers</p>
+        <div class="social-buttons">
+          <a href="#" class="social-btn facebook-btn" id="facebookLink">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="social-logo">
+            Facebook
+          </a>
+          <a href="#" class="social-btn instagram-btn" id="instagramLink">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="social-logo">
+            Instagram
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Small footer links – professional order, non-bold, light grey -->
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="inquire.html">Contact Us</a>
+      <a href="Advert.html">Advertiser</a>
+      <a href="about.html">About Us</a>
+      <a href="policy.html">Policy</a>
+    </div>
+
+  </div>
+
+  <!-- Script moved inside body – fixes GitHub validation error -->
+  <script>
+    // Replace these placeholders with your real links/numbers
+    document.getElementById('whatsappLink').href = 'https://wa.me/26777478877?text=Good%20day%2C%20I%27d%20like%20to%20get%20in%20touch';
+    document.getElementById('facebookLink').href = 'https://facebook.com/YOURPAGE';
+    document.getElementById('instagramLink').href = 'https://instagram.com/YOURHANDLE';
+  </script>
+
+  <footer>
+    <p>© 2026 Your Company Name. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <!-- ================================================= -->
+  <!-- Fast loading boost – paste this at bottom of every page -->
+  <!-- ================================================= -->
+
+  <script>
+    // 1. Tell browser to lazy-load images that are not yet visible (most images)
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('img:not([loading])').forEach(img => {
+        if (!img.hasAttribute('loading')) {
+          img.setAttribute('loading', 'lazy');
+        }
+        // Add decoding="async" if missing (faster image decoding)
+        if (!img.hasAttribute('decoding')) {
+          img.setAttribute('decoding', 'async');
+        }
+      });
+    });
+
+    // 2. Preconnect to important domains you use (fonts, images, etc.)
+    const preconnects = [
+      'https://fonts.googleapis.com',
+      'https://fonts.gstatic.com',
+      'https://upload.wikimedia.org'
+    ];
+    preconnects.forEach(domain => {
+      const link = document.createElement('link');
+      link.rel = 'preconnect';
+      link.href = domain;
+      link.crossOrigin = 'anonymous';
+      document.head.appendChild(link);
+    });
+
+    // 3. Smooth scrolling
+    document.documentElement.style.scrollBehavior = 'smooth';
+  </script>
+
+</body>
+</html>
