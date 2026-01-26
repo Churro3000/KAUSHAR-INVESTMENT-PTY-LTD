@@ -71,36 +71,34 @@
 <section class="latest-ads-section" style="background-color: #FC6600; padding: 60px 20px; text-align: center;">
   <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 40px; margin-top: 30px;">Latest Advertiser</h2>
   
-  <!-- Wrapper – space for arrows on desktop -->
-  <div class="ads-carousel-wrapper">
-    <div class="ads-carousel">
-      <div class="ads-track" id="adsTrack">
-        <div class="ad-slide"><img src="images.web/Camera_ad.png" alt="Advertiser 1"></div>
-        <div class="ad-slide"><img src="images.web/Controllers_ad.png" alt="Advertiser 2"></div>
-        <div class="ad-slide"><img src="images.web/Drone_ad.png" alt="Advertiser 3"></div>
-        <div class="ad-slide"><img src="images.web/Koosda_ad.png" alt="Advertiser 4"></div>
-        <div class="ad-slide"><img src="images.web/Tools_ad.png" alt="Advertiser 5"></div>
-        <div class="ad-slide"><img src="images.web/Generator_ad.png" alt="Advertiser 6"></div>
-        <div class="ad-slide"><img src="images.web/mixed_hardware_ad.png" alt="Advertiser 7"></div>
-        <div class="ad-slide"><img src="images.web/Camp-chairs_ad.png" alt="Advertiser 8"></div>
-      </div>
-      <button class="ad-prev" id="adPrev">&#10094;</button>
-      <button class="ad-next" id="adNext">&#10095;</button>
+  <div class="ads-carousel">
+    <div class="ads-track" id="adsTrack">
+      <div class="ad-slide"><img src="images.web/Camera_ad.png" alt="Advertiser 1"></div>
+      <div class="ad-slide"><img src="images.web/Controllers_ad.png" alt="Advertiser 2"></div>
+      <div class="ad-slide"><img src="images.web/Drone_ad.png" alt="Advertiser 3"></div>
+      <div class="ad-slide"><img src="images.web/Koosda_ad.png" alt="Advertiser 4"></div>
+      <div class="ad-slide"><img src="images.web/Tools_ad.png" alt="Advertiser 5"></div>
+      <div class="ad-slide"><img src="images.web/Generator_ad.png" alt="Advertiser 6"></div>
+      <div class="ad-slide"><img src="images.web/mixed_hardware_ad.png" alt="Advertiser 7"></div>
+      <div class="ad-slide"><img src="images.web/Camp-chairs_ad.png" alt="Advertiser 8"></div>
     </div>
+
+    <!-- Original arrows – keep for mobile -->
+    <button class="ad-prev" id="adPrev">&#10094;</button>
+    <button class="ad-next" id="adNext">&#10095;</button>
+
+    <!-- New desktop arrows – positioned outside on orange background -->
+    <button class="ad-prev-desktop">&#10094;</button>
+    <button class="ad-next-desktop">&#10095;</button>
   </div>
 </section>
 
 <style>
-  /* Wrapper – space for arrows on desktop */
-  .ads-carousel-wrapper {
+  .ads-carousel {
     position: relative;
     max-width: 900px;
     margin: 0 auto;
-  }
-
-  .ads-carousel {
-    position: relative;
-    overflow: hidden; /* clips sliding images only */
+    overflow: hidden;
   }
   .ads-track {
     display: flex;
@@ -120,7 +118,10 @@
     margin: 0 auto;
     display: block;
   }
-  .ad-prev, .ad-next {
+
+  /* Shared arrow styling (used by both original and new desktop arrows) */
+  .ad-prev, .ad-next,
+  .ad-prev-desktop, .ad-next-desktop {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -137,20 +138,30 @@
     transition: all 0.3s;
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
   }
-  .ad-prev { left: 15px; }
-  .ad-next { right: 15px; }
-  .ad-prev:hover, .ad-next:hover {
-    background-color: rgba(0,0,0,0.6) !important;
-    color: white !important;
+  .ad-prev:hover, .ad-next:hover,
+  .ad-prev-desktop:hover, .ad-next-desktop:hover {
+    background-color: rgba(0,0,0,0.8) !important;
     transform: translateY(-50%) scale(1.1);
   }
 
-  /* Mobile: 1 image + arrows inside */
+  /* Original arrows – only visible on mobile */
+  .ad-prev, .ad-next {
+    display: none;
+  }
+
+  /* New desktop arrows – only visible on desktop, on top of orange */
+  .ad-prev-desktop, .ad-next-desktop {
+    display: none;
+    z-index: 999 !important; /* on top of everything */
+  }
+
+  /* Mobile: show original arrows inside, hide desktop ones */
   @media (max-width: 768px) {
     .latest-ads-section { padding: 50px 15px; }
     .latest-ads-section h2 { font-size: 1.9rem; }
     .ad-slide img { max-width: 100%; }
     .ad-prev, .ad-next {
+      display: block !important;
       font-size: 1.4rem;
       width: 44px;
       height: 44px;
@@ -158,18 +169,13 @@
     }
     .ad-prev { left: 15px !important; }
     .ad-next { right: 15px !important; }
-    .ads-carousel-wrapper { padding: 0 !important; }
+    .ad-prev-desktop, .ad-next-desktop { display: none !important; }
   }
 
-  /* Desktop: 2 images + arrows fully visible outside – strict high z-index & space */
+  /* Desktop: show 2 images + new arrows outside on orange background */
   @media (min-width: 769px) {
-    .ads-carousel-wrapper {
-      max-width: 1100px !important;
-      padding: 0 120px !important; /* space for arrows to sit outside */
-      box-sizing: border-box;
-    }
     .ads-carousel {
-      max-width: 100% !important;
+      max-width: 1000px !important;
     }
     .ad-slide {
       flex: 0 0 50% !important;
@@ -181,28 +187,23 @@
       max-width: 100% !important;
       width: 100% !important;
     }
-    /* Arrows – EXTREMELY high z-index to be on top of orange background */
-    .ad-prev, .ad-next {
-      z-index: 99999 !important; /* way above everything */
-      pointer-events: auto !important;
+    /* New arrows visible & positioned outside */
+    .ad-prev-desktop, .ad-next-desktop {
+      display: block !important;
     }
-    .ads-carousel-wrapper {
-      pointer-events: none !important; /* prevents wrapper from blocking clicks */
-    }
-    .ad-prev, .ad-next {
-      pointer-events: auto !important;
-    }
-    .ad-prev { left: -100px !important; } /* adjust if needed: -80px or -120px */
-    .ad-next { right: -100px !important; }
+    .ad-prev-desktop { left: -70px !important; }
+    .ad-next-desktop { right: -70px !important; }
+    /* Hide original arrows on desktop */
+    .ad-prev, .ad-next { display: none !important; }
   }
 </style>
 
 <script>
-// Advert Carousel Logic – strict 2-at-a-time on desktop
+// Advert Carousel Logic – works with both original and new arrows
 (function() {
   const track = document.getElementById('adsTrack');
-  const prevBtn = document.getElementById('adPrev');
-  const nextBtn = document.getElementById('adNext');
+  const prevBtn = document.getElementById('adPrev') || document.querySelector('.ad-prev-desktop');
+  const nextBtn = document.getElementById('adNext') || document.querySelector('.ad-next-desktop');
 
   if (!track || !prevBtn || !nextBtn) {
     console.warn('Advert carousel elements not found');
