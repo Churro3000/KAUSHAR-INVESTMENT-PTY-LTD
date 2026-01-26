@@ -121,6 +121,10 @@
       .social-buttons {
         justify-content: flex-start;
       }
+      /* Slightly more space above on big screens */
+      .contact-follow-container {
+        padding-top: 50px !important;
+      }
     }
 
     /* Mobile adjustments only */
@@ -143,8 +147,30 @@
         padding: 30px 15px;
       }
       .contact-follow-wrapper {
-        gap: 40px;
+        gap: 60px; /* more space between Contact and Follow Us on mobile */
       }
+      /* Extra space below on mobile */
+      .contact-follow-container {
+        padding-bottom: 50px !important;
+      }
+    }
+
+    /* Small footer links at bottom – non-bold, small font */
+    .footer-links {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.85rem;
+      color: #aaaaaa;
+      font-weight: normal;
+    }
+    .footer-links a {
+      color: #aaaaaa;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+    .footer-links a:hover {
+      color: #ffffff;
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -179,6 +205,16 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- Small footer links – professional order, non-bold, light grey -->
+    <div class="footer-links">
+      <a href="index.html">Home</a> |
+      <a href="products.html">Products</a> |
+      <a href="inquire.html">Inquire</a> |
+      <a href="Advert.html">Advertiser</a> |
+      <a href="about.html">About Us</a> |
+      <a href="policy.html">Policy</a>
     </div>
 
   </div>
