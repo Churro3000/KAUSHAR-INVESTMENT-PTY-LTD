@@ -70,8 +70,8 @@
     <!-- START Latest Advertiser Section -->
 <section class="latest-ads-section" style="background-color: #FC6600; padding: 60px 20px; text-align: center;">
   <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 40px; margin-top: 30px;">Latest Advertiser</h2>
- 
-  <!-- Wrapper to let arrows poke out on desktop -->
+  
+  <!-- Wrapper to allow arrows to extend outside without clipping -->
   <div class="ads-carousel-wrapper">
     <div class="ads-carousel">
       <div class="ads-track" id="adsTrack">
@@ -91,7 +91,7 @@
 </section>
 
 <style>
-  /* Wrapper – allows arrows to extend outside on desktop */
+  /* Wrapper – gives space for arrows on desktop */
   .ads-carousel-wrapper {
     position: relative;
     max-width: 900px;
@@ -100,7 +100,7 @@
 
   .ads-carousel {
     position: relative;
-    overflow: hidden; /* keeps sliding images clipped */
+    overflow: hidden; /* clips sliding images only */
   }
   .ads-track {
     display: flex;
@@ -135,7 +135,7 @@
     cursor: pointer;
     border-radius: 50%;
     transition: all 0.3s;
-    z-index: 10;
+    z-index: 10; /* base z-index */
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
   }
   .ad-prev { left: 15px; }
@@ -146,7 +146,7 @@
     transform: translateY(-50%) scale(1.1);
   }
 
-  /* Mobile: keep 1 image per view & arrows inside */
+  /* Mobile: 1 image + arrows inside */
   @media (max-width: 768px) {
     .latest-ads-section { padding: 50px 15px; }
     .latest-ads-section h2 { font-size: 1.9rem; }
@@ -159,13 +159,14 @@
     }
     .ad-prev { left: 15px !important; }
     .ad-next { right: 15px !important; }
+    .ads-carousel-wrapper { padding: 0 !important; } /* no extra space on mobile */
   }
 
-  /* Desktop / big screen: 2 images + arrows fully outside (no clipping) */
+  /* Desktop: 2 images + arrows fully outside – strict high z-index & space */
   @media (min-width: 769px) {
     .ads-carousel-wrapper {
-      max-width: 1000px !important;
-      padding: 0 80px; /* extra space so arrows sit fully outside without clipping */
+      max-width: 1100px !important; /* wider for arrows */
+      padding: 0 100px !important; /* large space so arrows sit outside without clipping */
       box-sizing: border-box;
     }
     .ads-carousel {
@@ -181,12 +182,12 @@
       max-width: 100% !important;
       width: 100% !important;
     }
-    /* Arrows positioned fully outside – higher z-index & negative positioning */
+    /* Arrows – ultra-strict positioning & z-index to sit above everything */
     .ad-prev, .ad-next {
-      z-index: 20 !important; /* higher than section background */
+      z-index: 999 !important; /* very high – above section background */
     }
-    .ad-prev { left: -60px !important; }
-    .ad-next { right: -60px !important; }
+    .ad-prev { left: -80px !important; } /* further out */
+    .ad-next { right: -80px !important; }
   }
 </style>
 
