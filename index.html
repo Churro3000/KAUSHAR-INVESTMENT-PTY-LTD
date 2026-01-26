@@ -153,7 +153,7 @@
     .ad-next { right: 15px !important; }
   }
 
-  /* Desktop / big screen: 2 images + arrows slightly outside */
+  /* Desktop / big screen: 2 images + arrows fully outside */
   @media (min-width: 769px) {
     .ads-carousel {
       max-width: 1000px !important;
@@ -168,9 +168,9 @@
       max-width: 100% !important;
       width: 100% !important;
     }
-    /* Move arrows just outside the images */
-    .ad-prev { left: -20px !important; }
-    .ad-next { right: -20px !important; }
+    /* Arrows moved fully outside the images – strict override */
+    .ad-prev { left: -40px !important; }
+    .ad-next { right: -40px !important; }
   }
 </style>
 
