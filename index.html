@@ -70,7 +70,7 @@
     <!-- START Latest Advertiser Section -->
 <section class="latest-ads-section" style="background-color: #FC6600; padding: 60px 20px; text-align: center;">
   <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 40px; margin-top: 30px;">Latest Advertiser</h2>
-  
+ 
   <div class="ads-carousel">
     <div class="ads-track" id="adsTrack">
       <div class="ad-slide"><img src="images.web/Camera_ad.png" alt="Advertiser 1"></div>
@@ -83,11 +83,11 @@
       <div class="ad-slide"><img src="images.web/Camp-chairs_ad.png" alt="Advertiser 8"></div>
     </div>
 
-    <!-- Original arrows – keep for mobile -->
+    <!-- Mobile arrows (inside) -->
     <button class="ad-prev" id="adPrev">&#10094;</button>
     <button class="ad-next" id="adNext">&#10095;</button>
 
-    <!-- New desktop arrows – positioned outside on orange background -->
+    <!-- Desktop arrows (outside on orange bg) -->
     <button class="ad-prev-desktop">&#10094;</button>
     <button class="ad-next-desktop">&#10095;</button>
   </div>
@@ -100,15 +100,18 @@
     margin: 0 auto;
     overflow: hidden;
   }
+
   .ads-track {
     display: flex;
     transition: transform 0.6s ease;
   }
+
   .ad-slide {
     flex: 0 0 100%;
     width: 100%;
     text-align: center;
   }
+
   .ad-slide img {
     width: 100%;
     height: auto;
@@ -119,7 +122,7 @@
     display: block;
   }
 
-  /* Shared arrow styling (used by both original and new desktop arrows) */
+  /* Shared arrow styling */
   .ad-prev, .ad-next,
   .ad-prev-desktop, .ad-next-desktop {
     position: absolute;
@@ -138,28 +141,32 @@
     transition: all 0.3s;
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
   }
+
   .ad-prev:hover, .ad-next:hover,
   .ad-prev-desktop:hover, .ad-next-desktop:hover {
-    background-color: rgba(0,0,0,0.8) !important;
+    background-color: rgba(0,0,0,0.8);
     transform: translateY(-50%) scale(1.1);
   }
 
-  /* Original arrows – only visible on mobile */
+  /* Mobile arrows – hidden by default */
   .ad-prev, .ad-next {
     display: none;
   }
 
-  /* New desktop arrows – only visible on desktop, on top of orange */
+  /* Desktop arrows – hidden by default */
   .ad-prev-desktop, .ad-next-desktop {
     display: none;
-    z-index: 999 !important; /* on top of everything */
+    z-index: 10;
   }
 
-  /* Mobile: show original arrows inside, hide desktop ones */
+  /* ────────────────────────────────────────────────
+     MOBILE (≤ 768px) – keep exactly as before
+  ──────────────────────────────────────────────── */
   @media (max-width: 768px) {
     .latest-ads-section { padding: 50px 15px; }
     .latest-ads-section h2 { font-size: 1.9rem; }
     .ad-slide img { max-width: 100%; }
+
     .ad-prev, .ad-next {
       display: block !important;
       font-size: 1.4rem;
@@ -169,41 +176,54 @@
     }
     .ad-prev { left: 15px !important; }
     .ad-next { right: 15px !important; }
+
     .ad-prev-desktop, .ad-next-desktop { display: none !important; }
   }
 
-  /* Desktop: show 2 images + new arrows outside on orange background */
+  /* ────────────────────────────────────────────────
+     DESKTOP (≥ 769px) – show 2 at a time + outer arrows
+  ──────────────────────────────────────────────── */
   @media (min-width: 769px) {
     .ads-carousel {
-      max-width: 1000px !important;
+      max-width: 1000px;
     }
+
     .ad-slide {
-      flex: 0 0 50% !important;
-      width: 50% !important;
-      min-width: 50% !important;
-      max-width: 50% !important;
+      flex: 0 0 50%;
+      width: 50%;
     }
+
     .ad-slide img {
-      max-width: 100% !important;
-      width: 100% !important;
+      max-width: 100%;
+      width: 100%;
     }
-    /* New arrows visible & positioned outside */
+
+    /* Show desktop arrows, position outside on orange bg */
     .ad-prev-desktop, .ad-next-desktop {
       display: block !important;
     }
-    .ad-prev-desktop { left: -70px !important; }
-    .ad-next-desktop { right: -70px !important; }
-    /* Hide original arrows on desktop */
+    .ad-prev-desktop { left: -80px; }
+    .ad-next-desktop { right: -80px; }
+
+    /* Hide inner (mobile) arrows */
     .ad-prev, .ad-next { display: none !important; }
   }
 </style>
 
 <script>
-// Advert Carousel Logic – works with both original and new arrows
+// Advert Carousel Logic
 (function() {
   const track = document.getElementById('adsTrack');
-  const prevBtn = document.getElementById('adPrev') || document.querySelector('.ad-prev-desktop');
-  const nextBtn = document.getElementById('adNext') || document.querySelector('.ad-next-desktop');
+  const slides = track.children.length;
+
+  // Use desktop buttons when visible, fall back to mobile ones
+  const prevBtn = document.querySelector('.ad-prev-desktop')?.offsetParent 
+    ? document.querySelector('.ad-prev-desktop') 
+    : document.getElementById('adPrev');
+    
+  const nextBtn = document.querySelector('.ad-next-desktop')?.offsetParent 
+    ? document.querySelector('.ad-next-desktop') 
+    : document.getElementById('adNext');
 
   if (!track || !prevBtn || !nextBtn) {
     console.warn('Advert carousel elements not found');
@@ -211,47 +231,52 @@
   }
 
   let currentIndex = 0;
-  const slides = track.children.length;
 
-  const getStep = () => window.innerWidth <= 768 ? 1 : 2;
+  function getStep() {
+    return window.innerWidth >= 769 ? 2 : 1;
+  }
 
   function updateCarousel() {
-    const shiftPercent = getStep() === 2 ? 50 : 100;
-    track.style.transform = `translateX(-${currentIndex * shiftPercent}%)`;
+    const step = getStep();
+    const percent = step === 2 ? 50 : 100;
+    const maxIndex = slides - step;
+    currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+
+    track.style.transform = `translateX(-${currentIndex * percent}%)`;
   }
 
   nextBtn.addEventListener('click', () => {
-    const step = getStep();
-    currentIndex = Math.min(currentIndex + step, slides - step);
+    currentIndex += getStep();
     updateCarousel();
   });
 
   prevBtn.addEventListener('click', () => {
-    const step = getStep();
-    currentIndex = Math.max(currentIndex - step, 0);
+    currentIndex -= getStep();
     updateCarousel();
   });
 
-  // Mobile swipe – always move 1
+  // Mobile swipe – always moves by 1
   let touchStartX = 0;
-  let touchEndX = 0;
-
   track.addEventListener('touchstart', e => {
     touchStartX = e.changedTouches[0].screenX;
   }, { passive: true });
 
   track.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
+    const touchEndX = e.changedTouches[0].screenX;
     const diff = touchStartX - touchEndX;
+
     if (Math.abs(diff) > 60) {
       if (diff > 0) {
-        currentIndex = Math.min(currentIndex + 1, slides - 1);
+        currentIndex += 1;
       } else {
-        currentIndex = Math.max(currentIndex - 1, 0);
+        currentIndex -= 1;
       }
       updateCarousel();
     }
   }, { passive: true });
+
+  // Handle resize (step changes)
+  window.addEventListener('resize', updateCarousel);
 
   updateCarousel(); // initial
 })();
