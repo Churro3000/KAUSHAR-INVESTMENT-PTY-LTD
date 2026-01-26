@@ -70,29 +70,37 @@
     <!-- START Latest Advertiser Section -->
 <section class="latest-ads-section" style="background-color: #FC6600; padding: 60px 20px; text-align: center;">
   <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 40px; margin-top: 30px;">Latest Advertiser</h2>
-  
-  <div class="ads-carousel">
-    <div class="ads-track" id="adsTrack">
-      <div class="ad-slide"><img src="images.web/Camera_ad.png" alt="Advertiser 1"></div>
-      <div class="ad-slide"><img src="images.web/Controllers_ad.png" alt="Advertiser 2"></div>
-      <div class="ad-slide"><img src="images.web/Drone_ad.png" alt="Advertiser 3"></div>
-      <div class="ad-slide"><img src="images.web/Koosda_ad.png" alt="Advertiser 4"></div>
-      <div class="ad-slide"><img src="images.web/Tools_ad.png" alt="Advertiser 5"></div>
-      <div class="ad-slide"><img src="images.web/Generator_ad.png" alt="Advertiser 6"></div>
-      <div class="ad-slide"><img src="images.web/mixed_hardware_ad.png" alt="Advertiser 7"></div>
-      <div class="ad-slide"><img src="images.web/Camp-chairs_ad.png" alt="Advertiser 8"></div>
+ 
+  <!-- Wrapper to let arrows poke out on desktop -->
+  <div class="ads-carousel-wrapper">
+    <div class="ads-carousel">
+      <div class="ads-track" id="adsTrack">
+        <div class="ad-slide"><img src="images.web/Camera_ad.png" alt="Advertiser 1"></div>
+        <div class="ad-slide"><img src="images.web/Controllers_ad.png" alt="Advertiser 2"></div>
+        <div class="ad-slide"><img src="images.web/Drone_ad.png" alt="Advertiser 3"></div>
+        <div class="ad-slide"><img src="images.web/Koosda_ad.png" alt="Advertiser 4"></div>
+        <div class="ad-slide"><img src="images.web/Tools_ad.png" alt="Advertiser 5"></div>
+        <div class="ad-slide"><img src="images.web/Generator_ad.png" alt="Advertiser 6"></div>
+        <div class="ad-slide"><img src="images.web/mixed_hardware_ad.png" alt="Advertiser 7"></div>
+        <div class="ad-slide"><img src="images.web/Camp-chairs_ad.png" alt="Advertiser 8"></div>
+      </div>
+      <button class="ad-prev" id="adPrev">&#10094;</button>
+      <button class="ad-next" id="adNext">&#10095;</button>
     </div>
-    <button class="ad-prev" id="adPrev">&#10094;</button>
-    <button class="ad-next" id="adNext">&#10095;</button>
   </div>
 </section>
 
 <style>
-  .ads-carousel {
+  /* New wrapper – allows arrows to extend outside on desktop */
+  .ads-carousel-wrapper {
     position: relative;
     max-width: 900px;
     margin: 0 auto;
-    overflow: hidden;
+  }
+
+  .ads-carousel {
+    position: relative;
+    overflow: hidden; /* keeps sliding images clipped */
   }
   .ads-track {
     display: flex;
@@ -153,10 +161,15 @@
     .ad-next { right: 15px !important; }
   }
 
-  /* Desktop / big screen: 2 images + arrows fully outside */
+  /* Desktop / big screen: 2 images + arrows fully outside (no clipping) */
   @media (min-width: 769px) {
-    .ads-carousel {
+    .ads-carousel-wrapper {
       max-width: 1000px !important;
+      padding: 0 60px; /* extra padding so arrows don't hit section edges */
+      box-sizing: border-box;
+    }
+    .ads-carousel {
+      max-width: 100% !important;
     }
     .ad-slide {
       flex: 0 0 50% !important;
@@ -168,9 +181,9 @@
       max-width: 100% !important;
       width: 100% !important;
     }
-    /* Arrows moved fully outside the images – strict override */
-    .ad-prev { left: -40px !important; }
-    .ad-next { right: -40px !important; }
+    /* Arrows positioned fully outside – no clipping */
+    .ad-prev { left: -60px !important; }
+    .ad-next { right: -60px !important; }
   }
 </style>
 
