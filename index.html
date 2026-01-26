@@ -43,18 +43,17 @@
   </div>
 
   <!-- Category Buttons – light neutral grey section + white buttons -->
-<section class="category-buttons-section" style="background-color: #f8f8f8 !important; padding: 20px 0 !important;">
-  <div class="category-buttons">
-    <a href="hardware.html" class="category-btn" style="background-color: #ffffff !important; color: #666666 !important; border: 2.5px solid #666666 !important;">Hardware</a>
-    <a href="electronics.html" class="category-btn" style="background-color: #ffffff !important; color: #666666 !important; border: 2.5px solid #666666 !important;">Electronics</a>
-    <a href="outdoor.html" class="category-btn" style="background-color: #ffffff !important; color: #666666 !important; border: 2.5px solid #666666 !important;">Outdoor/Camp</a>
-    <a href="household.html" class="category-btn" style="background-color: #ffffff !important; color: #666666 !important; border: 2.5px solid #666666 !important;">Household</a>
-    <a href="vehicle.html" class="category-btn" style="background-color: #ffffff !important; color: #666666 !important; border: 2.5px solid #666666 !important;">Vehicle Accessories</a>
-  </div>
-</section>
+  <section class="category-buttons-section" style="background-color: #f8f8f8 !important; padding: 20px 0 !important;">
+    <div class="category-buttons">
+      <a href="hardware.html" class="category-btn" style="background-color: #ffffff !important; color: #666666 !important; border: 2.5px solid #666666 !important;">Hardware</a>
+      <a href="electronics.html" class="category-btn" style="background-color: #ffffff !important; color: #666666 !important; border: 2.5px solid #666666 !important;">Electronics</a>
+      <a href="outdoor.html" class="category-btn" style="background-color: #ffffff !important; color: #666666 !important; border: 2.5px solid #666666 !important;">Outdoor/Camp</a>
+      <a href="household.html" class="category-btn" style="background-color: #ffffff !important; color: #666666 !important; border: 2.5px solid #666666 !important;">Household</a>
+      <a href="vehicle.html" class="category-btn" style="background-color: #ffffff !important; color: #666666 !important; border: 2.5px solid #666666 !important;">Vehicle Accessories</a>
+    </div>
+  </section>
 
   <main>
-
     <!-- Featured Products – embedded from featured.html -->
     <section class="hero" style="padding: 40px 20px 10px; background-color: #ffffff;">
       <h2 style="margin-bottom: 30px; text-align: center; color: #000000;">Featured Products</h2>
@@ -202,14 +201,11 @@
     (function() {
       const track = document.getElementById('adsTrack');
       if (!track) return;
-
       const slides = track.children.length;
       let currentIndex = 0;
-
       function getStep() {
         return window.innerWidth >= 769 ? 2 : 1;
       }
-
       function updateCarousel(smooth = true) {
         const step = getStep();
         const percent = step === 2 ? 50 : 100;
@@ -218,37 +214,30 @@
         track.style.transition = smooth ? 'transform 0.6s ease' : 'none';
         track.style.transform = `translateX(-${currentIndex * percent}%)`;
       }
-
       // Move functions (used by both arrows and swipe)
       function goNext() {
         currentIndex += getStep();
         updateCarousel();
       }
-
       function goPrev() {
         currentIndex -= getStep();
         updateCarousel();
       }
-
       // Attach listeners to ALL arrow buttons (only visible ones will be clickable)
       document.querySelectorAll('.ad-prev, .ad-prev-desktop').forEach(btn => {
         btn.addEventListener('click', goPrev);
       });
-
       document.querySelectorAll('.ad-next, .ad-next-desktop').forEach(btn => {
         btn.addEventListener('click', goNext);
       });
-
       // Mobile swipe – always by 1
       let touchStartX = 0;
       track.addEventListener('touchstart', e => {
         touchStartX = e.changedTouches[0].screenX;
       }, { passive: true });
-
       track.addEventListener('touchend', e => {
         const touchEndX = e.changedTouches[0].screenX;
         const diff = touchStartX - touchEndX;
-
         if (Math.abs(diff) > 60) {
           if (diff > 0) {
             currentIndex += 1;
@@ -258,12 +247,10 @@
           updateCarousel();
         }
       }, { passive: true });
-
       // Re-adjust on resize (important when going from desktop → mobile or vice versa)
       window.addEventListener('resize', () => {
         updateCarousel(false); // no animation on resize
       });
-
       updateCarousel(false); // initial position – no animation
     })();
     </script>
@@ -295,7 +282,6 @@
         title="Contact & Follow Us">
       </iframe>
     </section>
-
   </main>
 
   <footer>
@@ -341,6 +327,5 @@
     // 3. Very small script to force smooth scrolling & reduce jank
     document.documentElement.style.scrollBehavior = 'smooth';
   </script>
-
 </body>
 </html>
