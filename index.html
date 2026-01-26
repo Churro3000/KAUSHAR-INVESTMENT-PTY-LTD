@@ -71,29 +71,37 @@
 <section class="latest-ads-section" style="background-color: #FC6600; padding: 60px 20px; text-align: center;">
   <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 40px; margin-top: 30px;">Latest Advertiser</h2>
  
-  <div class="ads-carousel">
-    <div class="ads-track" id="adsTrack">
-      <div class="ad-slide"><img src="images.web/Camera_ad.png" alt="Advertiser 1"></div>
-      <div class="ad-slide"><img src="images.web/Controllers_ad.png" alt="Advertiser 2"></div>
-      <div class="ad-slide"><img src="images.web/Drone_ad.png" alt="Advertiser 3"></div>
-      <div class="ad-slide"><img src="images.web/Koosda_ad.png" alt="Advertiser 4"></div>
-      <div class="ad-slide"><img src="images.web/Tools_ad.png" alt="Advertiser 5"></div>
-      <div class="ad-slide"><img src="images.web/Generator_ad.png" alt="Advertiser 6"></div>
-      <div class="ad-slide"><img src="images.web/mixed_hardware_ad.png" alt="Advertiser 7"></div>
-      <div class="ad-slide"><img src="images.web/Camp-chairs_ad.png" alt="Advertiser 8"></div>
-    </div>
-
-    <!-- Mobile arrows (inside) -->
-    <button class="ad-prev" id="adPrev">&#10094;</button>
-    <button class="ad-next" id="adNext">&#10095;</button>
-
-    <!-- Desktop arrows (outside on orange bg) -->
+  <div class="ads-carousel-wrapper">
+    <!-- Desktop arrows now live outside the overflow:hidden container -->
     <button class="ad-prev-desktop">&#10094;</button>
     <button class="ad-next-desktop">&#10095;</button>
+
+    <div class="ads-carousel">
+      <div class="ads-track" id="adsTrack">
+        <div class="ad-slide"><img src="images.web/Camera_ad.png" alt="Advertiser 1"></div>
+        <div class="ad-slide"><img src="images.web/Controllers_ad.png" alt="Advertiser 2"></div>
+        <div class="ad-slide"><img src="images.web/Drone_ad.png" alt="Advertiser 3"></div>
+        <div class="ad-slide"><img src="images.web/Koosda_ad.png" alt="Advertiser 4"></div>
+        <div class="ad-slide"><img src="images.web/Tools_ad.png" alt="Advertiser 5"></div>
+        <div class="ad-slide"><img src="images.web/Generator_ad.png" alt="Advertiser 6"></div>
+        <div class="ad-slide"><img src="images.web/mixed_hardware_ad.png" alt="Advertiser 7"></div>
+        <div class="ad-slide"><img src="images.web/Camp-chairs_ad.png" alt="Advertiser 8"></div>
+      </div>
+
+      <!-- Mobile arrows (inside the carousel) -->
+      <button class="ad-prev" id="adPrev">&#10094;</button>
+      <button class="ad-next" id="adNext">&#10095;</button>
+    </div>
   </div>
 </section>
 
 <style>
+  .ads-carousel-wrapper {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
   .ads-carousel {
     position: relative;
     max-width: 900px;
@@ -140,6 +148,7 @@
     border-radius: 50%;
     transition: all 0.3s;
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    z-index: 10;
   }
 
   .ad-prev:hover, .ad-next:hover,
@@ -156,11 +165,10 @@
   /* Desktop arrows – hidden by default */
   .ad-prev-desktop, .ad-next-desktop {
     display: none;
-    z-index: 10;
   }
 
   /* ────────────────────────────────────────────────
-     MOBILE (≤ 768px) – keep exactly as before
+     MOBILE (≤ 768px)
   ──────────────────────────────────────────────── */
   @media (max-width: 768px) {
     .latest-ads-section { padding: 50px 15px; }
@@ -181,11 +189,15 @@
   }
 
   /* ────────────────────────────────────────────────
-     DESKTOP (≥ 769px) – show 2 at a time + outer arrows
+     DESKTOP (≥ 769px)
   ──────────────────────────────────────────────── */
   @media (min-width: 769px) {
     .ads-carousel {
-      max-width: 1000px;
+      max-width: 900px; /* keep content area constrained */
+    }
+
+    .ads-carousel-wrapper {
+      max-width: 1000px; /* wider wrapper to allow space for arrows */
     }
 
     .ad-slide {
@@ -198,7 +210,7 @@
       width: 100%;
     }
 
-    /* Show desktop arrows, position outside on orange bg */
+    /* Show & position desktop arrows outside */
     .ad-prev-desktop, .ad-next-desktop {
       display: block !important;
     }
@@ -211,17 +223,17 @@
 </style>
 
 <script>
-// Advert Carousel Logic
+// Advert Carousel Logic (updated selectors)
 (function() {
   const track = document.getElementById('adsTrack');
   const slides = track.children.length;
 
-  // Use desktop buttons when visible, fall back to mobile ones
-  const prevBtn = document.querySelector('.ad-prev-desktop')?.offsetParent 
+  // Prefer desktop buttons when on wide screen
+  const prevBtn = document.querySelector('.ad-prev-desktop')?.offsetParent !== null 
     ? document.querySelector('.ad-prev-desktop') 
     : document.getElementById('adPrev');
     
-  const nextBtn = document.querySelector('.ad-next-desktop')?.offsetParent 
+  const nextBtn = document.querySelector('.ad-next-desktop')?.offsetParent !== null 
     ? document.querySelector('.ad-next-desktop') 
     : document.getElementById('adNext');
 
@@ -266,18 +278,13 @@
     const diff = touchStartX - touchEndX;
 
     if (Math.abs(diff) > 60) {
-      if (diff > 0) {
-        currentIndex += 1;
-      } else {
-        currentIndex -= 1;
-      }
+      if (diff > 0) currentIndex += 1;
+      else          currentIndex -= 1;
       updateCarousel();
     }
   }, { passive: true });
 
-  // Handle resize (step changes)
   window.addEventListener('resize', updateCarousel);
-
   updateCarousel(); // initial
 })();
 </script>
