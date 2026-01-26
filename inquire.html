@@ -17,7 +17,7 @@
     }
 
     .contact-follow-container {
-      padding: 60px 20px;
+      padding: 60px 20px 0 20px; /* no bottom padding – footer sits right after content */
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -132,7 +132,7 @@
         justify-content: flex-start;
       }
       .contact-follow-container {
-        padding: 80px 20px;
+        padding: 80px 20px 0 20px; /* no bottom padding */
       }
     }
 
@@ -150,86 +150,21 @@
         height: 24px;
       }
       .contact-follow-container {
-        padding: 40px 15px;
+        padding: 40px 15px 0 15px; /* no bottom padding */
       }
       .contact-follow-wrapper {
         gap: 50px;
       }
-
-      /* Mobile footer links: 3 rows, 2 links each */
-      .footer-links {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        margin: 50px 0 40px;
-      }
-      .footer-links .row {
-        display: flex;
-        justify-content: space-between;
-        width: 80%;
-        max-width: 300px;
-      }
-      .footer-links .row.middle {
-        justify-content: center;
-        gap: 40px;
-      }
-      .footer-links a {
-        color: #555555;
-        text-decoration: none;
-        font-size: 0.95rem;
-      }
-      .footer-links a:hover {
-        color: #FC6600;
-        text-decoration: underline;
-      }
     }
 
-    /* Footer links (desktop) */
-    .footer-links {
+    /* Footer – orange at the very bottom, no extra white space below */
+    footer {
+      background-color: #FC6600;
+      color: #ffffff;
       text-align: center;
-      margin: 60px 0 40px;
+      padding: 15px 0;
+      margin-top: 60px;
       font-size: 0.9rem;
-      color: #555555;
-      font-weight: normal;
-    }
-
-    .footer-links a {
-      color: #555555;
-      text-decoration: none;
-      margin: 0 15px;
-    }
-
-    .footer-links a:hover {
-      color: #FC6600;
-      text-decoration: underline;
-    }
-
-    /* Desktop footer style: orange bg, minimal bottom space */
-    @media (min-width: 769px) {
-      footer {
-        background-color: #FC6600;
-        color: #ffffff;
-        text-align: center;
-        padding: 15px 0;
-        margin-top: 40px;
-        font-size: 0.9rem;
-      }
-      .footer-links {
-        background-color: #FC6600;
-        color: #ffffff;
-        margin: 40px 0 0 0;
-        padding: 20px 0;
-      }
-      .footer-links a {
-        color: #ffffff;
-        margin: 0 25px;
-        font-size: 1rem;
-      }
-      .footer-links a:hover {
-        color: #000000;
-        text-decoration: underline;
-      }
     }
   </style>
 </head>
