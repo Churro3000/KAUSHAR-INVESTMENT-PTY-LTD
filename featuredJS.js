@@ -83,7 +83,7 @@ grid.addEventListener('touchstart', (e) => {
   touchCurrentX = touchStartX;
   startPosition = currentPosition;
   isSwiping = true;
-}, { passive: true }); // passive true → allows vertical scroll to start
+}, { passive: true });
 
 grid.addEventListener('touchmove', (e) => {
   if (!isSwiping || window.innerWidth > 768) return;
@@ -97,8 +97,7 @@ grid.addEventListener('touchmove', (e) => {
   const max = getMaxPosition();
   currentPosition = Math.max(Math.min(newPos, 0), max);
   grid.style.transform = `translateX(${currentPosition}px)`;
-  // NO e.preventDefault() here → vertical scroll works even on product area
-}, { passive: true }); // passive true is safe here since no preventDefault
+}, { passive: true });
 
 grid.addEventListener('touchend', (e) => {
   if (!isSwiping || window.innerWidth > 768) return;
@@ -139,7 +138,6 @@ grid.addEventListener('touchend', (e) => {
 });
 
 // ==================== MODAL POPUP LOGIC ====================
-// (unchanged – your original code remains exactly as is)
 const modal = document.getElementById('productModal');
 const closeBtn = document.querySelector('.modal-close');
 const modalImg = document.getElementById('modalImage');
@@ -196,21 +194,18 @@ function updateModalImage() {
 }
 
 // ==================== WHATSAPP INQUIRE BUTTON HANDLER ====================
-// Works for main page "Inquire Now" AND modal popup "Inquire Now"
 document.addEventListener('DOMContentLoaded', () => {
-  const phoneNumber = '26777478877'; // ← your number – confirm it's correct
+  const phoneNumber = '26777478877';
 
   const handleInquireClick = (button) => {
     let productName = 'this product';
 
-    // From main card
     const productInfo = button.closest('.product-info');
     if (productInfo) {
       const nameElem = productInfo.querySelector('.product-name');
       if (nameElem) productName = nameElem.textContent.trim();
     }
 
-    // Fallback from modal title (when clicked inside popup)
     const modalTitleElem = document.getElementById('modalTitle');
     if (modalTitleElem && modalTitleElem.textContent.trim()) {
       productName = modalTitleElem.textContent.trim();
@@ -223,17 +218,15 @@ document.addEventListener('DOMContentLoaded', () => {
     window.open(whatsappUrl, '_blank');
   };
 
-  // Attach to all existing Inquire buttons
   const attachListeners = () => {
     document.querySelectorAll('.buy-btn').forEach(btn => {
-      btn.removeEventListener('click', handleInquireClick); // prevent duplicates
+      btn.removeEventListener('click', handleInquireClick);
       btn.addEventListener('click', () => handleInquireClick(btn));
     });
   };
 
   attachListeners();
 
-  // Watch for modal opening (since modal loads dynamically)
   const modal = document.getElementById('productModal');
   if (modal) {
     const observer = new MutationObserver(attachListeners);
@@ -241,16 +234,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// ==================== SHOW "SEE ALL PRODUCTS" BUTTON ON DESKTOP TOO ====================
+// ==================== FORCE "SEE ALL PRODUCTS" VISIBLE ON DESKTOP ====================
 document.addEventListener('DOMContentLoaded', () => {
-  const seeAllBtn = document.querySelector('.see-all-btn'); // adjust selector if your button has a different class/ID
-  if (seeAllBtn && window.innerWidth > 768) {
-    seeAllBtn.style.display = 'block !important'; // force visible on desktop
+  const seeAllWrapper = document.querySelector('.see-all-wrapper');
+  if (seeAllWrapper) {
+    const updateVisibility = () => {
+      // Desktop: force visible
+      if (window.innerWidth > 768) {
+        seeAllWrapper.style.display = 'block !important';
+      } 
+      // Mobile: let CSS handle it (don't touch)
+      else {
+        seeAllWrapper.style.display = ''; // remove inline style so CSS rule applies
+      }
+    };
+    
+    updateVisibility(); // initial check
+    window.addEventListener('resize', updateVisibility); // re-check on resize
   }
-  // Re-check on resize (in case user resizes window)
-  window.addEventListener('resize', () => {
-    if (seeAllBtn) {
-      seeAllBtn.style.display = window.innerWidth > 768 ? 'block !important' : 'none';
-    }
-  });
 });
