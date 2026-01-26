@@ -71,7 +71,7 @@
 <section class="latest-ads-section" style="background-color: #FC6600; padding: 60px 20px; text-align: center;">
   <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 40px; margin-top: 30px;">Latest Advertiser</h2>
   
-  <!-- Wrapper to allow arrows to extend outside without clipping -->
+  <!-- Wrapper – extra space for arrows on desktop -->
   <div class="ads-carousel-wrapper">
     <div class="ads-carousel">
       <div class="ads-track" id="adsTrack">
@@ -91,7 +91,7 @@
 </section>
 
 <style>
-  /* Wrapper – gives space for arrows on desktop */
+  /* Wrapper – allows arrows to extend outside on desktop */
   .ads-carousel-wrapper {
     position: relative;
     max-width: 900px;
@@ -135,7 +135,7 @@
     cursor: pointer;
     border-radius: 50%;
     transition: all 0.3s;
-    z-index: 10; /* base z-index */
+    z-index: 10;
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
   }
   .ad-prev { left: 15px; }
@@ -159,14 +159,14 @@
     }
     .ad-prev { left: 15px !important; }
     .ad-next { right: 15px !important; }
-    .ads-carousel-wrapper { padding: 0 !important; } /* no extra space on mobile */
+    .ads-carousel-wrapper { padding: 0 !important; }
   }
 
-  /* Desktop: 2 images + arrows fully outside – strict high z-index & space */
+  /* Desktop: 2 images + arrows fully outside – ultra-strict z-index & space */
   @media (min-width: 769px) {
     .ads-carousel-wrapper {
-      max-width: 1100px !important; /* wider for arrows */
-      padding: 0 100px !important; /* large space so arrows sit outside without clipping */
+      max-width: 1100px !important;
+      padding: 0 120px !important; /* more space so arrows sit outside without clipping */
       box-sizing: border-box;
     }
     .ads-carousel {
@@ -182,12 +182,12 @@
       max-width: 100% !important;
       width: 100% !important;
     }
-    /* Arrows – ultra-strict positioning & z-index to sit above everything */
+    /* Arrows – very high z-index & positioned outside */
     .ad-prev, .ad-next {
-      z-index: 999 !important; /* very high – above section background */
+      z-index: 9999 !important; /* extremely high – above orange background */
     }
-    .ad-prev { left: -80px !important; } /* further out */
-    .ad-next { right: -80px !important; }
+    .ad-prev { left: -100px !important; } /* further out – adjust if needed */
+    .ad-next { right: -100px !important; }
   }
 </style>
 
@@ -250,7 +250,7 @@
 })();
 </script>
 <!-- END Latest Advertiser Section -->
-
+    
     <!-- About Us / Location -->
     <div class="about-container">
       <!-- Location section first -->
