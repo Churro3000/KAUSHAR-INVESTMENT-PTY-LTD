@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +32,11 @@
   </header>
 
   <!-- START Latest Advertiser Section -->
-  <section class="latest-ads-section" style="background-color: #FC6600; padding: 60px 20px; text-align: center;">
-    <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 40px; margin-top: 30px;">Latest Advertiser</h2>
-    
+<section class="latest-ads-section" style="background-color: #FC6600; padding: 60px 20px; text-align: center;">
+  <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 40px; margin-top: 30px;">Latest Advertiser</h2>
+ 
+  <!-- Wrapper to let arrows poke out on desktop -->
+  <div class="ads-carousel-wrapper">
     <div class="ads-carousel">
       <div class="ads-track" id="adsTrack">
         <div class="ad-slide"><img src="images.web/Camera_ad.png" alt="Advertiser 1"></div>
@@ -50,152 +51,168 @@
       <button class="ad-prev" id="adPrev">&#10094;</button>
       <button class="ad-next" id="adNext">&#10095;</button>
     </div>
-  </section>
+  </div>
+</section>
 
-  <style>
-    .ads-carousel {
-      position: relative;
-      max-width: 900px;
-      margin: 0 auto;
-      overflow: hidden;
+<style>
+  /* Wrapper – allows arrows to extend outside on desktop */
+  .ads-carousel-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .ads-carousel {
+    position: relative;
+    overflow: hidden; /* keeps sliding images clipped */
+  }
+  .ads-track {
+    display: flex;
+    transition: transform 0.6s ease;
+  }
+  .ad-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    text-align: center;
+  }
+  .ad-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    max-width: 500px;
+    margin: 0 auto;
+    display: block;
+  }
+  .ad-prev, .ad-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    font-size: 1.6rem;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.3s;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+  .ad-prev { left: 15px; }
+  .ad-next { right: 15px; }
+  .ad-prev:hover, .ad-next:hover {
+    background-color: rgba(0,0,0,0.6) !important;
+    color: white !important;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  /* Mobile: keep 1 image per view & arrows inside */
+  @media (max-width: 768px) {
+    .latest-ads-section { padding: 50px 15px; }
+    .latest-ads-section h2 { font-size: 1.9rem; }
+    .ad-slide img { max-width: 100%; }
+    .ad-prev, .ad-next {
+      font-size: 1.4rem;
+      width: 44px;
+      height: 44px;
+      line-height: 44px;
     }
-    .ads-track {
-      display: flex !important;
-      transition: transform 0.6s ease;
+    .ad-prev { left: 15px !important; }
+    .ad-next { right: 15px !important; }
+  }
+
+  /* Desktop / big screen: 2 images + arrows fully outside (no clipping) */
+  @media (min-width: 769px) {
+    .ads-carousel-wrapper {
+      max-width: 1000px !important;
+      padding: 0 80px; /* extra space so arrows sit fully outside without clipping */
+      box-sizing: border-box;
+    }
+    .ads-carousel {
+      max-width: 100% !important;
     }
     .ad-slide {
-      flex: 0 0 100% !important;
-      width: 100% !important;
-      text-align: center;
+      flex: 0 0 50% !important;
+      width: 50% !important;
+      min-width: 50% !important;
+      max-width: 50% !important;
     }
     .ad-slide img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-      max-width: 500px;
-      margin: 0 auto;
-      display: block;
+      max-width: 100% !important;
+      width: 100% !important;
     }
+    /* Arrows positioned fully outside – higher z-index & negative positioning */
     .ad-prev, .ad-next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(0,0,0,0.6);
-      color: white;
-      border: none;
-      font-size: 1.6rem;
-      width: 50px;
-      height: 50px;
-      line-height: 50px;
-      padding: 0;
-      cursor: pointer;
-      border-radius: 50%;
-      transition: all 0.3s;
-      z-index: 10;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      z-index: 20 !important; /* higher than section background */
     }
-    .ad-prev { left: 15px; }
-    .ad-next { right: 15px; }
-    .ad-prev:hover, .ad-next:hover {
-      background-color: rgba(0,0,0,0.6) !important;
-      color: white !important;
-      transform: translateY(-50%) scale(1.1);
-    }
+    .ad-prev { left: -60px !important; }
+    .ad-next { right: -60px !important; }
+  }
+</style>
 
-    /* Mobile: keep 1 image per view – strict */
-    @media (max-width: 768px) {
-      .latest-ads-section { padding: 50px 15px; }
-      .latest-ads-section h2 { font-size: 1.9rem; }
-      .ad-slide img { max-width: 100%; }
-      .ad-prev, .ad-next {
-        font-size: 1.4rem;
-        width: 44px;
-        height: 44px;
-        line-height: 44px;
+<script>
+// Advert Carousel Logic – strict 2-at-a-time on desktop
+(function() {
+  const track = document.getElementById('adsTrack');
+  const prevBtn = document.getElementById('adPrev');
+  const nextBtn = document.getElementById('adNext');
+
+  if (!track || !prevBtn || !nextBtn) {
+    console.warn('Advert carousel elements not found');
+    return;
+  }
+
+  let currentIndex = 0;
+  const slides = track.children.length;
+
+  const getStep = () => window.innerWidth <= 768 ? 1 : 2;
+
+  function updateCarousel() {
+    const shiftPercent = getStep() === 2 ? 50 : 100;
+    track.style.transform = `translateX(-${currentIndex * shiftPercent}%)`;
+  }
+
+  nextBtn.addEventListener('click', () => {
+    const step = getStep();
+    currentIndex = Math.min(currentIndex + step, slides - step);
+    updateCarousel();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    const step = getStep();
+    currentIndex = Math.max(currentIndex - step, 0);
+    updateCarousel();
+  });
+
+  // Mobile swipe – always move 1
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  track.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  track.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 60) {
+      if (diff > 0) {
+        currentIndex = Math.min(currentIndex + 1, slides - 1);
+      } else {
+        currentIndex = Math.max(currentIndex - 1, 0);
       }
-      .ad-slide {
-        flex: 0 0 100% !important;
-        width: 100% !important;
-      }
-    }
-
-    /* Desktop / big screen: FORCE 2 images at a time – ultra-strict */
-    @media (min-width: 769px) {
-      .ad-slide {
-        flex: 0 0 50% !important;
-        width: 50% !important;
-        min-width: 50% !important;
-      }
-      .ad-slide img {
-        max-width: 100% !important;
-        width: 100% !important;
-      }
-      .ads-track {
-        width: 200% !important; /* helps with percentage calculation */
-      }
-    }
-  </style>
-
-  <script>
-  // Advert Carousel Logic – strict 2-at-a-time on desktop
-  (function() {
-    const track = document.getElementById('adsTrack');
-    const prevBtn = document.getElementById('adPrev');
-    const nextBtn = document.getElementById('adNext');
-
-    if (!track || !prevBtn || !nextBtn) {
-      console.warn('Advert carousel elements not found');
-      return;
-    }
-
-    let currentIndex = 0;
-    const slides = track.children.length;
-
-    // Step size: 2 on desktop, 1 on mobile
-    const getStep = () => window.innerWidth <= 768 ? 1 : 2;
-
-    function updateCarousel() {
-      track.style.transform = `translateX(-${currentIndex * 50}%)`; // changed to 50% per step for 2-visible
-    }
-
-    nextBtn.addEventListener('click', () => {
-      const step = getStep();
-      currentIndex = Math.min(currentIndex + step, slides - getStep());
       updateCarousel();
-    });
+    }
+  }, { passive: true });
 
-    prevBtn.addEventListener('click', () => {
-      const step = getStep();
-      currentIndex = Math.max(currentIndex - step, 0);
-      updateCarousel();
-    });
-
-    // Mobile swipe – always move 1
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    track.addEventListener('touchstart', e => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    track.addEventListener('touchend', e => {
-      touchEndX = e.changedTouches[0].screenX;
-      const diff = touchStartX - touchEndX;
-      if (Math.abs(diff) > 60) {
-        if (diff > 0) {
-          currentIndex = Math.min(currentIndex + 1, slides - 1);
-        } else {
-          currentIndex = Math.max(currentIndex - 1, 0);
-        }
-        updateCarousel();
-      }
-    }, { passive: true });
-
-    updateCarousel(); // initial
-  })();
-  </script>
-  <!-- END Latest Advertiser Section -->
+  updateCarousel(); // initial
+})();
+</script>
+<!-- END Latest Advertiser Section -->
 
   <footer>
     <p>© 2026 Your Company Name. All rights reserved.</p>
