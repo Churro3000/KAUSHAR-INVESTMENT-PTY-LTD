@@ -75,7 +75,7 @@ header {
   margin-bottom: 20px;
 }
 
-/* ===== Contact Section =====*/
+/* ===== Contact Section ===== */
 .contact {
   padding: 80px 20px;
   background-color: #000000;
@@ -128,7 +128,7 @@ footer {
   color: #ffffff;
 }
 
-/* Vertical line between items, except last */
+/* Vertical line between menu items, except last */
 .nav-menu a:not(:last-child)::after {
   content: "";
   position: absolute;
@@ -173,7 +173,7 @@ footer {
   display: block; 
 }
 
-/* Horizontal line between items, except last */
+/* Horizontal line between menu items, except last */
 .mobile-menu a:not(:last-child)::after {
   content: "";
   position: absolute;
@@ -188,7 +188,8 @@ footer {
   color: #ffffff !important;
 }
 
-@media screen and (max-width: 768px) { /* Responsive */
+/* Responsive: Hide desktop menu and show hamburger on mobile */
+@media screen and (max-width: 768px) {
   .nav-menu {
     display: none; /* hide desktop menu on mobile */
   }
@@ -231,7 +232,7 @@ footer {
   display: block;
 }
 
-/* Mobile: show only 1 image at a time */
+/* Mobile: show only 1 slide at a time */
 @media screen and (max-width: 768px) {
   .slide {
     flex: 0 0 100%;
@@ -274,7 +275,7 @@ footer {
   border-color: #000000;
 }
 
-/* On smaller screens, keep them horizontal as long as possible */
+/* Responsive adjustments for category buttons */
 @media screen and (max-width: 768px) {
   .category-buttons {
     gap: 20px;
@@ -286,7 +287,6 @@ footer {
   }
 }
 
-/* Stack vertically only on very small screens */
 @media screen and (max-width: 480px) {
   .category-buttons {
     flex-direction: column;
@@ -361,7 +361,7 @@ footer {
   border-radius: 12px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.12);
   max-width: 500px; /* smaller on big screens */
-  margin: 0 auto;   /* center the image */
+  margin: 0 auto; /* center the image */
 }
 
 /* On mobile (≤768px), keep images full-width as before */
@@ -428,7 +428,7 @@ footer {
 .location-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;          /* Reduced from 40px for less empty space between text/image */
+  gap: 30px; /* Reduced from 40px for less empty space between text/image */
   align-items: center;
 }
 
@@ -440,12 +440,12 @@ footer {
   flex: 1;
   min-width: 280px;
   text-align: center;
-  margin-top: -15px;   /* Keeps your upward pull; adjust to -10px / -20px if needed */
+  margin-top: -15px; /* Keeps your upward pull; adjust to -10px / -20px if needed */
 }
 
 .about-image img {
   width: 100%;
-  max-width: 320px;    /* Good size for store photo in location section */
+  max-width: 320px; /* Good size for store photo in location section */
   height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -453,7 +453,7 @@ footer {
 
 /* Specific override: Make the big logo MUCH smaller (only affects About Us section) */
 .about-section .about-image img {
-  max-width: 220px;    /* <-- Main fix: smaller logo. Try 200px or 180px if still too big */
+  max-width: 220px; /* <-- Main fix: smaller logo. Try 200px or 180px if still too big */
 }
 
 .about-text {
@@ -498,10 +498,10 @@ footer {
   .location-section {
     flex-direction: column;
     text-align: center;
-    gap: 20px;         /* Even tighter on mobile */
+    gap: 20px; /* Even tighter on mobile */
   }
   .about-image img {
-    max-width: 280px;  /* General mobile size */
+    max-width: 280px; /* General mobile size */
   }
   /* Make logo even smaller on mobile if needed */
   .about-section .about-image img {
