@@ -256,10 +256,11 @@ footer {
   margin: 0 auto;
 }
 
+/* Updated category buttons – clean white + light grey combo */
 .category-btn {
-  background-color: #ffffff;
-  color: #808080; /* grey text */
-  border: 2px solid #808080; /* grey border */
+  background-color: #ffffff !important;
+  color: #333333 !important; /* dark charcoal grey text */
+  border: 2px solid #d0d0d0 !important; /* soft light grey border */
   padding: 14px 28px;
   font-size: 1.1rem;
   font-weight: bold;
@@ -270,9 +271,9 @@ footer {
 }
 
 .category-btn:hover {
-  background-color: #f0f0f0;
-  color: #000000;
-  border-color: #000000;
+  background-color: #f5f5f5 !important; /* very light grey hover */
+  color: #000000 !important;
+  border-color: #d0d0d0 !important; /* keep border light grey */
 }
 
 /* Responsive adjustments for category buttons */
@@ -307,9 +308,9 @@ footer {
 }
 
 .category-btn {
-  background-color: transparent;
-  color: #FC6600; /* bright orange text */
-  border: 2px solid #FC6600;
+  background-color: transparent !important;
+  color: #FC6600 !important; /* bright orange text */
+  border: 2px solid #FC6600 !important;
   padding: 12px 24px;
   font-size: 1rem;
   font-weight: bold;
@@ -319,8 +320,8 @@ footer {
 }
 
 .category-btn:hover {
-  background-color: #FC6600;
-  color: #ffffff;
+  background-color: #FC6600 !important;
+  color: #ffffff !important;
 }
 
 /* Latest Advertiser Section */
