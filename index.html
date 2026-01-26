@@ -71,7 +71,7 @@
 <section class="latest-ads-section" style="background-color: #FC6600; padding: 60px 20px; text-align: center;">
   <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 40px; margin-top: 30px;">Latest Advertiser</h2>
   
-  <!-- Wrapper – extra space for arrows on desktop -->
+  <!-- Wrapper – space for arrows on desktop -->
   <div class="ads-carousel-wrapper">
     <div class="ads-carousel">
       <div class="ads-track" id="adsTrack">
@@ -91,7 +91,7 @@
 </section>
 
 <style>
-  /* Wrapper – allows arrows to extend outside on desktop */
+  /* Wrapper – space for arrows on desktop */
   .ads-carousel-wrapper {
     position: relative;
     max-width: 900px;
@@ -135,7 +135,6 @@
     cursor: pointer;
     border-radius: 50%;
     transition: all 0.3s;
-    z-index: 10;
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
   }
   .ad-prev { left: 15px; }
@@ -162,11 +161,11 @@
     .ads-carousel-wrapper { padding: 0 !important; }
   }
 
-  /* Desktop: 2 images + arrows fully outside – ultra-strict z-index & space */
+  /* Desktop: 2 images + arrows fully visible outside – strict high z-index & space */
   @media (min-width: 769px) {
     .ads-carousel-wrapper {
       max-width: 1100px !important;
-      padding: 0 120px !important; /* more space so arrows sit outside without clipping */
+      padding: 0 120px !important; /* space for arrows to sit outside */
       box-sizing: border-box;
     }
     .ads-carousel {
@@ -182,11 +181,18 @@
       max-width: 100% !important;
       width: 100% !important;
     }
-    /* Arrows – very high z-index & positioned outside */
+    /* Arrows – EXTREMELY high z-index to be on top of orange background */
     .ad-prev, .ad-next {
-      z-index: 9999 !important; /* extremely high – above orange background */
+      z-index: 99999 !important; /* way above everything */
+      pointer-events: auto !important;
     }
-    .ad-prev { left: -100px !important; } /* further out – adjust if needed */
+    .ads-carousel-wrapper {
+      pointer-events: none !important; /* prevents wrapper from blocking clicks */
+    }
+    .ad-prev, .ad-next {
+      pointer-events: auto !important;
+    }
+    .ad-prev { left: -100px !important; } /* adjust if needed: -80px or -120px */
     .ad-next { right: -100px !important; }
   }
 </style>
