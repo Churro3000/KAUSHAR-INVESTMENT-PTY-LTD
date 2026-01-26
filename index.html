@@ -91,7 +91,7 @@
 </section>
 
 <style>
-  /* New wrapper – allows arrows to extend outside on desktop */
+  /* Wrapper – allows arrows to extend outside on desktop */
   .ads-carousel-wrapper {
     position: relative;
     max-width: 900px;
@@ -165,7 +165,7 @@
   @media (min-width: 769px) {
     .ads-carousel-wrapper {
       max-width: 1000px !important;
-      padding: 0 60px; /* extra padding so arrows don't hit section edges */
+      padding: 0 80px; /* extra space so arrows sit fully outside without clipping */
       box-sizing: border-box;
     }
     .ads-carousel {
@@ -181,7 +181,10 @@
       max-width: 100% !important;
       width: 100% !important;
     }
-    /* Arrows positioned fully outside – no clipping */
+    /* Arrows positioned fully outside – higher z-index & negative positioning */
+    .ad-prev, .ad-next {
+      z-index: 20 !important; /* higher than section background */
+    }
     .ad-prev { left: -60px !important; }
     .ad-next { right: -60px !important; }
   }
