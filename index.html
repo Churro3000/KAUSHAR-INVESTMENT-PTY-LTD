@@ -138,7 +138,7 @@
     transform: translateY(-50%) scale(1.1);
   }
 
-  /* Mobile: keep 1 image per view */
+  /* Mobile: keep 1 image per view – strict protection */
   @media (max-width: 768px) {
     .latest-ads-section { padding: 50px 15px; }
     .latest-ads-section h2 { font-size: 1.9rem; }
@@ -149,15 +149,27 @@
       height: 44px;
       line-height: 44px;
     }
+    .ad-slide {
+      flex: 0 0 100% !important;
+      width: 100% !important;
+      min-width: 100% !important;
+    }
   }
 
-  /* Desktop / big screen: show 2 images at a time */
+  /* Desktop / big screen: FORCE 2 images side-by-side – ultra-strict */
   @media (min-width: 769px) {
+    .ads-carousel {
+      max-width: 1000px !important; /* wider container for 2 images */
+    }
     .ad-slide {
-      flex: 0 0 50% !important;  /* strict: each slide = 50% width → 2 visible */
+      flex: 0 0 50% !important;
+      width: 50% !important;
+      min-width: 50% !important;
+      max-width: 50% !important;
     }
     .ad-slide img {
       max-width: 100% !important;
+      width: 100% !important;
     }
   }
 </style>
@@ -177,16 +189,18 @@
   let currentIndex = 0;
   const slides = track.children.length;
 
-  // Determine how many slides to move per click
+  // Step size: 2 on desktop, 1 on mobile
   const getStep = () => window.innerWidth <= 768 ? 1 : 2;
 
   function updateCarousel() {
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    // Use 50% shift per step on desktop (since slides are 50% wide)
+    const shiftPercent = getStep() === 2 ? 50 : 100;
+    track.style.transform = `translateX(-${currentIndex * shiftPercent}%)`;
   }
 
   nextBtn.addEventListener('click', () => {
     const step = getStep();
-    currentIndex = Math.min(currentIndex + step, slides - getStep());
+    currentIndex = Math.min(currentIndex + step, slides - step);
     updateCarousel();
   });
 
@@ -196,7 +210,7 @@
     updateCarousel();
   });
 
-  // Mobile swipe – always 1 image step
+  // Mobile swipe – always move 1
   let touchStartX = 0;
   let touchEndX = 0;
 
@@ -209,10 +223,8 @@
     const diff = touchStartX - touchEndX;
     if (Math.abs(diff) > 60) {
       if (diff > 0) {
-        // Swipe left → next
         currentIndex = Math.min(currentIndex + 1, slides - 1);
       } else {
-        // Swipe right → previous
         currentIndex = Math.max(currentIndex - 1, 0);
       }
       updateCarousel();
