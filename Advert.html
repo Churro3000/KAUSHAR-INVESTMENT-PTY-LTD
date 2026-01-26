@@ -34,9 +34,10 @@
   <!-- START Latest Advertiser Section -->
 <section class="latest-ads-section" style="background-color: #FC6600; padding: 60px 20px; text-align: center;">
   <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 40px; margin-top: 30px;">Latest Advertiser</h2>
- 
-  <!-- Wrapper to let arrows poke out on desktop -->
   <div class="ads-carousel-wrapper">
+    <!-- Desktop arrows now live outside the overflow:hidden container -->
+    <button class="ad-prev-desktop">&#10094;</button>
+    <button class="ad-next-desktop">&#10095;</button>
     <div class="ads-carousel">
       <div class="ads-track" id="adsTrack">
         <div class="ad-slide"><img src="images.web/Camera_ad.png" alt="Advertiser 1"></div>
@@ -48,6 +49,7 @@
         <div class="ad-slide"><img src="images.web/mixed_hardware_ad.png" alt="Advertiser 7"></div>
         <div class="ad-slide"><img src="images.web/Camp-chairs_ad.png" alt="Advertiser 8"></div>
       </div>
+      <!-- Mobile arrows (inside the carousel) -->
       <button class="ad-prev" id="adPrev">&#10094;</button>
       <button class="ad-next" id="adNext">&#10095;</button>
     </div>
@@ -55,16 +57,17 @@
 </section>
 
 <style>
-  /* Wrapper – allows arrows to extend outside on desktop */
+  /* ── exactly the same as before ── no changes here ── */
   .ads-carousel-wrapper {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .ads-carousel {
     position: relative;
     max-width: 900px;
     margin: 0 auto;
-  }
-
-  .ads-carousel {
-    position: relative;
-    overflow: hidden; /* keeps sliding images clipped */
+    overflow: hidden;
   }
   .ads-track {
     display: flex;
@@ -84,7 +87,9 @@
     margin: 0 auto;
     display: block;
   }
-  .ad-prev, .ad-next {
+  /* Shared arrow styling */
+  .ad-prev, .ad-next,
+  .ad-prev-desktop, .ad-next-desktop {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -99,23 +104,29 @@
     cursor: pointer;
     border-radius: 50%;
     transition: all 0.3s;
-    z-index: 10;
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    z-index: 10;
   }
-  .ad-prev { left: 15px; }
-  .ad-next { right: 15px; }
-  .ad-prev:hover, .ad-next:hover {
-    background-color: rgba(0,0,0,0.6) !important;
-    color: white !important;
+  .ad-prev:hover, .ad-next:hover,
+  .ad-prev-desktop:hover, .ad-next-desktop:hover {
+    background-color: rgba(0,0,0,0.8);
     transform: translateY(-50%) scale(1.1);
   }
-
-  /* Mobile: keep 1 image per view & arrows inside */
+  /* Mobile arrows – hidden by default */
+  .ad-prev, .ad-next {
+    display: none;
+  }
+  /* Desktop arrows – hidden by default */
+  .ad-prev-desktop, .ad-next-desktop {
+    display: none;
+  }
+  /* MOBILE (≤ 768px) */
   @media (max-width: 768px) {
     .latest-ads-section { padding: 50px 15px; }
     .latest-ads-section h2 { font-size: 1.9rem; }
     .ad-slide img { max-width: 100%; }
     .ad-prev, .ad-next {
+      display: block !important;
       font-size: 1.4rem;
       width: 44px;
       height: 44px;
@@ -123,97 +134,105 @@
     }
     .ad-prev { left: 15px !important; }
     .ad-next { right: 15px !important; }
+    .ad-prev-desktop, .ad-next-desktop { display: none !important; }
   }
-
-  /* Desktop / big screen: 2 images + arrows fully outside (no clipping) */
+  /* DESKTOP (≥ 769px) */
   @media (min-width: 769px) {
-    .ads-carousel-wrapper {
-      max-width: 1000px !important;
-      padding: 0 80px; /* extra space so arrows sit fully outside without clipping */
-      box-sizing: border-box;
-    }
     .ads-carousel {
-      max-width: 100% !important;
+      max-width: 900px;
+    }
+    .ads-carousel-wrapper {
+      max-width: 1000px;
     }
     .ad-slide {
-      flex: 0 0 50% !important;
-      width: 50% !important;
-      min-width: 50% !important;
-      max-width: 50% !important;
+      flex: 0 0 50%;
+      width: 50%;
     }
     .ad-slide img {
-      max-width: 100% !important;
-      width: 100% !important;
+      max-width: 100%;
+      width: 100%;
     }
-    /* Arrows positioned fully outside – higher z-index & negative positioning */
-    .ad-prev, .ad-next {
-      z-index: 20 !important; /* higher than section background */
+    .ad-prev-desktop, .ad-next-desktop {
+      display: block !important;
     }
-    .ad-prev { left: -60px !important; }
-    .ad-next { right: -60px !important; }
+    .ad-prev-desktop { left: -80px; }
+    .ad-next-desktop { right: -80px; }
+    .ad-prev, .ad-next { display: none !important; }
   }
 </style>
 
 <script>
-// Advert Carousel Logic – strict 2-at-a-time on desktop
+// Advert Carousel Logic – improved button handling
 (function() {
   const track = document.getElementById('adsTrack');
-  const prevBtn = document.getElementById('adPrev');
-  const nextBtn = document.getElementById('adNext');
+  if (!track) return;
 
-  if (!track || !prevBtn || !nextBtn) {
-    console.warn('Advert carousel elements not found');
-    return;
-  }
-
-  let currentIndex = 0;
   const slides = track.children.length;
+  let currentIndex = 0;
 
-  const getStep = () => window.innerWidth <= 768 ? 1 : 2;
-
-  function updateCarousel() {
-    const shiftPercent = getStep() === 2 ? 50 : 100;
-    track.style.transform = `translateX(-${currentIndex * shiftPercent}%)`;
+  function getStep() {
+    return window.innerWidth >= 769 ? 2 : 1;
   }
 
-  nextBtn.addEventListener('click', () => {
+  function updateCarousel(smooth = true) {
     const step = getStep();
-    currentIndex = Math.min(currentIndex + step, slides - step);
+    const percent = step === 2 ? 50 : 100;
+    const maxIndex = slides - step;
+    currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+    track.style.transition = smooth ? 'transform 0.6s ease' : 'none';
+    track.style.transform = `translateX(-${currentIndex * percent}%)`;
+  }
+
+  // Move functions (used by both arrows and swipe)
+  function goNext() {
+    currentIndex += getStep();
     updateCarousel();
+  }
+
+  function goPrev() {
+    currentIndex -= getStep();
+    updateCarousel();
+  }
+
+  // Attach listeners to ALL arrow buttons (only visible ones will be clickable)
+  document.querySelectorAll('.ad-prev, .ad-prev-desktop').forEach(btn => {
+    btn.addEventListener('click', goPrev);
   });
 
-  prevBtn.addEventListener('click', () => {
-    const step = getStep();
-    currentIndex = Math.max(currentIndex - step, 0);
-    updateCarousel();
+  document.querySelectorAll('.ad-next, .ad-next-desktop').forEach(btn => {
+    btn.addEventListener('click', goNext);
   });
 
-  // Mobile swipe – always move 1
+  // Mobile swipe – always by 1
   let touchStartX = 0;
-  let touchEndX = 0;
-
   track.addEventListener('touchstart', e => {
     touchStartX = e.changedTouches[0].screenX;
   }, { passive: true });
 
   track.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
+    const touchEndX = e.changedTouches[0].screenX;
     const diff = touchStartX - touchEndX;
+
     if (Math.abs(diff) > 60) {
       if (diff > 0) {
-        currentIndex = Math.min(currentIndex + 1, slides - 1);
+        currentIndex += 1;
       } else {
-        currentIndex = Math.max(currentIndex - 1, 0);
+        currentIndex -= 1;
       }
       updateCarousel();
     }
   }, { passive: true });
 
-  updateCarousel(); // initial
+  // Re-adjust on resize (important when going from desktop → mobile or vice versa)
+  window.addEventListener('resize', () => {
+    updateCarousel(false); // no animation on resize
+  });
+
+  updateCarousel(false); // initial position – no animation
 })();
 </script>
 <!-- END Latest Advertiser Section -->
-
+  
   <footer>
     <p>© 2026 Your Company Name. All rights reserved.</p>
   </footer>
