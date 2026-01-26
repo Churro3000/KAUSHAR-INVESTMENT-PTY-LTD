@@ -23,24 +23,20 @@
       text-align: center;
       color: #ffffff;
     }
-
     /* Mobile: stacked layout */
     .contact-follow-wrapper {
       display: flex;
       flex-direction: column;
       gap: 50px;
     }
-
     .contact-block, .follow-block {
       text-align: center;
     }
-
     .contact-block p, .follow-block p {
       font-size: 1.1rem;
       margin: 0 0 20px;
       color: #cccccc;
     }
-
     /* WhatsApp button */
     .whatsapp-btn {
       display: inline-flex;
@@ -65,7 +61,6 @@
       width: 28px;
       height: 28px;
     }
-
     /* Social buttons */
     .social-buttons {
       display: flex;
@@ -103,7 +98,6 @@
       width: 26px;
       height: 26px;
     }
-
     /* Desktop: side-by-side layout */
     @media (min-width: 769px) {
       .contact-follow-wrapper {
@@ -126,18 +120,7 @@
         padding-top: 80px !important;
         padding-bottom: 80px !important;
       }
-      /* Footer links: more spread out horizontally */
-      .footer-links {
-        margin-top: 80px !important;
-        margin-bottom: 80px !important;
-        font-size: 0.9rem;
-        letter-spacing: 1px;
-      }
-      .footer-links a {
-        margin: 0 18px;
-      }
     }
-
     /* Mobile adjustments only */
     @media (max-width: 768px) {
       /* Remove the small descriptive text on mobile */
@@ -189,7 +172,6 @@
         background-color: #555555;
       }
     }
-
     /* Small footer links at bottom – non-bold, small font */
     .footer-links {
       text-align: center;
@@ -204,14 +186,30 @@
       color: #ffffff;
       text-decoration: underline;
     }
+
+    /* Desktop-only footer links adjustments */
+    @media (min-width: 769px) {
+      .footer-links {
+        margin-top: 120px !important; /* increased space above links */
+        margin-bottom: 40px !important; /* minimal space below */
+        display: flex;
+        justify-content: space-between;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 20px; /* small side padding so links don't touch edges */
+        font-size: 1rem;
+      }
+      .footer-links a {
+        margin: 0 20px; /* even spacing between links */
+      }
+    }
   </style>
 </head>
 <body>
-
   <div class="contact-follow-container">
-    
+   
     <div class="contact-follow-wrapper">
-
       <!-- Contact Us -->
       <div class="contact-block">
         <h2 class="section-title">Contact Us</h2>
@@ -220,7 +218,6 @@
           Message us on WhatsApp
         </a>
       </div>
-
       <!-- Follow Us -->
       <div class="follow-block">
         <h2 class="section-title">Follow Us</h2>
@@ -236,9 +233,7 @@
           </a>
         </div>
       </div>
-
     </div>
-
     <!-- Small footer links – professional order, non-bold, light grey -->
     <div class="footer-links">
       <a href="index.html">Home</a>
@@ -248,9 +243,7 @@
       <a href="about.html">About Us</a>
       <a href="policy.html">Policy</a>
     </div>
-
   </div>
-
   <!-- Script moved inside body – fixes GitHub validation error -->
   <script>
     // Replace these placeholders with your real links/numbers
@@ -258,6 +251,5 @@
     document.getElementById('facebookLink').href = 'https://facebook.com/YOURPAGE';
     document.getElementById('instagramLink').href = 'https://instagram.com/YOURHANDLE';
   </script>
-
 </body>
 </html>
