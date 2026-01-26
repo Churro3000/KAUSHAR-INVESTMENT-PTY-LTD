@@ -13,7 +13,7 @@
       color: #ffffff;
     }
     .contact-follow-container {
-      padding: 30px 20px; /* reduced top/bottom for even spacing */
+      padding: 30px 20px;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -121,9 +121,19 @@
       .social-buttons {
         justify-content: flex-start;
       }
-      /* Slightly more space above on big screens */
+      /* More even big space above and below on big screens */
       .contact-follow-container {
-        padding-top: 50px !important;
+        padding-top: 80px !important;
+        padding-bottom: 80px !important;
+      }
+      /* Footer links: more spread out horizontally */
+      .footer-links {
+        margin-top: 60px;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+      }
+      .footer-links a {
+        margin: 0 18px;
       }
     }
 
@@ -142,7 +152,7 @@
         width: 24px;
         height: 24px;
       }
-      /* Slightly tighter overall spacing */
+      /* Spacing */
       .contact-follow-container {
         padding: 30px 15px;
       }
@@ -153,20 +163,29 @@
       .contact-follow-container {
         padding-bottom: 50px !important;
       }
+      /* Footer links: centered, stacked vertically, good spacing */
+      .footer-links {
+        margin-top: 50px;
+        margin-bottom: 40px;
+        font-size: 0.85rem;
+        line-height: 2.2;
+        text-align: center;
+      }
+      .footer-links a {
+        display: block;
+        margin: 8px 0;
+      }
     }
 
     /* Small footer links at bottom – non-bold, small font */
     .footer-links {
       text-align: center;
-      margin-top: 40px;
-      font-size: 0.85rem;
       color: #aaaaaa;
       font-weight: normal;
     }
     .footer-links a {
       color: #aaaaaa;
       text-decoration: none;
-      margin: 0 12px;
     }
     .footer-links a:hover {
       color: #ffffff;
