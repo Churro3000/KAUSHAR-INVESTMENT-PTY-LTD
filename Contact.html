@@ -128,7 +128,8 @@
       }
       /* Footer links: more spread out horizontally */
       .footer-links {
-        margin-top: 60px;
+        margin-top: 80px !important;
+        margin-bottom: 80px !important;
         font-size: 0.9rem;
         letter-spacing: 1px;
       }
@@ -163,17 +164,29 @@
       .contact-follow-container {
         padding-bottom: 50px !important;
       }
-      /* Footer links: centered, stacked vertically, good spacing */
+      /* Footer links: centered, stacked vertically with horizontal lines between */
       .footer-links {
-        margin-top: 50px;
-        margin-bottom: 40px;
-        font-size: 0.85rem;
-        line-height: 2.2;
+        margin-top: 50px !important;
+        margin-bottom: 50px !important;
+        font-size: 0.9rem;
+        line-height: 2.4;
         text-align: center;
       }
       .footer-links a {
         display: block;
-        margin: 8px 0;
+        margin: 12px 0;
+        position: relative;
+      }
+      /* Horizontal line between each link on mobile */
+      .footer-links a:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -6px;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 1px;
+        background-color: #555555;
       }
     }
 
@@ -228,11 +241,11 @@
 
     <!-- Small footer links – professional order, non-bold, light grey -->
     <div class="footer-links">
-      <a href="index.html">Home</a> |
-      <a href="products.html">Products</a> |
-      <a href="inquire.html">Inquire</a> |
-      <a href="Advert.html">Advertiser</a> |
-      <a href="about.html">About Us</a> |
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="inquire.html">Inquire</a>
+      <a href="Advert.html">Advertiser</a>
+      <a href="about.html">About Us</a>
       <a href="policy.html">Policy</a>
     </div>
 
