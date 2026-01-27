@@ -7,18 +7,288 @@
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome for search icon (free, lightweight) -->
+    <!-- Font Awesome for search icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        /* Existing styles (unchanged) */
+        /* Restored original base styles */
         body { background-color: #f4f4f4; color: #000000; }
 
-        /* New search container */
+        .category-title { 
+            text-align: center; 
+            font-size: 2.5rem; 
+            margin: 40px 20px 40px;  /* increased top margin for space below search bar */
+            color: #000; 
+            font-weight: bold; 
+        }
+
+        .products-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 30px; 
+            padding: 0 20px 60px; 
+            max-width: 1600px; 
+            margin: 0 auto; 
+        }
+
+        .product-card { 
+            background:#fff; 
+            border-radius:12px; 
+            overflow:hidden; 
+            box-shadow:0 4px 15px rgba(0,0,0,0.1); 
+            transition:0.3s; 
+            text-align:center; 
+            display:flex; 
+            flex-direction:column; 
+            cursor:pointer; 
+        }
+
+        .product-card:hover { 
+            transform:translateY(-10px); 
+            box-shadow:0 10px 25px rgba(0,0,0,0.15); 
+        }
+
+        .product-image { 
+            width:100%; 
+            aspect-ratio:1/1; 
+            object-fit:contain; 
+            background:#f9f9f9; 
+            padding:15px; 
+            box-sizing:border-box; 
+        }
+
+        .product-info { 
+            padding:20px 15px; 
+            flex-grow:1; 
+            display:flex; 
+            flex-direction:column; 
+        }
+
+        .product-name { 
+            font-size:1.35rem; 
+            margin:0 0 10px; 
+            color:#000; 
+            font-weight:600; 
+        }
+
+        .product-desc { 
+            font-size:0.95rem; 
+            color:#555; 
+            margin-bottom:15px; 
+            flex-grow:1; 
+        }
+
+        .product-price { 
+            font-size:1.3rem; 
+            color:#FC6600; 
+            font-weight:bold; 
+            margin-bottom:18px; 
+        }
+
+        .buy-btn { 
+            background:#000; 
+            color:#fff; 
+            border:none; 
+            padding:12px 30px; 
+            font-size:1rem; 
+            border-radius:6px; 
+            cursor:pointer; 
+            transition:0.3s; 
+            margin-top:auto; 
+        }
+
+        .buy-btn:hover { 
+            background:#FC6600; 
+        }
+
+        .back-btn { 
+            display:block; 
+            width:fit-content; 
+            margin:40px auto 60px; 
+            padding:12px 30px; 
+            background:#808080; 
+            color:#fff; 
+            text-decoration:none; 
+            border-radius:6px; 
+            font-weight:bold; 
+            transition:0.3s; 
+        }
+
+        .back-btn:hover { 
+            background:#000; 
+        }
+
+        /* Restored original media queries for product cards */
+        @media (max-width:1200px) { 
+            .products-grid { grid-template-columns:repeat(3,1fr); } 
+        }
+
+        @media (max-width:768px) {
+            .products-grid { 
+                grid-template-columns:repeat(2,1fr); 
+                gap:20px; 
+                padding:0 15px 50px; 
+            }
+
+            .category-title { 
+                font-size:2rem; 
+                margin: 35px 15px 30px;  /* adjusted for better spacing on mobile */
+            }
+
+            /* MOBILE ONLY: Hide description & Inquire button in grid view */
+            .product-desc, .buy-btn { display: none; }
+
+            /* Keep price visible but slightly smaller */
+            .product-price { font-size: 1.1rem; margin-bottom: 0; }
+
+            .product-info { padding: 15px; }
+
+            /* Strict mobile title adjustment */
+            .product-name {
+                font-size: 18px !important;
+                font-family: Arial, sans-serif !important;
+                font-weight: 600 !important;
+            }
+        }
+
+        @media (max-width:480px) {
+            .product-name { font-size: 16px !important; }
+            .product-price { font-size: 1.05rem; }
+        }
+
+        /* Restored original modal popup styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal-content {
+            background: #fff;
+            border-radius: 16px;
+            max-width: 1000px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2.4rem;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            line-height: 42px;
+            text-align: center;
+            cursor: pointer;
+            color: #333;
+            font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            color: #000;
+            background: #fff;
+            transform: scale(1.1);
+        }
+
+        .modal-image-section { position: relative; }
+
+        .modal-main-image { 
+            width: 100%; 
+            aspect-ratio: 1/1; 
+            object-fit: contain; 
+            background: #f9f9f9; 
+            border-radius: 12px; 
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            border: none;
+            width: 50px;
+            height: 50px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .modal-prev { left: 10px; }
+        .modal-next { right: 10px; }
+
+        .modal-dots { text-align: center; margin-top: 15px; }
+
+        .modal-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #bbb;
+            border-radius: 50%;
+            margin: 0 6px;
+            cursor: pointer;
+        }
+
+        .modal-dot.active { background: #FC6600; }
+
+        .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
+
+        .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
+
+        .modal-price { 
+            font-size: 2rem; 
+            color: #FC6600 !important;
+            font-weight: bold; 
+            margin-bottom: 25px; 
+        }
+
+        .modal-details .buy-btn {
+            display: block !important;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .modal-details h3 { font-size: 1.7rem; }
+
+            .modal-close {
+                width: 48px;
+                height: 48px;
+                line-height: 48px;
+                font-size: 2.8rem;
+                top: 10px;
+                right: 10px;
+            }
+        }
+
+        /* Search bar styles (kept + mobile fit improvements) */
         .search-container {
             text-align: center;
-            margin: 30px 20px 20px;
-            position: relative;
+            margin: 20px 20px 30px;  /* more space above title */
         }
 
         .search-input-wrapper {
@@ -30,7 +300,7 @@
 
         .search-input {
             width: 100%;
-            padding: 12px 40px 12px 20px;
+            padding: 12px 45px 12px 20px;
             border: 2px solid #ddd;
             border-radius: 30px;
             font-size: 1rem;
@@ -50,29 +320,14 @@
             top: 50%;
             transform: translateY(-50%);
             color: #888;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             pointer-events: none;
         }
 
-        /* Title adjustments */
-        .category-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin: 20px 20px 40px;
-            color: #000;
-            font-weight: bold;
-        }
-
-        /* Existing grid & card styles unchanged */
-        .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding: 0 20px 60px; max-width: 1600px; margin: 0 auto; }
-        .product-card { background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.1); transition:0.3s; text-align:center; display:flex; flex-direction:column; cursor:pointer; }
-        .product-card:hover { transform:translateY(-10px); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
-        /* ... rest of your card/image/info/price/button styles remain the same ... */
-
-        /* Responsive adjustments */
+        /* Mobile-specific search adjustments */
         @media (max-width: 768px) {
             .search-container {
-                margin: 20px 15px 15px;
+                margin: 15px 15px 25px;  /* tighter but still good spacing */
             }
 
             .search-input {
@@ -84,28 +339,6 @@
             .search-icon {
                 right: 12px;
                 font-size: 1.1rem;
-            }
-
-            .category-title {
-                text-align: left;
-                font-size: 1.8rem;
-                margin: 10px 15px 25px;
-                padding-left: 10px; /* slight left shift */
-            }
-
-            .products-grid { grid-template-columns: repeat(2,1fr); gap:20px; padding:0 15px 50px; }
-            /* Your existing mobile card adjustments remain */
-        }
-
-        @media (min-width: 769px) {
-            .search-input {
-                max-width: 450px;
-                font-size: 1.1rem;
-            }
-
-            .category-title {
-                font-size: 2.2rem; /* slightly smaller than original 2.5rem */
-                margin: 20px auto 40px;
             }
         }
     </style>
@@ -135,7 +368,7 @@
         </div>
     </header>
 
-    <!-- New search bar -->
+    <!-- Search bar -->
     <div class="search-container">
         <div class="search-input-wrapper">
             <input type="text" id="searchInput" class="search-input" placeholder="Search hardware products...">
@@ -146,225 +379,208 @@
     <h1 class="category-title">Hardware</h1>
 
     <section class="products-grid">
-      
-    <!-- PRODUCT 1 -->
-    <div class="product-card" 
-         data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-         data-title="Heavy Duty Power Drill"
-         data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
-         data-price="P 1,250.00">
-      <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
-      <div class="product-info">
-        <h3 class="product-name">Heavy Duty Power Drill</h3>
-        <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
-        <p class="product-price">P 1,250.00</p>
-        <button class="buy-btn">Inquire Now</button>
-      </div>
+
+        <!-- PRODUCT 1 -->
+        <div class="product-card" 
+             data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
+             data-title="Heavy Duty Power Drill"
+             data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
+             data-price="P 1,250.00">
+            <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">Heavy Duty Power Drill</h3>
+                <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
+                <p class="product-price">P 1,250.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 2 -->
+        <div class="product-card"
+             data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
+             data-title="150-Piece Tool Kit"
+             data-desc="Complete mechanic and home repair set including sockets, wrenches, screwdrivers, pliers, hammer, tape measure, and more. All tools made from chrome vanadium steel. Comes in a sturdy blow-molded case."
+             data-price="P 2,800.00">
+            <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">150-Piece Tool Kit</h3>
+                <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
+                <p class="product-price">P 2,800.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 3 -->
+        <div class="product-card"
+             data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
+             data-title="150-Piece Tool Kit"
+             data-desc="Complete mechanic and home repair set including sockets, wrenches, screwdrivers, pliers, hammer, tape measure, and more. All tools made from chrome vanadium steel. Comes in a sturdy blow-molded case."
+             data-price="P 2,800.00">
+            <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">150-Piece Tool Kit</h3>
+                <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
+                <p class="product-price">P 2,800.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 4 -->
+        <div class="product-card"
+             data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
+             data-title="150-Piece Tool Kit"
+             data-desc="Complete mechanic and home repair set including sockets, wrenches, screwdrivers, pliers, hammer, tape measure, and more. All tools made from chrome vanadium steel. Comes in a sturdy blow-molded case."
+             data-price="P 2,800.00">
+            <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">150-Piece Tool Kit</h3>
+                <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
+                <p class="product-price">P 2,800.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- Add more products here -->
+
+    </section>
+
+    <a href="index.html" class="back-btn">← Back to Home</a>
+
+    <footer>
+        <p>© 2026 Your Company Name. All rights reserved.</p>
+    </footer>
+
+    <!-- MODAL (shared) -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-image-section">
+                <img src="" alt="Product" class="modal-main-image" id="modalImage">
+                <button class="modal-nav modal-prev">&#10094;</button>
+                <button class="modal-nav modal-next">&#10095;</button>
+                <div class="modal-dots" id="modalDots"></div>
+            </div>
+            <div class="modal-details">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDesc"></p>
+                <p class="modal-price" id="modalPrice"></p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
     </div>
 
-    <!-- PRODUCT 2 -->
-    <div class="product-card"
-         data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
-         data-title="150-Piece Tool Kit"
-         data-desc="Complete mechanic and home repair set including sockets, wrenches, screwdrivers, pliers, hammer, tape measure, and more. All tools made from chrome vanadium steel. Comes in a sturdy blow-molded case."
-         data-price="P 2,800.00">
-      <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
-      <div class="product-info">
-        <h3 class="product-name">150-Piece Tool Kit</h3>
-        <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
-        <p class="product-price">P 2,800.00</p>
-        <button class="buy-btn">Inquire Now</button>
-      </div>
-    </div>
+    <script src="script.js"></script>
 
-    <!-- PRODUCT 3 -->
-    <div class="product-card"
-         data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
-         data-title="150-Piece Tool Kit"
-         data-desc="Complete mechanic and home repair set including sockets, wrenches, screwdrivers, pliers, hammer, tape measure, and more. All tools made from chrome vanadium steel. Comes in a sturdy blow-molded case."
-         data-price="P 2,800.00">
-      <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
-      <div class="product-info">
-        <h3 class="product-name">150-Piece Tool Kit</h3>
-        <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
-        <p class="product-price">P 2,800.00</p>
-        <button class="buy-btn">Inquire Now</button>
-      </div>
-    </div>
-
-    <!-- PRODUCT 4 -->
-    <div class="product-card"
-         data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
-         data-title="150-Piece Tool Kit"
-         data-desc="Complete mechanic and home repair set including sockets, wrenches, screwdrivers, pliers, hammer, tape measure, and more. All tools made from chrome vanadium steel. Comes in a sturdy blow-molded case."
-         data-price="P 2,800.00">
-      <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
-      <div class="product-info">
-        <h3 class="product-name">150-Piece Tool Kit</h3>
-        <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
-        <p class="product-price">P 2,800.00</p>
-        <button class="buy-btn">Inquire Now</button>
-      </div>
-    </div>
-
-    <!-- Add more products here -->
-
-  </section>
-
-  <a href="index.html" class="back-btn">← Back to Home</a>
-
-  <footer>
-    <p>© 2026 Your Company Name. All rights reserved.</p>
-  </footer>
-
-  <!-- MODAL (shared) -->
-  <div class="modal-overlay" id="productModal">
-    <div class="modal-content">
-      <button class="modal-close">&times;</button>
-
-      <div class="modal-image-section">
-        <img src="" alt="Product" class="modal-main-image" id="modalImage">
-        <button class="modal-nav modal-prev">&#10094;</button>
-        <button class="modal-nav modal-next">&#10095;</button>
-        <div class="modal-dots" id="modalDots"></div>
-      </div>
-
-      <div class="modal-details">
-        <h3 id="modalTitle"></h3>
-        <p id="modalDesc"></p>
-        <p class="modal-price" id="modalPrice"></p>
-        <button class="buy-btn">Inquire Now</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
-
-  <script>
-    // Product Modal Logic
-    const modal = document.getElementById('productModal');
-    const closeBtn = document.querySelector('.modal-close');
-    const modalImg = document.getElementById('modalImage');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalPrice = document.getElementById('modalPrice');
-    const dotsContainer = document.getElementById('modalDots');
-    let currentImages = [];
-    let currentIndex = 0;
-
-    document.querySelectorAll('.product-card').forEach(card => {
-      card.addEventListener('click', () => {
-        currentImages = JSON.parse(card.dataset.images);
-        currentIndex = 0;
-
-        modalTitle.textContent = card.dataset.title;
-        modalDesc.textContent = card.dataset.desc;
-        modalPrice.textContent = card.dataset.price;
-        updateModalImage();
-
-        modal.classList.add('active');
-      });
-    });
-
-    closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-    modal.addEventListener('click', e => {
-      if (e.target === modal) modal.classList.remove('active');
-    });
-
-    document.querySelector('.modal-prev').addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-      updateModalImage();
-    });
-
-    document.querySelector('.modal-next').addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % currentImages.length;
-      updateModalImage();
-    });
-
-    function updateModalImage() {
-      modalImg.src = currentImages[currentIndex];
-      dotsContainer.innerHTML = '';
-      currentImages.forEach((_, i) => {
-        const dot = document.createElement('span');
-        dot.classList.add('modal-dot');
-        if (i === currentIndex) dot.classList.add('active');
-        dot.addEventListener('click', () => {
-          currentIndex = i;
-          updateModalImage();
-        });
-        dotsContainer.appendChild(dot);
-      });
-    }
-
-    // ==================== WHATSAPP INQUIRE BUTTON HANDLER ====================
-    document.addEventListener('DOMContentLoaded', () => {
-      const phoneNumber = '26777478877';
-
-      const handleInquireClick = (button) => {
-        let productName = 'this product';
-
-        // From main card
-        const productInfo = button.closest('.product-info');
-        if (productInfo) {
-          const nameElem = productInfo.querySelector('.product-name');
-          if (nameElem) productName = nameElem.textContent.trim();
-        }
-
-        // Fallback from modal title
-        const modalTitleElem = document.getElementById('modalTitle');
-        if (modalTitleElem && modalTitleElem.textContent.trim()) {
-          productName = modalTitleElem.textContent.trim();
-        }
-
-        const message = `Good day, I'd like to inquire about ${productName}`;
-        const encodedMessage = encodeURIComponent(message);
-        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
-        window.open(whatsappUrl, '_blank');
-      };
-
-      const attachListeners = () => {
-        document.querySelectorAll('.buy-btn').forEach(btn => {
-          btn.removeEventListener('click', handleInquireClick);
-          btn.addEventListener('click', () => handleInquireClick(btn));
-        });
-      };
-
-      attachListeners();
-
-      const modal = document.getElementById('productModal');
-      if (modal) {
-        const observer = new MutationObserver(attachListeners);
-        observer.observe(modal, { childList: true, subtree: true });
-      }
-    });
-  </script>
-
-  <!-- New search filtering script -->
     <script>
+        // Product Modal Logic (unchanged)
+        const modal = document.getElementById('productModal');
+        const closeBtn = document.querySelector('.modal-close');
+        const modalImg = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalPrice = document.getElementById('modalPrice');
+        const dotsContainer = document.getElementById('modalDots');
+        let currentImages = [];
+        let currentIndex = 0;
+
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', () => {
+                currentImages = JSON.parse(card.dataset.images);
+                currentIndex = 0;
+                modalTitle.textContent = card.dataset.title;
+                modalDesc.textContent = card.dataset.desc;
+                modalPrice.textContent = card.dataset.price;
+                updateModalImage();
+                modal.classList.add('active');
+            });
+        });
+
+        closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+        modal.addEventListener('click', e => {
+            if (e.target === modal) modal.classList.remove('active');
+        });
+
+        document.querySelector('.modal-prev').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+            updateModalImage();
+        });
+
+        document.querySelector('.modal-next').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % currentImages.length;
+            updateModalImage();
+        });
+
+        function updateModalImage() {
+            modalImg.src = currentImages[currentIndex];
+            dotsContainer.innerHTML = '';
+            currentImages.forEach((_, i) => {
+                const dot = document.createElement('span');
+                dot.classList.add('modal-dot');
+                if (i === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateModalImage();
+                });
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        // WHATSAPP INQUIRE BUTTON HANDLER (unchanged)
+        document.addEventListener('DOMContentLoaded', () => {
+            const phoneNumber = '26777478877';
+
+            const handleInquireClick = (button) => {
+                let productName = 'this product';
+                const productInfo = button.closest('.product-info');
+                if (productInfo) {
+                    const nameElem = productInfo.querySelector('.product-name');
+                    if (nameElem) productName = nameElem.textContent.trim();
+                }
+                const modalTitleElem = document.getElementById('modalTitle');
+                if (modalTitleElem && modalTitleElem.textContent.trim()) {
+                    productName = modalTitleElem.textContent.trim();
+                }
+                const message = `Good day, I'd like to inquire about ${productName}`;
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+                window.open(whatsappUrl, '_blank');
+            };
+
+            const attachListeners = () => {
+                document.querySelectorAll('.buy-btn').forEach(btn => {
+                    btn.removeEventListener('click', handleInquireClick);
+                    btn.addEventListener('click', () => handleInquireClick(btn));
+                });
+            };
+
+            attachListeners();
+
+            const modal = document.getElementById('productModal');
+            if (modal) {
+                const observer = new MutationObserver(attachListeners);
+                observer.observe(modal, { childList: true, subtree: true });
+            }
+        });
+
+        // Search filtering (unchanged)
         document.addEventListener('DOMContentLoaded', () => {
             const searchInput = document.getElementById('searchInput');
             const productCards = document.querySelectorAll('.product-card');
 
             function filterProducts() {
                 const query = searchInput.value.toLowerCase().trim();
-
                 productCards.forEach(card => {
                     const nameElem = card.querySelector('.product-name');
                     const productName = nameElem ? nameElem.textContent.toLowerCase() : '';
-
                     if (query === '' || productName.includes(query)) {
-                        card.style.display = ''; // show
+                        card.style.display = '';
                     } else {
-                        card.style.display = 'none'; // hide
+                        card.style.display = 'none';
                     }
                 });
             }
 
-            // Real-time filtering as user types
             searchInput.addEventListener('input', filterProducts);
-
-            // Also trigger on Enter (optional reinforcement)
             searchInput.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') {
                     e.preventDefault();
