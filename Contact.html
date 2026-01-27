@@ -135,7 +135,7 @@
       }
     }
 
-    /* Mobile adjustments only */
+    /* Mobile adjustments only – increased spacing enforced */
     @media (max-width: 768px) {
       /* Hide small descriptive text on mobile */
       .contact-block p, .follow-block p {
@@ -152,20 +152,20 @@
         height: 24px;
       }
 
-      /* Spacing */
+      /* Spacing – strict mobile values */
       .contact-follow-container {
-        padding: 30px 15px;
-        padding-bottom: 120px !important; /* ← increased so footer sits nicely at bottom */
+        padding: 30px 15px !important;
+        padding-bottom: 160px !important;          /* more space at bottom so footer sits nicely low */
       }
 
       .contact-follow-wrapper {
-        gap: 90px; /* ← increased space between WhatsApp button and Follow Us title */
+        gap: 120px !important;                    /* clearly more space between Contact and Follow Us blocks */
       }
 
       /* Footer links styling on mobile */
       .footer-links {
         margin-top: 50px !important;
-        margin-bottom: 0 !important; /* let container padding push it down */
+        margin-bottom: 0 !important;
         font-size: 0.9rem;
         line-height: 2.4;
         text-align: center;
@@ -189,7 +189,7 @@
       }
     }
 
-    /* Small footer links at bottom – professional order, non-bold, light grey */
+    /* Small footer links – general */
     .footer-links {
       text-align: center;
       color: #aaaaaa;
