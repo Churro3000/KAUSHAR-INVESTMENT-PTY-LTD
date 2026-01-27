@@ -30,16 +30,17 @@
 
         /* ==================== CAROUSEL CONTAINER ==================== */
         .carousel-wrapper {
-            position: relative;
-            overflow: hidden;
+            position: relative; /* For absolute-positioned arrows */
+            overflow: hidden; /* Hide overflow during slide */
         }
 
         .featured-products-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(4, 1fr); /* 4 visible on large screens */
             gap: 30px;
-            transition: transform 0.5s ease;
-            width: max-content;
+            transition: transform 0.5s ease; /* Smooth slide animation */
+            width: max-content; /* Allows sliding beyond viewport */
+            /* Prevent stacking / wrapping into multiple rows */
             grid-auto-flow: column;
         }
 
@@ -54,7 +55,7 @@
             display: flex;
             flex-direction: column;
             cursor: pointer;
-            max-width: 320px;
+            max-width: 320px; /* cap width to help fit 4 cards */
         }
 
         .product-card:hover {
@@ -169,7 +170,97 @@
             padding: 30px;
         }
 
-        /* ... (rest of modal styles unchanged) ... */
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2.4rem;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            line-height: 42px;
+            text-align: center;
+            cursor: pointer;
+            color: #333;
+            font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            color: #000;
+            background: #fff;
+            transform: scale(1.1);
+        }
+
+        .modal-image-section {
+            position: relative;
+        }
+
+        .modal-main-image {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: contain;
+            background: #f9f9f9;
+            border-radius: 12px;
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            border: none;
+            width: 50px;
+            height: 50px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .modal-prev { left: 10px; }
+        .modal-next { right: 10px; }
+
+        .modal-dots {
+            text-align: center;
+            margin: 20px 0 0 0;
+        }
+
+        .modal-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #bbb;
+            border-radius: 50%;
+            margin: 0 7px;
+            cursor: pointer;
+        }
+
+        .modal-dot.active { background: #FC6600; }
+
+        .modal-details h3 {
+            font-size: 2rem;
+            margin: 0 0 20px;
+            color: #000;
+        }
+
+        .modal-details p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #444;
+            margin-bottom: 25px;
+        }
+
+        .modal-price {
+            font-size: 2rem;
+            color: #FC6600 !important;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
 
         /* ==================== RESPONSIVE ADJUSTMENTS ==================== */
         @media (max-width: 768px) {
@@ -182,14 +273,14 @@
             .product-card {
                 max-width: 85vw;
                 margin: 0 auto;
-                /* Removed max-height: 480px !important – was clipping button */
+                /* Removed max-height – fixes button cut-off on mobile */
             }
 
             .product-image { padding: 10px; }
 
             .product-info {
-                padding: 14px 12px 18px 12px !important; /* +4px bottom padding – prevents flush cut-off */
-                min-height: 140px; /* guarantees room for name + price + button */
+                padding: 14px 12px 18px 12px !important; /* extra bottom space prevents cut-off */
+                min-height: 140px;                        /* ensures room for all elements */
                 justify-content: space-between !important;
             }
 
@@ -200,7 +291,7 @@
             .buy-btn {
                 padding: 9px 22px;
                 font-size: 0.92rem;
-                margin-top: auto !important; /* reinforce */
+                margin-top: auto !important; /* reinforce positioning */
             }
 
             .carousel-arrow {
@@ -209,8 +300,11 @@
                 font-size: 1.4rem;
             }
 
-            /* Mobile modal adjustments – unchanged */
-            .modal-dots { display: none; }
+            /* Mobile modal adjustments – restored exactly from old */
+            .modal-dots {
+                display: none;
+            }
+
             .modal-content {
                 grid-template-columns: 1fr;
                 max-width: 94vw;
@@ -219,8 +313,48 @@
                 gap: 14px;
                 border-radius: 14px;
             }
-            /* ... rest of mobile modal unchanged ... */
 
+            .modal-image-section {
+                max-height: 40vh;
+                margin-bottom: 0;
+            }
+
+            .modal-main-image {
+                max-height: 40vh;
+            }
+
+            .modal-details h3 {
+                font-size: 1.65rem;
+                margin: 0 0 16px;
+            }
+
+            .modal-details p {
+                font-size: 0.98rem;
+                line-height: 1.5;
+            }
+
+            .modal-price {
+                font-size: 1.6rem;
+                margin: 4px 0 12px;
+                color: #FC6600 !important;
+            }
+
+            .modal-close {
+                width: 44px;
+                height: 44px;
+                line-height: 44px;
+                font-size: 2.5rem;
+                top: 8px;
+                right: 8px;
+            }
+
+            .modal-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+
+            /* Reduced bottom padding on mobile */
             .featured-section {
                 padding: 40px 20px 40px 20px;
             }
@@ -239,15 +373,19 @@
                 padding: 14px;
                 max-height: 88vh;
             }
-            /* ... rest unchanged ... */
+
+            .modal-image-section { max-height: 38vh; margin-bottom: 0; }
+            .modal-details h3 { font-size: 1.5rem; }
+            .modal-price { font-size: 1.45rem; color: #FC6600 !important; }
+            .modal-details p { font-size: 0.96rem; }
         }
 
-        /* See All Products button */
+        /* See All Products button – visible on both mobile and desktop */
         .see-all-wrapper {
             text-align: center;
-            margin: 40px 0 20px 0 !important;
+            margin: 40px 0 20px 0 !important; /* reduced top/bottom space */
             padding-bottom: 0 !important;
-            display: block;
+            display: block; /* always visible */
         }
 
         .see-all-btn {
@@ -270,9 +408,10 @@
             box-shadow: 0 6px 16px rgba(252, 102, 0, 0.35);
         }
 
+        /* Slightly adjusted spacing on desktop */
         @media (min-width: 769px) {
             .see-all-wrapper {
-                margin: 50px 0 30px 0 !important;
+                margin: 50px 0 30px 0 !important; /* closer to products above, slight space below */
             }
             .see-all-btn {
                 font-size: 1.2rem;
