@@ -12,31 +12,37 @@
       background-color: #000000;
       color: #ffffff;
     }
+
     .contact-follow-container {
       padding: 30px 20px;
       max-width: 1200px;
       margin: 0 auto;
     }
+
     h2.section-title {
       font-size: 2.2rem;
       margin: 0 0 25px;
       text-align: center;
       color: #ffffff;
     }
+
     /* Mobile: stacked layout */
     .contact-follow-wrapper {
       display: flex;
       flex-direction: column;
       gap: 50px;
     }
+
     .contact-block, .follow-block {
       text-align: center;
     }
+
     .contact-block p, .follow-block p {
       font-size: 1.1rem;
       margin: 0 0 20px;
       color: #cccccc;
     }
+
     /* WhatsApp button */
     .whatsapp-btn {
       display: inline-flex;
@@ -52,15 +58,18 @@
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
     }
+
     .whatsapp-btn:hover {
       background-color: #20b858;
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
     }
+
     .whatsapp-logo {
       width: 28px;
       height: 28px;
     }
+
     /* Social buttons */
     .social-buttons {
       display: flex;
@@ -68,6 +77,7 @@
       gap: 25px;
       flex-wrap: wrap;
     }
+
     .social-btn {
       display: flex;
       align-items: center;
@@ -80,6 +90,7 @@
       transition: all 0.3s ease;
       color: white;
     }
+
     .facebook-btn {
       background: linear-gradient(135deg, #3b5998, #192f6a);
     }
@@ -87,6 +98,7 @@
       background: linear-gradient(135deg, #2a4373, #0f1e45);
       transform: translateY(-2px);
     }
+
     .instagram-btn {
       background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
     }
@@ -94,10 +106,12 @@
       background: linear-gradient(135deg, #d9822e, #d15c34, #c5203c, #b71e5c, #a81578);
       transform: translateY(-2px);
     }
+
     .social-logo {
       width: 26px;
       height: 26px;
     }
+
     /* Desktop: side-by-side layout */
     @media (min-width: 769px) {
       .contact-follow-wrapper {
@@ -115,19 +129,20 @@
       .social-buttons {
         justify-content: flex-start;
       }
-      /* More even big space above and below on big screens */
       .contact-follow-container {
         padding-top: 80px !important;
         padding-bottom: 80px !important;
       }
     }
+
     /* Mobile adjustments only */
     @media (max-width: 768px) {
-      /* Remove the small descriptive text on mobile */
+      /* Hide small descriptive text on mobile */
       .contact-block p, .follow-block p {
         display: none;
       }
-      /* Make WhatsApp button slightly smaller so text fits in one line */
+
+      /* Slightly smaller WhatsApp button */
       .whatsapp-btn {
         font-size: 1rem;
         padding: 12px 28px;
@@ -136,31 +151,32 @@
         width: 24px;
         height: 24px;
       }
+
       /* Spacing */
       .contact-follow-container {
         padding: 30px 15px;
+        padding-bottom: 120px !important; /* ← increased so footer sits nicely at bottom */
       }
+
       .contact-follow-wrapper {
-        gap: 60px; /* more space between Contact and Follow Us on mobile */
+        gap: 90px; /* ← increased space between WhatsApp button and Follow Us title */
       }
-      /* Extra space below on mobile */
-      .contact-follow-container {
-        padding-bottom: 50px !important;
-      }
-      /* Footer links: centered, stacked vertically with horizontal lines between */
+
+      /* Footer links styling on mobile */
       .footer-links {
         margin-top: 50px !important;
-        margin-bottom: 50px !important;
+        margin-bottom: 0 !important; /* let container padding push it down */
         font-size: 0.9rem;
         line-height: 2.4;
         text-align: center;
       }
+
       .footer-links a {
         display: block;
         margin: 12px 0;
         position: relative;
       }
-      /* Horizontal line between each link on mobile */
+
       .footer-links a:not(:last-child)::after {
         content: "";
         position: absolute;
@@ -172,7 +188,8 @@
         background-color: #555555;
       }
     }
-    /* Small footer links at bottom – non-bold, small font */
+
+    /* Small footer links at bottom – professional order, non-bold, light grey */
     .footer-links {
       text-align: center;
       color: #aaaaaa;
@@ -190,25 +207,24 @@
     /* Desktop-only footer links adjustments */
     @media (min-width: 769px) {
       .footer-links {
-        margin-top: 120px !important; /* increased space above links */
-        margin-bottom: 40px !important; /* minimal space below */
+        margin-top: 120px !important;
+        margin-bottom: 40px !important;
         display: flex;
         justify-content: space-between;
         max-width: 1000px;
         margin-left: auto;
         margin-right: auto;
-        padding: 0 20px; /* small side padding so links don't touch edges */
+        padding: 0 20px;
         font-size: 1rem;
       }
       .footer-links a {
-        margin: 0 20px; /* even spacing between links */
+        margin: 0 20px;
       }
     }
   </style>
 </head>
 <body>
   <div class="contact-follow-container">
-   
     <div class="contact-follow-wrapper">
       <!-- Contact Us -->
       <div class="contact-block">
@@ -218,6 +234,7 @@
           Message us on WhatsApp
         </a>
       </div>
+
       <!-- Follow Us -->
       <div class="follow-block">
         <h2 class="section-title">Follow Us</h2>
@@ -234,7 +251,8 @@
         </div>
       </div>
     </div>
-    <!-- Small footer links – professional order, non-bold, light grey -->
+
+    <!-- Small footer links -->
     <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="products.html">Products</a>
@@ -244,7 +262,8 @@
       <a href="policy.html">Policy</a>
     </div>
   </div>
-  <!-- Script moved inside body – fixes GitHub validation error -->
+
+  <!-- Script -->
   <script>
     // Replace these placeholders with your real links/numbers
     document.getElementById('whatsappLink').href = 'https://wa.me/26777478877?text=Good%20day%2C%20I%27d%20like%20to%20get%20in%20touch';
