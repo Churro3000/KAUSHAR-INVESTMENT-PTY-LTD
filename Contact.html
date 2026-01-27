@@ -135,45 +135,47 @@
       }
     }
 
-    /* Mobile adjustments only – increased spacing enforced */
+    /* ────────────────────────────────────────────────
+       MOBILE ONLY (max-width 768px) – strict spacing
+    ──────────────────────────────────────────────── */
     @media (max-width: 768px) {
-      /* Hide small descriptive text on mobile */
+      /* Hide descriptive paragraph on mobile */
       .contact-block p, .follow-block p {
-        display: none;
+        display: none !important;
       }
 
-      /* Slightly smaller WhatsApp button */
+      /* Smaller WhatsApp button for better fit */
       .whatsapp-btn {
-        font-size: 1rem;
-        padding: 12px 28px;
+        font-size: 1rem !important;
+        padding: 12px 28px !important;
       }
       .whatsapp-logo {
-        width: 24px;
-        height: 24px;
+        width: 24px !important;
+        height: 24px !important;
       }
 
-      /* Spacing – strict mobile values */
+      /* ── Main spacing adjustments (strict) ── */
       .contact-follow-container {
         padding: 30px 15px !important;
-        padding-bottom: 160px !important;          /* more space at bottom so footer sits nicely low */
+        padding-bottom: 140px !important;     /* even more bottom space – footer pushed down */
       }
 
       .contact-follow-wrapper {
-        gap: 120px !important;                    /* clearly more space between Contact and Follow Us blocks */
+        gap: 100px !important;                /* strict – more breathing room between Contact block and Follow Us title */
       }
 
-      /* Footer links styling on mobile */
+      /* Footer links on mobile */
       .footer-links {
-        margin-top: 50px !important;
+        margin-top: 40px !important;
         margin-bottom: 0 !important;
-        font-size: 0.9rem;
+        font-size: 0.9rem !important;
         line-height: 2.4;
         text-align: center;
       }
 
       .footer-links a {
-        display: block;
-        margin: 12px 0;
+        display: block !important;
+        margin: 12px 0 !important;
         position: relative;
       }
 
@@ -189,7 +191,7 @@
       }
     }
 
-    /* Small footer links – general */
+    /* Base footer links styling */
     .footer-links {
       text-align: center;
       color: #aaaaaa;
@@ -204,7 +206,7 @@
       text-decoration: underline;
     }
 
-    /* Desktop-only footer links adjustments */
+    /* Desktop-only footer links */
     @media (min-width: 769px) {
       .footer-links {
         margin-top: 120px !important;
@@ -263,9 +265,9 @@
     </div>
   </div>
 
-  <!-- Script -->
+  <!-- Script for real links -->
   <script>
-    // Replace these placeholders with your real links/numbers
+    // Replace placeholders with your actual links/numbers
     document.getElementById('whatsappLink').href = 'https://wa.me/26777478877?text=Good%20day%2C%20I%27d%20like%20to%20get%20in%20touch';
     document.getElementById('facebookLink').href = 'https://facebook.com/YOURPAGE';
     document.getElementById('instagramLink').href = 'https://instagram.com/YOURHANDLE';
