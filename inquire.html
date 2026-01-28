@@ -155,15 +155,20 @@
       .contact-follow-wrapper {
         gap: 50px;
       }
+
+      /* Slight space above "Follow Us" title on mobile */
+      .follow-block h2.section-title {
+        margin-top: 20px !important; /* ← small gap between Contact Us and Follow Us sections */
+      }
     }
 
-    /* Footer – orange at the very bottom, no extra white space below */
+    /* Footer – orange at the very bottom, increased space above it */
     footer {
       background-color: #FC6600;
       color: #ffffff;
       text-align: center;
       padding: 15px 0;
-      margin-top: 60px;
+      margin-top: 80px !important; /* ← increased space above the orange bar so it sits at the bottom */
       font-size: 0.9rem;
     }
   </style>
