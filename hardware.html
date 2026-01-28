@@ -260,7 +260,7 @@
         margin-top: 20px;
     }
 
-    /* Mobile-only modal fixes – strict spacing for dots (equal above/below) */
+    /* Mobile-only modal fixes – increased space below dots */
     @media (max-width: 768px) {
         .modal-overlay {
             padding: 10px !important;
@@ -270,7 +270,7 @@
             grid-template-columns: 1fr;
             max-width: 90vw !important;
             width: 90vw !important;
-            max-height: 95vh !important;               /* taller to accommodate balanced spacing */
+            max-height: 95vh !important;
             padding: 16px !important;
             gap: 12px !important;
             margin: auto !important;
@@ -289,8 +289,8 @@
         }
 
         .modal-details {
-            padding-bottom: 20px !important;
-            margin-top: 12px !important;               /* equal-ish space from dots to title */
+            padding-bottom: 12px !important;           /* ← slightly reduced bottom space below Inquire button */
+            margin-top: 12px !important;
         }
 
         .modal-details h3 {
@@ -329,8 +329,8 @@
         }
 
         .modal-dots {
-            margin-top: 6px !important;                /* small space BELOW image – dots right under it */
-            margin-bottom: 36px !important;            /* large space BELOW dots – equal feel with title below */
+            margin-top: 6px !important;                /* small space below image */
+            margin-bottom: 42px !important;            /* ← increased to create more space below dots – no merging with title */
             padding: 0 !important;
         }
 
