@@ -260,7 +260,7 @@
         margin-top: 20px;
     }
 
-    /* Mobile-only modal fixes – strict spacing for dots */
+    /* Mobile-only modal fixes – equal space above/below dots */
     @media (max-width: 768px) {
         .modal-overlay {
             padding: 10px !important;
@@ -270,7 +270,7 @@
             grid-template-columns: 1fr;
             max-width: 90vw !important;
             width: 90vw !important;
-            max-height: 94vh !important;               /* taller popup for more vertical space */
+            max-height: 96vh !important;               /* slightly taller to fit equal spacing comfortably */
             padding: 16px !important;
             gap: 12px !important;
             margin: auto !important;
@@ -290,7 +290,7 @@
 
         .modal-details {
             padding-bottom: 20px !important;
-            margin-top: 8px !important;                /* tiny top space from dots */
+            margin-top: 12px !important;               /* small top space from dots to title section */
         }
 
         .modal-details h3 {
@@ -329,8 +329,8 @@
         }
 
         .modal-dots {
-            margin-top: 8px !important;                /* small space BELOW image, right under it */
-            margin-bottom: 32px !important;            /* strong space BELOW dots to separate from title */
+            margin-top: 12px !important;               /* small equal space BELOW image / ABOVE dots */
+            margin-bottom: 32px !important;            /* equal/large space BELOW dots / ABOVE title */
             padding: 0 !important;
         }
 
