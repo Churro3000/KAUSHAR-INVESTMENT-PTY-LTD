@@ -16,37 +16,31 @@
       background-color: #000000;
       color: #ffffff;
     }
-
     .contact-follow-container {
       padding: 30px 20px;
       max-width: 1200px;
       margin: 0 auto;
     }
-
     h2.section-title {
       font-size: 2.2rem;
       margin: 0 0 25px;
       text-align: center;
       color: #ffffff;
     }
-
     /* Mobile: stacked layout */
     .contact-follow-wrapper {
       display: flex;
       flex-direction: column;
       gap: 50px;
     }
-
     .contact-block, .follow-block {
       text-align: center;
     }
-
     .contact-block p, .follow-block p {
       font-size: 1.1rem;
       margin: 0 0 20px;
       color: #cccccc;
     }
-
     /* WhatsApp button */
     .whatsapp-btn {
       display: inline-flex;
@@ -62,18 +56,15 @@
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
     }
-
     .whatsapp-btn:hover {
       background-color: #20b858;
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
     }
-
     .whatsapp-logo {
       width: 28px;
       height: 28px;
     }
-
     /* Social buttons */
     .social-buttons {
       display: flex;
@@ -81,7 +72,6 @@
       gap: 25px;
       flex-wrap: wrap;
     }
-
     .social-btn {
       display: flex;
       align-items: center;
@@ -94,30 +84,24 @@
       transition: all 0.3s ease;
       color: white;
     }
-
     .facebook-btn {
       background: linear-gradient(135deg, #3b5998, #192f6a);
     }
-
     .facebook-btn:hover {
       background: linear-gradient(135deg, #2a4373, #0f1e45);
       transform: translateY(-2px);
     }
-
     .instagram-btn {
       background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
     }
-
     .instagram-btn:hover {
       background: linear-gradient(135deg, #d9822e, #d15c34, #c5203c, #b71e5c, #a81578);
       transform: translateY(-2px);
     }
-
     .social-logo {
       width: 26px;
       height: 26px;
     }
-
     /* Desktop: side-by-side layout */
     @media (min-width: 769px) {
       .contact-follow-wrapper {
@@ -125,61 +109,46 @@
         justify-content: space-between;
         gap: 60px;
       }
-
       .contact-block, .follow-block {
         flex: 1;
         text-align: left;
       }
-
       h2.section-title {
         text-align: left;
       }
-
       .social-buttons {
         justify-content: flex-start;
       }
-
       .contact-follow-container {
         padding-top: 80px !important;
         padding-bottom: 80px !important;
       }
     }
-
     /* ────────────────────────────────────────────────
        MOBILE ONLY (max-width 768px) – strict spacing
-    ──────────────────────────────────────────────── */
+       ──────────────────────────────────────────────── */
     @media (max-width: 768px) {
       /* Hide descriptive paragraph on mobile */
       .contact-block p, .follow-block p {
         display: none !important;
       }
-
       /* Smaller WhatsApp button for better fit */
       .whatsapp-btn {
         font-size: 1rem !important;
         padding: 12px 28px !important;
       }
-
       .whatsapp-logo {
         width: 24px !important;
         height: 24px !important;
       }
-
       /* ── Main spacing adjustments (strict) ── */
       .contact-follow-container {
         padding: 30px 15px !important;
         padding-bottom: 140px !important; /* even more bottom space – footer pushed down */
-        margin-bottom: 140px !important; /* ← increased space above orange bar – pushes it to bottom */
       }
-
       .contact-follow-wrapper {
         gap: 100px !important; /* strict – more breathing room between Contact block and Follow Us title */
       }
-
-      .follow-block {
-        margin-top: 60px !important; /* ← slight space above "Follow Us" title on mobile */
-      }
-
       /* Footer links on mobile */
       .footer-links {
         margin-top: 40px !important;
@@ -188,13 +157,11 @@
         line-height: 2.4;
         text-align: center;
       }
-
       .footer-links a {
         display: block !important;
         margin: 12px 0 !important;
         position: relative;
       }
-
       .footer-links a:not(:last-child)::after {
         content: "";
         position: absolute;
@@ -206,24 +173,20 @@
         background-color: #555555;
       }
     }
-
     /* Base footer links styling */
     .footer-links {
       text-align: center;
       color: #aaaaaa;
       font-weight: normal;
     }
-
     .footer-links a {
       color: #aaaaaa;
       text-decoration: none;
     }
-
     .footer-links a:hover {
       color: #ffffff;
       text-decoration: underline;
     }
-
     /* Desktop-only footer links */
     @media (min-width: 769px) {
       .footer-links {
@@ -237,7 +200,6 @@
         padding: 0 20px;
         font-size: 1rem;
       }
-
       .footer-links a {
         margin: 0 20px;
       }
