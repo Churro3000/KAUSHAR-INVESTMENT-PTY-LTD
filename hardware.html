@@ -11,382 +11,387 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        /* Restored original base styles */
-        body { background-color: #f4f4f4; color: #000000; }
+    /* Restored original base styles */
+    body { background-color: #f4f4f4; color: #000000; }
 
-        .category-title { 
-            text-align: center; 
-            font-size: 2.5rem; 
-            margin: 40px 20px 40px; 
-            color: #000; 
-            font-weight: bold; 
+    .category-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin: 40px 20px 40px;
+        color: #000;
+        font-weight: bold;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        padding: 0 20px 60px;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+    .product-card {
+        background:#fff;
+        border-radius:12px;
+        overflow:hidden;
+        box-shadow:0 4px 15px rgba(0,0,0,0.1);
+        transition:0.3s;
+        text-align:center;
+        display:flex;
+        flex-direction:column;
+        cursor:pointer;
+    }
+
+    .product-card:hover {
+        transform:translateY(-10px);
+        box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .product-image {
+        width:100%;
+        aspect-ratio:1/1;
+        object-fit:contain;
+        background:#f9f9f9;
+        padding:15px;
+        box-sizing:border-box;
+    }
+
+    .product-info {
+        padding:20px 15px;
+        flex-grow:1;
+        display:flex;
+        flex-direction:column;
+    }
+
+    .product-name {
+        font-size:1.35rem;
+        margin:0 0 10px;
+        color:#000;
+        font-weight:600;
+    }
+
+    .product-desc {
+        font-size:0.95rem;
+        color:#555;
+        margin-bottom:15px;
+        flex-grow:1;
+    }
+
+    .product-price {
+        font-size:1.3rem;
+        color:#FC6600;
+        font-weight:bold;
+        margin-bottom:18px;
+    }
+
+    .buy-btn {
+        background:#000;
+        color:#fff;
+        border:none;
+        padding:12px 30px;
+        font-size:1rem;
+        border-radius:6px;
+        cursor:pointer;
+        transition:0.3s;
+        margin-top:auto;
+    }
+
+    .buy-btn:hover {
+        background:#FC6600;
+    }
+
+    .back-btn {
+        display:block;
+        width:fit-content;
+        margin:40px auto 60px;
+        padding:12px 30px;
+        background:#808080;
+        color:#fff;
+        text-decoration:none;
+        border-radius:6px;
+        font-weight:bold;
+        transition:0.3s;
+    }
+
+    .back-btn:hover {
+        background:#000;
+    }
+
+    /* Original media queries for product cards */
+    @media (max-width:1200px) {
+        .products-grid { grid-template-columns:repeat(3,1fr); }
+    }
+
+    @media (max-width:768px) {
+        .products-grid {
+            grid-template-columns:repeat(2,1fr);
+            gap:20px;
+            padding:0 15px 50px;
         }
-
-        .products-grid { 
-            display: grid; 
-            grid-template-columns: repeat(4, 1fr); 
-            gap: 30px; 
-            padding: 0 20px 60px; 
-            max-width: 1600px; 
-            margin: 0 auto; 
+        .category-title {
+            font-size:2rem;
+            margin: 35px 15px 30px;
         }
-
-        .product-card { 
-            background:#fff; 
-            border-radius:12px; 
-            overflow:hidden; 
-            box-shadow:0 4px 15px rgba(0,0,0,0.1); 
-            transition:0.3s; 
-            text-align:center; 
-            display:flex; 
-            flex-direction:column; 
-            cursor:pointer; 
+        .product-desc, .buy-btn { display: none; }
+        .product-price { font-size: 1.1rem; margin-bottom: 0; }
+        .product-info { padding: 15px; }
+        .product-name {
+            font-size: 18px !important;
+            font-family: Arial, sans-serif !important;
+            font-weight: 600 !important;
         }
+    }
 
-        .product-card:hover { 
-            transform:translateY(-10px); 
-            box-shadow:0 10px 25px rgba(0,0,0,0.15); 
-        }
+    @media (max-width:480px) {
+        .product-name { font-size: 16px !important; }
+        .product-price { font-size: 1.05rem; }
+    }
 
-        .product-image { 
-            width:100%; 
-            aspect-ratio:1/1; 
-            object-fit:contain; 
-            background:#f9f9f9; 
-            padding:15px; 
-            box-sizing:border-box; 
-        }
+    /* Modal popup styles */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.8);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
 
-        .product-info { 
-            padding:20px 15px; 
-            flex-grow:1; 
-            display:flex; 
-            flex-direction:column; 
-        }
+    .modal-overlay.active { display: flex; }
 
-        .product-name { 
-            font-size:1.35rem; 
-            margin:0 0 10px; 
-            color:#000; 
-            font-weight:600; 
-        }
+    .modal-content {
+        background: #fff;
+        border-radius: 16px;
+        max-width: 1000px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        padding: 30px;
+        box-sizing: border-box;
+    }
 
-        .product-desc { 
-            font-size:0.95rem; 
-            color:#555; 
-            margin-bottom:15px; 
-            flex-grow:1; 
-        }
+    .modal-close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 2.4rem;
+        background: rgba(255,255,255,0.9);
+        border: none;
+        border-radius: 50%;
+        width: 42px;
+        height: 42px;
+        line-height: 42px;
+        text-align: center;
+        cursor: pointer;
+        color: #333;
+        font-weight: bold;
+        z-index: 10;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        transition: all 0.2s;
+    }
 
-        .product-price { 
-            font-size:1.3rem; 
-            color:#FC6600; 
-            font-weight:bold; 
-            margin-bottom:18px; 
-        }
+    .modal-close:hover {
+        color: #000;
+        background: #fff;
+        transform: scale(1.1);
+    }
 
-        .buy-btn { 
-            background:#000; 
-            color:#fff; 
-            border:none; 
-            padding:12px 30px; 
-            font-size:1rem; 
-            border-radius:6px; 
-            cursor:pointer; 
-            transition:0.3s; 
-            margin-top:auto; 
-        }
+    .modal-image-section { position: relative; }
 
-        .buy-btn:hover { 
-            background:#FC6600; 
-        }
+    .modal-main-image {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: contain;
+        background: #f9f9f9;
+        border-radius: 12px;
+    }
 
-        .back-btn { 
-            display:block; 
-            width:fit-content; 
-            margin:40px auto 60px; 
-            padding:12px 30px; 
-            background:#808080; 
-            color:#fff; 
-            text-decoration:none; 
-            border-radius:6px; 
-            font-weight:bold; 
-            transition:0.3s; 
-        }
+    .modal-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.5);
+        color: #fff;
+        border: none;
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+        cursor: pointer;
+        border-radius: 50%;
+    }
 
-        .back-btn:hover { 
-            background:#000; 
-        }
+    .modal-prev { left: 10px; }
+    .modal-next { right: 10px; }
 
-        /* Original media queries for product cards */
-        @media (max-width:1200px) { 
-            .products-grid { grid-template-columns:repeat(3,1fr); } 
-        }
+    .modal-dots { text-align: center; margin-top: 15px; }
 
-        @media (max-width:768px) {
-            .products-grid { 
-                grid-template-columns:repeat(2,1fr); 
-                gap:20px; 
-                padding:0 15px 50px; 
-            }
+    .modal-dot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: #bbb;
+        border-radius: 50%;
+        margin: 0 6px;
+        cursor: pointer;
+    }
 
-            .category-title { 
-                font-size:2rem; 
-                margin: 35px 15px 30px; 
-            }
+    .modal-dot.active { background: #FC6600; }
 
-            .product-desc, .buy-btn { display: none; }
-            .product-price { font-size: 1.1rem; margin-bottom: 0; }
-            .product-info { padding: 15px; }
+    .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
 
-            .product-name {
-                font-size: 18px !important;
-                font-family: Arial, sans-serif !important;
-                font-weight: 600 !important;
-            }
-        }
+    .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
 
-        @media (max-width:480px) {
-            .product-name { font-size: 16px !important; }
-            .product-price { font-size: 1.05rem; }
-        }
+    .modal-price {
+        font-size: 2rem;
+        color: #FC6600 !important;
+        font-weight: bold;
+        margin-bottom: 25px;
+    }
 
-        /* Modal popup styles */
+    .modal-details .buy-btn {
+        display: block !important;
+        margin-top: 20px;
+    }
+
+    /* Mobile-only modal fixes (updated for slightly taller popup + more space) */
+    @media (max-width: 768px) {
         .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            padding: 10px !important;
         }
-
-        .modal-overlay.active { display: flex; }
 
         .modal-content {
-            background: #fff;
-            border-radius: 16px;
-            max-width: 1000px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            padding: 30px;
-            box-sizing: border-box;
+            grid-template-columns: 1fr;
+            max-width: 90vw !important;
+            width: 90vw !important;
+            max-height: 88vh !important;               /* ← slightly taller than before */
+            padding: 16px !important;
+            gap: 12px !important;
+            margin: auto !important;
+            border-radius: 14px;
+            overflow-x: hidden !important;
         }
 
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 2.4rem;
-            background: rgba(255,255,255,0.9);
-            border: none;
-            border-radius: 50%;
-            width: 42px;
-            height: 42px;
-            line-height: 42px;
-            text-align: center;
-            cursor: pointer;
-            color: #333;
-            font-weight: bold;
-            z-index: 10;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            transition: all 0.2s;
+        .modal-image-section {
+            max-height: 35vh !important;
+            margin-bottom: 0;
         }
 
-        .modal-close:hover {
-            color: #000;
-            background: #fff;
-            transform: scale(1.1);
+        .modal-main-image {
+            max-height: 35vh !important;
         }
 
-        .modal-image-section { position: relative; }
-
-        .modal-main-image { 
-            width: 100%; 
-            aspect-ratio: 1/1; 
-            object-fit: contain; 
-            background: #f9f9f9; 
-            border-radius: 12px; 
+        .modal-details h3 {
+            font-size: 1.55rem !important;
+            margin: 0 0 12px !important;
         }
 
-        .modal-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
-            color: #fff;
-            border: none;
-            width: 50px;
-            height: 50px;
-            font-size: 1.8rem;
-            cursor: pointer;
-            border-radius: 50%;
+        .modal-details p {
+            font-size: 0.95rem !important;
+            line-height: 1.5;
         }
 
-        .modal-prev { left: 10px; }
-        .modal-next { right: 10px; }
-
-        .modal-dots { text-align: center; margin-top: 15px; }
-
-        .modal-dot {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: #bbb;
-            border-radius: 50%;
-            margin: 0 6px;
-            cursor: pointer;
-        }
-
-        .modal-dot.active { background: #FC6600; }
-
-        .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
-
-        .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
-
-        .modal-price { 
-            font-size: 2rem; 
-            color: #FC6600 !important;
-            font-weight: bold; 
-            margin-bottom: 25px; 
+        .modal-price {
+            font-size: 1.5rem !important;
+            margin: 4px 0 16px !important;           /* ← extra bottom margin so button has space */
         }
 
         .modal-details .buy-btn {
-            display: block !important;
-            margin-top: 20px;
+            margin-top: 16px !important;             /* ← extra push up from bottom */
+            padding: 10px 20px !important;           /* slightly smaller padding if needed */
         }
 
-        /* Mobile-only modal fixes */
-        @media (max-width: 768px) {
-            .modal-overlay {
-                padding: 10px !important; /* reduce outer padding */
-            }
-
-            .modal-content {
-                grid-template-columns: 1fr;
-                max-width: 90vw !important;           /* smaller overall width */
-                width: 90vw !important;
-                max-height: 85vh !important;
-                padding: 16px !important;              /* tighter padding */
-                gap: 12px !important;
-                margin: auto !important;               /* force centering */
-                border-radius: 14px;
-                overflow-x: hidden !important;         /* prevent horizontal cut-off */
-            }
-
-            .modal-image-section {
-                max-height: 35vh !important;           /* smaller image area */
-                margin-bottom: 0;
-            }
-
-            .modal-main-image {
-                max-height: 35vh !important;
-            }
-
-            .modal-details h3 {
-                font-size: 1.55rem !important;
-                margin: 0 0 12px !important;
-            }
-
-            .modal-details p {
-                font-size: 0.95rem !important;
-                line-height: 1.5;
-            }
-
-            .modal-price {
-                font-size: 1.5rem !important;
-                margin: 4px 0 12px !important;
-            }
-
-            .modal-close {
-                width: 44px !important;
-                height: 44px !important;
-                line-height: 44px !important;
-                font-size: 2.6rem !important;
-                top: 8px !important;
-                right: 8px !important;
-            }
-
-            .modal-nav {
-                width: 38px !important;
-                height: 38px !important;
-                font-size: 1.4rem !important;
-            }
-
-            .modal-dots { margin-top: 10px !important; }
+        .modal-close {
+            width: 44px !important;
+            height: 44px !important;
+            line-height: 44px !important;
+            font-size: 2.6rem !important;
+            top: 8px !important;
+            right: 8px !important;
         }
 
-        /* Search bar styles */
+        .modal-nav {
+            width: 38px !important;
+            height: 38px !important;
+            font-size: 1.4rem !important;
+        }
+
+        .modal-dots {
+            margin-top: 18px !important;             /* ← increased space below dots so they don't merge */
+            margin-bottom: 12px !important;
+        }
+    }
+
+    /* Search bar styles */
+    .search-container {
+        text-align: center;
+        margin: 30px 20px 40px;
+    }
+
+    .search-input-wrapper {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 12px 45px 12px 20px;
+        border: 2px solid #ddd;
+        border-radius: 30px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        box-sizing: border-box;
+    }
+
+    .search-input:focus {
+        outline: none;
+        border-color: #FC6600;
+        box-shadow: 0 4px 12px rgba(252,102,0,0.2);
+    }
+
+    .search-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #888;
+        font-size: 1.25rem;
+        pointer-events: none;
+    }
+
+    /* Mobile search fit fix */
+    @media (max-width: 768px) {
         .search-container {
-            text-align: center;
-            margin: 30px 20px 40px;  /* added a bit more top space (desktop + mobile) */
+            margin: 25px 15px 30px;
+            padding: 0 10px;
         }
 
         .search-input-wrapper {
-            position: relative;
-            display: inline-block;
-            width: 100%;
-            max-width: 500px;
+            max-width: calc(100% - 30px) !important;
+            margin: 0 auto;
         }
 
         .search-input {
-            width: 100%;
-            padding: 12px 45px 12px 20px;
-            border: 2px solid #ddd;
-            border-radius: 30px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            box-sizing: border-box;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: #FC6600;
-            box-shadow: 0 4px 12px rgba(252,102,0,0.2);
+            padding: 10px 40px 10px 16px;
+            font-size: 0.95rem;
+            border-radius: 25px;
         }
 
         .search-icon {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #888;
-            font-size: 1.25rem;
-            pointer-events: none;
+            right: 12px;
+            font-size: 1.1rem;
         }
-
-        /* Mobile search fit fix */
-        @media (max-width: 768px) {
-            .search-container {
-                margin: 25px 15px 30px;  /* small top space + bottom space to title */
-                padding: 0 10px;
-            }
-
-            .search-input-wrapper {
-                max-width: calc(100% - 30px) !important;  /* prevent overflow */
-                margin: 0 auto;
-            }
-
-            .search-input {
-                padding: 10px 40px 10px 16px;
-                font-size: 0.95rem;
-                border-radius: 25px;
-            }
-
-            .search-icon {
-                right: 12px;
-                font-size: 1.1rem;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
 
