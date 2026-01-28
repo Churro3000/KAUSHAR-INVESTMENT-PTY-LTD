@@ -173,6 +173,11 @@
     .ad-prev { left: 15px !important; }
     .ad-next { right: 15px !important; }
     .ad-prev-desktop, .ad-next-desktop { display: none !important; }
+
+    /* Strict reduction: less space below "Our Top Picks" title on mobile */
+    .hero h2 {
+      margin-bottom: 10px !important; /* ← reduced from 30px – closer to product boxes/iframe below */
+    }
   }
   /* DESKTOP (≥ 769px) – no changes here */
   @media (min-width: 769px) {
@@ -196,11 +201,6 @@
     .ad-prev-desktop { left: -80px; }
     .ad-next-desktop { right: -80px; }
     .ad-prev, .ad-next { display: none !important; }
-  }
-
-  /* Adjustment: reduce space below "Our Top Picks" title */
-  .hero h2 {
-    margin-bottom: 15px !important; /* ← reduced from 30px to bring closer to product boxes/iframe */
   }
 </style>
 <script>
