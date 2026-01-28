@@ -165,7 +165,7 @@
     display: none;
   }
 
-  /* MOBILE (≤ 768px) */
+  /* MOBILE (≤ 768px) – unchanged */
   @media (max-width: 768px) {
     .latest-ads-section { padding: 50px 15px; }
     .latest-ads-section h2 {
@@ -185,7 +185,7 @@
     .ad-prev-desktop, .ad-next-desktop { display: none !important; }
   }
 
-  /* DESKTOP (≥ 769px) – thin vertical divider + existing styles */
+  /* DESKTOP (≥ 769px) – strict divider enforcement */
   @media (min-width: 769px) {
     .ads-carousel {
       max-width: 900px;
@@ -194,8 +194,8 @@
       max-width: 1000px;
     }
     .ad-slide {
-      flex: 0 0 50%;
-      width: 50%;
+      flex: 0 0 33.333%; /* strict 3 slides visible */
+      width: 33.333%;
     }
     .ad-slide img {
       max-width: 100%;
@@ -208,16 +208,17 @@
     .ad-next-desktop { right: -80px; }
     .ad-prev, .ad-next { display: none !important; }
 
-    /* Thin vertical light grey divider between slides */
-    .ad-slide:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      top: 10%;
-      bottom: 10%;
-      width: 1px;
-      background-color: #e0e0e0; /* very light grey – subtle and professional */
-      z-index: 2;
+    /* Very thin vertical light grey divider – strict & enforced */
+    .ads-track .ad-slide:not(:last-child)::after {
+      content: "" !important;
+      position: absolute !important;
+      right: 0 !important;
+      top: 5% !important;
+      bottom: 5% !important;
+      width: 1px !important;
+      background-color: #d0d0d0 !important; /* slightly darker light grey for visibility */
+      z-index: 2 !important;
+      pointer-events: none !important;
     }
   }
 </style>
