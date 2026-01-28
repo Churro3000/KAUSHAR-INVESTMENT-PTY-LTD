@@ -17,7 +17,7 @@
         .category-title { 
             text-align: center; 
             font-size: 2.5rem; 
-            margin: 40px 20px 40px;  /* increased top margin for space below search bar */
+            margin: 40px 20px 40px; 
             color: #000; 
             font-weight: bold; 
         }
@@ -118,7 +118,7 @@
             background:#000; 
         }
 
-        /* Restored original media queries for product cards */
+        /* Original media queries for product cards */
         @media (max-width:1200px) { 
             .products-grid { grid-template-columns:repeat(3,1fr); } 
         }
@@ -132,18 +132,13 @@
 
             .category-title { 
                 font-size:2rem; 
-                margin: 35px 15px 30px;  /* adjusted for better spacing on mobile */
+                margin: 35px 15px 30px; 
             }
 
-            /* MOBILE ONLY: Hide description & Inquire button in grid view */
             .product-desc, .buy-btn { display: none; }
-
-            /* Keep price visible but slightly smaller */
             .product-price { font-size: 1.1rem; margin-bottom: 0; }
-
             .product-info { padding: 15px; }
 
-            /* Strict mobile title adjustment */
             .product-name {
                 font-size: 18px !important;
                 font-family: Arial, sans-serif !important;
@@ -156,7 +151,7 @@
             .product-price { font-size: 1.05rem; }
         }
 
-        /* Restored original modal popup styles */
+        /* Modal popup styles */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -182,6 +177,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             padding: 30px;
+            box-sizing: border-box;
         }
 
         .modal-close {
@@ -267,28 +263,70 @@
             margin-top: 20px;
         }
 
+        /* Mobile-only modal fixes */
         @media (max-width: 768px) {
+            .modal-overlay {
+                padding: 10px !important; /* reduce outer padding */
+            }
+
             .modal-content {
                 grid-template-columns: 1fr;
-                padding: 20px;
+                max-width: 90vw !important;           /* smaller overall width */
+                width: 90vw !important;
+                max-height: 85vh !important;
+                padding: 16px !important;              /* tighter padding */
+                gap: 12px !important;
+                margin: auto !important;               /* force centering */
+                border-radius: 14px;
+                overflow-x: hidden !important;         /* prevent horizontal cut-off */
             }
 
-            .modal-details h3 { font-size: 1.7rem; }
+            .modal-image-section {
+                max-height: 35vh !important;           /* smaller image area */
+                margin-bottom: 0;
+            }
+
+            .modal-main-image {
+                max-height: 35vh !important;
+            }
+
+            .modal-details h3 {
+                font-size: 1.55rem !important;
+                margin: 0 0 12px !important;
+            }
+
+            .modal-details p {
+                font-size: 0.95rem !important;
+                line-height: 1.5;
+            }
+
+            .modal-price {
+                font-size: 1.5rem !important;
+                margin: 4px 0 12px !important;
+            }
 
             .modal-close {
-                width: 48px;
-                height: 48px;
-                line-height: 48px;
-                font-size: 2.8rem;
-                top: 10px;
-                right: 10px;
+                width: 44px !important;
+                height: 44px !important;
+                line-height: 44px !important;
+                font-size: 2.6rem !important;
+                top: 8px !important;
+                right: 8px !important;
             }
+
+            .modal-nav {
+                width: 38px !important;
+                height: 38px !important;
+                font-size: 1.4rem !important;
+            }
+
+            .modal-dots { margin-top: 10px !important; }
         }
 
-        /* Search bar styles (kept + mobile fit improvements) */
+        /* Search bar styles */
         .search-container {
             text-align: center;
-            margin: 20px 20px 30px;  /* more space above title */
+            margin: 30px 20px 40px;  /* added a bit more top space (desktop + mobile) */
         }
 
         .search-input-wrapper {
@@ -306,6 +344,7 @@
             font-size: 1rem;
             transition: all 0.3s ease;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-sizing: border-box;
         }
 
         .search-input:focus {
@@ -324,10 +363,16 @@
             pointer-events: none;
         }
 
-        /* Mobile-specific search adjustments */
+        /* Mobile search fit fix */
         @media (max-width: 768px) {
             .search-container {
-                margin: 15px 15px 25px;  /* tighter but still good spacing */
+                margin: 25px 15px 30px;  /* small top space + bottom space to title */
+                padding: 0 10px;
+            }
+
+            .search-input-wrapper {
+                max-width: calc(100% - 30px) !important;  /* prevent overflow */
+                margin: 0 auto;
             }
 
             .search-input {
@@ -450,7 +495,7 @@
         <p>© 2026 Your Company Name. All rights reserved.</p>
     </footer>
 
-    <!-- MODAL (shared) -->
+    <!-- MODAL -->
     <div class="modal-overlay" id="productModal">
         <div class="modal-content">
             <button class="modal-close">&times;</button>
@@ -472,7 +517,7 @@
     <script src="script.js"></script>
 
     <script>
-        // Product Modal Logic (unchanged)
+        // Product Modal Logic
         const modal = document.getElementById('productModal');
         const closeBtn = document.querySelector('.modal-close');
         const modalImg = document.getElementById('modalImage');
@@ -525,7 +570,7 @@
             });
         }
 
-        // WHATSAPP INQUIRE BUTTON HANDLER (unchanged)
+        // WHATSAPP INQUIRE BUTTON HANDLER
         document.addEventListener('DOMContentLoaded', () => {
             const phoneNumber = '26777478877';
 
@@ -562,7 +607,7 @@
             }
         });
 
-        // Search filtering (unchanged)
+        // Search filtering
         document.addEventListener('DOMContentLoaded', () => {
             const searchInput = document.getElementById('searchInput');
             const productCards = document.querySelectorAll('.product-card');
