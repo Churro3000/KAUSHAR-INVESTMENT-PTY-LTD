@@ -260,7 +260,7 @@
         margin-top: 20px;
     }
 
-    /* Mobile-only modal fixes (stricter vertical space + smaller dots) */
+    /* Mobile-only modal fixes – strict spacing for dots */
     @media (max-width: 768px) {
         .modal-overlay {
             padding: 10px !important;
@@ -270,18 +270,18 @@
             grid-template-columns: 1fr;
             max-width: 90vw !important;
             width: 90vw !important;
-            max-height: 92vh !important;               /* ← made noticeably taller for more room */
+            max-height: 94vh !important;               /* taller popup for more vertical space */
             padding: 16px !important;
             gap: 12px !important;
             margin: auto !important;
             border-radius: 14px;
             overflow-x: hidden !important;
-            overflow-y: auto !important;               /* strict scroll enforcement */
+            overflow-y: auto !important;
         }
 
         .modal-image-section {
             max-height: 35vh !important;
-            margin-bottom: 0;
+            margin-bottom: 0 !important;
         }
 
         .modal-main-image {
@@ -289,7 +289,8 @@
         }
 
         .modal-details {
-            padding-bottom: 20px !important;           /* ← extra bottom padding to protect button/content */
+            padding-bottom: 20px !important;
+            margin-top: 8px !important;                /* tiny top space from dots */
         }
 
         .modal-details h3 {
@@ -328,14 +329,15 @@
         }
 
         .modal-dots {
-            margin-top: 20px !important;
-            margin-bottom: 28px !important;            /* ← strong increase to fully separate dots from title below */
+            margin-top: 8px !important;                /* small space BELOW image, right under it */
+            margin-bottom: 32px !important;            /* strong space BELOW dots to separate from title */
+            padding: 0 !important;
         }
 
         .modal-dot {
-            width: 7px !important;                     /* ← even smaller dots to reduce visual weight */
+            width: 7px !important;
             height: 7px !important;
-            margin: 0 4px !important;                  /* tighter horizontal spacing */
+            margin: 0 4px !important;
         }
     }
 
