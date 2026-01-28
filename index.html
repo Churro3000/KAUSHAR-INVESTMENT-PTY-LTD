@@ -155,12 +155,12 @@
   .ad-prev-desktop, .ad-next-desktop {
     display: none;
   }
-  /* MOBILE (≤ 768px) */
+  /* MOBILE (≤ 768px) – strict spacing reductions */
   @media (max-width: 768px) {
     .latest-ads-section { padding: 50px 15px; }
     .latest-ads-section h2 {
       font-size: 1.9rem;
-      margin-top: -10px !important; /* reduced top margin on mobile only */
+      margin-top: 10px !important;
     }
     .ad-slide img { max-width: 100%; }
     .ad-prev, .ad-next {
@@ -174,9 +174,17 @@
     .ad-next { right: 15px !important; }
     .ad-prev-desktop, .ad-next-desktop { display: none !important; }
 
-    /* Strict reduction: less space below "Our Top Picks" title on mobile */
+    /* Reduce space above "Our Top Picks" title */
     .hero h2 {
-      margin-bottom: 5px !important; /* ← reduced from 30px – closer to product boxes/iframe below */
+      margin-top: 10px !important; /* ← reduced space above the title */
+    }
+
+    /* Reduce space above "We Are Located At" title */
+    .location-section {
+      margin-top: 0 !important; /* ← removes extra space above the whole section */
+    }
+    .location-section h2 {
+      margin-top: 0 !important; /* ← tightens space directly above the title */
     }
   }
   /* DESKTOP (≥ 769px) – no changes here */
