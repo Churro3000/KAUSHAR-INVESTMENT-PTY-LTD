@@ -260,7 +260,7 @@
         margin-top: 20px;
     }
 
-    /* Mobile-only modal fixes (final adjustment for dots separation) */
+    /* Mobile-only modal fixes (stricter vertical space + smaller dots) */
     @media (max-width: 768px) {
         .modal-overlay {
             padding: 10px !important;
@@ -270,22 +270,26 @@
             grid-template-columns: 1fr;
             max-width: 90vw !important;
             width: 90vw !important;
-            max-height: 88vh !important;
+            max-height: 92vh !important;               /* ← made noticeably taller for more room */
             padding: 16px !important;
             gap: 12px !important;
             margin: auto !important;
             border-radius: 14px;
             overflow-x: hidden !important;
+            overflow-y: auto !important;               /* strict scroll enforcement */
         }
 
         .modal-image-section {
             max-height: 35vh !important;
             margin-bottom: 0;
-            padding-bottom: 10px !important; /* ← extra push to move dots down from image */
         }
 
         .modal-main-image {
             max-height: 35vh !important;
+        }
+
+        .modal-details {
+            padding-bottom: 20px !important;           /* ← extra bottom padding to protect button/content */
         }
 
         .modal-details h3 {
@@ -324,14 +328,14 @@
         }
 
         .modal-dots {
-            margin-top: 18px !important;
-            margin-bottom: 28px !important; /* ← increased significantly to ensure no overlap/merging with title/description */
+            margin-top: 20px !important;
+            margin-bottom: 28px !important;            /* ← strong increase to fully separate dots from title below */
         }
 
         .modal-dot {
-            width: 8px !important;          /* smaller dots */
-            height: 8px !important;
-            margin: 0 5px !important;
+            width: 7px !important;                     /* ← even smaller dots to reduce visual weight */
+            height: 7px !important;
+            margin: 0 4px !important;                  /* tighter horizontal spacing */
         }
     }
 
