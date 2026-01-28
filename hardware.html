@@ -260,7 +260,7 @@
         margin-top: 20px;
     }
 
-    /* Mobile-only modal fixes (updated for dots spacing & size) */
+    /* Mobile-only modal fixes (final adjustment for dots separation) */
     @media (max-width: 768px) {
         .modal-overlay {
             padding: 10px !important;
@@ -281,6 +281,7 @@
         .modal-image-section {
             max-height: 35vh !important;
             margin-bottom: 0;
+            padding-bottom: 10px !important; /* ← extra push to move dots down from image */
         }
 
         .modal-main-image {
@@ -324,13 +325,13 @@
 
         .modal-dots {
             margin-top: 18px !important;
-            margin-bottom: 20px !important; /* ← increased to prevent overlap with title/description below */
+            margin-bottom: 28px !important; /* ← increased significantly to ensure no overlap/merging with title/description */
         }
 
         .modal-dot {
-            width: 8px !important;          /* ← slightly smaller dots */
+            width: 8px !important;          /* smaller dots */
             height: 8px !important;
-            margin: 0 5px !important;       /* adjusted spacing between dots */
+            margin: 0 5px !important;
         }
     }
 
