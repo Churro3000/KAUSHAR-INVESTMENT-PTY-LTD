@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <!-- Category Buttons – light neutral grey section + white buttons -->
+  <!-- Category Buttons -->
   <section class="category-buttons-section" style="background-color: #f8f8f8 !important; padding: 20px 0 !important;">
     <div class="category-buttons">
       <a href="hardware.html" class="category-btn" style="background-color: #ffffff !important; color: #666666 !important; border: 2.5px solid #666666 !important;">Hardware</a>
@@ -59,7 +59,7 @@
   </section>
 
   <main>
-    <!-- Featured Products – embedded from featured.html -->
+    <!-- Featured Products -->
     <section class="hero" style="padding: 40px 20px 10px; background-color: #ffffff;">
       <h2 style="margin-bottom: 30px; text-align: center; color: #000000;">Our Top Picks</h2>
       <iframe
@@ -71,221 +71,31 @@
       </iframe>
     </section>
 
-    <!-- START Latest Advertiser Section -->
-<section class="latest-ads-section" style="background-color: #FC6600; padding: 60px 20px; text-align: center;">
-  <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 40px; margin-top: 30px;">Latest Advertiser</h2>
-  <div class="ads-carousel-wrapper">
-    <!-- Desktop arrows now live outside the overflow:hidden container -->
-    <button class="ad-prev-desktop">&#10094;</button>
-    <button class="ad-next-desktop">&#10095;</button>
-    <div class="ads-carousel">
-      <div class="ads-track" id="adsTrack">
-        <div class="ad-slide"><img src="images.web/Camera_ad.png" alt="Advertiser 1"></div>
-        <div class="ad-slide"><img src="images.web/Controllers_ad.png" alt="Advertiser 2"></div>
-        <div class="ad-slide"><img src="images.web/Drone_ad.png" alt="Advertiser 3"></div>
-        <div class="ad-slide"><img src="images.web/Koosda_ad.png" alt="Advertiser 4"></div>
-        <div class="ad-slide"><img src="images.web/Tools_ad.png" alt="Advertiser 5"></div>
-        <div class="ad-slide"><img src="images.web/Generator_ad.png" alt="Advertiser 6"></div>
-        <div class="ad-slide"><img src="images.web/mixed_hardware_ad.png" alt="Advertiser 7"></div>
-        <div class="ad-slide"><img src="images.web/Camp-chairs_ad.png" alt="Advertiser 8"></div>
+    <!-- Latest Advertiser Section -->
+    <section class="latest-ads-section" style="background-color: #FC6600; padding: 60px 20px; text-align: center;">
+      <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 40px; margin-top: 30px;">Latest Advertiser</h2>
+      <div class="ads-carousel-wrapper">
+        <button class="ad-prev-desktop">&#10094;</button>
+        <button class="ad-next-desktop">&#10095;</button>
+        <div class="ads-carousel">
+          <div class="ads-track" id="adsTrack">
+            <div class="ad-slide"><img src="images.web/Camera_ad.png" alt="Advertiser 1"></div>
+            <div class="ad-slide"><img src="images.web/Controllers_ad.png" alt="Advertiser 2"></div>
+            <div class="ad-slide"><img src="images.web/Drone_ad.png" alt="Advertiser 3"></div>
+            <div class="ad-slide"><img src="images.web/Koosda_ad.png" alt="Advertiser 4"></div>
+            <div class="ad-slide"><img src="images.web/Tools_ad.png" alt="Advertiser 5"></div>
+            <div class="ad-slide"><img src="images.web/Generator_ad.png" alt="Advertiser 6"></div>
+            <div class="ad-slide"><img src="images.web/mixed_hardware_ad.png" alt="Advertiser 7"></div>
+            <div class="ad-slide"><img src="images.web/Camp-chairs_ad.png" alt="Advertiser 8"></div>
+          </div>
+          <button class="ad-prev" id="adPrev">&#10094;</button>
+          <button class="ad-next" id="adNext">&#10095;</button>
+        </div>
       </div>
-      <!-- Mobile arrows (inside the carousel) -->
-      <button class="ad-prev" id="adPrev">&#10094;</button>
-      <button class="ad-next" id="adNext">&#10095;</button>
-    </div>
-  </div>
-</section>
-
-<style>
-  /* ── exactly the same as before ── no changes here ── */
-  .ads-carousel-wrapper {
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-  .ads-carousel {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  .ads-track {
-    display: flex;
-    transition: transform 0.6s ease;
-  }
-  .ad-slide {
-    flex: 0 0 100%;
-    width: 100%;
-    text-align: center;
-    position: relative; /* required for the divider pseudo-element */
-  }
-  .ad-slide img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-    max-width: 500px;
-    margin: 0 auto;
-    display: block;
-  }
-
-  /* Shared arrow styling */
-  .ad-prev, .ad-next,
-  .ad-prev-desktop, .ad-next-desktop {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.6);
-    color: white;
-    border: none;
-    font-size: 1.6rem;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    padding: 0;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: all 0.3s;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    z-index: 10;
-  }
-  .ad-prev:hover, .ad-next:hover,
-  .ad-prev-desktop:hover, .ad-next-desktop:hover {
-    background-color: rgba(0,0,0,0.8);
-    transform: translateY(-50%) scale(1.1);
-  }
-
-  /* Mobile arrows – hidden by default */
-  .ad-prev, .ad-next {
-    display: none;
-  }
-
-  /* Desktop arrows – hidden by default */
-  .ad-prev-desktop, .ad-next-desktop {
-    display: none;
-  }
-
-  /* MOBILE (≤ 768px) – unchanged */
-  @media (max-width: 768px) {
-    .latest-ads-section { padding: 50px 15px; }
-    .latest-ads-section h2 {
-      font-size: 1.9rem;
-      margin-top: 10px !important;
-    }
-    .ad-slide img { max-width: 100%; }
-    .ad-prev, .ad-next {
-      display: block !important;
-      font-size: 1.4rem;
-      width: 44px;
-      height: 44px;
-      line-height: 44px;
-    }
-    .ad-prev { left: 15px !important; }
-    .ad-next { right: 15px !important; }
-    .ad-prev-desktop, .ad-next-desktop { display: none !important; }
-  }
-
-  /* DESKTOP (≥ 769px) – strict divider enforcement */
-  @media (min-width: 769px) {
-    .ads-carousel {
-      max-width: 900px;
-    }
-    .ads-carousel-wrapper {
-      max-width: 1000px;
-    }
-    .ad-slide {
-      flex: 0 0 33.333%; /* strict 3 slides visible */
-      width: 33.333%;
-    }
-    .ad-slide img {
-      max-width: 100%;
-      width: 100%;
-    }
-    .ad-prev-desktop, .ad-next-desktop {
-      display: block !important;
-    }
-    .ad-prev-desktop { left: -80px; }
-    .ad-next-desktop { right: -80px; }
-    .ad-prev, .ad-next { display: none !important; }
-
-    /* Very thin vertical light grey divider – strict & enforced */
-    .ads-track .ad-slide:not(:last-child)::after {
-      content: "" !important;
-      position: absolute !important;
-      right: 0 !important;
-      top: 5% !important;
-      bottom: 5% !important;
-      width: 1px !important;
-      background-color: #d0d0d0 !important; /* slightly darker light grey for visibility */
-      z-index: 2 !important;
-      pointer-events: none !important;
-    }
-  }
-</style>
-
-<script>
-// Advert Carousel Logic – improved button handling
-(function() {
-  const track = document.getElementById('adsTrack');
-  if (!track) return;
-  const slides = track.children.length;
-  let currentIndex = 0;
-  function getStep() {
-    return window.innerWidth >= 769 ? 2 : 1;
-  }
-  function updateCarousel(smooth = true) {
-    const step = getStep();
-    const percent = step === 2 ? 50 : 100;
-    const maxIndex = slides - step;
-    currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
-    track.style.transition = smooth ? 'transform 0.6s ease' : 'none';
-    track.style.transform = `translateX(-${currentIndex * percent}%)`;
-  }
-  // Move functions (used by both arrows and swipe)
-  function goNext() {
-    currentIndex += getStep();
-    updateCarousel();
-  }
-  function goPrev() {
-    currentIndex -= getStep();
-    updateCarousel();
-  }
-  // Attach listeners to ALL arrow buttons (only visible ones will be clickable)
-  document.querySelectorAll('.ad-prev, .ad-prev-desktop').forEach(btn => {
-    btn.addEventListener('click', goPrev);
-  });
-  document.querySelectorAll('.ad-next, .ad-next-desktop').forEach(btn => {
-    btn.addEventListener('click', goNext);
-  });
-  // Mobile swipe – always by 1
-  let touchStartX = 0;
-  track.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-  track.addEventListener('touchend', e => {
-    const touchEndX = e.changedTouches[0].screenX;
-    const diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 60) {
-      if (diff > 0) {
-        currentIndex += 1;
-      } else {
-        currentIndex -= 1;
-      }
-      updateCarousel();
-    }
-  }, { passive: true });
-  // Re-adjust on resize (important when going from desktop → mobile or vice versa)
-  window.addEventListener('resize', () => {
-    updateCarousel(false); // no animation on resize
-  });
-  updateCarousel(false); // initial position – no animation
-})();
-</script>
-<!-- END Latest Advertiser Section -->
+    </section>
 
     <!-- About Us / Location -->
     <div class="about-container">
-      <!-- Location section first -->
       <section class="location-section">
         <div class="about-text">
           <h2>We Are Located At</h2>
@@ -298,7 +108,7 @@
       </section>
     </div>
 
-    <!-- Contact & Follow Us – embedded from Contact.html -->
+    <!-- Contact & Follow Us -->
     <section style="background-color: #000000; padding: 0; margin: 0;">
       <iframe
         src="Contact.html"
@@ -317,42 +127,148 @@
 
   <script src="script.js"></script>
 
-  <!-- ================================================= -->
-  <!-- Fast loading boost – paste this at bottom of every page -->
-  <!-- ================================================= -->
+  <style>
+    /* ── exactly the same as before ── no changes here ── */
+    .ads-carousel-wrapper {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .ads-carousel {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .ads-track {
+      display: flex;
+      transition: transform 0.6s ease;
+    }
+    .ad-slide {
+      flex: 0 0 100%;
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
+    .ad-slide img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      max-width: 500px;
+      margin: 0 auto;
+      display: block;
+    }
 
+    /* Shared arrow styling */
+    .ad-prev, .ad-next,
+    .ad-prev-desktop, .ad-next-desktop {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.6);
+      color: white;
+      border: none;
+      font-size: 1.6rem;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      padding: 0;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: all 0.3s;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      z-index: 10;
+    }
+    .ad-prev:hover, .ad-next:hover,
+    .ad-prev-desktop:hover, .ad-next-desktop:hover {
+      background-color: rgba(0,0,0,0.8);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    /* Mobile arrows – hidden by default */
+    .ad-prev, .ad-next {
+      display: none;
+    }
+
+    /* Desktop arrows – hidden by default */
+    .ad-prev-desktop, .ad-next-desktop {
+      display: none;
+    }
+
+    /* MOBILE (≤ 768px) – no changes, no dividers */
+    @media (max-width: 768px) {
+      .latest-ads-section { padding: 50px 15px; }
+      .latest-ads-section h2 {
+        font-size: 1.9rem;
+        margin-top: 10px !important;
+      }
+      .ad-slide img { max-width: 100%; }
+      .ad-prev, .ad-next {
+        display: block !important;
+        font-size: 1.4rem;
+        width: 44px;
+        height: 44px;
+        line-height: 44px;
+      }
+      .ad-prev { left: 15px !important; }
+      .ad-next { right: 15px !important; }
+      .ad-prev-desktop, .ad-next-desktop { display: none !important; }
+    }
+
+    /* DESKTOP (≥ 769px) – strict 3-slide layout + enforced divider */
+    @media (min-width: 769px) {
+      .ads-carousel {
+        max-width: 900px;
+      }
+      .ads-carousel-wrapper {
+        max-width: 1000px;
+      }
+
+      /* Force exactly 3 slides visible */
+      .ads-track {
+        width: 300% !important; /* 3 × 100% */
+      }
+      .ad-slide {
+        flex: 0 0 33.333% !important;
+        width: 33.333% !important;
+      }
+      .ad-slide img {
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+
+      .ad-prev-desktop, .ad-next-desktop {
+        display: block !important;
+      }
+      .ad-prev-desktop { left: -80px !important; }
+      .ad-next-desktop { right: -80px !important; }
+      .ad-prev, .ad-next { display: none !important; }
+
+      /* Strict thin vertical light grey divider between each slide */
+      .ads-track .ad-slide:not(:last-child)::after {
+        content: "" !important;
+        position: absolute !important;
+        right: 0 !important;
+        top: 5% !important;
+        bottom: 5% !important;
+        width: 1px !important;
+        background-color: #d0d0d0 !important; /* visible light grey */
+        z-index: 3 !important;
+        pointer-events: none !important;
+      }
+    }
+  </style>
+
+  <!-- Fast loading boost -->
   <script>
-    // 1. Tell browser to lazy-load images that are not yet visible (most images)
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('img:not([loading])').forEach(img => {
-        if (!img.hasAttribute('loading')) {
-          img.setAttribute('loading', 'lazy');
-        }
-        // Add decoding="async" if missing (faster image decoding)
-        if (!img.hasAttribute('decoding')) {
-          img.setAttribute('decoding', 'async');
-        }
+        img.setAttribute('loading', 'lazy');
+        if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
       });
+      document.documentElement.style.scrollBehavior = 'smooth';
     });
-
-    // 2. Preconnect to important domains you use (fonts, images, etc.)
-    // Add any domains you actually use – these are common ones
-    const preconnects = [
-      'https://fonts.googleapis.com',
-      'https://fonts.gstatic.com',
-      'https://upload.wikimedia.org' // for your WhatsApp/FB/IG logos
-      // add your own image host if different, e.g. 'https://i.imgur.com'
-    ];
-    preconnects.forEach(domain => {
-      const link = document.createElement('link');
-      link.rel = 'preconnect';
-      link.href = domain;
-      link.crossOrigin = 'anonymous';
-      document.head.appendChild(link);
-    });
-
-    // 3. Very small script to force smooth scrolling & reduce jank
-    document.documentElement.style.scrollBehavior = 'smooth';
   </script>
 </body>
 </html>
