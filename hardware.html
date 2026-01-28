@@ -260,7 +260,7 @@
         margin-top: 20px;
     }
 
-    /* Mobile-only modal fixes (updated for slightly taller popup + more space) */
+    /* Mobile-only modal fixes (updated for dots separation) */
     @media (max-width: 768px) {
         .modal-overlay {
             padding: 10px !important;
@@ -270,7 +270,7 @@
             grid-template-columns: 1fr;
             max-width: 90vw !important;
             width: 90vw !important;
-            max-height: 88vh !important;               /* ← slightly taller than before */
+            max-height: 88vh !important;
             padding: 16px !important;
             gap: 12px !important;
             margin: auto !important;
@@ -299,12 +299,12 @@
 
         .modal-price {
             font-size: 1.5rem !important;
-            margin: 4px 0 16px !important;           /* ← extra bottom margin so button has space */
+            margin: 4px 0 16px !important;
         }
 
         .modal-details .buy-btn {
-            margin-top: 16px !important;             /* ← extra push up from bottom */
-            padding: 10px 20px !important;           /* slightly smaller padding if needed */
+            margin-top: 16px !important;
+            padding: 10px 20px !important;
         }
 
         .modal-close {
@@ -323,8 +323,14 @@
         }
 
         .modal-dots {
-            margin-top: 18px !important;             /* ← increased space below dots so they don't merge */
-            margin-bottom: 12px !important;
+            margin-top: 18px !important;
+            margin-bottom: 20px !important;           /* ← increased space below dots to stop overlap with title below */
+        }
+
+        .modal-dot {
+            width: 8px !important;                    /* ← slightly smaller dots */
+            height: 8px !important;
+            margin: 0 5px !important;
         }
     }
 
