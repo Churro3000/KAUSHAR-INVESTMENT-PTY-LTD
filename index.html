@@ -117,6 +117,7 @@
     flex: 0 0 100%;
     width: 100%;
     text-align: center;
+    position: relative; /* required for the divider pseudo-element */
   }
   .ad-slide img {
     width: 100%;
@@ -127,6 +128,7 @@
     margin: 0 auto;
     display: block;
   }
+
   /* Shared arrow styling */
   .ad-prev, .ad-next,
   .ad-prev-desktop, .ad-next-desktop {
@@ -152,20 +154,23 @@
     background-color: rgba(0,0,0,0.8);
     transform: translateY(-50%) scale(1.1);
   }
+
   /* Mobile arrows – hidden by default */
   .ad-prev, .ad-next {
     display: none;
   }
+
   /* Desktop arrows – hidden by default */
   .ad-prev-desktop, .ad-next-desktop {
     display: none;
   }
+
   /* MOBILE (≤ 768px) */
   @media (max-width: 768px) {
     .latest-ads-section { padding: 50px 15px; }
-    .latest-ads-section h2 { 
-      font-size: 1.9rem; 
-      margin-top: 10px !important; /* reduced top margin on mobile only */
+    .latest-ads-section h2 {
+      font-size: 1.9rem;
+      margin-top: 10px !important;
     }
     .ad-slide img { max-width: 100%; }
     .ad-prev, .ad-next {
@@ -179,7 +184,8 @@
     .ad-next { right: 15px !important; }
     .ad-prev-desktop, .ad-next-desktop { display: none !important; }
   }
-  /* DESKTOP (≥ 769px) – no changes here */
+
+  /* DESKTOP (≥ 769px) – thin vertical divider + existing styles */
   @media (min-width: 769px) {
     .ads-carousel {
       max-width: 900px;
@@ -201,6 +207,18 @@
     .ad-prev-desktop { left: -80px; }
     .ad-next-desktop { right: -80px; }
     .ad-prev, .ad-next { display: none !important; }
+
+    /* Thin vertical light grey divider between slides */
+    .ad-slide:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 10%;
+      bottom: 10%;
+      width: 1px;
+      background-color: #e0e0e0; /* very light grey – subtle and professional */
+      z-index: 2;
+    }
   }
 </style>
 
