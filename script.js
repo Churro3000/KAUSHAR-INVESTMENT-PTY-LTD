@@ -34,13 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 
   <script>
-<script>
+
 // ==================== SLIDESHOW AUTO-SLIDE & EVEN-UNEVEN FIX ====================
 const slideshowTrack = document.querySelector('.slideshow-track');
 const slideshowSlides = Array.from(document.querySelectorAll('.slide'));
 let slideshowIndex = 0;
 let slideshowInterval;
-
 // Aggressive preloading: start downloading ALL slideshow images immediately (big speed boost)
 document.addEventListener('DOMContentLoaded', () => {
   const slideshowImages = [
@@ -65,18 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(link);
   });
 });
-
 function startSlideshow() {
   clearInterval(slideshowInterval);
   slideshowInterval = setInterval(() => {
     nextSlideshowSlide();
   }, 2500); // Auto-slide every 2.5 seconds
 }
-
 function stopSlideshow() {
   clearInterval(slideshowInterval);
 }
-
 function nextSlideshowSlide() {
   const slidesPerView = window.innerWidth <= 768 ? 1 : 3;
   const totalSlides = slideshowSlides.length;
@@ -91,47 +87,40 @@ function nextSlideshowSlide() {
   }
   updateSlideshowPosition();
 }
-
 function prevSlideshowSlide() {
   const slidesPerView = window.innerWidth <= 768 ? 1 : 3;
   slideshowIndex -= slidesPerView;
   if (slideshowIndex < 0) slideshowIndex = 0;
   updateSlideshowPosition();
 }
-
 function updateSlideshowPosition() {
   if (slideshowSlides.length === 0) return;
   const slideWidth = slideshowSlides[0].offsetWidth;
   slideshowTrack.style.transform = `translateX(-${slideshowIndex * slideWidth}px)`;
 }
-
 // Touch swipe for slideshow
 let slideshowStartX = 0;
 slideshowTrack.addEventListener('touchstart', (e) => {
   stopSlideshow();
   slideshowStartX = e.touches[0].clientX;
 });
-
 slideshowTrack.addEventListener('touchend', (e) => {
   const diff = slideshowStartX - e.changedTouches[0].clientX;
   if (Math.abs(diff) > 50) {
     if (diff > 0) nextSlideshowSlide();
     else prevSlideshowSlide();
   }
-  // Restart auto-swiping after touch – ensures it starts/continues automatically on mobile
+  // Restart auto-swiping after touch (fixes mobile not starting automatically)
   startSlideshow();
 });
-
 // Handle resize & initial load
 window.addEventListener('resize', () => {
   updateSlideshowPosition();
 });
-
 window.addEventListener('load', () => {
   updateSlideshowPosition();
   startSlideshow(); // Ensure it starts immediately on page load (mobile included)
 });
-</script>
 
 // THE INDEX FILE SCRIPT CODES (DO NOT CHANGE) 
 document.addEventListener('DOMContentLoaded', () => {
