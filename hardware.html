@@ -449,13 +449,16 @@
      data-title="INGCO 1050W Impact Wrench"
      data-desc="This powerful INGCO 1050W industrial impact wrench delivers 550Nm max torque at 2300rpm with 1/2'' drive, includes 17/18/19/21/23/24mm sockets, 125mm extension bar, and spare carbon brushes for tough fastening jobs."
      data-price="P 2,400.00">
-    <img 
-      src="images.web/Impact_wrench1.png" 
-      alt="INGCO 1050W Impact Wrench" 
+    <img
+      src="images.web/Impact_wrench1.png"
+      alt="INGCO 1050W Impact Wrench"
       class="product-image"
-      loading="lazy" 
+      loading="eager"          <!-- changed from lazy → loads immediately -->
       decoding="async"
     >
+    <!-- This one line preloads the main image aggressively -->
+    <link rel="preload" href="images.web/Impact_wrench1.png" as="image">
+
     <div class="product-info">
         <h3 class="product-name">INGCO 1050W Impact Wrench</h3>
         <p class="product-desc">High-Torque 550Nm Industrial Impact Wrench with Socket Kit and Extension.</p>
