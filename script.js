@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 
   <script>
+<script>
 // ==================== SLIDESHOW AUTO-SLIDE & EVEN-UNEVEN FIX ====================
 const slideshowTrack = document.querySelector('.slideshow-track');
 const slideshowSlides = Array.from(document.querySelectorAll('.slide'));
@@ -110,13 +111,14 @@ slideshowTrack.addEventListener('touchstart', (e) => {
   stopSlideshow();
   slideshowStartX = e.touches[0].clientX;
 });
+
 slideshowTrack.addEventListener('touchend', (e) => {
   const diff = slideshowStartX - e.changedTouches[0].clientX;
   if (Math.abs(diff) > 50) {
     if (diff > 0) nextSlideshowSlide();
     else prevSlideshowSlide();
   }
-  // Restart auto-swiping after touch (fixes mobile not starting automatically)
+  // Restart auto-swiping after touch – ensures it starts/continues automatically on mobile
   startSlideshow();
 });
 
@@ -124,6 +126,7 @@ slideshowTrack.addEventListener('touchend', (e) => {
 window.addEventListener('resize', () => {
   updateSlideshowPosition();
 });
+
 window.addEventListener('load', () => {
   updateSlideshowPosition();
   startSlideshow(); // Ensure it starts immediately on page load (mobile included)
