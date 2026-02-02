@@ -342,17 +342,5 @@
     document.documentElement.style.scrollBehavior = 'smooth';
   </script>
 
-  <!-- ================================================= -->
-  <!-- NEW: Strict lazy + async enforcement for ALL images (dramatic speed boost) -->
-  <!-- ================================================= -->
-  <script>
-    // This runs after DOM is ready and applies to every image (slideshow, featured iframe content, etc.)
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('img').forEach(img => {
-        img.setAttribute('loading', 'lazy');   // lazy-load – huge speed gain
-        img.setAttribute('decoding', 'async'); // async decoding – prevents render blocking
-      });
-    });
-  </script>
 </body>
 </html>
