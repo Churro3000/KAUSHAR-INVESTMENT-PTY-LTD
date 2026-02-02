@@ -31,8 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
  }
 });
 
-<script>
-
 // ==================== SLIDESHOW AUTO-SLIDE & EVEN-UNEVEN FIX ====================
 const slideshowTrack = document.querySelector('.slideshow-track');
 const slideshowSlides = Array.from(document.querySelectorAll('.slide'));
@@ -193,4 +191,3 @@ document.addEventListener('DOMContentLoaded', () => {
  });
  }
 });
-</script>
