@@ -114,7 +114,6 @@ footer {
   margin-left: auto; /* push menu to right */
   margin-right: 10px; /* small space from right edge */
 }
-
 .nav-menu a {
   color: #FC6600;
   text-decoration: none;
@@ -123,11 +122,9 @@ footer {
   padding: 0 10px; /* extra space around text */
   position: relative;
 }
-
 .nav-menu a:hover {
   color: #ffffff;
 }
-
 /* Vertical line between menu items, except last */
 .nav-menu a:not(:last-child)::after {
   content: "";
@@ -139,7 +136,6 @@ footer {
   height: 18px;
   background-color: #ffffff;
 }
-
 /* ===== Hamburger (Mobile) ===== */
 .hamburger {
   display: none;
@@ -149,30 +145,26 @@ footer {
   margin-left: auto;
   margin-right: 3px; /* space from right edge */
 }
-
 /* ===== Mobile Dropdown Menu ===== */
-.mobile-menu { 
+.mobile-menu {
   display: flex;
   flex-direction: column;
   background-color: #000000;
   overflow: hidden;
-  max-height: 0; 
-  transition: max-height 0.4s ease; 
+  max-height: 0;
+  transition: max-height 0.4s ease;
 }
-
 .mobile-menu.show {
-  max-height: 500px; 
+  max-height: 500px;
 }
-
 .mobile-menu a {
-  color: #FC6600 !important; 
+  color: #FC6600 !important;
   padding: 20px 20px; /* top & bottom padding for space */
   text-decoration: none !important;
   font-weight: 400 !important; /* explicitly not bold */
-  position: relative; 
-  display: block; 
+  position: relative;
+  display: block;
 }
-
 /* Horizontal line between menu items, except last */
 .mobile-menu a:not(:last-child)::after {
   content: "";
@@ -183,17 +175,14 @@ footer {
   height: 1px;
   background-color: #ffffff; /* thin white line */
 }
-
 .mobile-menu a:hover {
   color: #ffffff !important;
 }
-
 /* Responsive: Hide desktop menu and show hamburger on mobile */
 @media screen and (max-width: 768px) {
   .nav-menu {
     display: none; /* hide desktop menu on mobile */
   }
-
   .hamburger {
     display: block; /* show hamburger on mobile */
   }
