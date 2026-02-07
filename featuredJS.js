@@ -195,7 +195,7 @@ function updateModalImage() {
 
 // ==================== WHATSAPP INQUIRE BUTTON HANDLER ====================
 document.addEventListener('DOMContentLoaded', () => {
-  const phoneNumber = '26777478877';
+  const phoneNumber = '26771665187';
 
   const handleInquireClick = (button) => {
     let productName = 'this product';
