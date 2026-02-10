@@ -444,7 +444,7 @@
   <section class="products-grid">
 
     <!-- PRODUCT 1 -->
-    <div class="product-card" 
+    <div class="product-card"
          data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
          data-title="Heavy Duty Power Drill"
          data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
@@ -545,7 +545,6 @@
     const dotsContainer = document.getElementById('modalDots');
     let currentImages = [];
     let currentIndex = 0;
-
     document.querySelectorAll('.product-card').forEach(card => {
       card.addEventListener('click', () => {
         currentImages = JSON.parse(card.dataset.images);
@@ -557,22 +556,18 @@
         modal.classList.add('active');
       });
     });
-
     closeBtn.addEventListener('click', () => modal.classList.remove('active'));
     modal.addEventListener('click', e => {
       if (e.target === modal) modal.classList.remove('active');
     });
-
     document.querySelector('.modal-prev').addEventListener('click', () => {
       currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
       updateModalImage();
     });
-
     document.querySelector('.modal-next').addEventListener('click', () => {
       currentIndex = (currentIndex + 1) % currentImages.length;
       updateModalImage();
     });
-
     function updateModalImage() {
       modalImg.src = currentImages[currentIndex];
       dotsContainer.innerHTML = '';
