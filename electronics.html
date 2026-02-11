@@ -440,14 +440,14 @@
 </div>
 
     <h1 class="category-title">Electronics</h1>
-        <p style="text-align: center; color: #555; font-weight: normal; margin: -15px 0 40px; line-height: 1.6; padding: 0 20px; box-sizing: border-box;">
+        <p class="category-subtitle" style="text-align: center; color: #555; font-weight: normal; margin: -15px 0 40px; line-height: 1.6; padding: 0 20px; box-sizing: border-box;">
   <!-- Desktop / big screen: larger text, horizontal with | separators -->
-  <span style="font-size: 1.1rem; white-space: nowrap;">
+  <span class="desktop-text" style="font-size: 1.1rem; white-space: nowrap;">
     Surveillance Cameras | Smart Watches | Projectors | Drones | Intercom Systems | Hidden Cameras | DVRs
   </span>
 
-  <!-- Mobile view: smaller text, stacked vertically, tiny left/right space -->
-  <span style="display: none; font-size: 0.8rem; line-height: 1.8;">
+  <!-- Mobile view: smaller text, stacked vertically -->
+  <span class="mobile-text" style="display: none; font-size: 0.8rem; line-height: 1.8;">
     Surveillance Cameras<br>
     Smart Watches<br>
     Projectors<br>
@@ -456,15 +456,6 @@
     Hidden Cameras<br>
     DVRs
   </span>
-
-  <!-- Inline media query to switch on mobile -->
-  <style scoped>
-    @media (max-width: 768px) {
-      p > span:first-child { display: none !important; }
-      p > span:last-child { display: block !important; }
-      p { padding: 0 10px !important; } /* tiny left/right space on mobile */
-    }
-  </style>
 </p>
 
     <section class="products-grid">
