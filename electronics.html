@@ -458,6 +458,15 @@
   </span>
 </p>
 
+    <!-- Inline media query to show mobile text and hide desktop text on small screens -->
+<style>
+  @media (max-width: 768px) {
+    .desktop-text { display: none !important; }
+    .mobile-text { display: block !important; }
+    .category-subtitle { padding: 0 10px !important; } /* tiny left/right space on mobile */
+  }
+</style>
+
     <section class="products-grid">
 
         <!-- PRODUCT 1 -->
