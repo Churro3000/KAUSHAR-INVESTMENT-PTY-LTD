@@ -440,29 +440,23 @@
 </div>
 
     <h1 class="category-title">Electronics</h1>
-        <p class="category-subtitle" style="text-align: center; color: #555; font-weight: normal; margin: -15px 0 40px; line-height: 1.6; padding: 0 20px; box-sizing: border-box;">
+       <p class="category-subtitle" style="text-align: center; color: #555; font-weight: normal; margin: -15px 0 40px; line-height: 1.6; padding: 0 20px; box-sizing: border-box;">
   <!-- Desktop / big screen: larger text, horizontal with | separators -->
   <span class="desktop-text" style="font-size: 1.1rem; white-space: nowrap;">
     Surveillance Cameras | Smart Watches | Projectors | Drones | Intercom Systems | Hidden Cameras | DVRs
   </span>
 
-  <!-- Mobile view: smaller text, stacked vertically -->
-  <span class="mobile-text" style="display: none; font-size: 0.8rem; line-height: 1.8;">
-    Surveillance Cameras<br>
-    Smart Watches<br>
-    Projectors<br>
-    Drones<br>
-    Intercom Systems<br>
-    Hidden Cameras<br>
-    DVRs
+  <!-- Mobile view: smaller text, flows/wraps into multiple short lines with | -->
+  <span class="mobile-text" style="display: none; font-size: 0.8rem; line-height: 1.8; white-space: normal; word-wrap: break-word;">
+    Surveillance Cameras | Smart Watches | Projectors | Drones | Intercom Systems | Hidden Cameras | DVRs
   </span>
 </p>
 
-    <!-- Inline media query to show mobile text and hide desktop text on small screens -->
+<!-- Inline media query to switch visibility and enable wrapping on mobile -->
 <style>
   @media (max-width: 768px) {
     .desktop-text { display: none !important; }
-    .mobile-text { display: block !important; }
+    .mobile-text { display: inline !important; }
     .category-subtitle { padding: 0 10px !important; } /* tiny left/right space on mobile */
   }
 </style>
