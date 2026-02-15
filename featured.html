@@ -545,9 +545,17 @@
       </div>
     </div>
 
-    <!-- View All Products button – links to categories on parent page -->
+    <!-- View All Products button – smooth scroll to categories in parent page -->
 <div class="see-all-wrapper">
-  <a href="#categories" class="see-all-btn">
+  <a href="javascript:void(0)" class="see-all-btn" onclick="
+    if (parent && parent.document) {
+      const target = parent.document.getElementById('categories');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+    return false;
+  ">
     View All Products
   </a>
 </div>
