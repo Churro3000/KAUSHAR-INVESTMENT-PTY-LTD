@@ -37,15 +37,15 @@
 
   <!-- Delivery & Courier Section -->
   <section style="background-color: #ffffff; padding: 60px 20px 80px; max-width: 1100px; margin: 0 auto;">
-    <h1 style="text-align: center; font-size: 2rem; color: #000; font-weight: 700; margin-bottom: 50px; margin-top: -50px;">
+    <h1 style="text-align: center; font-size: 2.6rem; color: #000; font-weight: 700; margin-bottom: 50px;">
       Delivery & Courier Services
     </h1>
 
     <!-- Local Delivery Section -->
     <div style="margin-bottom: 70px;">
-      <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 30px;">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;">
         <i class="fas fa-truck" style="font-size: 2.5rem; color: #FC6600;"></i>
-        <h2 style="font-size: 1.9rem; color: #000; margin: 0; font-weight: 600;">
+        <h2 style="font-size: 2.1rem; color: #000; margin: 0; font-weight: 600;">
           Local Delivery (Gaborone Area)
         </h2>
       </div>
@@ -70,7 +70,7 @@
 
     <!-- Nationwide Courier Section -->
     <div>
-      <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 30px;">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;">
         <i class="fas fa-plane-departure" style="font-size: 2.5rem; color: #FC6600;"></i>
         <h2 style="font-size: 2.1rem; color: #000; margin: 0; font-weight: 600;">
           Nationwide Courier Services
@@ -108,24 +108,30 @@
     @media (max-width: 768px) {
       section > h1 {
         font-size: 1.9rem !important;           /* smaller main title */
-        margin: 20px 0 40px !important;         /* reduced top margin, added bottom space */
+        margin: 15px 0 35px !important;         /* reduced top margin + added bottom space */
       }
       section h2 {
-        font-size: 1.5rem !important;           /* smaller section titles */
+        font-size: 1.7rem !important;           /* smaller section titles, one line */
+        white-space: nowrap !important;         /* prevent title stacking */
       }
       section i.fas {
-        font-size: 1.5rem !important;             /* smaller icons */
+        font-size: 1.8rem !important;           /* smaller icons */
       }
-      section .category-subtitle {
-        font-size: 0.9rem !important;
-        margin: -10px 0 30px !important;
+      section > div > div:first-child {         /* reduce space between title and box */
+        margin-bottom: 15px !important;
+      }
+      section ul {
+        font-size: 1rem !important;             /* slightly smaller price text */
+      }
+      section ul li {
+        white-space: nowrap !important;         /* prevent price stacking */
       }
       section a[href^="https://wa.me"] {
-        padding: 12px 32px !important;          /* slightly narrower WhatsApp button */
+        padding: 12px 32px !important;          /* slightly narrower button */
         font-size: 1.05rem !important;
       }
       section a[href^="https://wa.me"] i {
-        margin-right: 6px !important;           /* tighter icon-text spacing */
+        margin-right: 6px !important;           /* tighter icon-text gap */
       }
     }
   </style>
