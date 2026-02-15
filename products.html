@@ -43,7 +43,7 @@
 
     <!-- Local Delivery Section -->
     <div style="margin-bottom: 70px;">
-      <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 10px;">
         <i class="fas fa-truck" style="font-size: 2.5rem; color: #FC6600;"></i>
         <h2 style="font-size: 2.1rem; color: #000; margin: 0; font-weight: 600;">
           Local Delivery (Gaborone Area)
@@ -70,7 +70,7 @@
 
     <!-- Nationwide Courier Section -->
     <div>
-      <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 10px;">
         <i class="fas fa-plane-departure" style="font-size: 2.5rem; color: #FC6600;"></i>
         <h2 style="font-size: 2.1rem; color: #000; margin: 0; font-weight: 600;">
           Nationwide Courier Services
@@ -107,31 +107,22 @@
   <style>
     @media (max-width: 768px) {
       section > h1 {
-        font-size: 1.9rem !important;           /* smaller main title */
-        margin: 15px 0 35px !important;         /* reduced top margin + added bottom space */
+        font-size: 1.7rem !important;           /* smaller main title */
+        margin: 10px 0 45px !important;         /* much closer to header + more space below */
       }
       section h2 {
-        font-size: 1.7rem !important;           /* smaller section titles, one line */
-        white-space: nowrap !important;         /* prevent title stacking */
+        font-size: 1.55rem !important;          /* smaller section titles, still one line */
+        white-space: nowrap !important;         /* no stacking */
       }
       section i.fas {
         font-size: 1.8rem !important;           /* smaller icons */
       }
-      section > div > div:first-child {         /* reduce space between title and box */
-        margin-bottom: 15px !important;
+      section > div > div:first-child {         /* reduce space below section titles to boxes */
+        margin-bottom: 10px !important;
       }
-      section ul {
-        font-size: 1rem !important;             /* slightly smaller price text */
-      }
-      section ul li {
-        white-space: nowrap !important;         /* prevent price stacking */
-      }
-      section a[href^="https://wa.me"] {
-        padding: 12px 32px !important;          /* slightly narrower button */
-        font-size: 1.05rem !important;
-      }
-      section a[href^="https://wa.me"] i {
-        margin-right: 6px !important;           /* tighter icon-text gap */
+      section ul, section ul li {
+        font-size: 1.05rem !important;          /* slightly smaller price text, no stacking */
+        white-space: nowrap !important;
       }
     }
   </style>
