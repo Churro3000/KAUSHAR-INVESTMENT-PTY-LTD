@@ -261,11 +261,18 @@ document.addEventListener('DOMContentLoaded', () => {
     seeAllLink.addEventListener('click', function(e) {
       e.preventDefault(); // stop normal hash jump
 
-      // Try to scroll parent page
+      // Try to scroll parent page with offset
       if (parent && parent.document && parent.document.getElementById) {
         const target = parent.document.getElementById('categories');
         if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const offset = 80; // pixels above the section (adjust if you want more/less space)
+          const elementPosition = target.getBoundingClientRect().top + parent.pageYOffset;
+          const offsetPosition = elementPosition - offset;
+
+          parent.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
           return; // success
         }
       }
