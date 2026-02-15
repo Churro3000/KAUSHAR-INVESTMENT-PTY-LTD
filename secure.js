@@ -110,9 +110,7 @@ document.addEventListener('contextmenu', function(e) {
 
     if (protectedImages.includes(filename)) {
       e.preventDefault();
-      // Optional: show a subtle message (remove or change if you don't want it)
-      alert("Image is protected. Please contact us for full details or inquiries.");
-      return false;
+      return false; // No alert/message — just silently blocks
     }
   }
 }, false);
