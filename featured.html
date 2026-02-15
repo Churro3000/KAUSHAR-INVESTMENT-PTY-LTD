@@ -545,10 +545,12 @@
       </div>
     </div>
 
-    <!-- View All Products button – visible on both mobile and desktop -->
-    <div class="see-all-wrapper">
-      <a href="products.html" class="see-all-btn" target="_top">View All Products</a>
-    </div>
+    <!-- View All Products button – scrolls to categories section -->
+<div class="see-all-wrapper">
+  <a href="#categories" class="see-all-btn" onclick="document.querySelector('#categories').scrollIntoView({behavior: 'smooth'}); return false;">
+    View All Products
+  </a>
+</div>
 
   </section>
 
