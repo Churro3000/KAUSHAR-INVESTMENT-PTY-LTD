@@ -253,3 +253,25 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', updateVisibility); // re-check on resize
   }
 });
+
+// Smooth scroll to #categories on parent page when "View All Products" is clicked
+document.addEventListener('DOMContentLoaded', () => {
+  const seeAllLink = document.querySelector('.see-all-btn');
+  if (seeAllLink) {
+    seeAllLink.addEventListener('click', function(e) {
+      e.preventDefault(); // stop normal hash jump
+
+      // Try to scroll parent page
+      if (parent && parent.document && parent.document.getElementById) {
+        const target = parent.document.getElementById('categories');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return; // success
+        }
+      }
+
+      // Fallback: if parent access fails, just do normal hash navigation
+      window.location.hash = 'categories';
+    });
+  }
+});
