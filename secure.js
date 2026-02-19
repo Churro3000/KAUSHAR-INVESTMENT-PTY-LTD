@@ -1,5 +1,4 @@
-// secure.js - Targeted image protection + dev tools block
-// Protects only the listed images from right-click + blocks common dev tools shortcuts
+// secure.js - Site-wide right-click block + targeted image protection + dev tools block
 
 // ==================== YOUR PROTECTED IMAGE FILENAMES ====================
 const protectedImages = [
@@ -102,17 +101,11 @@ const protectedImages = [
   "mixed_hardware_ad.png"
 ];
 
-// ==================== BLOCK RIGHT-CLICK ON PROTECTED IMAGES ====================
+// ==================== BLOCK RIGHT-CLICK SITE-WIDE ====================
 document.addEventListener('contextmenu', function(e) {
-  if (e.target.tagName === 'IMG') {
-    const src = e.target.src || e.target.currentSrc || '';
-    const filename = src.split('/').pop(); // extract just the filename
-
-    if (protectedImages.includes(filename)) {
-      e.preventDefault();
-      return false; // No alert/message — just silently blocks
-    }
-  }
+  // Completely prevent the context menu anywhere on the page
+  e.preventDefault();
+  return false;
 }, false);
 
 // ==================== BLOCK F12 AND COMMON DEV TOOLS SHORTCUTS ====================
