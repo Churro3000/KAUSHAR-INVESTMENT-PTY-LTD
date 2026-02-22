@@ -246,13 +246,28 @@
     </div>
   </div>
 
-  <!-- Script for real links -->
   <script>
-    // Replace placeholders with your actual links/numbers
-    document.getElementById('whatsappLink').href = 'https://wa.me/26771665187?text=Good%20day%2C%20I%27d%20like%20to%20get%20in%20touch';
-    document.getElementById('facebookLink').href = 'https://www.facebook.com/share/1DK8aEbLzz/';
-    document.getElementById('instagramLink').href = 'https://www.instagram.com/kaushar.investment?igsh=dGJxMG5tNHgwa3k4';
-  </script>
+  // Update social links inside this section (Contact.html)
+  document.addEventListener('DOMContentLoaded', () => {
+    // WhatsApp (use your real number)
+    const whatsapp = document.getElementById('whatsappLink');
+    if (whatsapp) {
+      whatsapp.href = 'https://wa.me/26771665187';  // ←  real num 
+    }
+
+    // Facebook
+    const facebook = document.getElementById('facebookLink');
+    if (facebook) {
+      facebook.href = 'https://www.facebook.com/share/1DK8aEbLzz/';  // ←  real link
+    }
+
+    // Instagram
+    const instagram = document.getElementById('instagramLink');
+    if (instagram) {
+      instagram.href = 'https://www.instagram.com/kaushar.investment?igsh=dGJxMG5tNHgwa3k4';  // ←  real link
+    }
+  });
+</script>
 
   <script src="secure.js"></script>
   
