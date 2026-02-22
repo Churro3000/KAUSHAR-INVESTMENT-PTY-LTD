@@ -1,9 +1,11 @@
+-- index file ---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Company Name</title>
+  <title>KAUSHAR INVESTMENT (Pty) Ltd</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
 </head>
@@ -12,2070 +14,8 @@
     <div class="header-container">
       <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
       <nav class="nav-menu">
-        <a href="products.html">Products</a>
-        <a href="about.html">About Us</a>
-        <a href="inquire.html">Inquire</a>
-        <a href="policy.html">Policy</a>
-      </nav>
-      <div class="hamburger" onclick="toggleMobileMenu()">
-        &#9776;
-      </div>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="products.html">Products</a>
-      <a href="about.html">About Us</a>
-      <a href="inquire.html">Inquire</a>
-      <a href="policy.html">Policy</a>
-    </div>
-  </header>
-
-  <!-- Slideshow -->
-  <div class="slideshow-container">
-    <div class="slideshow-track">
-      <div class="slide"><img src="images.web/in_p1.jpg" alt="Product 1"></div>
-      <div class="slide"><img src="images.web/in_p2.jpg" alt="Product 2"></div>
-      <div class="slide"><img src="images.web/in_p3.jpg" alt="Product 3"></div>
-      <div class="slide"><img src="images.web/in_p4.jpg" alt="Product 4"></div>
-      <div class="slide"><img src="images.web/in_p5.jpg" alt="Product 5"></div>
-      <div class="slide"><img src="images.web/in_p6.jpg" alt="Product 6"></div>
-    </div>
-  </div>
-
-  <!-- Category Buttons -->
-  <section class="category-buttons-section" style="background-color: #1a1a1a; padding: 20px 0;">
-    <div class="category-buttons">
-      <a href="hardware.html" class="category-btn">Hardware</a>
-      <a href="electronics.html" class="category-btn">Electronics</a>
-      <a href="outdoor.html" class="category-btn">Outdoor/Camp</a>
-      <a href="household.html" class="category-btn">Household</a>
-      <a href="vehicle.html" class="category-btn">Vehicle Accessories</a>
-    </div>
-  </section>
-
-  <main>
-
-    <!-- Featured Products – embedded from featured.html -->
-<section class="hero" style="padding: 40px 20px 60px; background-color: #ffffff;">
-  <h2 style="margin-bottom: 50px; text-align: center; color: #000000;">Featured Products</h2>
-
-  <iframe 
-    src="featured.html" 
-    style="width:100%; height:750px; border:none; overflow:hidden;"
-    scrolling="no"
-    title="Featured Products">
-  </iframe>
-</section>
-
-    <!-- Latest Advertiser Section -->
-    <section class="latest-ads-section" style="background-color: #FC6600;">
-      <h2>Latest Advertiser</h2>
-      <div class="ads-carousel">
-        <div class="ads-track">
-          <div class="ad-slide"><img src="images.web/camp_ad.png" alt="Advertiser 1"></div>
-          <div class="ad-slide"><img src="images.web/hardware_ad.png" alt="Advertiser 2"></div>
-          <div class="ad-slide"><img src="images.web/THE_LOGO_BIG.png" alt="Advertiser 3"></div>
-        </div>
-        <button class="ad-prev">&#10094;</button>
-        <button class="ad-next">&#10095;</button>
-        <div class="ad-dots"></div>
-      </div>
-    </section>
-
-    <!-- About Us -->
-    <section id="about" class="about">
-      <h2>About Us</h2>
-      <!-- Location section first -->
-        <section class="location-section">
-            <div class="about-text">
-                <h2>We Are Located At</h2>
-                <p><strong>Mowana Park Mall</strong><br>
-                    Opposite BMS, Phakalane, Mowana Park Mall, Shop 41C<br>
-                    Gaborone, Botswana</p>
-                <p>We look forward to welcoming you to our store!</p>
-            </div>
-            <div class="about-image">
-                <img src="images.web/Mowana_park.webp" alt="Mowana Park, Phakalane">
-            </div>
-        </section>
-
-        <!-- About Us section second -->
-        <section class="about-section">
-            <div class="about-text">
-                <h2>About Us</h2>
-                <p><strong>Your Company Name</strong> is a well stocked department store offering a wide range of quality products for home and business needs.</p>
-                <p>We specialize in hardware, electronics, electrical supplies, surveillance solutions, and practical everyday gadgets. We also carry a selection of camping and outdoor equipment designed for adventure, travel, and outdoor activities.</p>
-                <p>Our goal is to provide reliable, durable, and convenient products that meet the practical demands of modern life.</p>
-            </div>
-            <div class="about-image">
-                <div class="logo-protect">
-                    <img src="images.web/THE_LOGO_BIG.png" alt="Your Company Name Logo" draggable="false">
-                </div>
-            </div>
-        </section>
-
-    <!-- Contact -->
-    <section class="contact">
-      <h2>Contact Us</h2>
-      <p>Email: <a href="mailto:info@yourcompany.com">info@yourcompany.com</a></p>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2026 Your Company Name. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-/* ===== General Setup ===== */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  color: #000000;
-}
-
-/* ===== Header ===== */
-header {
-  background-color: #000000;
-  padding: 10px 20px;
-}
-
-.header-container {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  height: 75px; /* adjust based on your logo proportions */
-  width: auto;
-  cursor: pointer;
-  margin-bottom: 5px;
-  margin-top: 5px;
-  margin-left: 3px;
-  cursor: default !important; /* normal arrow, not hand */
-  pointer-events: none; /* disables clicking, dragging, and interactions */
-}
-
-/* ===== Hero Section ===== */
-.hero {
-  text-align: center;
-  padding: 100px 20px;
-  background-color: #FC6600;
-  color: #ffffff;
-}
-
-.hero h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 1.1rem;
-  margin-bottom: 25px;
-}
-
-.hero button {
-  background-color: #000000;
-  color: #ffffff;
-  border: none;
-  padding: 12px 25px;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: 0.3s ease;
-}
-
-.hero button:hover {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-/* ===== About Section ===== */
-.about {
-  padding: 80px 20px;
-  background-color: #ffffff;
-  color: #000000;
-  text-align: center;
-}
-
-.about h2 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-}
-
-/* ===== Contact Section =====*/
-.contact {
-  padding: 80px 20px;
-  background-color: #000000;
-  color: #FC6600;
-  text-align: center;
-}
-
-.contact h2 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-}
-
-.contact a {
-  color: #FC6600;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.contact a:hover {
-  text-decoration: underline;
-}
-
-/* ===== Footer ===== */
-footer {
-  background-color: #FC6600;
-  color: #ffffff;
-  text-align: center;
-  padding: 15px 0;
-  font-size: 0.9rem;
-}
-
-/* ====== Desktop Menu ====== */
-.nav-menu {
-  display: flex;
-  gap: 45px; /* space between menu items */
-  margin-left: auto; /* push menu to right */
-  margin-right: 10px; /* small space from right edge */
-}
-
-.nav-menu a {
-  color: #FC6600;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-  padding: 0 10px; /* extra space around text */
-  position: relative;
-}
-
-.nav-menu a:hover {
-  color: #ffffff;
-}
-
-/* Vertical line between items, except last */
-.nav-menu a:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: -22px; /* move the line outside the <a> to sit between items */
-  transform: translateY(-50%);
-  width: 1px;
-  height: 18px;
-  background-color: #ffffff;
-}
-
-/* ===== Hamburger (Mobile) ===== */
-.hamburger {
-  display: none;
-  font-size: 2rem;
-  color: #FC6600;
-  cursor: pointer;
-  margin-left: auto;
-  margin-right: 3px; /* space from right edge */
-}
-
-/* ===== Mobile Dropdown Menu ===== */
-.mobile-menu { 
-  display: flex;
-  flex-direction: column;
-  background-color: #000000;
-  overflow: hidden;
-  max-height: 0; 
-  transition: max-height 0.4s ease; 
-}
-
-.mobile-menu.show {
-  max-height: 500px; 
-}
-
-.mobile-menu a {
-  color: #FC6600 !important; 
-  padding: 20px 20px; /* top & bottom padding for space */
-  text-decoration: none !important;
-  font-weight: 400 !important; /* explicitly not bold */
-  position: relative; 
-  display: block; 
-}
-
-/* Horizontal line between items, except last */
-.mobile-menu a:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: 0; /* line spans full width */
-  right: 0;
-  bottom: 0; /* place line at bottom of menu item */
-  height: 1px;
-  background-color: #ffffff; /* thin white line */
-}
-
-.mobile-menu a:hover {
-  color: #ffffff !important;
-}
-
-@media screen and (max-width: 768px) { /* Responsive */
-  .nav-menu {
-    display: none; /* hide desktop menu on mobile */
-  }
-
-  .hamburger {
-    display: block; /* show hamburger on mobile */
-  }
-}
-
-/* ========================================== Slideshow ==================================== */
-.slideshow-section {
-  background-color: #ffffff;
-  padding: 45px 0; /* space above and below slideshow */
-}
-
-.slideshow-container {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  margin: 0 auto;
-  background: transparent; /* no black background */
-}
-
-.slideshow-track {
-  display: flex;
-  transition: transform 0.9s ease;
-  will-change: transform;
-}
-
-.slide {
-  flex: 0 0 calc(100% / 3); /* show 3 slides on large screens */
-  box-sizing: border-box;
-  padding: 5px;
-}
-
-.slide img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  display: block;
-}
-
-/* Mobile: show only 1 image at a time */
-@media screen and (max-width: 768px) {
-  .slide {
-    flex: 0 0 100%;
-  }
-}
-
-/* ===== Product Category Buttons Section ===== */
-.category-buttons-section {
-  background-color: #ffffff;
-  padding: 50px 20px 60px;
-  text-align: center;
-}
-
-.category-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px; /* even spacing between buttons */
-  flex-wrap: wrap;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.category-btn {
-  background-color: #ffffff;
-  color: #808080; /* grey text */
-  border: 2px solid #808080; /* grey border */
-  padding: 14px 28px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.category-btn:hover {
-  background-color: #f0f0f0;
-  color: #000000;
-  border-color: #000000;
-}
-
-/* On smaller screens, keep them horizontal as long as possible */
-@media screen and (max-width: 768px) {
-  .category-buttons {
-    gap: 20px;
-  }
-  
-  .category-btn {
-    padding: 12px 20px;
-    font-size: 1rem;
-  }
-}
-
-/* Stack vertically only on very small screens */
-@media screen and (max-width: 480px) {
-  .category-buttons {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .category-btn {
-    width: 80%;
-    max-width: 300px;
-  }
-}
-
-/* THE INDEX CSS STYLING (DO NOT CHANGE) */
-/* Category buttons – dark charcoal + orange text */
-.category-buttons-section {
-  background-color: #1a1a1a; /* dark gray instead of pure black */
-  padding: 20px 0;
-}
-
-.category-btn {
-  background-color: transparent;
-  color: #FC6600; /* bright orange text */
-  border: 2px solid #FC6600;
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-
-.category-btn:hover {
-  background-color: #FC6600;
-  color: #ffffff;
-}
-
-/* Latest Advertiser Section */
-.latest-ads-section {
-  background-color: #FC6600;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.latest-ads-section h2 {
-  font-size: 2.2rem;
-  color: #ffffff;
-  margin-bottom: 70px;
-  margin-top: 30px !important;
-}
-
-.ads-carousel {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.ads-track {
-  display: flex;
-  transition: transform 0.6s ease;
-}
-
-.ad-slide {
-  flex: 0 0 100%;
-  width: 100%;
-  text-align: center; /* centers image */
-}
-
-.ad-slide img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-  max-width: 500px; /* smaller on big screens */
-  margin: 0 auto;   /* center the image */
-}
-
-/* On mobile (≤768px), keep images full-width as before */
-@media (max-width: 768px) {
-  .ad-slide img {
-    max-width: 100%; /* full width on mobile */
-  }
-  .latest-ads-section { padding: 50px 15px; }
-  .latest-ads-section h2 { font-size: 1.9rem; }
-  .ad-prev, .ad-next { font-size: 1.6rem; padding: 10px 14px; }
-}
-
-/* Arrows, dots, etc. unchanged */
-.ad-prev, .ad-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  font-size: 2rem;
-  padding: 12px 18px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: 0.3s;
-  z-index: 10;
-}
-
-.ad-prev { left: 15px; }
-.ad-next { right: 15px; }
-
-.ad-prev:hover, .ad-next:hover {
-  background-color: #ffffff;
-}
-
-.ad-dots {
-  text-align: center;
-  padding: 20px 0 0;
-}
-
-.dot {
-  height: 14px;
-  width: 14px;
-  margin: 0 8px;
-  background-color: #d94d00 !important;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.4s ease;
-  cursor: pointer;
-}
-
-.dot.active {
-  background-color: #000000 !important;
-}
-
-/*----------- About / Location styles (fixed for smaller logo + tighter spacing) -----------*/
-.about-container {
-  max-width: 1200px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
-
-.about-section,
-.location-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;          /* Reduced from 40px for less empty space between text/image */
-  align-items: center;
-}
-
-.about-section {
-  margin-bottom: 80px;
-}
-
-.about-image {
-  flex: 1;
-  min-width: 280px;
-  text-align: center;
-  margin-top: -15px;   /* Keeps your upward pull; adjust to -10px / -20px if needed */
-}
-
-.about-image img {
-  width: 100%;
-  max-width: 320px;    /* Good size for store photo in location section */
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-/* Specific override: Make the big logo MUCH smaller (only affects About Us section) */
-.about-section .about-image img {
-  max-width: 220px;    /* <-- Main fix: smaller logo. Try 200px or 180px if still too big */
-}
-
-.about-text {
-  flex: 2;
-  min-width: 300px;
-}
-
-.about-text h2 {
-  color: #FC6600;
-  margin-bottom: 20px;
-  font-size: 2.2rem;
-}
-
-.about-text p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #333;
-  margin-bottom: 1.2em;
-}
-
-/* ── Protection for the big logo only ── */
-.logo-protect {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  pointer-events: none;
-  -webkit-touch-callout: none;
-}
-
-.logo-protect img {
-  pointer-events: none;
-  user-drag: none;
-  -webkit-user-drag: none;
-  -moz-user-select: none;
-}
-
-/* ────────────────────────────────────── */
-
-@media (max-width: 768px) {
-  .about-section,
-  .location-section {
-    flex-direction: column;
-    text-align: center;
-    gap: 20px;         /* Even tighter on mobile */
-  }
-  .about-image img {
-    max-width: 280px;  /* General mobile size */
-  }
-  /* Make logo even smaller on mobile if needed */
-  .about-section .about-image img {
-    max-width: 240px;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style>
-    /* ==================== BASE STYLES ==================== */
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #ffffff;
-      color: #000;
-      font-family: Arial, sans-serif;
-    }
-    /* ==================== FEATURED SECTION WRAPPER ==================== */
-    .featured-section {
-      padding: 40px 20px;
-      max-width: 1600px;
-      margin: 0 auto;
-    }
-    /* ==================== CAROUSEL CONTAINER ==================== */
-    .carousel-wrapper {
-      position: relative; /* For absolute-positioned arrows */
-      overflow: hidden; /* Hide overflow during slide */
-    }
-    .featured-products-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 4 visible on large screens */
-      gap: 30px;
-      transition: transform 0.5s ease; /* Smooth slide animation */
-      width: max-content; /* Allows sliding beyond viewport */
-
-      /* Prevent stacking / wrapping into multiple rows */
-      grid-auto-flow: column;
-    }
-    /* ==================== PRODUCT CARD (exact match to hardware.html) ==================== */
-    .product-card {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-    }
-    .product-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-    .product-image {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: contain;
-      background: #f9f9f9;
-      padding: 15px;
-      box-sizing: border-box;
-    }
-    .product-info {
-      padding: 20px 15px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .product-name {
-      font-size: 1.35rem;
-      margin: 0 0 10px;
-      color: #000;
-      font-weight: 600;
-    }
-    .product-desc {
-      font-size: 0.95rem;
-      color: #555;
-      margin-bottom: 15px;
-      flex-grow: 1;
-    }
-    .product-price {
-      font-size: 1.3rem;
-      color: #FC6600; /* Orange as requested */
-      font-weight: bold;
-      margin-bottom: 18px;
-    }
-    .buy-btn {
-      background: #000;
-      color: #fff;
-      border: none;
-      padding: 12px 30px;
-      font-size: 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-top: auto;
-    }
-    .buy-btn:hover {
-      background: #FC6600;
-    }
-    /* ==================== CAROUSEL ARROWS (styled same as modal nav) ==================== */
-    .carousel-arrow {
-      position: absolute;
-      top: calc(50% - 20px);           /* Slightly moved up for better visual centering with product boxes */
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: #fff;
-      border: none;
-      width: 50px;
-      height: 50px;
-      font-size: 1.8rem;
-      cursor: pointer;
-      border-radius: 50%;
-      z-index: 10;
-      transition: all 0.2s;
-    }
-    .carousel-arrow:hover {
-      background: rgba(0,0,0,0.8);
-    }
-    .carousel-arrow.prev {
-      left: 10px;
-    }
-    .carousel-arrow.next {
-      right: 10px;
-    }
-    /* ==================== MODAL (copied exactly from hardware.html) ==================== */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.8);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .modal-overlay.active {
-      display: flex;
-    }
-    .modal-content {
-      background: #fff;
-      border-radius: 16px;
-      max-width: 1000px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      padding: 30px;
-    }
-    .modal-close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 2.4rem;
-      background: rgba(255,255,255,0.9);
-      border: none;
-      border-radius: 50%;
-      width: 42px;
-      height: 42px;
-      line-height: 42px;
-      text-align: center;
-      cursor: pointer;
-      color: #333;
-      font-weight: bold;
-      z-index: 10;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      transition: all 0.2s;
-    }
-    .modal-close:hover {
-      color: #000;
-      background: #fff;
-      transform: scale(1.1);
-    }
-    .modal-image-section { position: relative; }
-    .modal-main-image {
-      width: 100%;
-      aspect-ratio: 1/1;
-      object-fit: contain;
-      background: #f9f9f9;
-      border-radius: 12px;
-    }
-    .modal-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: #fff;
-      border: none;
-      width: 50px;
-      height: 50px;
-      font-size: 1.8rem;
-      cursor: pointer;
-      border-radius: 50%;
-    }
-    .modal-prev { left: 10px; }
-    .modal-next { right: 10px; }
-    .modal-dots { text-align: center; margin-top: 15px; }
-    .modal-dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      background: #bbb;
-      border-radius: 50%;
-      margin: 0 6px;
-      cursor: pointer;
-    }
-    .modal-dot.active { background: #FC6600; }
-    .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
-    .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
-    .modal-price { font-size: 2rem; color: #FC6600; font-weight: bold; margin-bottom: 25px; }
-    /* ==================== RESPONSIVE ADJUSTMENTS ==================== */
-    @media (max-width: 768px) {
-      .featured-products-grid {
-        grid-template-columns: repeat(1, 1fr); /* 1 card on mobile */
-        gap: 20px;
-        justify-items: center; /* Center the single card */
-      }
-      .product-card {
-        max-width: 90%; /* Prevent overflow on small screens */
-      }
-      /* Hide arrows on very small screens if too cramped (optional) */
-      .carousel-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 1.4rem;
-      }
-    }
-    @media (max-width: 480px) {
-      .product-name { font-size: 1.2rem; }
-      .product-desc { font-size: 0.9rem; }
-      .product-price { font-size: 1.2rem; }
-    }
-  </style>
-
-
-
-
-//////////////////////THE CSS FOR FEATURED //////////////////
-<style>
-    /* ==================== BASE STYLES ==================== */
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #ffffff;
-      color: #000;
-      font-family: Arial, sans-serif;
-    }
-    /* ==================== FEATURED SECTION WRAPPER ==================== */
-    .featured-section {
-      padding: 40px 20px;
-      max-width: 1600px;
-      margin: 0 auto;
-    }
-    /* ==================== CAROUSEL CONTAINER ==================== */
-    .carousel-wrapper {
-      position: relative; /* For absolute-positioned arrows */
-      overflow: hidden; /* Hide overflow during slide */
-    }
-    .featured-products-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 4 visible on large screens */
-      gap: 30px;
-      transition: transform 0.5s ease; /* Smooth slide animation */
-      width: max-content; /* Allows sliding beyond viewport */
-      /* Prevent stacking / wrapping into multiple rows */
-      grid-auto-flow: column;
-    }
-    /* ==================== PRODUCT CARD (slightly smaller to fit 4 comfortably) ==================== */
-    .product-card {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-      max-width: 320px;           /* cap width to help fit 4 cards */
-    }
-    .product-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-    .product-image {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: contain;
-      background: #f9f9f9;
-      padding: 12px;              /* ← reduced from 15px */
-      box-sizing: border-box;
-    }
-    .product-info {
-      padding: 16px 12px;         /* ← reduced from 20px 15px */
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .product-name {
-      font-size: 1.28rem;         /* ← slightly smaller to help fit 4 */
-      margin: 0 0 8px;
-      color: #000;
-      font-weight: 600;
-    }
-    .product-desc {
-      font-size: 0.92rem;         /* ← slightly smaller */
-      color: #555;
-      margin-bottom: 12px;
-      flex-grow: 1;
-    }
-    .product-price {
-      font-size: 1.25rem;         /* ← slightly smaller */
-      color: #FC6600;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-    .buy-btn {
-      background: #000;
-      color: #fff;
-      border: none;
-      padding: 10px 25px;         /* ← reduced from 12px 30px */
-      font-size: 0.95rem;         /* ← slightly smaller */
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-top: auto;
-    }
-    .buy-btn:hover {
-      background: #FC6600;
-    }
-    /* ==================== CAROUSEL ARROWS (styled same as modal nav) ==================== */
-    .carousel-arrow {
-      position: absolute;
-      top: calc(50% - 20px); /* Slightly moved up for better visual centering with product boxes */
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: #fff;
-      border: none;
-      width: 50px;
-      height: 50px;
-      font-size: 1.8rem;
-      cursor: pointer;
-      border-radius: 50%;
-      z-index: 10;
-      transition: all 0.2s;
-    }
-    .carousel-arrow:hover {
-      background: rgba(0,0,0,0.8);
-    }
-    .carousel-arrow.prev {
-      left: 10px;
-    }
-    .carousel-arrow.next {
-      right: 10px;
-    }
-    /* ==================== MODAL (copied exactly from hardware.html) ==================== */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.8);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .modal-overlay.active {
-      display: flex;
-    }
-    .modal-content {
-      background: #fff;
-      border-radius: 16px;
-      max-width: 1000px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      padding: 30px;
-    }
-    .modal-close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 2.4rem;
-      background: rgba(255,255,255,0.9);
-      border: none;
-      border-radius: 50%;
-      width: 42px;
-      height: 42px;
-      line-height: 42px;
-      text-align: center;
-      cursor: pointer;
-      color: #333;
-      font-weight: bold;
-      z-index: 10;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      transition: all 0.2s;
-    }
-    .modal-close:hover {
-      color: #000;
-      background: #fff;
-      transform: scale(1.1);
-    }
-    .modal-image-section { position: relative; }
-    .modal-main-image {
-      width: 100%;
-      aspect-ratio: 1/1;
-      object-fit: contain;
-      background: #f9f9f9;
-      border-radius: 12px;
-    }
-    .modal-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: #fff;
-      border: none;
-      width: 50px;
-      height: 50px;
-      font-size: 1.8rem;
-      cursor: pointer;
-      border-radius: 50%;
-    }
-    .modal-prev { left: 10px; }
-    .modal-next { right: 10px; }
-    .modal-dots { text-align: center; margin-top: 15px; }
-    .modal-dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      background: #bbb;
-      border-radius: 50%;
-      margin: 0 6px;
-      cursor: pointer;
-    }
-    .modal-dot.active { background: #FC6600; }
-    .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
-    .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
-    .modal-price { font-size: 2rem; color: #FC6600; font-weight: bold; margin-bottom: 25px; }
-    /* ==================== RESPONSIVE ADJUSTMENTS ==================== */
-    @media (max-width: 768px) {
-      .featured-products-grid {
-        grid-template-columns: repeat(1, 1fr); /* 1 card on mobile */
-        gap: 20px;
-        justify-items: center; /* Center the single card */
-      }
-      .product-card {
-        max-width: 80%;           /* ← reduced from 90% so it's smaller & fits better */
-        max-height: 480px;        /* ← optional soft cap to prevent feeling too tall */
-      }
-      .product-image {
-        padding: 10px;            /* ← smaller image padding on mobile */
-      }
-      .product-info {
-        padding: 14px 12px;       /* ← slightly tighter */
-      }
-      .product-name { font-size: 1.18rem; }
-      .product-desc { font-size: 0.88rem; }
-      .product-price { font-size: 1.18rem; }
-      .buy-btn { padding: 9px 22px; font-size: 0.92rem; }
-
-      /* Hide arrows on very small screens if too cramped (optional) */
-      .carousel-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 1.4rem;
-      }
-    }
-    @media (max-width: 480px) {
-      .product-name { font-size: 1.1rem; }
-      .product-desc { font-size: 0.85rem; }
-      .product-price { font-size: 1.1rem; }
-    }
-  </style>
-
-
-
-
-//////////////////////// NEW FEATURED JS ////////////////////////////////////
-// ==================== CAROUSEL SLIDING LOGIC ====================
-const grid = document.getElementById('productsGrid');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-let currentPosition = 0; // Tracks how far we've slid in pixels
-
-function getSlideWidth() {
-  const card = grid.querySelector('.product-card');
-  if (!card) return 350; // fallback
-
-  const cardWidth = card.offsetWidth;
-  const gap = 20; // smaller gap on mobile for better alignment
-
-  // On mobile: slide exactly one full card
-  if (window.innerWidth <= 768) {
-    return cardWidth + gap; // more precise – uses actual gap
-  }
-  // On desktop: slide 4 cards
-  else {
-    return (cardWidth + 30) * 4; // desktop gap is 30px
-  }
-}
-
-nextBtn.addEventListener('click', () => {
-  const slideAmount = getSlideWidth();
-  currentPosition -= slideAmount;
-  grid.style.transform = `translateX(${currentPosition}px)`;
-});
-
-prevBtn.addEventListener('click', () => {
-  if (currentPosition >= 0) return; // already at start
-  const slideAmount = getSlideWidth();
-  currentPosition += slideAmount;
-  grid.style.transform = `translateX(${currentPosition}px)`;
-});
-
-// ==================== MODAL POPUP LOGIC ====================
-const modal = document.getElementById('productModal');
-const closeBtn = document.querySelector('.modal-close');
-const modalImg = document.getElementById('modalImage');
-const modalTitle = document.getElementById('modalTitle');
-const modalDesc = document.getElementById('modalDesc');
-const modalPrice = document.getElementById('modalPrice');
-const dotsContainer = document.getElementById('modalDots');
-let currentImages = [];
-let currentIndex = 0;
-
-document.querySelectorAll('.product-card').forEach(card => {
-  card.addEventListener('click', () => {
-    currentImages = JSON.parse(card.dataset.images || '[]');
-    currentIndex = 0;
-    modalTitle.textContent = card.dataset.title || 'Product';
-    modalDesc.textContent = card.dataset.desc || '';
-    modalPrice.textContent = card.dataset.price || '';
-    updateModalImage();
-    modal.classList.add('active');
-  });
-});
-
-closeBtn.addEventListener('click', () => {
-  modal.classList.remove('active');
-});
-
-modal.addEventListener('click', e => {
-  if (e.target === modal) modal.classList.remove('active');
-});
-
-document.querySelector('.modal-prev').addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-  updateModalImage();
-});
-
-document.querySelector('.modal-next').addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % currentImages.length;
-  updateModalImage();
-});
-
-function updateModalImage() {
-  if (currentImages.length > 0) {
-    modalImg.src = currentImages[currentIndex];
-  }
-  dotsContainer.innerHTML = '';
-  currentImages.forEach((_, i) => {
-    const dot = document.createElement('span');
-    dot.classList.add('modal-dot');
-    if (i === currentIndex) dot.classList.add('active');
-    dot.addEventListener('click', () => {
-      currentIndex = i;
-      updateModalImage();
-    });
-    dotsContainer.appendChild(dot);
-  });
-}
-
-
-
-
-
-///////////////////// THE NEW JS ONE///////////
-// ==================== CAROUSEL SLIDING LOGIC ====================
-const grid = document.getElementById('productsGrid');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-let currentPosition = 0;
-
-function getSlideWidth() {
-  const card = grid.querySelector('.product-card');
-  if (!card) return 350;
-  const cardWidth = card.offsetWidth;
-  
-  if (window.innerWidth <= 768) {
-    const gap = 20;
-    return cardWidth + gap;           // mobile: 1 card
-  } else {
-    const gap = 30;
-    return (cardWidth + gap) * 4;     // desktop: ~4 cards
-  }
-}
-
-function getMaxPosition() {
-  const totalWidth   = grid.scrollWidth;
-  const containerWidth = grid.parentElement.offsetWidth;
-  let maxPos = containerWidth - totalWidth;   // usually negative
-  if (maxPos > 0) maxPos = 0;                 // content fits → no scroll
-  return maxPos;
-}
-
-let maxPosition = getMaxPosition();
-
-// Recalculate on load, resize, and before important moves
-window.addEventListener('load', ()  => { maxPosition = getMaxPosition(); });
-window.addEventListener('resize', () => {
-  maxPosition = getMaxPosition();
-  // Snap back if needed (window got wider)
-  if (currentPosition < maxPosition) {
-    currentPosition = maxPosition;
-    grid.style.transform = `translateX(${currentPosition}px)`;
-  }
-});
-
-nextBtn.addEventListener('click', () => {
-  const slide = getSlideWidth();
-  const proposed = currentPosition - slide;
-  maxPosition = getMaxPosition();           // fresh calculation
-
-  // Allow small overshoot tolerance (subpixel, borders, rounding)
-  const tolerance = 6;
-
-  if (proposed >= maxPosition - tolerance) {
-    // Move, but never go beyond the actual end
-    currentPosition = Math.max(proposed, maxPosition);
-    grid.style.transform = `translateX(${currentPosition}px)`;
-  }
-  // Optional: snap exactly to end if very close
-  else if (Math.abs(proposed - maxPosition) < slide * 0.4) {
-    currentPosition = maxPosition;
-    grid.style.transform = `translateX(${currentPosition}px)`;
-  }
-});
-
-prevBtn.addEventListener('click', () => {
-  if (currentPosition >= 0) return;
-
-  const slide = getSlideWidth();
-  currentPosition += slide;
-
-  // Never go positive
-  if (currentPosition > 0) currentPosition = 0;
-
-  grid.style.transform = `translateX(${currentPosition}px)`;
-});
-
-// ==================== MODAL POPUP LOGIC ====================
-// (unchanged – your original modal code)
-
-const modal = document.getElementById('productModal');
-const closeBtn = document.querySelector('.modal-close');
-const modalImg = document.getElementById('modalImage');
-const modalTitle = document.getElementById('modalTitle');
-const modalDesc = document.getElementById('modalDesc');
-const modalPrice = document.getElementById('modalPrice');
-const dotsContainer = document.getElementById('modalDots');
-let currentImages = [];
-let currentIndex = 0;
-
-document.querySelectorAll('.product-card').forEach(card => {
-  card.addEventListener('click', () => {
-    currentImages = JSON.parse(card.dataset.images || '[]');
-    currentIndex = 0;
-    modalTitle.textContent = card.dataset.title || 'Product';
-    modalDesc.textContent = card.dataset.desc || '';
-    modalPrice.textContent = card.dataset.price || '';
-    updateModalImage();
-    modal.classList.add('active');
-  });
-});
-
-closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-
-modal.addEventListener('click', e => {
-  if (e.target === modal) modal.classList.remove('active');
-});
-
-document.querySelector('.modal-prev').addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-  updateModalImage();
-});
-
-document.querySelector('.modal-next').addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % currentImages.length;
-  updateModalImage();
-});
-
-function updateModalImage() {
-  if (currentImages.length > 0) {
-    modalImg.src = currentImages[currentIndex];
-  }
-  dotsContainer.innerHTML = '';
-  currentImages.forEach((_, i) => {
-    const dot = document.createElement('span');
-    dot.classList.add('modal-dot');
-    if (i === currentIndex) dot.classList.add('active');
-    dot.addEventListener('click', () => {
-      currentIndex = i;
-      updateModalImage();
-    });
-    dotsContainer.appendChild(dot);
-  });
-}
-
-
-
-
-/////////////////////// FEATURED CSS //////////////////////////////
-<style>
-    /* ==================== BASE STYLES ==================== */
-    body {
-        margin: 0;
-        padding: 0;
-        background-color: #ffffff;
-        color: #000;
-        font-family: Arial, sans-serif;
-    }
-    /* ==================== FEATURED SECTION WRAPPER ==================== */
-    .featured-section {
-        padding: 40px 20px;
-        max-width: 1600px;
-        margin: 0 auto;
-    }
-    /* ==================== CAROUSEL CONTAINER ==================== */
-    .carousel-wrapper {
-        position: relative; /* For absolute-positioned arrows */
-        overflow: hidden; /* Hide overflow during slide */
-    }
-    .featured-products-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 4 visible on large screens */
-        gap: 30px;
-        transition: transform 0.5s ease; /* Smooth slide animation */
-        width: max-content; /* Allows sliding beyond viewport */
-        /* Prevent stacking / wrapping into multiple rows */
-        grid-auto-flow: column;
-    }
-    /* ==================== PRODUCT CARD ==================== */
-    .product-card {
-        background: #fff;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        cursor: pointer;
-        max-width: 320px; /* cap width to help fit 4 cards */
-    }
-    .product-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-    .product-image {
-        width: 100%;
-        aspect-ratio: 1 / 1;
-        object-fit: contain;
-        background: #f9f9f9;
-        padding: 12px;
-        box-sizing: border-box;
-    }
-    .product-info {
-        padding: 16px 12px;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-    }
-    .product-name {
-        font-size: 1.28rem;
-        margin: 0 0 8px;
-        color: #000;
-        font-weight: 600;
-    }
-    .product-desc {
-        font-size: 0.92rem;
-        color: #555;
-        margin-bottom: 12px;
-        flex-grow: 1;
-    }
-    .product-price {
-        font-size: 1.25rem;
-        color: #FC6600;
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
-    .buy-btn {
-        background: #000;
-        color: #fff;
-        border: none;
-        padding: 10px 25px;
-        font-size: 0.95rem;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: 0.3s;
-        margin-top: auto;
-    }
-    .buy-btn:hover {
-        background: #FC6600;
-    }
-    /* ==================== CAROUSEL ARROWS ==================== */
-    .carousel-arrow {
-        position: absolute;
-        top: calc(50% - 20px);
-        transform: translateY(-50%);
-        background: rgba(0,0,0,0.5);
-        color: #fff;
-        border: none;
-        width: 50px;
-        height: 50px;
-        font-size: 1.8rem;
-        cursor: pointer;
-        border-radius: 50%;
-        z-index: 10;
-        transition: all 0.2s;
-    }
-    .carousel-arrow:hover {
-        background: rgba(0,0,0,0.8);
-    }
-    .carousel-arrow.prev { left: 10px; }
-    .carousel-arrow.next { right: 10px; }
-    /* ==================== MODAL ==================== */
-    .modal-overlay {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.8);
-        z-index: 1000;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-    }
-    .modal-overlay.active {
-        display: flex;
-    }
-    .modal-content {
-        background: #fff;
-        border-radius: 16px;
-        max-width: 1000px;
-        width: 100%;
-        max-height: 90vh;
-        overflow-y: auto;
-        position: relative;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-        padding: 30px;
-    }
-    .modal-close {
-        position: absolute;
-        top: 15px;
-        right: 20px;
-        font-size: 2.4rem;
-        background: rgba(255,255,255,0.9);
-        border: none;
-        border-radius: 50%;
-        width: 42px;
-        height: 42px;
-        line-height: 42px;
-        text-align: center;
-        cursor: pointer;
-        color: #333;
-        font-weight: bold;
-        z-index: 10;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        transition: all 0.2s;
-    }
-    .modal-close:hover {
-        color: #000;
-        background: #fff;
-        transform: scale(1.1);
-    }
-    .modal-image-section {
-        position: relative;
-    }
-    .modal-main-image {
-        width: 100%;
-        aspect-ratio: 1/1;
-        object-fit: contain;
-        background: #f9f9f9;
-        border-radius: 12px;
-    }
-    .modal-nav {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(0,0,0,0.5);
-        color: #fff;
-        border: none;
-        width: 50px;
-        height: 50px;
-        font-size: 1.8rem;
-        cursor: pointer;
-        border-radius: 50%;
-    }
-    .modal-prev { left: 10px; }
-    .modal-next { right: 10px; }
-    .modal-dots {
-        text-align: center;
-        margin: 20px 0 0 0;
-    }
-    .modal-dot {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        background: #bbb;
-        border-radius: 50%;
-        margin: 0 7px;
-        cursor: pointer;
-    }
-    .modal-dot.active { background: #FC6600; }
-    .modal-details h3 {
-        font-size: 2rem;
-        margin: 0 0 20px;
-        color: #000;
-    }
-    .modal-details p {
-        font-size: 1.1rem;
-        line-height: 1.7;
-        color: #444;
-        margin-bottom: 25px;
-    }
-    .modal-price {
-        font-size: 2rem;
-        color: #FC6600 !important;
-        font-weight: bold;
-        margin-bottom: 25px;
-    }
-    /* ==================== RESPONSIVE ADJUSTMENTS ==================== */
-    @media (max-width: 768px) {
-        .featured-products-grid {
-            grid-template-columns: repeat(1, 1fr);
-            gap: 20px;
-            justify-items: center;
-        }
-        .product-card {
-            max-width: 85vw;
-            margin: 0 auto;
-            max-height: 480px;
-        }
-        .product-image { padding: 10px; }
-        .product-info { padding: 14px 12px; }
-        .product-name { font-size: 1.18rem; }
-        .product-desc { font-size: 0.88rem; }
-        .product-price { font-size: 1.18rem; color: #FC6600; }
-        .buy-btn { padding: 9px 22px; font-size: 0.92rem; }
-        .carousel-arrow {
-            width: 40px;
-            height: 40px;
-            font-size: 1.4rem;
-        }
-        /* Mobile modal adjustments – hide dots completely to avoid any overlap issues */
-        .modal-dots {
-            display: none;
-        }
-        .modal-content {
-            grid-template-columns: 1fr;
-            max-width: 94vw;
-            max-height: 85vh;
-            padding: 16px;
-            gap: 14px;
-            border-radius: 14px;
-        }
-        .modal-image-section {
-            max-height: 40vh;
-            margin-bottom: 0;
-        }
-        .modal-main-image {
-            max-height: 40vh;
-        }
-        .modal-details h3 {
-            font-size: 1.65rem;
-            margin: 0 0 16px;
-        }
-        .modal-details p { font-size: 0.98rem; line-height: 1.5; }
-        .modal-price { font-size: 1.6rem; margin: 4px 0 12px; color: #FC6600 !important; }
-        .modal-close {
-            width: 44px;
-            height: 44px;
-            line-height: 44px;
-            font-size: 2.5rem;
-            top: 8px;
-            right: 8px;
-        }
-        .modal-nav {
-            width: 40px;
-            height: 40px;
-            font-size: 1.5rem;
-        }
-        /* Tiny extra bottom space so buy button isn't cut off */
-        .featured-section {
-            padding: 40px 20px 100px 20px; /* bottom increased to 100px */
-        }
-    }
-    @media (max-width: 480px) {
-        .product-name { font-size: 1.1rem; }
-        .product-desc { font-size: 0.85rem; }
-        .product-price { font-size: 1.1rem; color: #FC6600; }
-        .modal-content {
-            padding: 14px;
-            max-height: 88vh;
-        }
-        .modal-image-section { max-height: 38vh; margin-bottom: 0; }
-        .modal-details h3 { font-size: 1.5rem; }
-        .modal-price { font-size: 1.45rem; color: #FC6600 !important; }
-        .modal-details p { font-size: 0.96rem; }
-    }
-</style>
-
-
-
-
-
-
-
-
-THE NEW INDEX.HTML FILE:
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Company Name</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-</head>
-<body>
-  <header>
-    <div class="header-container">
-      <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
-      <nav class="nav-menu">
-        <a href="products.html">Products</a>
-        <a href="inquire.html">Inquire</a>
-        <a href="Advert.html">Advertiser</a>
-        <a href="about.html">About Us</a>
-        <a href="policy.html">Policy</a>
-      </nav>
-      <div class="hamburger" onclick="toggleMobileMenu()">
-        &#9776;
-      </div>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="products.html">Products</a>
-        <a href="inquire.html">Inquire</a>
-        <a href="Advert.html">Advertiser</a>
-        <a href="about.html">About Us</a>
-        <a href="policy.html">Policy</a>
-    </div>
-  </header>
-
-  <!-- Slideshow -->
-  <div class="slideshow-container">
-    <div class="slideshow-track">
-      <div class="slide"><img src="images.web/in_p1.jpg" alt="Product 1"></div>
-      <div class="slide"><img src="images.web/in_p2.jpg" alt="Product 2"></div>
-      <div class="slide"><img src="images.web/in_p3.jpg" alt="Product 3"></div>
-      <div class="slide"><img src="images.web/in_p4.jpg" alt="Product 4"></div>
-      <div class="slide"><img src="images.web/in_p5.jpg" alt="Product 5"></div>
-      <div class="slide"><img src="images.web/in_p6.jpg" alt="Product 6"></div>
-    </div>
-  </div>
-
-  <!-- Category Buttons -->
-  <section class="category-buttons-section" style="background-color: #1a1a1a; padding: 20px 0;">
-    <div class="category-buttons">
-      <a href="hardware.html" class="category-btn">Hardware</a>
-      <a href="electronics.html" class="category-btn">Electronics</a>
-      <a href="outdoor.html" class="category-btn">Outdoor/Camp</a>
-      <a href="household.html" class="category-btn">Household</a>
-      <a href="vehicle.html" class="category-btn">Vehicle Accessories</a>
-    </div>
-  </section>
-
-  <main>
-
-    <!-- Featured Products – embedded from featured.html -->
-<section class="hero" style="padding: 40px 20px 10px; background-color: #ffffff;">
-  <h2 style="margin-bottom: 30px; text-align: center; color: #000000;">Featured Products</h2>
-  <iframe
-    src="featured.html"
-    style="width:100%; border:none; overflow:hidden;"
-    onload="this.style.height = this.contentWindow.document.body.scrollHeight + 10 + 'px';"  <!-- +10 for tiny buffer if needed -->
-    scrolling="no"
-    title="Featured Products">
-  </iframe>
-</section>
-
-   <!-- Latest Advertiser Section -->
-<section class="latest-ads-section" style="background-color: #FC6600; padding: 60px 20px; text-align: center;">
-  <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 40px; margin-top: 30px;">Latest Advertiser</h2>
- 
-  <div class="ads-carousel">
-    <div class="ads-track" id="adsTrack">
-      <div class="ad-slide"><img src="images.web/Camera_ad.png" alt="Advertiser 1"></div>
-      <div class="ad-slide"><img src="images.web/Controllers_ad.png" alt="Advertiser 2"></div>
-      <div class="ad-slide"><img src="images.web/Drone_ad.png" alt="Advertiser 3"></div>
-      <div class="ad-slide"><img src="images.web/Koosda_ad.png" alt="Advertiser 4"></div>
-      <div class="ad-slide"><img src="images.web/Tools_ad.png" alt="Advertiser 5"></div>
-      <div class="ad-slide"><img src="images.web/Generator_ad.png" alt="Advertiser 6"></div>
-      <div class="ad-slide"><img src="images.web/mixed_hardware_ad.png" alt="Advertiser 7"></div>
-      <div class="ad-slide"><img src="images.web/Camp-chairs_ad.png" alt="Advertiser 8"></div>
-    </div>
-    <button class="ad-prev" id="adPrev">&#10094;</button>
-    <button class="ad-next" id="adNext">&#10095;</button>
-  </div>
-</section>
-
-<style>
-  .ads-carousel {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  .ads-track {
-    display: flex;
-    transition: transform 0.6s ease;
-  }
-  .ad-slide {
-    flex: 0 0 100%;
-    width: 100%;
-    text-align: center;
-  }
-  .ad-slide img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-    max-width: 500px;
-    margin: 0 auto;
-    display: block;
-  }
-  .ad-prev, .ad-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.6); /* stays the same on hover */
-    color: white;
-    border: none;
-    font-size: 1.6rem;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    padding: 0;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: all 0.3s;
-    z-index: 10;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  }
-  .ad-prev { left: 15px; }
-  .ad-next { right: 15px; }
-  .ad-prev:hover, .ad-next:hover {
-    background-color: rgba(0,0,0,0.6) !important; /* strict: no white change */
-    color: white !important;
-    transform: translateY(-50%) scale(1.1);
-  }
-
-  @media (max-width: 768px) {
-    .latest-ads-section { padding: 50px 15px; }
-    .latest-ads-section h2 { font-size: 1.9rem; }
-    .ad-slide img { max-width: 100%; }
-    .ad-prev, .ad-next {
-      font-size: 1.4rem;      /* slightly smaller on mobile */
-      width: 44px;
-      height: 44px;
-      line-height: 44px;
-    }
-  }
-</style>
-
-<script>
-// Advert Carousel Logic – no dots
-document.addEventListener('DOMContentLoaded', () => {
-  const track = document.getElementById('adsTrack');
-  const prevBtn = document.getElementById('adPrev');
-  const nextBtn = document.getElementById('adNext');
-  if (!track || !prevBtn || !nextBtn) {
-    console.warn('Advert carousel elements not found');
-    return;
-  }
-  let currentIndex = 0;
-  const slides = track.children.length;
-  function updateCarousel() {
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
-  }
-  nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % slides;
-    updateCarousel();
-  });
-  prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + slides) % slides;
-    updateCarousel();
-  });
-  // Mobile swipe
-  let touchStartX = 0;
-  let touchEndX = 0;
-  track.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-  track.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    const diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 60) {
-      currentIndex = diff > 0
-        ? (currentIndex + 1) % slides
-        : (currentIndex - 1 + slides) % slides;
-      updateCarousel();
-    }
-  }, { passive: true });
-  updateCarousel(); // initial
-});
-</script>
-<!-- END Latest Advertiser Section -->
-
-    <!-- About Us / Location -->
-    <div class="about-container">
-
-      <!-- Location section first -->
-      <section class="location-section">
-        <div class="about-text">
-          <h2>We Are Located At</h2>
-          <p><strong>Mowana Park Mall</strong><br>
-            Opposite BMS, Phakalane, Mowana Park Mall, Shop 41C<br>
-            Gaborone, Botswana</p>
-          <p>We look forward to welcoming you to our store!</p>
-        </div>
-        <div class="about-image">
-          <img src="images.web/Mowana_park.webp" alt="Mowana Park, Phakalane">
-        </div>
-      </section>
-    </div>
-
-    <!-- Contact -->
-    <section class="contact">
-      <h2>Contact Us</h2>
-      <p>Email: <a href="mailto:info@yourcompany.com">info@yourcompany.com</a></p>
-    </section>
-
-  </main>
-
-  <footer>
-    <p>© 2026 Your Company Name. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-HARDWARE HTML CODE _______________________________________________
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hardware Products | Your Company Name</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-
-  <style>
-    /* Existing styles (unchanged) */
-    body { background-color: #f4f4f4; color: #000000; }
-    .category-title { text-align: center; font-size: 2.5rem; margin: 60px 20px 50px; color: #000; font-weight: bold; }
-    .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding: 0 20px 60px; max-width: 1600px; margin: 0 auto; }
-    .product-card { background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.1); transition:0.3s; text-align:center; display:flex; flex-direction:column; cursor:pointer; }
-    .product-card:hover { transform:translateY(-10px); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
-    .product-image { width:100%; aspect-ratio:1/1; object-fit:contain; background:#f9f9f9; padding:15px; box-sizing:border-box; }
-    .product-info { padding:20px 15px; flex-grow:1; display:flex; flex-direction:column; }
-    .product-name { font-size:1.35rem; margin:0 0 10px; color:#000; font-weight:600; }
-    .product-desc { font-size:0.95rem; color:#555; margin-bottom:15px; flex-grow:1; }
-    .product-price { font-size:1.3rem; color:#FC6600; font-weight:bold; margin-bottom:18px; }
-    .buy-btn { background:#000; color:#fff; border:none; padding:12px 30px; font-size:1rem; border-radius:6px; cursor:pointer; transition:0.3s; margin-top:auto; }
-    .buy-btn:hover { background:#FC6600; }
-    .back-btn { display:block; width:fit-content; margin:40px auto 60px; padding:12px 30px; background:#808080; color:#fff; text-decoration:none; border-radius:6px; font-weight:bold; transition:0.3s; }
-    .back-btn:hover { background:#000; }
-
-    @media (max-width:1200px) { .products-grid { grid-template-columns:repeat(3,1fr); } }
-    @media (max-width:768px) { .products-grid { grid-template-columns:repeat(2,1fr); gap:20px; padding:0 15px 50px; } .category-title { font-size:2rem; margin:50px 15px 40px; } }
-    @media (max-width:480px) { .product-name{font-size:1.2rem;} .product-desc{font-size:0.9rem;} .product-price{font-size:1.2rem;} }
-
-    /* ==================== MODAL POPUP ==================== */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.8);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .modal-overlay.active { display: flex; }
-
-    .modal-content {
-      background: #fff;
-      border-radius: 16px;
-      max-width: 1000px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      padding: 30px;
-    }
-
-    /* Close button */
-    .modal-close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 2.4rem;
-      background: rgba(255,255,255,0.9);
-      border: none;
-      border-radius: 50%;
-      width: 42px;
-      height: 42px;
-      line-height: 42px;
-      text-align: center;
-      cursor: pointer;
-      color: #333;
-      font-weight: bold;
-      z-index: 10;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      transition: all 0.2s;
-    }
-
-    .modal-close:hover {
-      color: #000;
-      background: #fff;
-      transform: scale(1.1);
-    }
-
-    .modal-image-section { position: relative; }
-    .modal-main-image { width: 100%; aspect-ratio: 1/1; object-fit: contain; background: #f9f9f9; border-radius: 12px; }
-    .modal-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: #fff;
-      border: none;
-      width: 50px;
-      height: 50px;
-      font-size: 1.8rem;
-      cursor: pointer;
-      border-radius: 50%;
-    }
-    .modal-prev { left: 10px; }
-    .modal-next { right: 10px; }
-
-    .modal-dots { text-align: center; margin-top: 15px; }
-    .modal-dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      background: #bbb;
-      border-radius: 50%;
-      margin: 0 6px;
-      cursor: pointer;
-    }
-    .modal-dot.active { background: #FC6600; }
-
-    .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
-    .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
-    .modal-price { font-size: 2rem; color: #FC6600; font-weight: bold; margin-bottom: 25px; }
-
-    /* Mobile adjustments - smaller circle on mobile */
-    @media (max-width: 768px) {
-      .modal-content {
-        grid-template-columns: 1fr;
-        padding: 20px;
-      }
-      .modal-details h3 { font-size: 1.7rem; }
-
-      .modal-close {
-        width: 48px;           /* Smaller circle on mobile */
-        height: 48px;
-        line-height: 48px;
-        font-size: 2.8rem;     /* Slightly smaller X symbol to fit */
-        top: 10px;
-        right: 10px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="header-container">
-      <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
-      <nav class="nav-menu">
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="inquire.html">Inquire</a>
+        <a href="products.html">Delivery & Courier</a>
+        <a href="inquire.html">Contact Us</a>
         <a href="Advert.html">Advertiser</a>
         <a href="about.html">About Us</a>
         <a href="policy.html">Policy</a>
@@ -2083,730 +23,327 @@ HARDWARE HTML CODE _______________________________________________
       <div class="hamburger" onclick="toggleMobileMenu()">&#9776;</div>
     </div>
     <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html">Home</a>
-      <a href="products.html">Products</a>
-        <a href="inquire.html">Inquire</a>
-        <a href="Advert.html">Advertiser</a>
-        <a href="about.html">About Us</a>
-        <a href="policy.html">Policy</a>
+      <a href="products.html">Delivery & Courier</a>
+      <a href="inquire.html">Contact Us</a>
+      <a href="Advert.html">Advertiser</a>
+      <a href="about.html">About Us</a>
+      <a href="policy.html">Policy</a>
     </div>
   </header>
-
-  <h1 class="category-title">Hardware</h1>
-
-  <section class="products-grid">
-
-    <!-- PRODUCT 1 -->
-    <div class="product-card" 
-         data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-         data-title="Heavy Duty Power Drill"
-         data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
-         data-price="P 1,250.00">
-      <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
-      <div class="product-info">
-        <h3 class="product-name">Heavy Duty Power Drill</h3>
-        <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
-        <p class="product-price">P 1,250.00</p>
-        <button class="buy-btn">Inquire Now</button>
-      </div>
-    </div>
-
-    <!-- PRODUCT 2 -->
-    <div class="product-card"
-         data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
-         data-title="150-Piece Tool Kit"
-         data-desc="Complete mechanic and home repair set including sockets, wrenches, screwdrivers, pliers, hammer, tape measure, and more. All tools made from chrome vanadium steel. Comes in a sturdy blow-molded case."
-         data-price="P 2,800.00">
-      <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
-      <div class="product-info">
-        <h3 class="product-name">150-Piece Tool Kit</h3>
-        <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
-        <p class="product-price">P 2,800.00</p>
-        <button class="buy-btn">Inquire Now</button>
-      </div>
-    </div>
-
-    <!-- PRODUCT 3 -->
-    <div class="product-card"
-         data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
-         data-title="150-Piece Tool Kit"
-         data-desc="Complete mechanic and home repair set including sockets, wrenches, screwdrivers, pliers, hammer, tape measure, and more. All tools made from chrome vanadium steel. Comes in a sturdy blow-molded case."
-         data-price="P 2,800.00">
-      <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
-      <div class="product-info">
-        <h3 class="product-name">150-Piece Tool Kit</h3>
-        <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
-        <p class="product-price">P 2,800.00</p>
-        <button class="buy-btn">Inquire Now</button>
-      </div>
-    </div>
-
-    <!-- PRODUCT 4 -->
-    <div class="product-card"
-         data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
-         data-title="150-Piece Tool Kit"
-         data-desc="Complete mechanic and home repair set including sockets, wrenches, screwdrivers, pliers, hammer, tape measure, and more. All tools made from chrome vanadium steel. Comes in a sturdy blow-molded case."
-         data-price="P 2,800.00">
-      <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
-      <div class="product-info">
-        <h3 class="product-name">150-Piece Tool Kit</h3>
-        <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
-        <p class="product-price">P 2,800.00</p>
-        <button class="buy-btn">Inquire Now</button>
-      </div>
-    </div>
-
-    <!-- Add more products here -->
-
-  </section>
-
-  <a href="index.html" class="back-btn">← Back to Home</a>
-
-  <footer>
-    <p>© 2026 Your Company Name. All rights reserved.</p>
-  </footer>
-
-  <!-- MODAL (shared) -->
-  <div class="modal-overlay" id="productModal">
-    <div class="modal-content">
-      <button class="modal-close">&times;</button>
-
-      <div class="modal-image-section">
-        <img src="" alt="Product" class="modal-main-image" id="modalImage">
-        <button class="modal-nav modal-prev">&#10094;</button>
-        <button class="modal-nav modal-next">&#10095;</button>
-        <div class="modal-dots" id="modalDots"></div>
-      </div>
-
-      <div class="modal-details">
-        <h3 id="modalTitle"></h3>
-        <p id="modalDesc"></p>
-        <p class="modal-price" id="modalPrice"></p>
-        <button class="buy-btn">Inquire Now</button>
-      </div>
+  <!-- Slideshow -->
+  <div class="slideshow-container">
+    <div class="slideshow-track">
+      <div class="slide"><img src="images.web/Hikvision_slide.png" alt="Product 1"></div>
+      <div class="slide"><img src="images.web/drones_slide.png" alt="Product 2"></div>
+      <div class="slide"><img src="images.web/Controllers_slide.png" alt="Product 3"></div>
+      <div class="slide"><img src="images.web/Koosda_slide.png" alt="Product 4"></div>
+      <div class="slide"><img src="images.web/Watches_slide.png" alt="Product 5"></div>
+      <div class="slide"><img src="images.web/Projectors_slide.png" alt="Product 6"></div>
+      <div class="slide"><img src="images.web/ingco_tools_slide.png" alt="Product 6"></div>
+      <div class="slide"><img src="images.web/Generator_slide.png" alt="Product 6"></div>
+      <div class="slide"><img src="images.web/Camera2_slide.png" alt="Product 6"></div>
+      <div class="slide"><img src="images.web/Koosda_Tripod_slide.png" alt="Product 6"></div>
+      <div class="slide"><img src="images.web/Spraycan_slide.png" alt="Product 6"></div>
+      <div class="slide"><img src="images.web/Keyboards_slide.png" alt="Product 6"></div>
     </div>
   </div>
-
-  <script src="script.js"></script>
-
-  <script>
-    // Product Modal Logic
-    const modal = document.getElementById('productModal');
-    const closeBtn = document.querySelector('.modal-close');
-    const modalImg = document.getElementById('modalImage');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalPrice = document.getElementById('modalPrice');
-    const dotsContainer = document.getElementById('modalDots');
-    let currentImages = [];
-    let currentIndex = 0;
-
-    document.querySelectorAll('.product-card').forEach(card => {
-      card.addEventListener('click', () => {
-        currentImages = JSON.parse(card.dataset.images);
-        currentIndex = 0;
-
-        modalTitle.textContent = card.dataset.title;
-        modalDesc.textContent = card.dataset.desc;
-        modalPrice.textContent = card.dataset.price;
-        updateModalImage();
-
-        modal.classList.add('active');
-      });
-    });
-
-    closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-    modal.addEventListener('click', e => {
-      if (e.target === modal) modal.classList.remove('active');
-    });
-
-    document.querySelector('.modal-prev').addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-      updateModalImage();
-    });
-    document.querySelector('.modal-next').addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % currentImages.length;
-      updateModalImage();
-    });
-
-    function updateModalImage() {
-      modalImg.src = currentImages[currentIndex];
-      dotsContainer.innerHTML = '';
-      currentImages.forEach((_, i) => {
-        const dot = document.createElement('span');
-        dot.classList.add('modal-dot');
-        if (i === currentIndex) dot.classList.add('active');
-        dot.addEventListener('click', () => {
-          currentIndex = i;
-          updateModalImage();
-        });
-        dotsContainer.appendChild(dot);
-      });
-    }
-
-    // ==================== WHATSAPP INQUIRE BUTTON HANDLER ====================
-// Works for main page "Inquire Now" AND modal popup "Inquire Now"
-document.addEventListener('DOMContentLoaded', () => {
-  const phoneNumber = '26777478877'; // ← your number – confirm it's correct
-
-  const handleInquireClick = (button) => {
-    let productName = 'this product';
-
-    // From main card
-    const productInfo = button.closest('.product-info');
-    if (productInfo) {
-      const nameElem = productInfo.querySelector('.product-name');
-      if (nameElem) productName = nameElem.textContent.trim();
-    }
-
-    // Fallback from modal title (when clicked inside popup)
-    const modalTitleElem = document.getElementById('modalTitle');
-    if (modalTitleElem && modalTitleElem.textContent.trim()) {
-      productName = modalTitleElem.textContent.trim();
-    }
-
-    const message = `Good day, I'd like to inquire about ${productName}`;
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
-    window.open(whatsappUrl, '_blank');
-  };
-
-  // Attach to all existing Inquire buttons
-  const attachListeners = () => {
-    document.querySelectorAll('.buy-btn').forEach(btn => {
-      btn.removeEventListener('click', handleInquireClick); // prevent duplicates
-      btn.addEventListener('click', () => handleInquireClick(btn));
-    });
-  };
-
-  attachListeners();
-
-  // Watch for modal opening (since modal loads dynamically)
-  const modal = document.getElementById('productModal');
-  if (modal) {
-    const observer = new MutationObserver(attachListeners);
-    observer.observe(modal, { childList: true, subtree: true });
-  }
-});
-  </script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-featured.html:
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Featured Products | Your Company Name</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-
-  <!-- External stylesheet if you have one (optional) -->
-  <!-- <link rel="stylesheet" href="style.css" /> -->
-
-  <style>
-    /* ==================== BASE STYLES ==================== */
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #ffffff;
-      color: #000;
-      font-family: Arial, sans-serif;
-    }
-    /* ==================== FEATURED SECTION WRAPPER ==================== */
-    .featured-section {
-      padding: 40px 20px;
-      max-width: 1600px;
-      margin: 0 auto;
-    }
-    /* ==================== CAROUSEL CONTAINER ==================== */
-    .carousel-wrapper {
-      position: relative; /* For absolute-positioned arrows */
-      overflow: hidden; /* Hide overflow during slide */
-    }
-    .featured-products-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 4 visible on large screens */
-      gap: 30px;
-      transition: transform 0.5s ease; /* Smooth slide animation */
-      width: max-content; /* Allows sliding beyond viewport */
-      /* Prevent stacking / wrapping into multiple rows */
-      grid-auto-flow: column;
-    }
-    /* ==================== PRODUCT CARD ==================== */
-    .product-card {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-      max-width: 320px; /* cap width to help fit 4 cards */
-    }
-    .product-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-    .product-image {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: contain;
-      background: #f9f9f9;
-      padding: 12px;
-      box-sizing: border-box;
-    }
-    .product-info {
-      padding: 16px 12px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .product-name {
-      font-size: 1.28rem;
-      margin: 0 0 8px;
-      color: #000;
-      font-weight: 600;
-    }
-    .product-desc {
-      font-size: 0.92rem;
-      color: #555;
-      margin-bottom: 12px;
-      flex-grow: 1;
-    }
-    .product-price {
-      font-size: 1.25rem;
-      color: #FC6600;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-    .buy-btn {
-      background: #000;
-      color: #fff;
-      border: none;
-      padding: 10px 25px;
-      font-size: 0.95rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-top: auto;
-    }
-    .buy-btn:hover {
-      background: #FC6600;
-    }
-    /* ==================== CAROUSEL ARROWS ==================== */
-    .carousel-arrow {
-      position: absolute;
-      top: calc(50% - 20px);
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: #fff;
-      border: none;
-      width: 50px;
-      height: 50px;
-      font-size: 1.8rem;
-      cursor: pointer;
-      border-radius: 50%;
-      z-index: 10;
-      transition: all 0.2s;
-    }
-    .carousel-arrow:hover {
-      background: rgba(0,0,0,0.8);
-    }
-    .carousel-arrow.prev { left: 10px; }
-    .carousel-arrow.next { right: 10px; }
-    /* ==================== MODAL ==================== */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.8);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .modal-overlay.active {
-      display: flex;
-    }
-    .modal-content {
-      background: #fff;
-      border-radius: 16px;
-      max-width: 1000px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      padding: 30px;
-    }
-    .modal-close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 2.4rem;
-      background: rgba(255,255,255,0.9);
-      border: none;
-      border-radius: 50%;
-      width: 42px;
-      height: 42px;
-      line-height: 42px;
-      text-align: center;
-      cursor: pointer;
-      color: #333;
-      font-weight: bold;
-      z-index: 10;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      transition: all 0.2s;
-    }
-    .modal-close:hover {
-      color: #000;
-      background: #fff;
-      transform: scale(1.1);
-    }
-    .modal-image-section {
-      position: relative;
-    }
-    .modal-main-image {
-      width: 100%;
-      aspect-ratio: 1/1;
-      object-fit: contain;
-      background: #f9f9f9;
-      border-radius: 12px;
-    }
-    .modal-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: #fff;
-      border: none;
-      width: 50px;
-      height: 50px;
-      font-size: 1.8rem;
-      cursor: pointer;
-      border-radius: 50%;
-    }
-    .modal-prev { left: 10px; }
-    .modal-next { right: 10px; }
-    .modal-dots {
-      text-align: center;
-      margin: 20px 0 0 0;
-    }
-    .modal-dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      background: #bbb;
-      border-radius: 50%;
-      margin: 0 7px;
-      cursor: pointer;
-    }
-    .modal-dot.active { background: #FC6600; }
-    .modal-details h3 {
-      font-size: 2rem;
-      margin: 0 0 20px;
-      color: #000;
-    }
-    .modal-details p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: #444;
-      margin-bottom: 25px;
-    }
-    .modal-price {
-      font-size: 2rem;
-      color: #FC6600 !important;
-      font-weight: bold;
-      margin-bottom: 25px;
-    }
-    /* ==================== RESPONSIVE ADJUSTMENTS ==================== */
-    @media (max-width: 768px) {
-      .featured-products-grid {
-        grid-template-columns: repeat(1, 1fr);
-        gap: 20px;
-        justify-items: center;
-      }
-      .product-card {
-        max-width: 85vw;
+  <!-- Category Buttons – light neutral grey section + white buttons -->
+  <section id="categories" class="category-buttons-section" style="background-color: #f8f8f8 !important; padding: 20px 0 !important;">
+    <div class="category-buttons">
+      <a href="hardware.html" class="category-btn" style="background-color: #ffffff !important; color: #666666 !important; border: 2.5px solid #666666 !important;">Hardware</a>
+      <a href="electronics.html" class="category-btn" style="background-color: #ffffff !important; color: #666666 !important; border: 2.5px solid #666666 !important;">Electronics</a>
+      <a href="outdoor.html" class="category-btn" style="background-color: #ffffff !important; color: #666666 !important; border: 2.5px solid #666666 !important;">Outdoor/Camp</a>
+      <a href="household.html" class="category-btn" style="background-color: #ffffff !important; color: #666666 !important; border: 2.5px solid #666666 !important;">Household</a>
+      <a href="vehicle.html" class="category-btn" style="background-color: #ffffff !important; color: #666666 !important; border: 2.5px solid #666666 !important;">Vehicle Accessories</a>
+    </div>
+  </section>
+  <!-- Featured Products – embedded from featured.html -->
+<section class="hero" style="padding: 40px 20px 10px; background-color: #ffffff;">
+  <h2 style="margin-bottom: 30px; text-align: center; color: #000000;">Our Top Picks</h2>
+  <iframe
+    src="featured.html"
+    style="width:100%; border:none; overflow:hidden;"
+    onload="this.style.height = this.contentWindow.document.body.scrollHeight + 10 + 'px';"
+    scrolling="no"
+    title="Featured Products">
+  </iframe>
+</section>
+  <main>
+    <!-- START Latest Advertiser Section -->
+    <section class="latest-ads-section" style="background-color: #FC6600; padding: 60px 20px; text-align: center;">
+      <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 40px; margin-top: 30px;">Latest Advertiser</h2>
+      <div class="ads-carousel-wrapper">
+        <!-- Desktop arrows now live outside the overflow:hidden container -->
+        <button class="ad-prev-desktop">&#10094;</button>
+        <button class="ad-next-desktop">&#10095;</button>
+        <div class="ads-carousel">
+          <div class="ads-track" id="adsTrack">
+            <div class="ad-slide"><img src="images.web/Camera_ad.png" alt="Advertiser 1"></div>
+            <div class="ad-slide"><img src="images.web/Controllers_ad.png" alt="Advertiser 2"></div>
+            <div class="ad-slide"><img src="images.web/Drone_ad.png" alt="Advertiser 3"></div>
+            <div class="ad-slide"><img src="images.web/Koosda_ad.png" alt="Advertiser 4"></div>
+            <div class="ad-slide"><img src="images.web/Tools_ad.png" alt="Advertiser 5"></div>
+            <div class="ad-slide"><img src="images.web/Generator_ad.png" alt="Advertiser 6"></div>
+            <div class="ad-slide"><img src="images.web/mixed_hardware_ad.png" alt="Advertiser 7"></div>
+            <div class="ad-slide"><img src="images.web/Camp-chairs_ad.png" alt="Advertiser 8"></div>
+          </div>
+          <!-- Mobile arrows (inside the carousel) -->
+          <button class="ad-prev" id="adPrev">&#10094;</button>
+          <button class="ad-next" id="adNext">&#10095;</button>
+        </div>
+      </div>
+    </section>
+    <style>
+      /* ── exactly the same as before ── no changes here ── */
+      .ads-carousel-wrapper {
+        position: relative;
+        max-width: 1000px;
         margin: 0 auto;
-        max-height: 480px;
       }
-      .product-image { padding: 10px; }
-      .product-info { padding: 14px 12px; }
-      .product-name { font-size: 1.18rem; }
-      .product-desc { font-size: 0.88rem; }
-      .product-price { font-size: 1.18rem; color: #FC6600; }
-      .buy-btn { padding: 9px 22px; font-size: 0.92rem; }
-      .carousel-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 1.4rem;
+      .ads-carousel {
+        position: relative;
+        max-width: 900px;
+        margin: 0 auto;
+        overflow: hidden;
       }
-      /* Mobile modal adjustments – hide dots completely to avoid any overlap issues */
-      .modal-dots {
+      .ads-track {
+        display: flex;
+        transition: transform 0.6s ease;
+      }
+      .ad-slide {
+        flex: 0 0 100%;
+        width: 100%;
+        text-align: center;
+      }
+      .ad-slide img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        max-width: 500px;
+        margin: 0 auto;
+        display: block;
+      }
+      /* Shared arrow styling */
+      .ad-prev, .ad-next,
+      .ad-prev-desktop, .ad-next-desktop {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0,0,0,0.6);
+        color: white;
+        border: none;
+        font-size: 1.6rem;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        padding: 0;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: all 0.3s;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        z-index: 10;
+      }
+      .ad-prev:hover, .ad-next:hover,
+      .ad-prev-desktop:hover, .ad-next-desktop:hover {
+        background-color: rgba(0,0,0,0.8);
+        transform: translateY(-50%) scale(1.1);
+      }
+      /* Mobile arrows – hidden by default */
+      .ad-prev, .ad-next {
         display: none;
       }
-      .modal-content {
-        grid-template-columns: 1fr;
-        max-width: 94vw;
-        max-height: 85vh;
-        padding: 16px;
-        gap: 14px;
-        border-radius: 14px;
+      /* Desktop arrows – hidden by default */
+      .ad-prev-desktop, .ad-next-desktop {
+        display: none;
       }
-      .modal-image-section {
-        max-height: 40vh;
-        margin-bottom: 0;
-      }
-      .modal-main-image {
-        max-height: 40vh;
-      }
-      .modal-details h3 {
-        font-size: 1.65rem;
-        margin: 0 0 16px;
-      }
-      .modal-details p { font-size: 0.98rem; line-height: 1.5; }
-      .modal-price { font-size: 1.6rem; margin: 4px 0 12px; color: #FC6600 !important; }
-      .modal-close {
-        width: 44px;
-        height: 44px;
-        line-height: 44px;
-        font-size: 2.5rem;
-        top: 8px;
-        right: 8px;
-      }
-      .modal-nav {
-        width: 40px;
-        height: 40px;
-        font-size: 1.5rem;
-      }
-      /* Reduced bottom padding on mobile */
-      .featured-section {
-        padding: 40px 20px 40px 20px;
-      }
-    }
-    @media (max-width: 480px) {
-      .product-name { font-size: 1.1rem; }
-      .product-desc { font-size: 0.85rem; }
-      .product-price { font-size: 1.1rem; color: #FC6600; }
-      .modal-content {
-        padding: 14px;
-        max-height: 88vh;
-      }
-      .modal-image-section { max-height: 38vh; margin-bottom: 0; }
-      .modal-details h3 { font-size: 1.5rem; }
-      .modal-price { font-size: 1.45rem; color: #FC6600 !important; }
-      .modal-details p { font-size: 0.96rem; }
-    }
+      /* MOBILE (≤ 768px) – strict spacing reductions */
+      @media (max-width: 768px) {
+        .latest-ads-section { padding: 50px 15px; }
+        .latest-ads-section h2 {
+          font-size: 1.9rem;
+          margin-top: 10px !important;
+        }
+        .ad-slide img { max-width: 100%; }
+        .ad-prev, .ad-next {
+          display: block !important;
+          font-size: 1.4rem;
+          width: 44px;
+          height: 44px;
+          line-height: 44px;
+        }
+        .ad-prev { left: 15px !important; }
+        .ad-next { right: 15px !important; }
+        .ad-prev-desktop, .ad-next-desktop { display: none !important; }
 
-    /* See All Products button – visible on both mobile and desktop */
-    .see-all-wrapper {
-      text-align: center;
-      margin: 40px 0 20px 0 !important; /* reduced top/bottom space */
-      padding-bottom: 0 !important;
-      display: block; /* always visible */
-    }
+        /* Reduce space above "Our Top Picks" title */
+        .hero h2 {
+          margin-top: 10px !important; /* ← reduced space above the title */
+        }
 
-    .see-all-btn {
-      display: inline-block;
-      background: #FC6600;
-      color: #fff;
-      font-size: 1.1rem;
-      font-weight: 600;
-      padding: 14px 40px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(252, 102, 0, 0.25);
-    }
+        /* Reduce space below "Our Top Picks" title – closer to product boxes below */
+        .hero h2 {
+          margin-bottom: 5px !important; /* ← slightly tighter than before – now closer to iframe/products */
+        }
 
-    .see-all-btn:hover,
-    .see-all-btn:active {
-      background: #e65c00;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(252, 102, 0, 0.35);
-    }
-
-    /* Slightly adjusted spacing on desktop */
-    @media (min-width: 769px) {
-      .see-all-wrapper {
-        margin: 50px 0 30px 0 !important; /* closer to products above, slight space below */
+        /* Reduce space above "We Are Located At" title */
+        .location-section {
+          margin-top: 0 !important;
+        }
+        .location-section h2 {
+          margin-top: 0 !important;
+        }
       }
-      .see-all-btn {
-        font-size: 1.2rem;
-        padding: 16px 48px;
+      /* DESKTOP (≥ 769px) – no changes here */
+      @media (min-width: 769px) {
+        .ads-carousel {
+          max-width: 900px;
+        }
+        .ads-carousel-wrapper {
+          max-width: 1000px;
+        }
+        .ad-slide {
+          flex: 0 0 50%;
+          width: 50%;
+        }
+        .ad-slide img {
+          max-width: 100%;
+          width: 100%;
+        }
+        .ad-prev-desktop, .ad-next-desktop {
+          display: block !important;
+        }
+        .ad-prev-desktop { left: -80px; }
+        .ad-next-desktop { right: -80px; }
+        .ad-prev, .ad-next { display: none !important; }
       }
-    }
-  </style>
-</head>
-<body>
-
-  <section class="featured-section">
-    <div class="carousel-wrapper">
-      <!-- Carousel arrows (styled same as modal nav) -->
-      <button class="carousel-arrow prev" id="prevBtn">&#10094;</button>
-      <button class="carousel-arrow next" id="nextBtn">&#10095;</button>
-      <!-- Products grid (slides horizontally) -->
-      <div class="featured-products-grid" id="productsGrid">
-        <!-- PRODUCT 1 -->
-        <div class="product-card"
-             data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-             data-title="Heavy Duty Power Drill"
-             data-desc="Professional-grade cordless drill with 20V lithium-ion battery, variable speed (0-2000 RPM), hammer function, LED light, and ergonomic grip. Includes two batteries and fast charger."
-             data-price="P 1,250.00">
-          <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">Heavy Duty Power Drill</h3>
-            <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
-            <p class="product-price">P 1,250.00</p>
-            <button class="buy-btn">Inquire Now</button>
-          </div>
+    </style>
+    <script>
+      // Advert Carousel Logic – improved button handling
+      (function() {
+        const track = document.getElementById('adsTrack');
+        if (!track) return;
+        const slides = track.children.length;
+        let currentIndex = 0;
+        function getStep() {
+          return window.innerWidth >= 769 ? 2 : 1;
+        }
+        function updateCarousel(smooth = true) {
+          const step = getStep();
+          const percent = step === 2 ? 50 : 100;
+          const maxIndex = slides - step;
+          currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+          track.style.transition = smooth ? 'transform 0.6s ease' : 'none';
+          track.style.transform = `translateX(-${currentIndex * percent}%)`;
+        }
+        // Move functions (used by both arrows and swipe)
+        function goNext() {
+          currentIndex += getStep();
+          updateCarousel();
+        }
+        function goPrev() {
+          currentIndex -= getStep();
+          updateCarousel();
+        }
+        // Attach listeners to ALL arrow buttons (only visible ones will be clickable)
+        document.querySelectorAll('.ad-prev, .ad-prev-desktop').forEach(btn => {
+          btn.addEventListener('click', goPrev);
+        });
+        document.querySelectorAll('.ad-next, .ad-next-desktop').forEach(btn => {
+          btn.addEventListener('click', goNext);
+        });
+        // Mobile swipe – always by 1
+        let touchStartX = 0;
+        track.addEventListener('touchstart', e => {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        track.addEventListener('touchend', e => {
+          const touchEndX = e.changedTouches[0].screenX;
+          const diff = touchStartX - touchEndX;
+          if (Math.abs(diff) > 60) {
+            if (diff > 0) {
+              currentIndex += 1;
+            } else {
+              currentIndex -= 1;
+            }
+            updateCarousel();
+          }
+        }, { passive: true });
+        // Re-adjust on resize (important when going from desktop → mobile or vice versa)
+        window.addEventListener('resize', () => {
+          updateCarousel(false); // no animation on resize
+        });
+        updateCarousel(false); // initial position – no animation
+      })();
+    </script>
+    <!-- END Latest Advertiser Section -->
+    <!-- About Us / Location -->
+    <div class="about-container">
+      <!-- Location section first -->
+      <section class="location-section">
+        <div class="about-text location-text">
+          <h2>We Are Located At</h2>
+          <p><strong>Mowana Park Mall</strong></p>
+          <p>Opposite BMS,<br>Mowana Park Mall, Shop 41C<br>Gaborone, Phakalane</p>
+          <p>We look forward to welcoming you to our store!</p>
         </div>
-        <!-- PRODUCT 2 -->
-        <div class="product-card"
-             data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
-             data-title="150-Piece Tool Kit"
-             data-desc="Complete mechanic and home repair set including sockets, wrenches, screwdrivers, pliers, hammer, tape measure, and more."
-             data-price="P 2,800.00">
-          <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">150-Piece Tool Kit</h3>
-            <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
-            <p class="product-price">P 2,800.00</p>
-            <button class="buy-btn">Inquire Now</button>
-          </div>
+        <div class="about-image">
+          <img src="images.web/Mowana_park.webp" alt="Mowana Park, Phakalane">
         </div>
-        <!-- PRODUCT 3 -->
-        <div class="product-card"
-             data-images='["images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg","images.web/hardware2.jpg","images.web/in_p1.jpg"]'
-             data-title="Heavy Duty Power Drill"
-             data-desc="Professional-grade cordless drill with variable speed and hammer function."
-             data-price="P 1,250.00">
-          <img src="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg" alt="Heavy Duty Drill" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">Heavy Duty Power Drill</h3>
-            <p class="product-desc">Professional-grade drill with variable speed and hammer function.</p>
-            <p class="product-price">P 1,250.00</p>
-            <button class="buy-btn">Inquire Now</button>
-          </div>
-        </div>
-        <!-- PRODUCT 4 -->
-        <div class="product-card"
-             data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
-             data-title="150-Piece Tool Kit"
-             data-desc="Complete mechanic and home repair set..."
-             data-price="P 2,800.00">
-          <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">150-Piece Tool Kit</h3>
-            <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
-            <p class="product-price">P 2,800.00</p>
-            <button class="buy-btn">Inquire Now</button>
-          </div>
-        </div>
-        <!-- PRODUCT 5 -->
-        <div class="product-card"
-             data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
-             data-title="150-Piece Tool Kit"
-             data-desc="Complete mechanic and home repair set..."
-             data-price="P 2,800.00">
-          <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">150-Piece Tool Kit</h3>
-            <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
-            <p class="product-price">P 2,800.00</p>
-            <button class="buy-btn">Inquire Now</button>
-          </div>
-        </div>
-        <!-- PRODUCT 6 -->
-        <div class="product-card"
-             data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
-             data-title="150-Piece Tool Kit"
-             data-desc="Complete mechanic and home repair set..."
-             data-price="P 2,800.00">
-          <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">150-Piece Tool Kit</h3>
-            <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
-            <p class="product-price">P 2,800.00</p>
-            <button class="buy-btn">Inquire Now</button>
-          </div>
-        </div>
-        <!-- PRODUCT 7 -->
-        <div class="product-card"
-             data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
-             data-title="150-Piece Tool Kit"
-             data-desc="Complete mechanic and home repair set..."
-             data-price="P 2,800.00">
-          <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">150-Piece Tool Kit</h3>
-            <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
-            <p class="product-price">P 2,800.00</p>
-            <button class="buy-btn">Inquire Now</button>
-          </div>
-        </div>
-        <!-- PRODUCT 8 -->
-        <div class="product-card"
-             data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
-             data-title="150-Piece Tool Kit"
-             data-desc="Complete mechanic and home repair set..."
-             data-price="P 2,800.00">
-          <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">150-Piece Tool Kit</h3>
-            <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
-            <p class="product-price">P 2,800.00</p>
-            <button class="buy-btn">Inquire Now</button>
-          </div>
-        </div>
-        <!-- Add more products here if needed – they will slide in groups -->
-      </div>
+      </section>
     </div>
+    <!-- Contact & Follow Us – embedded from Contact.html -->
+    <section style="background-color: #000000; padding: 0; margin: 0;">
+      <iframe
+        src="Contact.html"
+        frameborder="0"
+        scrolling="no"
+        style="width:100%; border:none; overflow:hidden; display:block;"
+        onload="this.style.height = this.contentWindow.document.body.scrollHeight + 'px';"
+        title="Contact & Follow Us">
+      </iframe>
+    </section>
+  </main>
+  <footer>
+    <p>© 2026 KAUSHAR INVESTMENT (Pty) Ltd. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+  <script src="secure.js"></script>
+  <!-- ================================================= -->
+  <!-- Fast loading boost – paste this at bottom of every page -->
+  <!-- ================================================= -->
+  <script>
+    // 1. Tell browser to lazy-load images that are not yet visible (most images)
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('img:not([loading])').forEach(img => {
+        if (!img.hasAttribute('loading')) {
+          img.setAttribute('loading', 'lazy');
+        }
+        // Add decoding="async" if missing (faster image decoding)
+        if (!img.hasAttribute('decoding')) {
+          img.setAttribute('decoding', 'async');
+        }
+      });
+    });
+    // 2. Preconnect to important domains you use (fonts, images, etc.)
+    // Add any domains you actually use – these are common ones
+    const preconnects = [
+      'https://fonts.googleapis.com',
+      'https://fonts.gstatic.com',
+      'https://upload.wikimedia.org' // for your WhatsApp/FB/IG logos
+      // add your own image host if different, e.g. 'https://i.imgur.com'
+    ];
+    preconnects.forEach(domain => {
+      const link = document.createElement('link');
+      link.rel = 'preconnect';
+      link.href = domain;
+      link.crossOrigin = 'anonymous';
+      document.head.appendChild(link);
+    });
+    // 3. Very small script to force smooth scrolling & reduce jank
+    document.documentElement.style.scrollBehavior = 'smooth';
+  </script>
 
-    <!-- View All Products button – visible on both mobile and desktop -->
-    <div class="see-all-wrapper">
-      <a href="products.html" class="see-all-btn">View All Products</a>
-    </div>
-
-  </section>
-
-  <!-- ==================== MODAL POPUP ==================== -->
-  <div class="modal-overlay" id="productModal">
-    <div class="modal-content">
-      <button class="modal-close">&times;</button>
-      <div class="modal-image-section">
-        <img src="" alt="Product" class="modal-main-image" id="modalImage">
-        <button class="modal-nav modal-prev">&#10094;</button>
-        <button class="modal-nav modal-next">&#10095;</button>
-        <div class="modal-dots" id="modalDots"></div>
-      </div>
-      <div class="modal-details">
-        <h3 id="modalTitle"></h3>
-        <p id="modalDesc"></p>
-        <p class="modal-price" id="modalPrice"></p>
-        <button class="buy-btn">Inquire Now</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Link to external JS file -->
-  <script src="featuredJS.js"></script>
 </body>
 </html>
 
@@ -2814,267 +351,4 @@ featured.html:
 
 
 
-
-
-
-
-
-featuredJS.js file:
-
-
-// ==================== CAROUSEL SLIDING LOGIC ====================
-const grid = document.getElementById('productsGrid');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-let currentPosition = 0;
-
-function getSlideWidth() {
-  const card = grid.querySelector('.product-card');
-  if (!card) return 350;
-  const cardWidth = card.offsetWidth;
-  
-  if (window.innerWidth <= 768) {
-    const gap = 20;
-    return cardWidth + gap; // mobile: 1 card
-  } else {
-    const gap = 30;
-    return (cardWidth + gap) * 4; // desktop: ~4 cards
-  }
-}
-
-function getMaxPosition() {
-  const totalWidth = grid.scrollWidth;
-  const containerWidth = grid.parentElement.offsetWidth;
-  let maxPos = containerWidth - totalWidth; // usually negative
-  if (maxPos > 0) maxPos = 0; // content fits → no scroll
-  return maxPos;
-}
-
-let maxPosition = getMaxPosition();
-
-// Recalculate on load, resize, and before important moves
-window.addEventListener('load', () => { maxPosition = getMaxPosition(); });
-window.addEventListener('resize', () => {
-  maxPosition = getMaxPosition();
-  // Snap back if needed (window got wider)
-  if (currentPosition < maxPosition) {
-    currentPosition = maxPosition;
-    grid.style.transform = `translateX(${currentPosition}px)`;
-  }
-});
-
-nextBtn.addEventListener('click', () => {
-  const slide = getSlideWidth();
-  const proposed = currentPosition - slide;
-  maxPosition = getMaxPosition(); // fresh calculation
-
-  // Allow small overshoot tolerance (subpixel, borders, rounding)
-  const tolerance = 6;
-
-  if (proposed >= maxPosition - tolerance) {
-    // Move, but never go beyond the actual end
-    currentPosition = Math.max(proposed, maxPosition);
-    grid.style.transform = `translateX(${currentPosition}px)`;
-  }
-  // Optional: snap exactly to end if very close
-  else if (Math.abs(proposed - maxPosition) < slide * 0.4) {
-    currentPosition = maxPosition;
-    grid.style.transform = `translateX(${currentPosition}px)`;
-  }
-});
-
-prevBtn.addEventListener('click', () => {
-  if (currentPosition >= 0) return;
-
-  const slide = getSlideWidth();
-  currentPosition += slide;
-
-  // Never go positive
-  if (currentPosition > 0) currentPosition = 0;
-
-  grid.style.transform = `translateX(${currentPosition}px)`;
-});
-
-// ==================== MOBILE-ONLY TOUCH SWIPE SUPPORT ====================
-let touchStartX = 0;
-let touchCurrentX = 0;
-let isSwiping = false;
-let startPosition = 0;
-
-grid.addEventListener('touchstart', (e) => {
-  if (window.innerWidth > 768) return; // mobile only
-  touchStartX = e.touches[0].clientX;
-  touchCurrentX = touchStartX;
-  startPosition = currentPosition;
-  isSwiping = true;
-}, { passive: true });
-
-grid.addEventListener('touchmove', (e) => {
-  if (!isSwiping || window.innerWidth > 768) return;
-  touchCurrentX = e.touches[0].clientX;
-  
-  // Live drag preview (horizontal only)
-  const diff = touchCurrentX - touchStartX;
-  const newPos = startPosition + diff;
-  
-  // Clamp during drag to prevent going too far
-  const max = getMaxPosition();
-  currentPosition = Math.max(Math.min(newPos, 0), max);
-  grid.style.transform = `translateX(${currentPosition}px)`;
-}, { passive: true });
-
-grid.addEventListener('touchend', (e) => {
-  if (!isSwiping || window.innerWidth > 768) return;
-  isSwiping = false;
-  
-  const diff = touchStartX - touchCurrentX;
-  const swipeThreshold = 60;
-  
-  const slide = getSlideWidth();
-  let targetPosition = currentPosition;
-
-  if (Math.abs(diff) > swipeThreshold) {
-    if (diff > 0) {
-      // Swipe left → next
-      targetPosition = currentPosition - slide;
-    } else {
-      // Swipe right → previous
-      targetPosition = currentPosition + slide;
-    }
-  }
-
-  // Clamp target
-  const max = getMaxPosition();
-  targetPosition = Math.max(Math.min(targetPosition, 0), max);
-
-  // Force snap to full card (centers one product perfectly)
-  const snapped = Math.round(targetPosition / slide) * slide;
-  currentPosition = Math.max(Math.min(snapped, 0), max);
-
-  // Smooth snap animation
-  grid.style.transition = 'transform 0.35s ease-out';
-  grid.style.transform = `translateX(${currentPosition}px)`;
-
-  // Reset transition after snap (for future drags/clicks)
-  setTimeout(() => {
-    grid.style.transition = 'transform 0.5s ease';
-  }, 350);
-});
-
-// ==================== MODAL POPUP LOGIC ====================
-const modal = document.getElementById('productModal');
-const closeBtn = document.querySelector('.modal-close');
-const modalImg = document.getElementById('modalImage');
-const modalTitle = document.getElementById('modalTitle');
-const modalDesc = document.getElementById('modalDesc');
-const modalPrice = document.getElementById('modalPrice');
-const dotsContainer = document.getElementById('modalDots');
-let currentImages = [];
-let currentIndex = 0;
-
-document.querySelectorAll('.product-card').forEach(card => {
-  card.addEventListener('click', () => {
-    currentImages = JSON.parse(card.dataset.images);
-    currentIndex = 0;
-    modalTitle.textContent = card.dataset.title;
-    modalDesc.textContent = card.dataset.desc;
-    modalPrice.textContent = card.dataset.price;
-    updateModalImage();
-    modal.classList.add('active');
-  });
-});
-
-closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-
-modal.addEventListener('click', e => {
-  if (e.target === modal) modal.classList.remove('active');
-});
-
-document.querySelector('.modal-prev').addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-  updateModalImage();
-});
-
-document.querySelector('.modal-next').addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % currentImages.length;
-  updateModalImage();
-});
-
-function updateModalImage() {
-  if (currentImages.length > 0) {
-    modalImg.src = currentImages[currentIndex];
-  }
-  dotsContainer.innerHTML = '';
-  currentImages.forEach((_, i) => {
-    const dot = document.createElement('span');
-    dot.classList.add('modal-dot');
-    if (i === currentIndex) dot.classList.add('active');
-    dot.addEventListener('click', () => {
-      currentIndex = i;
-      updateModalImage();
-    });
-    dotsContainer.appendChild(dot);
-  });
-}
-
-// ==================== WHATSAPP INQUIRE BUTTON HANDLER ====================
-document.addEventListener('DOMContentLoaded', () => {
-  const phoneNumber = '26777478877';
-
-  const handleInquireClick = (button) => {
-    let productName = 'this product';
-
-    const productInfo = button.closest('.product-info');
-    if (productInfo) {
-      const nameElem = productInfo.querySelector('.product-name');
-      if (nameElem) productName = nameElem.textContent.trim();
-    }
-
-    const modalTitleElem = document.getElementById('modalTitle');
-    if (modalTitleElem && modalTitleElem.textContent.trim()) {
-      productName = modalTitleElem.textContent.trim();
-    }
-
-    const message = `Good day, I'd like to inquire about ${productName}`;
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
-    window.open(whatsappUrl, '_blank');
-  };
-
-  const attachListeners = () => {
-    document.querySelectorAll('.buy-btn').forEach(btn => {
-      btn.removeEventListener('click', handleInquireClick);
-      btn.addEventListener('click', () => handleInquireClick(btn));
-    });
-  };
-
-  attachListeners();
-
-  const modal = document.getElementById('productModal');
-  if (modal) {
-    const observer = new MutationObserver(attachListeners);
-    observer.observe(modal, { childList: true, subtree: true });
-  }
-});
-
-// ==================== FORCE "SEE ALL PRODUCTS" VISIBLE ON DESKTOP ====================
-document.addEventListener('DOMContentLoaded', () => {
-  const seeAllWrapper = document.querySelector('.see-all-wrapper');
-  if (seeAllWrapper) {
-    const updateVisibility = () => {
-      // Desktop: force visible
-      if (window.innerWidth > 768) {
-        seeAllWrapper.style.display = 'block !important';
-      } 
-      // Mobile: let CSS handle it (don't touch)
-      else {
-        seeAllWrapper.style.display = ''; // remove inline style so CSS rule applies
-      }
-    };
-    
-    updateVisibility(); // initial check
-    window.addEventListener('resize', updateVisibility); // re-check on resize
-  }
-});
-
+-----HARDWARE--------
