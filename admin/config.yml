@@ -1,15 +1,15 @@
 backend:
   name: github
-  repo: Churro3000/KAUSHAR-INVESTMENT-PTY-LTD   # ← change this! e.g. viewy/mowana-shop
-  branch: main                                 # or master if that's your branch
+  repo: Churro3000/KAUSHAR-INVESTMENT-PTY-LTD  # ← make sure this is EXACTLY your repo
+  branch: main
 
-media_folder: "images.web"                     # where uploaded images save
-public_folder: "/images.web"                   # URL path to images
+media_folder: "images.web"
+public_folder: "/images.web"
 
 collections:
   - name: "products"
     label: "Products"
-    folder: "products"                         # saves new products here
+    folder: "products"
     create: true
     slug: "{{slug}}"
     fields:
@@ -20,5 +20,5 @@ collections:
       - {label: "Category", name: "category", widget: "select", 
          options: ["Hardware", "Electronics", "Outdoor/Camp", "Household", "Vehicle Accessories"], required: true}
       - {label: "Detail Images", name: "detail_images", widget: "list", 
-         field: {label: "Image", name: "image", widget: "image"}, required: false}
+         fields: [{label: "Image", name: "image", widget: "image"}], required: false}
       - {label: "Long Description", name: "long_desc", widget: "markdown", required: true}
