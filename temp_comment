@@ -1226,3 +1226,990 @@
 
 
 -------ELECTRONICS-----------
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electronics Products| KAUSHAR INVESTMENT (Pty) Ltd</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for search icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+    /* Restored original base styles */
+    body { background-color: #f4f4f4; color: #000000; }
+
+    .category-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin: 40px 20px 40px;
+        color: #000;
+        font-weight: bold;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        padding: 0 20px 60px;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+    .product-card {
+        background:#fff;
+        border-radius:12px;
+        overflow:hidden;
+        box-shadow:0 4px 15px rgba(0,0,0,0.1);
+        transition:0.3s;
+        text-align:center;
+        display:flex;
+        flex-direction:column;
+        cursor:pointer;
+    }
+
+    .product-card:hover {
+        transform:translateY(-10px);
+        box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .product-image {
+        width:100%;
+        aspect-ratio:1/1;
+        object-fit:contain;
+        background:#f9f9f9;
+        padding:15px;
+        box-sizing:border-box;
+    }
+
+    .product-info {
+        padding:20px 15px;
+        flex-grow:1;
+        display:flex;
+        flex-direction:column;
+    }
+
+    .product-name {
+        font-size:1.35rem;
+        margin:0 0 10px;
+        color:#000;
+        font-weight:600;
+    }
+
+    .product-desc {
+        font-size:0.95rem;
+        color:#555;
+        margin-bottom:15px;
+        flex-grow:1;
+    }
+
+    .product-price {
+        font-size:1.3rem;
+        color:#FC6600;
+        font-weight:bold;
+        margin-bottom:18px;
+    }
+
+    .buy-btn {
+        background:#000;
+        color:#fff;
+        border:none;
+        padding:12px 30px;
+        font-size:1rem;
+        border-radius:6px;
+        cursor:pointer;
+        transition:0.3s;
+        margin-top:auto;
+    }
+
+    .buy-btn:hover {
+        background:#FC6600;
+    }
+
+    .back-btn {
+        display:block;
+        width:fit-content;
+        margin:40px auto 60px;
+        padding:12px 30px;
+        background:#808080;
+        color:#fff;
+        text-decoration:none;
+        border-radius:6px;
+        font-weight:bold;
+        transition:0.3s;
+    }
+
+    .back-btn:hover {
+        background:#000;
+    }
+
+    /* Original media queries for product cards */
+    @media (max-width:1200px) {
+        .products-grid { grid-template-columns:repeat(3,1fr); }
+    }
+
+    @media (max-width:768px) {
+        .products-grid {
+            grid-template-columns:repeat(2,1fr);
+            gap:20px;
+            padding:0 15px 50px;
+        }
+        .category-title {
+            font-size:2rem;
+            margin: 35px 15px 30px;
+        }
+        .product-desc, .buy-btn { display: none; }
+        .product-price { font-size: 1.1rem; margin-bottom: 0; }
+        .product-info { padding: 15px; }
+        .product-name {
+            font-size: 18px !important;
+            font-family: Arial, sans-serif !important;
+            font-weight: 600 !important;
+        }
+    }
+
+    @media (max-width:480px) {
+        .product-name { font-size: 16px !important; }
+        .product-price { font-size: 1.05rem; }
+    }
+
+    /* Modal popup styles */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.8);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    .modal-content {
+        background: #fff;
+        border-radius: 16px;
+        max-width: 1000px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        padding: 30px;
+        box-sizing: border-box;
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 2.4rem;
+        background: rgba(255,255,255,0.9);
+        border: none;
+        border-radius: 50%;
+        width: 42px;
+        height: 42px;
+        line-height: 42px;
+        text-align: center;
+        cursor: pointer;
+        color: #333;
+        font-weight: bold;
+        z-index: 10;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+        color: #000;
+        background: #fff;
+        transform: scale(1.1);
+    }
+
+    .modal-image-section { position: relative; }
+
+    .modal-main-image {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: contain;
+        background: #f9f9f9;
+        border-radius: 12px;
+    }
+
+    .modal-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.5);
+        color: #fff;
+        border: none;
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+        cursor: pointer;
+        border-radius: 50%;
+    }
+
+    .modal-prev { left: 10px; }
+    .modal-next { right: 10px; }
+
+    .modal-dots { text-align: center; margin-top: 15px; }
+
+    .modal-dot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: #bbb;
+        border-radius: 50%;
+        margin: 0 6px;
+        cursor: pointer;
+    }
+
+    .modal-dot.active { background: #FC6600; }
+
+    .modal-details h3 { font-size: 2rem; margin: 0 0 20px; color: #000; }
+
+    .modal-details p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
+
+    .modal-price {
+        font-size: 2rem;
+        color: #FC6600 !important;
+        font-weight: bold;
+        margin-bottom: 25px;
+    }
+
+    .modal-details .buy-btn {
+        display: block !important;
+        margin-top: 20px;
+    }
+
+    /* Mobile-only modal fixes – larger space below dots */
+    @media (max-width: 768px) {
+        .modal-overlay {
+            padding: 10px !important;
+        }
+
+        .modal-content {
+            grid-template-columns: 1fr;
+            max-width: 90vw !important;
+            width: 90vw !important;
+            max-height: 95vh !important;
+            padding: 16px !important;
+            gap: 12px !important;
+            margin: auto !important;
+            border-radius: 14px;
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+        }
+
+        .modal-image-section {
+            max-height: 35vh !important;
+            margin-bottom: 0 !important;
+        }
+
+        .modal-main-image {
+            max-height: 35vh !important;
+        }
+
+        .modal-details {
+            padding-bottom: 8px !important;           /* ← slightly reduced space below Inquire button */
+            margin-top: 12px !important;
+        }
+
+        .modal-details h3 {
+            font-size: 1.55rem !important;
+            margin: 0 0 12px !important;
+        }
+
+        .modal-details p {
+            font-size: 0.95rem !important;
+            line-height: 1.5;
+        }
+
+        .modal-price {
+            font-size: 1.5rem !important;
+            margin: 4px 0 16px !important;
+        }
+
+        .modal-details .buy-btn {
+            margin-top: 16px !important;
+            padding: 10px 20px !important;
+        }
+
+        .modal-close {
+            width: 44px !important;
+            height: 44px !important;
+            line-height: 44px !important;
+            font-size: 2.6rem !important;
+            top: 8px !important;
+            right: 8px !important;
+        }
+
+        .modal-nav {
+            width: 38px !important;
+            height: 38px !important;
+            font-size: 1.4rem !important;
+        }
+
+        .modal-dots {
+            margin-top: 6px !important;                /* small space below image */
+            margin-bottom: 60px !important;            /* ← very large space below dots – strong separation from title */
+            padding: 0 !important;
+        }
+
+        .modal-dot {
+            width: 7px !important;
+            height: 7px !important;
+            margin: 0 4px !important;
+        }
+    }
+
+    /* Search bar styles */
+    .search-container {
+        text-align: center;
+        margin: 30px 20px 40px;
+    }
+
+    .search-input-wrapper {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 12px 45px 12px 20px;
+        border: 2px solid #ddd;
+        border-radius: 30px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        box-sizing: border-box;
+    }
+
+    .search-input:focus {
+        outline: none;
+        border-color: #FC6600;
+        box-shadow: 0 4px 12px rgba(252,102,0,0.2);
+    }
+
+    .search-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #888;
+        font-size: 1.25rem;
+        pointer-events: none;
+    }
+
+    /* Mobile search fit fix */
+    @media (max-width: 768px) {
+        .search-container {
+            margin: 25px 15px 30px;
+            padding: 0 10px;
+        }
+
+        .search-input-wrapper {
+            max-width: calc(100% - 30px) !important;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            padding: 10px 40px 10px 16px;
+            font-size: 0.95rem;
+            border-radius: 25px;
+        }
+
+        .search-icon {
+            right: 12px;
+            font-size: 1.1rem;
+        }
+    }
+</style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="products.html">Delivery & Courier</a>
+                <a href="inquire.html">Contact Us</a>
+                <a href="Advert.html">Advertiser</a>
+                <a href="about.html">About Us</a>
+                <a href="policy.html">Policy</a>
+            </nav>
+            <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="products.html">Delivery & Courier</a>
+            <a href="inquire.html">Contact Us</a>
+            <a href="Advert.html">Advertiser</a>
+            <a href="about.html">About Us</a>
+            <a href="policy.html">Policy</a>
+        </div>
+    </header>
+
+    <!-- Search bar -->
+<div class="search-container">
+    <div class="search-input-wrapper">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search electronic products...">
+        <i class="fas fa-search search-icon"></i>
+    </div>
+</div>
+
+    <h1 class="category-title">Electronics</h1>
+       <p class="category-subtitle" style="text-align: center; color: #555; font-weight: normal; margin: -15px 0 40px; line-height: 1.6; padding: 0 20px; box-sizing: border-box;">
+  <!-- Desktop / big screen: larger text, horizontal with | separators -->
+  <span class="desktop-text" style="font-size: 1.1rem; white-space: nowrap;">
+    Surveillance Cameras | Smart Watches | Projectors | Drones | Intercom Systems | Hidden Cameras | DVRs
+  </span>
+
+  <!-- Mobile view: smaller text, flows/wraps into multiple short lines with | -->
+  <span class="mobile-text" style="display: none; font-size: 0.8rem; line-height: 1.8; white-space: normal; word-wrap: break-word;">
+    Surveillance Cameras | Smart Watches | Projectors | Drones | Intercom Systems | Hidden Cameras | DVRs
+  </span>
+</p>
+
+<!-- Inline media query to switch visibility and enable wrapping on mobile -->
+<style>
+  @media (max-width: 768px) {
+    .desktop-text { display: none !important; }
+    .mobile-text { display: inline !important; }
+    .category-subtitle { padding: 0 10px !important; } /* tiny left/right space on mobile */
+  }
+</style>
+
+    <section class="products-grid">
+
+        <!-- PRODUCT 1 -->
+        <div class="product-card"
+             data-images='["images.web/Hikvision_cam1.png","images.web/Hikvision_cam2.png","images.web/Hikvision_cam3.png"]'
+             data-title="Hikvision Mini PT Network Camera"
+             data-desc="This compact Hikvision DS-2DE2C400IWG-K/4G/C05S10 mini PT 4MP network camera with 4mm lens supports 4G LTE connectivity solar powered operation PIR radar detection two-way audio 512GB storage and IP66 weatherproof rating for tough outdoor surveillance monitoring needs."
+             data-price="P 6,500.00">
+            <img src="images.web/Hikvision_cam1.png" alt="Tool Set" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">Hikvision Mini PT Network Camera</h3>
+                <p class="product-desc">4MP 4G Mini PT Network Camera with 4mm Lens</p>
+                <p class="product-price">P 6,500.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 5 -->
+        <div class="product-card"
+             data-images='["images.web/HybridSmartCam.png"]'
+             data-title="HIKVISION ColorVu Smart Camera"
+             data-desc="Advanced ColorVu technology for true 24-hour full-color imaging, this HIKVISION DS-2CE10DF0T-LFS smart camera includes smart hybrid light for flexible illumination, a 3.6mm lens, HD resolution, and reliable performance suited for day/night security and surveillance applications."
+             data-price="P 830.00">
+            <img src="images.web/HybridSmartCam.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">HIKVISION ColorVu Smart Camera</h3>
+                <p class="product-desc">HD 24/7 Color Camera with Smart Hybrid Light and 3.6mm Lens.</p>
+                <p class="product-price">P 830.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 6 -->
+        <div class="product-card"
+             data-images='["images.web/SirenCam.png"]'
+             data-title="HIKVISION PIR Siren Camera"
+             data-desc="1080P high-definition color, this HIKVISION DS-2CE12D0T-PIRXF bullet camera includes advanced PIR detection for accurate motion alerts, a powerful built-in siren for deterrence, a 3.6mm lens, and reliable performance suited for outdoor security and surveillance applications."
+             data-price="P 580.00">
+            <img src="images.web/SirenCam.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">HIKVISION PIR Siren Camera</h3>
+                <p class="product-desc">1080P Bullet PIR Camera with Built-in Siren and Color.</p>
+                <p class="product-price">P 580.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 7 -->
+        <div class="product-card"
+             data-images='["images.web/4Intercom.png"]'
+             data-title="HIKVISION 4-Wire Video Intercom Kit"
+             data-desc="Simple plug-and-play installation and easy one-press operation, this HIKVISION DS-KIS203T 4-wire video intercom kit supports one-press calling and door unlocking, includes an IP65 weatherproof outdoor unit, and delivers clear video communication for secure, convenient home or office access control."
+             data-price="P 1,200.00">
+            <img src="images.web/4Intercom.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">HIKVISION 4-Wire Video Intercom Kit</h3>
+                <p class="product-desc">Plug-and-Play Video Intercom with One-Press Call and Door Unlock.</p>
+                <p class="product-price">P 1,200.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 10 -->
+        <div class="product-card"
+             data-images='["images.web/SmartCam24h.png"]'
+             data-title="HIKVISION ColorVu Smart Camera"
+             data-desc="Advanced ColorVu technology for vivid 24-hour full-color imaging even in low light, this HIKVISION HD smart camera offers IP67 weather resistance, reliable performance, and smart features suitable for outdoor home security, surveillance, and monitoring in various conditions."
+             data-price="P 830.00">
+            <img src="images.web/SmartCam24h.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">HIKVISION ColorVu Smart Camera</h3>
+                <p class="product-desc">24/7 Full-Color HD Smart Camera with IP67 Weatherproof Rating</p>
+                <p class="product-price">P 830.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 11 -->
+        <div class="product-card"
+             data-images='["images.web/TurboCamInOut.png"]'
+             data-title="HIKVISION Turbo HD Camera"
+             data-desc="HDTVI technology for crisp 1080P HD video output, this HIKVISION DS-2CE16D0T-EXIPF camera includes a 3.6mm lens, IP67 weatherproof rating, and advanced EXIR infrared performance for reliable day/night surveillance in indoor or outdoor security applications."
+             data-price="P 600.00">
+            <img src="images.web/TurboCamInOut.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">HIKVISION Turbo HD Camera</h3>
+                <p class="product-desc">1080P HDTVI Outdoor Camera with IP67 and EXIR Night Vision</p>
+                <p class="product-price">P 600.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 12 -->
+        <div class="product-card"
+             data-images='["images.web/TwoWayCam.png"]'
+             data-title="HIKVISION Turbo HD Two-Way Audio Camera"
+             data-desc="3K high-resolution color imaging, the HIKVISION DS-2CE16K0T-LPTS fixed camera includes a built-in microphone and speaker for up to 5 meters of clear two-way audio with echo cancellation and intelligent noise reduction, plus smart hybrid light for enhanced day/night security performance."
+             data-price="P 950.00">
+            <img src="images.web/TwoWayCam.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">HIKVISION Turbo HD Two-Way Audio Camera</h3>
+                <p class="product-desc">3K Color Camera with Built-in Mic, Speaker, and Smart Hybrid Light</p>
+                <p class="product-price">P 950.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 8 -->
+        <div class="product-card"
+             data-images='["images.web/4Intercom.png"]'
+             data-title="HIKVISION 4-Wire Video Intercom Kit"
+             data-desc="Simple plug-and-play installation and easy one-press operation, this HIKVISION DS-KIS203T 4-wire video intercom kit supports one-press calling and door unlocking, includes an IP65 weatherproof outdoor unit, and delivers clear video communication for secure, convenient home or office access control."
+             data-price="P 1,200.00">
+            <img src="images.web/4Intercom.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">HIKVISION 4-Wire Video Intercom Kit</h3>
+                <p class="product-desc">Plug-and-Play Video Intercom with One-Press Call and Door Unlock.</p>
+                <p class="product-price">P 1,200.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 9 -->
+        <div class="product-card"
+             data-images='["images.web/HiddenNetCam.png"]'
+             data-title="HIKVISION Hidden Network Camera"
+             data-desc="A discreet ultra-compact design with a 2.8mm lens, this HIKVISION DS-2CD2D25G1-D/NF hidden network camera delivers high-quality video in a covert form factor, ideal for unobtrusive indoor monitoring, security in sensitive areas and retail surveillance."
+             data-price="P 2,300.00">
+            <img src="images.web/HiddenNetCam.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">HIKVISION Hidden Network Camera</h3>
+                <p class="product-desc">Compact 2.8mm Hidden Network Camera for Discreet Surveillance.</p>
+                <p class="product-price">P 2,300.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 10 -->
+        <div class="product-card"
+             data-images='["images.web/EasyLinkWiFi.png"]'
+             data-title="HIKVISION EasyLink WiFi Kit"
+             data-desc="Simple easy installation and quick wireless connection, this HIKVISION NKS424W02H 4MP EasyLink WiFi kit supports mobile phone remote monitoring, accurate motion detection alarms, and enhanced data security for reliable, user-friendly home or small business surveillance."
+             data-price="P 2,880.00">
+            <img src="images.web/EasyLinkWiFi.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">HIKVISION EasyLink WiFi Kit</h3>
+                <p class="product-desc">4MP EasyLink WiFi Camera Kit with Quick Wireless Setup.</p>
+                <p class="product-price">P 2,880.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 10 -->
+        <div class="product-card"
+             data-images='["images.web/HybridDVR.png"]'
+             data-title="HIKVISION Hybrid DVR"
+             data-desc="Supporting 5-in-1 compatibility (IP, HDTVI, HDCVI, AHD, CVBS), this HIKVISION DS-7208HGHI-M1/T Turbo HD DVR records up to 1080P resolution, features smart motion detection, easy connection setup, two-way audio via HDTVI, and delivers reliable multi-format surveillance for homes and businesses."
+             data-price="P 1,600.00">
+            <img src="images.web/HybridDVR.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">HIKVISION Hybrid DVR</h3>
+                <p class="product-desc">8-Channel 5-in-1 Hybrid DVR with 1080P and Smart Motion Detection.</p>
+                <p class="product-price">P 1,600.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 11 -->
+        <div class="product-card"
+             data-images='["images.web/AcuSenceDVR.png"]'
+             data-title="HIKVISION AcuSense Hybrid DVR"
+             data-desc="Equipped with advanced AcuSense technology for smart motion detection, this HIKVISION IDS-7208HQHI-M1/XT Turbo HD Pro hybrid DVR supports up to 3K/5MP recording, offers easy multi-format compatibility, and provides reliable high-resolution surveillance for professional security setups."
+             data-price="P 3,350.00">
+            <img src="images.web/AcuSenceDVR.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">HIKVISION AcuSense Hybrid DVR</h3>
+                <p class="product-desc">8-Channel Turbo HD Pro DVR with Up to 3K/5MP Resolution.</p>
+                <p class="product-price">P 3,350.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 11 -->
+        <div class="product-card"
+             data-images='["images.web/SmartNetCam.png"]'
+             data-title="HIKVISION Smart Network Camera"
+             data-desc="2MP HD video with a 2.8mm lens, this HIKVISION DS-2CD1123G2-LIU smart network camera features built-in microphone for audio capture, smart hybrid light for versatile illumination, IP67 weatherproof rating, and reliable performance for indoor or outdoor security monitoring."
+             data-price="P 1,150.00">
+            <img src="images.web/SmartNetCam.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">HIKVISION Smart Network Camera</h3>
+                <p class="product-desc">2MP HD Smart Camera with Built-in Mic and Hybrid Light.</p>
+                <p class="product-price">P 1,150.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 11 -->
+        <div class="product-card"
+             data-images='["images.web/DualSolarCam.png"]'
+             data-title="Dual Lens Solar PTZ Camera"
+             data-desc="Powered entirely by solar energy with a built-in battery, this 010DB-4G dual lens PTZ camera requires no extra power or complex cabling, offers easy installation, 360° rotation, PIR detection, smart IR, full-color night vision, voice monitoring, plus SD card and cloud storage for reliable 24/7 uninterrupted surveillance."
+             data-price="P 1,450.00">
+            <img src="images.web/DualSolarCam.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">Dual Lens Solar PTZ Camera</h3>
+                <p class="product-desc">4G Solar PTZ Camera with Dual Lens and 360° Full-Color Night Vision.</p>
+                <p class="product-price">P 1,450.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 11 -->
+        <div class="product-card"
+             data-images='["images.web/CamSystem.png"]'
+             data-title="HIKVISION ColourVu 4-Channel System"
+             data-desc="ColourVu technology for true 24/7 full-color imaging in any lighting, this professional 4-channel HIKVISION security camera system delivers crisp high-definition video, reliable performance, and enhanced night vision suitable for comprehensive home or small business surveillance setups."
+             data-price="P 3,300.00">
+            <img src="images.web/CamSystem.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">HIKVISION ColourVu 4-Channel System</h3>
+                <p class="product-desc">Professional 4-Channel ColourVu Security Camera System with 24/7 Color.</p>
+                <p class="product-price">P 3,300.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 11 -->
+        <div class="product-card"
+             data-images='["images.web/JortanCam.png"]'
+             data-title="JORTAN Ball Linkage WiFi Camera"
+             data-desc="1080P HD picture quality with three vision modes, this JORTAN ball linkage WiFi camera provides full-color night vision, infrared night vision, PTZ control, two-way voice, motion detection with mobile alarms, local storage, IP44 all-weather readiness, and easy connection for PC, iPad, and phone monitoring."
+             data-price="P 550.00">
+            <img src="images.web/JortanCam.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">JORTAN Ball Linkage WiFi Camera</h3>
+                <p class="product-desc">1080P PTZ WiFi Camera with Full-Color Night Vision and Two-Way Voice.</p>
+                <p class="product-price">P 550.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 11 -->
+        <div class="product-card"
+             data-images='["images.web/Cable100m.png"]'
+             data-title="RG59 Coaxial Cable 100m"
+             data-desc="100m length at P10 per meter, this RG59 coaxial cable ensures clear signal transmission for CCTV systems, video surveillance, antennas, and security camera setups, offering durable construction and dependable performance for professional and home installations."
+             data-price="P 650.00">
+            <img src="images.web/Cable100m.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">RG59 Coaxial Cable 100m</h3>
+                <p class="product-desc">High-Quality 100m RG59 Cable for Reliable Video and CCTV Transmission.</p>
+                <p class="product-price">P 650.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 11 -->
+        <div class="product-card"
+             data-images='["images.web/CovertCam.png"]'
+             data-title="USB Covert Hidden Camera"
+             data-desc="Compact USB covert hidden camera, this product provides discreet monitoring capabilities for hidden camera applications, enabling users to capture video discreetly in various settings without detection for security and professional daily surveillance requirements."
+             data-price="P 350.00">
+            <img src="images.web/CovertCam.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">USB Covert Hidden Camera</h3>
+                <p class="product-desc">Portable USB Covert Hidden Camera Ideal for Stealthy Surveillance Needs.</p>
+                <p class="product-price">P 350.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 11 -->
+        <div class="product-card"
+             data-images='["images.web/WirelessSmartCam.png"]'
+             data-title="V380 Wireless Smart Camera"
+             data-desc="Offering easy real-time remote viewing and archiving, this V380 IPC-V380-SMQ11 wireless smart camera features 355° pan and 180° tilt control, AI human detection, IP66 waterproof rating, color night vision for day/night clarity, plus three-screen and three-view synchronous monitoring for comprehensive home security coverage."
+             data-price="P 850.00">
+            <img src="images.web/WirelessSmartCam.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">V380 Wireless Smart Camera</h3>
+                <p class="product-desc">355° Pan 180° Tilt Wireless Camera with AI Human Detection and Color Night Vision.</p>
+                <p class="product-price">P 850.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 11 -->
+        <div class="product-card"
+             data-images='["images.web/PTZCam.png"]'
+             data-title="Intelligent Solar PTZ Security Camera"
+             data-desc="Powered by solar energy with a built-in panel that charges directly from sunlight, this intelligent PTZ security camera delivers Full HD video, color night vision, two-way communication, PIR-triggered alarm notifications, Micro SD card slot for up to 128GB local storage, and reliable 24/7 monitoring without wiring hassles."
+             data-price="P 1,200.00">
+            <img src="images.web/PTZCam.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">Intelligent Solar PTZ Security Camera</h3>
+                <p class="product-desc">Solar-Powered Full HD PTZ Camera with PIR Alarm and Color Night Vision.</p>
+                <p class="product-price">P 1,200.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        
+        <!-- PRODUCT 11 -->
+        <div class="product-card"
+             data-images='["images.web/7100DVR.png"]'
+             data-title="HIKVISION Turbo HD DVR"
+             data-desc="Supporting efficient compression and HD input, this HIKVISION DS-7104HGHI-F1(SA) 4-channel Turbo HD DVR records up to 1080P resolution, offers HDMI output, USB backup, web access, mobile surveillance compatibility, and delivers reliable high-definition video storage and monitoring for home or small business security systems."
+             data-price="P 1,200.00">
+            <img src="images.web/7100DVR.png" alt="-" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">HIKVISION Turbo HD DVR</h3>
+                <p class="product-desc">4-Channel 7100 Series Turbo HD DVR with Up to 1080P Recording.</p>
+                <p class="product-price">P 1,200.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 2 -->
+        <div class="product-card"
+             data-images='["images.web/Howear_watch1.png","images.web/Howear_watch2.png"]'
+             data-title="HOWEAR HW6 PRO+ Smart Watch"
+             data-desc="This advanced HOWEAR HW6 PRO+ smart watch features a vibrant 100% AMOLED display, 1GB RAM, IP67 waterproof rating, anti-icing protection, and up to 15 days of endurance. Includes smart watch, strap, charging cable, and user manual. Not a medical device; battery and display performance vary by usage and settings."
+             data-price="P 2,000.00">
+            <img src="images.web/Howear_watch1.png" alt="Tool Set" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">HOWEAR HW6 PRO+ Smart Watch</h3>
+                <p class="product-desc">Premium AMOLED Smart Watch with 15-Day Battery and IP67 Waterproof.</p>
+                <p class="product-price">P 2,000.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 3 -->
+        <div class="product-card"
+             data-images='["images.web/Y_projector1.png","images.web/Y_projector2.png"]'
+             data-title="High-Resolution LED Projector"
+             data-desc="This cost-efficient high-resolution LED projector supports versatile multimedia playback including JPEG, BMP, PNG photos; 3GP, AV, MKV, FLV, MOV, MP4, MPG, VOB, RMVB, RM videos; and TXT text files for seamless photo, video, and document projection."
+             data-price="P 595.00">
+            <img src="images.web/Y_projector1.png" alt="Tool Set" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">High-Resolution LED Projector</h3>
+                <p class="product-desc">High-Resolution LED Projector with Broad Multimedia File Support</p>
+                <p class="product-price">P 595.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 4 -->
+        <div class="product-card"
+             data-images='["images.web/Projector1.png","images.web/Projector2.png"]'
+             data-title="HY300 LED Home Theater Projector"
+             data-desc="This HY300 LED home theater projector delivers Ultra HD resolution with High Dynamic Range, features a highlight coating lens for sharp vibrant images, supports HD playback via USB, and provides an immersive viewing experience for movies, and presentations at home."
+             data-price="P 1,200.00">
+            <img src="images.web/Projector1.png" alt="Tool Set" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">HY300 LED Home Theater Projector</h3>
+                <p class="product-desc">Ultra HD LED Projector with HDR and Highlight Coating Lens.</p>
+                <p class="product-price">P 1,200.00</p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+
+
+        <!-- Add more products here -->
+
+    </section>
+
+    <a href="index.html" class="back-btn">← Back to Home</a>
+
+    <footer>
+        <p>© 2026 KAUSHAR INVESTMENT (Pty) Ltd. All rights reserved.</p>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-image-section">
+                <img src="" alt="Product" class="modal-main-image" id="modalImage">
+                <button class="modal-nav modal-prev">&#10094;</button>
+                <button class="modal-nav modal-next">&#10095;</button>
+                <div class="modal-dots" id="modalDots"></div>
+            </div>
+            <div class="modal-details">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDesc"></p>
+                <p class="modal-price" id="modalPrice"></p>
+                <button class="buy-btn">Inquire Now</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="secure.js"></script>
+
+    <script>
+        // Product Modal Logic
+        const modal = document.getElementById('productModal');
+        const closeBtn = document.querySelector('.modal-close');
+        const modalImg = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalPrice = document.getElementById('modalPrice');
+        const dotsContainer = document.getElementById('modalDots');
+        let currentImages = [];
+        let currentIndex = 0;
+
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', () => {
+                currentImages = JSON.parse(card.dataset.images);
+                currentIndex = 0;
+                modalTitle.textContent = card.dataset.title;
+                modalDesc.textContent = card.dataset.desc;
+                modalPrice.textContent = card.dataset.price;
+                updateModalImage();
+                modal.classList.add('active');
+            });
+        });
+
+        closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+        modal.addEventListener('click', e => {
+            if (e.target === modal) modal.classList.remove('active');
+        });
+
+        document.querySelector('.modal-prev').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+            updateModalImage();
+        });
+
+        document.querySelector('.modal-next').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % currentImages.length;
+            updateModalImage();
+        });
+
+        function updateModalImage() {
+            modalImg.src = currentImages[currentIndex];
+            dotsContainer.innerHTML = '';
+            currentImages.forEach((_, i) => {
+                const dot = document.createElement('span');
+                dot.classList.add('modal-dot');
+                if (i === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateModalImage();
+                });
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        // WHATSAPP INQUIRE BUTTON HANDLER
+        document.addEventListener('DOMContentLoaded', () => {
+            const phoneNumber = '26771665187';
+
+            const handleInquireClick = (button) => {
+                let productName = 'this product';
+                const productInfo = button.closest('.product-info');
+                if (productInfo) {
+                    const nameElem = productInfo.querySelector('.product-name');
+                    if (nameElem) productName = nameElem.textContent.trim();
+                }
+                const modalTitleElem = document.getElementById('modalTitle');
+                if (modalTitleElem && modalTitleElem.textContent.trim()) {
+                    productName = modalTitleElem.textContent.trim();
+                }
+                const message = `Good day, I'd like to inquire about ${productName}`;
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+                window.open(whatsappUrl, '_blank');
+            };
+
+            const attachListeners = () => {
+                document.querySelectorAll('.buy-btn').forEach(btn => {
+                    btn.removeEventListener('click', handleInquireClick);
+                    btn.addEventListener('click', () => handleInquireClick(btn));
+                });
+            };
+
+            attachListeners();
+
+            const modal = document.getElementById('productModal');
+            if (modal) {
+                const observer = new MutationObserver(attachListeners);
+                observer.observe(modal, { childList: true, subtree: true });
+            }
+        });
+
+        // Search filtering
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const productCards = document.querySelectorAll('.product-card');
+
+            function filterProducts() {
+                const query = searchInput.value.toLowerCase().trim();
+                productCards.forEach(card => {
+                    const nameElem = card.querySelector('.product-name');
+                    const productName = nameElem ? nameElem.textContent.toLowerCase() : '';
+                    if (query === '' || productName.includes(query)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            searchInput.addEventListener('input', filterProducts);
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    filterProducts();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+---------Products.html--------------
