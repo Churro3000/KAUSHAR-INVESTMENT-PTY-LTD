@@ -2212,4 +2212,143 @@
 
 
 
----------Products.html--------------
+---------Products.html (Delivery page)--------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delivery & Courier | KAUSHAR INVESTMENT (Pty) Ltd</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for icons (truck, plane, WhatsApp) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
+      <nav class="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="products.html">Delivery & Courier</a>
+        <a href="inquire.html">Contact Us</a>
+        <a href="Advert.html">Advertiser</a>
+        <a href="about.html">About Us</a>
+        <a href="policy.html">Policy</a>
+      </nav>
+      <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="products.html">Delivery & Courier</a>
+      <a href="inquire.html">Contact Us</a>
+      <a href="Advert.html">Advertiser</a>
+      <a href="about.html">About Us</a>
+      <a href="policy.html">Policy</a>
+    </div>
+  </header>
+
+  <!-- Delivery & Courier Section -->
+  <section style="background-color: #ffffff; padding: 60px 20px 80px; max-width: 1100px; margin: 0 auto;">
+    <h1 style="text-align: center; font-size: 2.6rem; color: #000; font-weight: 700; margin-bottom: 50px;">
+      Delivery & Courier Services
+    </h1>
+
+    <!-- Local Delivery Section -->
+    <div style="margin-bottom: 70px;">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 10px;">
+        <i class="fas fa-truck" style="font-size: 2.5rem; color: #FC6600;"></i>
+        <h2 style="font-size: 2.1rem; color: #000; margin: 0; font-weight: 600;">
+          Local Delivery (Gaborone)
+        </h2>
+      </div>
+
+      <div style="background: #f9f9f9; border-radius: 12px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); max-width: 700px; margin: 0 auto;">
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 1.15rem; color: #333; line-height: 2.1;">
+          <li><strong>Gaborone (within city)</strong> — P40</li>
+          <li><strong>Gaborone to Phakalane</strong> — P75</li>
+          <li><strong>Gaborone to Mogoditshane</strong> — P50</li>
+          <li><strong>Gaborone to Tlokweng</strong> — P50</li>
+        </ul>
+
+        <p style="text-align: center; font-size: 0.95rem; color: #777; margin-top: 25px; font-style: italic;">
+          All deliveries after 7:00 PM
+        </p>
+
+        <p style="text-align: center; font-size: 1.05rem; color: #d32f2f; margin-top: 20px; font-weight: 600;">
+          Urgent Delivery — P100+ (from Phakalane)
+        </p>
+      </div>
+    </div>
+
+    <!-- Nationwide Courier Section -->
+    <div>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 10px;">
+        <i class="fas fa-plane-departure" style="font-size: 2.5rem; color: #FC6600;"></i>
+        <h2 style="font-size: 2.1rem; color: #000; margin: 0; font-weight: 600;">
+          Nationwide Courier Services
+        </h2>
+      </div>
+
+      <div style="background: #f9f9f9; border-radius: 12px; padding: 40px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; max-width: 700px; margin: 0 auto;">
+        <p style="font-size: 1.15rem; color: #333; margin-bottom: 30px; line-height: 1.6;">
+          We offer reliable nationwide courier services across Botswana.<br>
+          Fast, tracked delivery to all major towns and villages.
+        </p>
+
+        <a href="https://wa.me/26771665187?text=Good%20day,%20I'd%20like%20to%20arrange%20nationwide%20courier%20delivery" 
+           target="_blank" 
+           style="display: inline-block; background: #25D366; color: white; font-size: 1.15rem; font-weight: 600; padding: 14px 38px; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 15px rgba(37,213,102,0.3); transition: all 0.3s;">
+          <i class="fab fa-whatsapp" style="margin-right: 8px; font-size: 1.4rem;"></i>
+          Contact Courier
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <a href="index.html" class="back-btn" style="display:block; width:fit-content; margin:60px auto 80px; padding:14px 40px; background:#808080; color:#fff; text-decoration:none; border-radius:6px; font-weight:bold; transition:0.3s;">
+    ← Back to Home
+  </a>
+
+  <footer>
+    <p>© 2026 KAUSHAR INVESTMENT (Pty) Ltd. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="secure.js"></script>
+
+  <!-- Mobile-only adjustments -->
+  <style>
+    @media (max-width: 768px) {
+      section > h1 {
+        font-size: 1.8rem !important;           /* smaller main title */
+        margin-top: -20px !important;
+        margin-bottom: 70px !important   /* much closer to header + more space below */
+      }
+      section h2 {
+        font-size: 1.2rem !important;          /* smaller section titles, still one line */
+        white-space: nowrap !important;         /* no stacking */
+      }
+      section i.fas {
+        font-size: 1.6rem !important;           /* smaller icons */
+      }
+      section > div > div:first-child {         /* reduce space below section titles to boxes */
+        margin-bottom: 2px !important;
+      }
+      section ul, section ul li {
+        font-size: 1.05rem !important;          /* slightly smaller price text, no stacking */
+        white-space: nowrap !important;
+      }
+    }
+  </style>
+
+</body>
+</html>
+
+
+
+
+---------INQUIRE.html------------
