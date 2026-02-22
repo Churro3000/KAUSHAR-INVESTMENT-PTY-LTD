@@ -2,3 +2,53 @@ backend:
   name: github
   repo: Churro3000/KAUSHAR-INVESTMENT-PTY-LTD
   branch: main
+
+media_folder: "images.web"          # where images are saved in repo
+public_folder: "/images.web"        # how images appear in URLs
+
+# Required for image uploads to work
+media_library:
+  name: "uploadcare"               # simple built-in uploader
+  config:
+    publicKey: ""                  # leave empty for default (works for GitHub)
+
+collections:
+  - name: "products"
+    label: "Products"
+    folder: "products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Main Image"
+        name: "main_image"
+        widget: "image"
+        required: true
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        required: true
+      - label: "Price"
+        name: "price"
+        widget: "string"
+        required: true
+      - label: "Short Description"
+        name: "short_desc"
+        widget: "string"
+        required: true
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Hardware", "Electronics", "Outdoor/Camp", "Household", "Vehicle Accessories"]
+        required: true
+      - label: "Detail Images"
+        name: "detail_images"
+        widget: "list"
+        field:
+          label: "Image"
+          name: "image"
+          widget: "image"
+        required: false
+      - label: "Long Description"
+        name: "long_desc"
+        widget: "markdown"
+        required: true
