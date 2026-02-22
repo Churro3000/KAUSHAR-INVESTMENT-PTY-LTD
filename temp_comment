@@ -2352,3 +2352,279 @@
 
 
 ---------INQUIRE.html------------
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact & Follow Us</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    .contact-follow-container {
+      padding: 60px 20px 0 20px; /* no bottom padding – footer sits right after content */
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2.section-title {
+      font-size: 2rem;
+      margin: 0 0 30px;
+      text-align: center;
+      color: #FC6600;
+      font-weight: bold;
+    }
+
+    .contact-follow-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      text-align: center;
+    }
+
+    .contact-block p, .follow-block p {
+      font-size: 1.1rem;
+      margin: 0 0 25px;
+      color: #444444;
+    }
+
+    /* WhatsApp button with glow + hover */
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background-color: #25D366;
+      color: white;
+      font-weight: 600;
+      font-size: 1.15rem;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #20b858;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6); /* stronger green glow */
+    }
+
+    .whatsapp-logo {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* Social buttons with hover lift */
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 12px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      color: white;
+    }
+
+    .facebook-btn {
+      background: linear-gradient(135deg, #3b5998, #192f6a);
+    }
+    .facebook-btn:hover {
+      background: linear-gradient(135deg, #2a4373, #0f1e45);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(59, 89, 152, 0.4);
+    }
+
+    .instagram-btn {
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+    .instagram-btn:hover {
+      background: linear-gradient(135deg, #d9822e, #d15c34, #c5203c, #b71e5c, #a81578);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(240, 148, 51, 0.4);
+    }
+
+    .social-logo {
+      width: 26px;
+      height: 26px;
+    }
+
+    /* Desktop: side-by-side layout */
+    @media (min-width: 769px) {
+      .contact-follow-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 60px;
+      }
+      .contact-block, .follow-block {
+        flex: 1;
+        text-align: left;
+      }
+      h2.section-title {
+        text-align: left;
+      }
+      .social-buttons {
+        justify-content: flex-start;
+      }
+      .contact-follow-container {
+        padding: 80px 20px 0 20px; /* no bottom padding */
+      }
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .contact-block p, .follow-block p {
+        display: none;
+      }
+      .whatsapp-btn {
+        font-size: 1rem;
+        padding: 12px 28px;
+      }
+      .whatsapp-logo {
+        width: 24px;
+        height: 24px;
+      }
+      .contact-follow-container {
+        padding: 40px 15px 0 15px; /* no bottom padding */
+      }
+      .contact-follow-wrapper {
+        gap: 50px;
+      }
+
+      /* Slight space above "Follow Us" title on mobile */
+      .follow-block h2.section-title {
+        margin-top: 20px !important; /* ← small gap between Contact Us and Follow Us sections */
+      }
+    }
+
+    /* Footer – orange at the very bottom, increased space above it */
+    footer {
+      background-color: #FC6600;
+      color: #ffffff;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 160px !important; /* ← increased space above the orange bar so it sits at the bottom */
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo" style="height: 60px;">
+      <nav class="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="products.html">Delivery & Courier</a>
+        <a href="inquire.html">Contact Us</a>
+        <a href="Advert.html">Advertiser</a>
+        <a href="about.html">About Us</a>
+        <a href="policy.html">Policy</a>
+      </nav>
+      <div class="hamburger" onclick="toggleMobileMenu()">&#9776;</div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="products.html">Delivery & Courier</a>
+      <a href="inquire.html">Contact Us</a>
+      <a href="Advert.html">Advertiser</a>
+      <a href="about.html">About Us</a>
+      <a href="policy.html">Policy</a>
+    </div>
+  </header>
+
+  <div class="contact-follow-container">
+    
+    <div class="contact-follow-wrapper">
+
+      <!-- Contact Us -->
+      <div class="contact-block">
+        <h2 class="section-title">Contact Us</h2>
+        <a href="#" class="whatsapp-btn" id="whatsappLink">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-logo">
+          Message us on WhatsApp
+        </a>
+      </div>
+
+      <!-- Follow Us -->
+      <div class="follow-block">
+        <h2 class="section-title">Follow Us</h2>
+        <p>Stay updated with our latest products and offers</p>
+        <div class="social-buttons">
+          <a href="#" class="social-btn facebook-btn" id="facebookLink">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="social-logo">
+            Facebook
+          </a>
+          <a href="#" class="social-btn instagram-btn" id="instagramLink">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="social-logo">
+            Instagram
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Script for links -->
+  <script>
+    document.getElementById('whatsappLink').href = 'https://wa.me/26771665187?text=Good%20day%2C%20I%27d%20like%20to%20get%20in%20touch';
+    document.getElementById('facebookLink').href = 'https://www.facebook.com/share/1DK8aEbLzz/';
+    document.getElementById('instagramLink').href = 'https://www.instagram.com/kaushar.investment?igsh=dGJxMG5tNHgwa3k4';
+  </script>
+
+  <footer>
+    <p>© 2026 KAUSHAR INVESTMENT (Pty) Ltd. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <!-- Fast loading boost -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('img:not([loading])').forEach(img => {
+        if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
+        if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
+      });
+    });
+
+    const preconnects = ['https://fonts.googleapis.com', 'https://fonts.gstatic.com', 'https://upload.wikimedia.org'];
+    preconnects.forEach(domain => {
+      const link = document.createElement('link');
+      link.rel = 'preconnect';
+      link.href = domain;
+      link.crossOrigin = 'anonymous';
+      document.head.appendChild(link);
+    });
+
+    document.documentElement.style.scrollBehavior = 'smooth';
+  </script>
+
+</body>
+</html>
+
+
+
+
+---------style.css----------------
