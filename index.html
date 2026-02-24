@@ -7,6 +7,72 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
 </head>
+
+<style> 
+  /* Shopping Cart Icon & Menu */
+  #cart-icon {
+    position: relative;
+    cursor: pointer;
+    font-size: 1.4rem;
+    margin-left: 20px;
+  }
+  #cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: #FC6600;
+    color: white;
+    font-size: 0.8rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+  }
+  #cart-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 320px;
+    height: 100%;
+    background: white;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    padding: 30px 20px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 10000;
+    overflow-y: auto;
+  }
+  #cart-content {
+    margin-bottom: 40px;
+  }
+  #inquire-cart {
+    display: block;
+    background: #25D366;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  #inquire-cart:hover {
+    background: #1EBE57;
+  }
+  @media (max-width: 768px) {
+    #cart-icon {
+      margin-left: 15px;
+    }
+    #cart-menu {
+      width: 100%;
+    }
+  }
+</style> 
+<!----------- end ------->
+  
 <body>
   <header>
     <div class="header-container">
