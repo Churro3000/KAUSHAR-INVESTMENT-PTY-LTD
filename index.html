@@ -6,80 +6,73 @@
   <title>KAUSHAR INVESTMENT (Pty) Ltd</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-</head>
 
-  <!-- Shopping Cart Menu (slides from right) -->
-<div id="cart-menu">
-  <h2 style="text-align: center; margin-bottom: 30px;">Your Cart</h2>
-  <div id="cart-content"></div>
-  <a id="inquire-cart" href="#">Inquire these products</a>
-</div>
-
-<style> 
-  /* Shopping Cart Icon & Menu */
-  #cart-icon {
-    position: relative;
-    cursor: pointer;
-    font-size: 1.4rem;
-    margin-left: 20px;
-  }
-  #cart-count {
-    position: absolute;
-    top: -8px;
-    right: -10px;
-    background: #FC6600;
-    color: white;
-    font-size: 0.8rem;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    display: none;
-  }
-  #cart-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 320px;
-    height: 100%;
-    background: white;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
-    padding: 30px 20px;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    z-index: 10000;
-    overflow-y: auto;
-  }
-  #cart-content {
-    margin-bottom: 40px;
-  }
-  #inquire-cart {
-    display: block;
-    background: #25D366;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background 0.3s;
-  }
-  #inquire-cart:hover {
-    background: #1EBE57;
-  }
-  @media (max-width: 768px) {
+  <!-- Shopping Cart Icon & Menu CSS -->
+  <style>
+    /* Shopping Cart Icon & Menu */
     #cart-icon {
-      margin-left: 15px;
+      position: relative;
+      cursor: pointer;
+      font-size: 1.4rem;
+      margin-left: 20px;
+    }
+    #cart-count {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: #FC6600;
+      color: white;
+      font-size: 0.8rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      display: none;
     }
     #cart-menu {
-      width: 100%;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 320px;
+      height: 100%;
+      background: white;
+      box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+      padding: 30px 20px;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      z-index: 10000;
+      overflow-y: auto;
     }
-  }
-</style> 
-<!----------- end ------->
-  
+    #cart-content {
+      margin-bottom: 40px;
+    }
+    #inquire-cart {
+      display: block;
+      background: #25D366;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    #inquire-cart:hover {
+      background: #1EBE57;
+    }
+    @media (max-width: 768px) {
+      #cart-icon {
+        margin-left: 15px;
+      }
+      #cart-menu {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
 <body>
   <header>
     <div class="header-container">
@@ -90,6 +83,8 @@
         <a href="Advert.html">Advertiser</a>
         <a href="about.html">About Us</a>
         <a href="policy.html">Policy</a>
+        <!-- Shopping cart icon (desktop: at end of menu) -->
+        <span id="cart-icon">🛒 <span id="cart-count">0</span></span>
       </nav>
       <div class="hamburger" onclick="toggleMobileMenu()">&#9776;</div>
     </div>
@@ -99,8 +94,18 @@
       <a href="Advert.html">Advertiser</a>
       <a href="about.html">About Us</a>
       <a href="policy.html">Policy</a>
+      <!-- Shopping cart icon visible next to hamburger on mobile -->
+      <span id="cart-icon-mobile">🛒 <span id="cart-count">0</span></span>
     </div>
   </header>
+
+  <!-- Shopping Cart Menu (slides from right) -->
+  <div id="cart-menu">
+    <h2 style="text-align: center; margin-bottom: 30px;">Your Cart</h2>
+    <div id="cart-content"></div>
+    <a id="inquire-cart" href="#">Inquire these products</a>
+  </div>
+
   <!-- Slideshow -->
   <div class="slideshow-container">
     <div class="slideshow-track">
@@ -118,6 +123,7 @@
       <div class="slide"><img src="images.web/Keyboards_slide.png" alt="Product 6"></div>
     </div>
   </div>
+
   <!-- Category Buttons – light neutral grey section + white buttons -->
   <section id="categories" class="category-buttons-section" style="background-color: #f8f8f8 !important; padding: 20px 0 !important;">
     <div class="category-buttons">
@@ -128,17 +134,19 @@
       <a href="vehicle.html" class="category-btn" style="background-color: #ffffff !important; color: #666666 !important; border: 2.5px solid #666666 !important;">Vehicle Accessories</a>
     </div>
   </section>
+
   <!-- Featured Products – embedded from featured.html -->
-<section class="hero" style="padding: 40px 20px 10px; background-color: #ffffff;">
-  <h2 style="margin-bottom: 30px; text-align: center; color: #000000;">Our Top Picks</h2>
-  <iframe
-    src="featured.html"
-    style="width:100%; border:none; overflow:hidden;"
-    onload="this.style.height = this.contentWindow.document.body.scrollHeight + 10 + 'px';"
-    scrolling="no"
-    title="Featured Products">
-  </iframe>
-</section>
+  <section class="hero" style="padding: 40px 20px 10px; background-color: #ffffff;">
+    <h2 style="margin-bottom: 30px; text-align: center; color: #000000;">Our Top Picks</h2>
+    <iframe
+      src="featured.html"
+      style="width:100%; border:none; overflow:hidden;"
+      onload="this.style.height = this.contentWindow.document.body.scrollHeight + 10 + 'px';"
+      scrolling="no"
+      title="Featured Products">
+    </iframe>
+  </section>
+
   <main>
     <!-- START Latest Advertiser Section -->
     <section class="latest-ads-section" style="background-color: #FC6600; padding: 60px 20px; text-align: center;">
@@ -378,11 +386,11 @@
   <footer>
     <p>© 2026 KAUSHAR INVESTMENT (Pty) Ltd. All rights reserved.</p>
   </footer>
-  
+
   <script src="script.js"></script>
   <script src="secure.js"></script>
   <script src="cart.js"></script>
-  
+
   <!-- ================================================= -->
   <!-- Fast loading boost – paste this at bottom of every page -->
   <!-- ================================================= -->
