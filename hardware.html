@@ -863,5 +863,46 @@
             });
         });
     </script>
+
+<script> // this for the admin stuff
+  // Load and render products from data/products.json
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('/data/products.json')
+      .then(response => {
+        if (!response.ok) throw new Error('No products.json yet');
+        return response.json();
+      })
+      .then(products => {
+        const categoryName = "Hardware"; // CHANGE THIS per page: "Electronics", "Outdoor/Camp", etc.
+        const grid = document.querySelector('.products-grid'); // your existing grid class
+
+        const categoryProducts = products.filter(p => p.category === categoryName);
+
+        categoryProducts.forEach(product => {
+          const card = document.createElement('div');
+          card.className = 'product-card';
+          card.innerHTML = `
+            <img src="$$   {product.mainImage}" alt="   $${product.title}" class="product-image">
+            <div class="product-info">
+              <h3 class="product-name">${product.title}</h3>
+              <p class="product-desc">${product.shortDesc}</p>
+              <p class="product-price">${product.price}</p>
+              <button class="buy-btn">Inquire Now</button>
+            </div>
+          `;
+
+          // Add modal data (like your existing cards)
+          card.dataset.images = JSON.stringify([product.mainImage, ...product.detailImages]);
+          card.dataset.title = product.title;
+          card.dataset.desc = product.longDesc;
+          card.dataset.price = product.price;
+
+          grid.appendChild(card);
+        });
+      })
+      .catch(err => console.log('No products loaded yet:', err));
+  });
+</script>
+    
 </body>
 </html>
