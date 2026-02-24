@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add / Edit Product</title>
+  <style>
+    body { font-family: Arial; background: #f8f8f8; padding: 30px; max-width: 800px; margin: 0 auto; }
+    h1 { text-align: center; }
+    label { display: block; margin: 15px 0 5px; font-weight: bold; }
+    input, textarea, select { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 6px; }
+    button { background: #FC6600; color: white; border: none; padding: 15px 30px; border-radius: 6px; cursor: pointer; font-size: 1.1rem; }
+    button:hover { background: #e65c00; }
+    #image-preview { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    #image-preview img { width: 120px; height: 120px; object-fit: cover; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h1>Add New Product</h1>
+
+  <form id="productForm">
+    <label>Main Image (display image)</label>
+    <input type="file" id="mainImage" accept="image/*" required>
+
+    <label>Title</label>
+    <input type="text" id="title" required>
+
+    <label>Price (e.g. P 1,250.00)</label>
+    <input type="text" id="price" required>
+
+    <label>Short Description</label>
+    <input type="text" id="shortDesc" required>
+
+    <label>Category</label>
+    <select id="category" required>
+      <option value="">Select category</option>
+      <option value="Hardware">Hardware</option>
+      <option value="Electronics">Electronics</option>
+      <option value="Outdoor/Camp">Outdoor/Camp</option>
+      <option value="Household">Household</option>
+      <option value="Vehicle Accessories">Vehicle Accessories</option>
+    </select>
+
+    <label>Detail Images (multiple)</label>
+    <input type="file" id="detailImages" accept="image/*" multiple>
+
+    <div id="image-preview"></div>
+
+    <label>Long Description</label>
+    <textarea id="longDesc" rows="8" required></textarea>
+
+    <button type="submit">Publish Product</button>
+  </form>
+
+  <script>
+    // Preview uploaded detail images
+    document.getElementById('detailImages').addEventListener('change', (e) => {
+      const preview = document.getElementById('image-preview');
+      preview.innerHTML = '';
+      [...e.target.files].forEach(file => {
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        preview.appendChild(img);
+      });
+    });
+
+    // Handle form submit
+    document.getElementById('productForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const product = {
+        mainImage: document.getElementById('mainImage').files[0] ? URL.createObjectURL(document.getElementById('mainImage').files[0]) : '',
+        title: document.getElementById('title').value,
+        price: document.getElementById('price').value,
+        shortDesc: document.getElementById('shortDesc').value,
+        category: document.getElementById('category').value,
+        detailImages: [...document.getElementById('detailImages').files].map(f => URL.createObjectURL(f)),
+        longDesc: document.getElementById('longDesc').value,
+        id: Date.now() // unique ID
+      };
+
+      // Save to localStorage
+      let products = JSON.parse(localStorage.getItem('products') || '[]');
+      products.push(product);
+      localStorage.setItem('products', JSON.stringify(products));
+
+      alert('Product saved locally! Copy JSON from console to make it permanent.');
+      console.log('New product JSON:', JSON.stringify(product, null, 2));
+
+      // Redirect back to home (optional)
+      // window.location.href = '../index.html';
+    });
+  </script>
+</body>
+</html>
