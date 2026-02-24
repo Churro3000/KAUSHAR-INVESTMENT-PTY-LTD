@@ -1,1 +1,10 @@
-[]
+[{
+  "mainImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA... (long string)",
+  "title": "Your Title",
+  "price": "P 1,250.00",
+  "shortDesc": "Your short desc",
+  "category": "Hardware",
+  "detailImages": ["data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...", ...],
+  "longDesc": "Your long desc",
+  "id": 1708965123456
+}]
