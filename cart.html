@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Cart</title>
+  <title>Cart</title>
 
-  <!-- Google Fonts (Archivo Black for nicer "Your Cart" title) -->
+  <!-- Google Fonts for nice "Your Cart" title -->
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
 
   <style>
@@ -133,7 +133,6 @@
 </head>
 <body>
 
-  <!-- Cart Container (slides from right) -->
   <div id="cart-container">
     <div class="cart-header">
       <h2 class="cart-title">Your Cart</h2>
@@ -151,7 +150,6 @@
   </div>
 
   <script>
-    // Cart logic
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
 
     const cartContainer = document.getElementById('cart-container');
@@ -174,7 +172,7 @@
           cartContent.appendChild(item);
         });
       }
-      // Update count badge in parent window if needed
+      // Send count to parent window (index.html)
       window.parent.postMessage({ type: 'cartUpdate', count: cart.length }, '*');
     }
 
@@ -197,7 +195,7 @@
       window.open(`https://wa.me/26771665187?text=${message}`, '_blank');
     });
 
-    // Listen for messages from parent (e.g. add to cart)
+    // Listen for add-to-cart from parent window
     window.addEventListener('message', (e) => {
       if (e.data.type === 'addToCart') {
         cart.push(e.data.product);
@@ -208,6 +206,9 @@
 
     // Initial render
     renderCart();
+
+    // Expose openCart for parent window to call
+    window.openCart = openCart;
   </script>
 </body>
 </html>
