@@ -352,12 +352,14 @@
 
   <!-- Shopping Cart Section – paste this entire block before </body> on any page -->
 <style>
-  /* Cart icons – orange, non-overlapping */
-  .cart-icon {
-    cursor: pointer;
-    font-size: 1.8rem;
-    color: #FC6600;
+  /* Cart icons – nice orange, non-overlapping */
+  .cart-icon-wrapper {
     position: relative;
+    cursor: pointer;
+  }
+  .cart-icon {
+    font-size: 1.9rem;
+    color: #FC6600;
   }
   .cart-count {
     position: absolute;
@@ -376,13 +378,12 @@
     display: none;
   }
 
-  /* Cart menu – slide-in from right */
+  /* Cart menu – slide-in from right, fits mobile perfectly */
   #cart-menu {
     position: fixed;
     top: 0;
     right: 0;
     width: 100%;
-    max-width: 380px;
     height: 100%;
     background: white;
     box-shadow: -8px 0 25px rgba(0,0,0,0.25);
@@ -463,13 +464,13 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    width: 80%;
-    max-width: 260px;
+    width: 75%;
+    max-width: 240px;
     background: #25D366;
     color: white;
     font-weight: 600;
-    font-size: 1rem;
-    padding: 12px 20px;
+    font-size: 0.95rem;
+    padding: 12px 24px;
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -480,32 +481,33 @@
   #inquire-cart:hover {
     background: #20b858;
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
   }
   #inquire-cart i {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
-  /* Mobile adjustments */
+  /* Mobile/desktop icon switching */
   @media (max-width: 768px) {
     .cart-icon-desktop { display: none !important; }
     .cart-icon-mobile { display: block !important; }
     #cart-menu { max-width: 100%; padding: 20px 15px; }
     .cart-title { font-size: 1.6rem; }
-    #inquire-cart { width: 90%; font-size: 0.95rem; padding: 10px 16px; }
+    #inquire-cart { width: 85%; font-size: 0.95rem; padding: 11px 20px; }
   }
   @media (min-width: 769px) {
     .cart-icon-mobile { display: none !important; }
   }
 </style>
 
-<!-- Desktop cart icon (end of nav) -->
-<div class="cart-icon cart-icon-desktop" id="cart-icon-desktop">
+<!-- Desktop cart icon (end of nav, non-overlapping) -->
+<div class="cart-icon-wrapper cart-icon-desktop" id="cart-icon-desktop">
   <span class="cart-icon">🛒</span>
   <span id="cart-count-desktop" class="cart-count">0</span>
 </div>
 
-<!-- Mobile cart icon (before hamburger) -->
-<div class="cart-icon cart-icon-mobile" id="cart-icon-mobile">
+<!-- Mobile cart icon (before hamburger, right side) -->
+<div class="cart-icon-wrapper cart-icon-mobile" id="cart-icon-mobile">
   <span class="cart-icon">🛒</span>
   <span id="cart-count-mobile" class="cart-count">0</span>
 </div>
@@ -528,7 +530,7 @@
 </div>
 
 <script>
-  // Cart logic
+  // Cart logic – all in one place
   document.addEventListener('DOMContentLoaded', () => {
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
 
