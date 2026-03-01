@@ -195,7 +195,7 @@
       window.open(`https://wa.me/26771665187?text=${message}`, '_blank');
     });
 
-    // Listen for add-to-cart from parent window
+    // Listen for add-to-cart from parent
     window.addEventListener('message', (e) => {
       if (e.data.type === 'addToCart') {
         cart.push(e.data.product);
@@ -207,7 +207,7 @@
     // Initial render
     renderCart();
 
-    // Expose openCart for parent window to call
+    // Expose openCart for parent window
     window.openCart = openCart;
   </script>
 </body>
