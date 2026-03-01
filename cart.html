@@ -133,6 +133,7 @@
 </head>
 <body>
 
+  <!-- Cart Container (slides from right) -->
   <div id="cart-container">
     <div class="cart-header">
       <h2 class="cart-title">Your Cart</h2>
@@ -172,7 +173,7 @@
           cartContent.appendChild(item);
         });
       }
-      // Send count to parent window (index.html)
+      // Send count to parent window
       window.parent.postMessage({ type: 'cartUpdate', count: cart.length }, '*');
     }
 
@@ -195,7 +196,6 @@
       window.open(`https://wa.me/26771665187?text=${message}`, '_blank');
     });
 
-    // Listen for add-to-cart from parent
     window.addEventListener('message', (e) => {
       if (e.data.type === 'addToCart') {
         cart.push(e.data.product);
@@ -204,10 +204,8 @@
       }
     });
 
-    // Initial render
     renderCart();
 
-    // Expose openCart for parent window
     window.openCart = openCart;
   </script>
 </body>
