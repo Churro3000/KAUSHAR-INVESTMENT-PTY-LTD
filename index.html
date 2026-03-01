@@ -352,10 +352,12 @@
 
   <!-- Shopping Cart Section – paste this entire block before </body> on any page -->
 <style>
-  /* Cart icons – nice orange, non-overlapping */
+  /* Cart icons – orange, precise positioning */
   .cart-icon-wrapper {
     position: relative;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
   }
   .cart-icon {
     font-size: 1.9rem;
@@ -378,13 +380,13 @@
     display: none;
   }
 
-  /* Cart menu – slide-in from right, fits mobile perfectly */
+  /* Cart menu – fits perfectly on mobile */
   #cart-menu {
     position: fixed;
     top: 0;
     right: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw; /* full screen width on mobile */
+    height: 100vh;
     background: white;
     box-shadow: -8px 0 25px rgba(0,0,0,0.25);
     transform: translateX(100%);
@@ -459,18 +461,20 @@
     font-size: 1.1rem;
     padding: 50px 0;
   }
+
+  /* Inquire button – narrower, smaller, icon inside, WhatsApp green */
   #inquire-cart {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    width: 75%;
-    max-width: 240px;
+    width: 70%;
+    max-width: 220px;
     background: #25D366;
     color: white;
     font-weight: 600;
     font-size: 0.95rem;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -479,7 +483,7 @@
     transition: all 0.3s;
   }
   #inquire-cart:hover {
-    background: #20b858;
+    background: #1da851;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
   }
@@ -487,26 +491,27 @@
     font-size: 1.3rem;
   }
 
-  /* Mobile/desktop icon switching */
+  /* Mobile/desktop icon switching & positioning */
   @media (max-width: 768px) {
     .cart-icon-desktop { display: none !important; }
     .cart-icon-mobile { display: block !important; }
-    #cart-menu { max-width: 100%; padding: 20px 15px; }
+    #cart-menu { width: 100vw; max-width: none; padding: 20px 15px; }
     .cart-title { font-size: 1.6rem; }
-    #inquire-cart { width: 85%; font-size: 0.95rem; padding: 11px 20px; }
+    #inquire-cart { width: 80%; font-size: 0.95rem; padding: 10px 18px; }
   }
   @media (min-width: 769px) {
     .cart-icon-mobile { display: none !important; }
+    #cart-menu { max-width: 380px; }
   }
 </style>
 
-<!-- Desktop cart icon (end of nav, non-overlapping) -->
+<!-- Desktop cart icon (end of nav) -->
 <div class="cart-icon-wrapper cart-icon-desktop" id="cart-icon-desktop">
   <span class="cart-icon">🛒</span>
   <span id="cart-count-desktop" class="cart-count">0</span>
 </div>
 
-<!-- Mobile cart icon (before hamburger, right side) -->
+<!-- Mobile cart icon (BEFORE hamburger) -->
 <div class="cart-icon-wrapper cart-icon-mobile" id="cart-icon-mobile">
   <span class="cart-icon">🛒</span>
   <span id="cart-count-mobile" class="cart-count">0</span>
