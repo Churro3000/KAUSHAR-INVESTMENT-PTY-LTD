@@ -9,19 +9,34 @@
 </head>
 <body>
   <header>
-    <div class="header-container">
-      <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
-      <nav class="nav-menu">
-        <a href="products.html">Delivery & Courier</a>
-        <a href="inquire.html">Contact Us</a>
-        <a href="Advert.html">Advertiser</a>
-        <a href="about.html">About Us</a>
-        <a href="policy.html">Policy</a>
-      </nav>
-      <div class="cart-icon-wrapper cart-icon-mobile" id="cart-icon-mobile" style="margin-right: 15px;">
-  <span class="cart-icon">🛒</span>
-  <span id="cart-count-mobile" class="cart-count">0</span>
-</div>
+  <div class="header-container">
+    <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
+
+    <!-- Desktop nav + cart icon -->
+    <nav class="nav-menu">
+      <a href="products.html">Delivery & Courier</a>
+      <a href="inquire.html">Contact Us</a>
+      <a href="Advert.html">Advertiser</a>
+      <a href="about.html">About Us</a>
+      <a href="policy.html">Policy</a>
+    </nav>
+
+    <!-- Desktop cart icon (visible on larger screens) -->
+    <div class="cart-icon-wrapper cart-icon-desktop" id="cart-icon-desktop">
+      <i class="fa-solid fa-cart-shopping cart-icon"></i>
+      <span id="cart-count-desktop" class="cart-count">0</span>
+    </div>
+
+    <!-- Mobile cart icon (visible on small screens, before hamburger) -->
+    <div class="cart-icon-wrapper cart-icon-mobile" id="cart-icon-mobile">
+      <i class="fa-solid fa-cart-shopping cart-icon"></i>
+      <span id="cart-count-mobile" class="cart-count">0</span>
+    </div>
+
+    <!-- Hamburger menu toggle (add your onclick if you have JS for it) -->
+    <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">☰</div>
+
+    <!-- Mobile dropdown menu -->
     <div class="mobile-menu" id="mobileMenu">
       <a href="products.html">Delivery & Courier</a>
       <a href="inquire.html">Contact Us</a>
@@ -29,12 +44,8 @@
       <a href="about.html">About Us</a>
       <a href="policy.html">Policy</a>
     </div>
-  </header>
-
-  <!-- Hidden iframe loads cart.html -->
-  <iframe id="cart-iframe" src="cart.html" style="display: none;"></iframe>
-
-<script src="cart.html"></script>
+  </div>
+</header>
 
   <!-- Slideshow -->
   <div class="slideshow-container">
@@ -351,7 +362,6 @@
   </script>
 
   <!-- Shopping Cart Section + Product Add-to-Cart – paste this entire block before </body> -->
-
 <style>
   /* Cart icons – orange, precise positioning */
   .cart-icon-wrapper {
@@ -380,7 +390,6 @@
     font-weight: bold;
     display: none;
   }
-
   /* Cart menu – fits perfectly on mobile */
   #cart-menu {
     position: fixed;
@@ -399,7 +408,6 @@
   #cart-menu.open {
     transform: translateX(0);
   }
-
   .cart-header {
     display: flex;
     justify-content: space-between;
@@ -432,7 +440,6 @@
     background: #e0e0e0;
     color: #000;
   }
-
   .cart-item {
     display: flex;
     align-items: center;
@@ -457,7 +464,6 @@
     color: #333;
     margin: 0;
   }
-
   /* Inquire button – WhatsApp green */
   #inquire-cart {
     display: flex;
@@ -486,7 +492,6 @@
   #inquire-cart i {
     font-size: 1.3rem;
   }
-
   /* Mobile/desktop switching */
   @media (max-width: 768px) {
     .cart-icon-desktop { display: none !important; }
@@ -499,26 +504,25 @@
     .cart-icon-mobile { display: none !important; }
     #cart-menu { max-width: 380px; }
   }
-
-  /* Optional: nicer hover effect for product cart icons */
+  /* Nicer hover for product cart icons */
   .add-to-cart-icon:hover {
     transform: scale(1.2);
   }
 </style>
 
-<!-- Desktop cart icon (place at end of nav) -->
+<!-- Desktop cart icon -->
 <div class="cart-icon-wrapper cart-icon-desktop" id="cart-icon-desktop">
-  <span class="cart-icon">🛒</span>
+  <i class="fa-solid fa-cart-shopping cart-icon"></i>
   <span id="cart-count-desktop" class="cart-count">0</span>
 </div>
 
-<!-- Mobile cart icon (before hamburger) -->
+<!-- Mobile cart icon -->
 <div class="cart-icon-wrapper cart-icon-mobile" id="cart-icon-mobile">
-  <span class="cart-icon">🛒</span>
+  <i class="fa-solid fa-cart-shopping cart-icon"></i>
   <span id="cart-count-mobile" class="cart-count">0</span>
 </div>
 
-<!-- Cart Menu -->
+<!-- Cart Menu (side panel) -->
 <div id="cart-menu">
   <div class="cart-header">
     <h2 class="cart-title">Your Cart</h2>
@@ -534,14 +538,10 @@
 </div>
 
 <script>
-// ────────────────────────────────────────────────
 // Combined Cart + Add-to-Cart logic (single block)
-// ────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  // ── Shared cart data ───────────────────────────
   let cart = JSON.parse(localStorage.getItem('cart') || '[]');
 
-  // ── DOM elements ───────────────────────────────
   const cartMenu     = document.getElementById('cart-menu');
   const cartContent  = document.getElementById('cart-content');
   const inquireBtn   = document.getElementById('inquire-cart');
@@ -549,7 +549,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const countDesktop = document.getElementById('cart-count-desktop');
   const countMobile  = document.getElementById('cart-count-mobile');
 
-  // ── Core functions ─────────────────────────────
   function updateCartCount() {
     const count = cart.length;
     if (countDesktop) {
@@ -566,7 +565,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!cartContent) return;
     cartContent.innerHTML = '';
     if (cart.length === 0) {
-      cartContent.innerHTML = '<p class="cart-empty">Your cart is empty.</p>';
+      cartContent.innerHTML = '<p style="text-align: center; color: #777; font-size: 1.1rem; padding: 50px 0;">Your cart is empty.</p>';
     } else {
       cart.forEach(product => {
         const item = document.createElement('div');
@@ -582,14 +581,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function openCart() {
-    if (cartMenu) cartMenu.classList.add('open');
+    if (cartMenu) cartMenu.style.transform = 'translateX(0)';
   }
 
   function closeCart() {
-    if (cartMenu) cartMenu.classList.remove('open');
+    if (cartMenu) cartMenu.style.transform = 'translateX(100%)';
   }
 
-  // ── Event listeners ────────────────────────────
+  // Event listeners
   document.getElementById('cart-icon-desktop')?.addEventListener('click', openCart);
   document.getElementById('cart-icon-mobile')?.addEventListener('click', openCart);
   closeBtn?.addEventListener('click', closeCart);
@@ -607,7 +606,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.open(`https://wa.me/26771665187?text=${message}`, '_blank');
   });
 
-  // Listen for cart changes from other tabs/windows
   window.addEventListener('storage', e => {
     if (e.key === 'cart') {
       cart = JSON.parse(e.newValue || '[]');
@@ -615,7 +613,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ── Add-to-cart for product icons (.add-to-cart-icon) ────────────────
+  // Add-to-cart for product page icons
   document.querySelectorAll('.add-to-cart-icon').forEach(btn => {
     btn.addEventListener('click', () => {
       const product = {
@@ -624,7 +622,6 @@ document.addEventListener('DOMContentLoaded', () => {
         image: btn.dataset.image
       };
 
-      // Prevent duplicates (you can comment out this block if you want multiples)
       if (cart.some(item => item.title === product.title)) {
         btn.style.opacity = '0.5';
         setTimeout(() => { btn.style.opacity = '1'; }, 600);
@@ -633,17 +630,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       cart.push(product);
       localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+      updateCartCount();
 
-      renderCart();         // refresh side menu
-      updateCartCount();    // refresh badge
-
-      // Visual feedback
       btn.style.transform = 'scale(1.4)';
       setTimeout(() => { btn.style.transform = 'scale(1)'; }, 180);
     });
   });
 
-  // Initial render
   renderCart();
 });
 </script>
