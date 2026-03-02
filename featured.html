@@ -455,17 +455,55 @@
             <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
             <p class="product-price">P 2,800.00</p>
             <button class="buy-btn">Inquire Now</button>
-            <!-- New cart icon button -->
-            <button 
-    class="cart-btn" 
-    title="Add to Cart"
-    data-title="Heavy Duty Power Drill"
-    data-price="P 1,250.00"
-    data-image="images.web/529f84e271a84ef9b1e3a10e14369fe0.jpg"
-    style="background: none; border: none; cursor: pointer; font-size: 1.9rem; color: #FC6600; padding: 8px 12px; line-height: 1;">
+           <!-- Add-to-cart icon button -->
+<div style="text-align:center; margin: 12px 0 20px;">
+  <button 
+    class="add-to-cart-icon"
+    data-title="Cordless Impact Driver"
+    data-price="P 890.00"
+    data-image="images.web/cordless-impact-main.jpg"
+    title="Add to cart"
+    style="background:none; border:none; font-size:2.1rem; color:#FC6600; cursor:pointer; padding:8px 14px; line-height:1; transition: transform 0.15s;">
     🛒
   </button>
 </div>
+</div>
+        </div>
+<script>
+// Handle orange cart icon clicks on product cards
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.add-to-cart-icon').forEach(button => {
+    button.addEventListener('click', () => {
+      const product = {
+        title: button.dataset.title,
+        price: button.dataset.price,
+        image: button.dataset.image
+      };
+
+      let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+      // Optional: prevent duplicates (uncomment if you want only one of each product)
+      // if (cart.some(item => item.title === product.title)) {
+      //   button.style.opacity = '0.4';
+      //   setTimeout(() => button.style.opacity = '1', 400);
+      //   return;
+      // }
+
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      // Trigger your existing cart refresh functions
+      if (typeof updateCartCount === 'function') updateCartCount();
+      if (typeof renderCart === 'function') renderCart();
+
+      // Nice little click feedback
+      button.style.transform = 'scale(1.35)';
+      setTimeout(() => { button.style.transform = 'scale(1)'; }, 160);
+    });
+  });
+});
+</script>
+        
         
         <!-- PRODUCT 4 -->
 <div class="product-card"
