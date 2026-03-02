@@ -458,7 +458,7 @@
     <button class="buy-btn">Inquire Now</button>
   </div>
 </div>
-<!-- Add-to-cart icon button -->
+<!-- Add-to-cart icon button – stays here, after the product card -->
 <div style="text-align:center; margin: 12px 0 20px;">
   <button
     class="add-to-cart-icon"
@@ -470,35 +470,6 @@
     🛒
   </button>
 </div>
-<script>
-// Handle orange cart icon clicks on product cards
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.add-to-cart-icon').forEach(button => {
-    button.addEventListener('click', () => {
-      const product = {
-        title: button.dataset.title,
-        price: button.dataset.price,
-        image: button.dataset.image
-      };
-      let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-      // Optional: prevent duplicates (uncomment if you want only one of each product)
-      // if (cart.some(item => item.title === product.title)) {
-      //   button.style.opacity = '0.4';
-      //   setTimeout(() => button.style.opacity = '1', 400);
-      //   return;
-      // }
-      cart.push(product);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      // Trigger your existing cart refresh functions
-      if (typeof updateCartCount === 'function') updateCartCount();
-      if (typeof renderCart === 'function') renderCart();
-      // Nice little click feedback
-      button.style.transform = 'scale(1.35)';
-      setTimeout(() => { button.style.transform = 'scale(1)'; }, 160);
-    });
-  });
-});
-</script>
         
         <!-- PRODUCT 4 -->
 <div class="product-card"
