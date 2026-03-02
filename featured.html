@@ -443,32 +443,33 @@
             <button class="buy-btn">Inquire Now</button>
           </div>
         </div>
+        
         <!-- PRODUCT 2 -->
-        <div class="product-card"
-             data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
-             data-title="150-Piece Tool Kit"
-             data-desc="Complete mechanic and home repair set including sockets, wrenches, screwdrivers, pliers, hammer, tape measure, and more."
-             data-price="P 2,800.00">
-          <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
-          <div class="product-info">
-            <h3 class="product-name">150-Piece Tool Kit</h3>
-            <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
-            <p class="product-price">P 2,800.00</p>
-            <button class="buy-btn">Inquire Now</button>
-           <!-- Add-to-cart icon button -->
+<div class="product-card"
+     data-images='["images.web/hardware2.jpg","images.web/in_p2.jpg"]'
+     data-title="150-Piece Tool Kit"
+     data-desc="Complete mechanic and home repair set including sockets, wrenches, screwdrivers, pliers, hammer, tape measure, and more."
+     data-price="P 2,800.00">
+  <img src="images.web/hardware2.jpg" alt="Tool Set" class="product-image">
+  <div class="product-info">
+    <h3 class="product-name">150-Piece Tool Kit</h3>
+    <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
+    <p class="product-price">P 2,800.00</p>
+    <button class="buy-btn">Inquire Now</button>
+  </div>
+</div>
+<!-- Add-to-cart icon button -->
 <div style="text-align:center; margin: 12px 0 20px;">
-  <button 
+  <button
     class="add-to-cart-icon"
-    data-title="Cordless Impact Driver"
-    data-price="P 890.00"
-    data-image="images.web/cordless-impact-main.jpg"
+    data-title="150-Piece Tool Kit"
+    data-price="P 2,800.00"
+    data-image="images.web/hardware2.jpg"
     title="Add to cart"
     style="background:none; border:none; font-size:2.1rem; color:#FC6600; cursor:pointer; padding:8px 14px; line-height:1; transition: transform 0.15s;">
     🛒
   </button>
 </div>
-</div>
-        </div>
 <script>
 // Handle orange cart icon clicks on product cards
 document.addEventListener('DOMContentLoaded', () => {
@@ -479,23 +480,18 @@ document.addEventListener('DOMContentLoaded', () => {
         price: button.dataset.price,
         image: button.dataset.image
       };
-
       let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-
       // Optional: prevent duplicates (uncomment if you want only one of each product)
       // if (cart.some(item => item.title === product.title)) {
       //   button.style.opacity = '0.4';
       //   setTimeout(() => button.style.opacity = '1', 400);
       //   return;
       // }
-
       cart.push(product);
       localStorage.setItem('cart', JSON.stringify(cart));
-
       // Trigger your existing cart refresh functions
       if (typeof updateCartCount === 'function') updateCartCount();
       if (typeof renderCart === 'function') renderCart();
-
       // Nice little click feedback
       button.style.transform = 'scale(1.35)';
       setTimeout(() => { button.style.transform = 'scale(1)'; }, 160);
@@ -503,7 +499,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
-        
         
         <!-- PRODUCT 4 -->
 <div class="product-card"
