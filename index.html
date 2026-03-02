@@ -9,11 +9,11 @@
 </head>
 <body>
   <header>
-  <div class="header-container">
-    <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo">
+  <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 10px 20px;">
+    <img src="images.web/K_Logo_Web.png" alt="Company Logo" class="logo" style="max-height: 60px;">
 
-    <!-- Desktop nav + cart icon -->
-    <nav class="nav-menu">
+    <!-- Desktop nav -->
+    <nav class="nav-menu" style="display: flex; gap: 20px; align-items: center;">
       <a href="products.html">Delivery & Courier</a>
       <a href="inquire.html">Contact Us</a>
       <a href="Advert.html">Advertiser</a>
@@ -21,29 +21,29 @@
       <a href="policy.html">Policy</a>
     </nav>
 
-    <!-- Desktop cart icon (visible on larger screens) -->
-    <div class="cart-icon-wrapper cart-icon-desktop" id="cart-icon-desktop">
-      <i class="fa-solid fa-cart-shopping cart-icon"></i>
+    <!-- Desktop cart icon -->
+    <div class="cart-icon-wrapper cart-icon-desktop" id="cart-icon-desktop" style="margin-left: 20px;">
+      <i class="fas fa-shopping-cart cart-icon"></i>
       <span id="cart-count-desktop" class="cart-count">0</span>
     </div>
 
-    <!-- Mobile cart icon (visible on small screens, before hamburger) -->
-    <div class="cart-icon-wrapper cart-icon-mobile" id="cart-icon-mobile">
-      <i class="fa-solid fa-cart-shopping cart-icon"></i>
+    <!-- Mobile cart icon -->
+    <div class="cart-icon-wrapper cart-icon-mobile" id="cart-icon-mobile" style="margin-left: auto; margin-right: 15px;">
+      <i class="fas fa-shopping-cart cart-icon"></i>
       <span id="cart-count-mobile" class="cart-count">0</span>
     </div>
 
-    <!-- Hamburger menu toggle (add your onclick if you have JS for it) -->
-    <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">☰</div>
+    <!-- Hamburger -->
+    <div class="hamburger" onclick="toggleMobileMenu()" style="cursor: pointer; font-size: 2rem;">☰</div>
+  </div>
 
-    <!-- Mobile dropdown menu -->
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="products.html">Delivery & Courier</a>
-      <a href="inquire.html">Contact Us</a>
-      <a href="Advert.html">Advertiser</a>
-      <a href="about.html">About Us</a>
-      <a href="policy.html">Policy</a>
-    </div>
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" style="display: none; flex-direction: column; padding: 20px;">
+    <a href="products.html">Delivery & Courier</a>
+    <a href="inquire.html">Contact Us</a>
+    <a href="Advert.html">Advertiser</a>
+    <a href="about.html">About Us</a>
+    <a href="policy.html">Policy</a>
   </div>
 </header>
 
@@ -362,6 +362,8 @@
   </script>
 
   <!-- Shopping Cart Section + Product Add-to-Cart – paste this entire block before </body> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <style>
   /* Cart icons – orange, precise positioning */
   .cart-icon-wrapper {
@@ -512,13 +514,13 @@
 
 <!-- Desktop cart icon -->
 <div class="cart-icon-wrapper cart-icon-desktop" id="cart-icon-desktop">
-  <i class="fa-solid fa-cart-shopping cart-icon"></i>
+  <i class="fas fa-shopping-cart cart-icon"></i> <!-- Free solid icon from FA5 -->
   <span id="cart-count-desktop" class="cart-count">0</span>
 </div>
 
 <!-- Mobile cart icon -->
 <div class="cart-icon-wrapper cart-icon-mobile" id="cart-icon-mobile">
-  <i class="fa-solid fa-cart-shopping cart-icon"></i>
+  <i class="fas fa-shopping-cart cart-icon"></i> <!-- Free solid icon from FA5 -->
   <span id="cart-count-mobile" class="cart-count">0</span>
 </div>
 
@@ -541,13 +543,12 @@
 // Combined Cart + Add-to-Cart logic (single block)
 document.addEventListener('DOMContentLoaded', () => {
   let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-
-  const cartMenu     = document.getElementById('cart-menu');
-  const cartContent  = document.getElementById('cart-content');
-  const inquireBtn   = document.getElementById('inquire-cart');
-  const closeBtn     = document.getElementById('cart-close');
+  const cartMenu = document.getElementById('cart-menu');
+  const cartContent = document.getElementById('cart-content');
+  const inquireBtn = document.getElementById('inquire-cart');
+  const closeBtn = document.getElementById('cart-close');
   const countDesktop = document.getElementById('cart-count-desktop');
-  const countMobile  = document.getElementById('cart-count-mobile');
+  const countMobile = document.getElementById('cart-count-mobile');
 
   function updateCartCount() {
     const count = cart.length;
@@ -621,18 +622,15 @@ document.addEventListener('DOMContentLoaded', () => {
         price: btn.dataset.price,
         image: btn.dataset.image
       };
-
       if (cart.some(item => item.title === product.title)) {
         btn.style.opacity = '0.5';
         setTimeout(() => { btn.style.opacity = '1'; }, 600);
         return;
       }
-
       cart.push(product);
       localStorage.setItem('cart', JSON.stringify(cart));
       renderCart();
       updateCartCount();
-
       btn.style.transform = 'scale(1.4)';
       setTimeout(() => { btn.style.transform = 'scale(1)'; }, 180);
     });
