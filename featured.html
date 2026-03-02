@@ -455,20 +455,22 @@
     <h3 class="product-name">150-Piece Tool Kit</h3>
     <p class="product-desc">Complete mechanic and home repair tool set in durable case.</p>
     <p class="product-price">P 2,800.00</p>
-    <button class="buy-btn">Inquire Now</button>
+    
+    <!-- Buttons side-by-side: Inquire + orange cart icon -->
+    <div style="display: flex; gap: 12px; margin-top: 15px; justify-content: center; align-items: center; flex-wrap: wrap;">
+      <button class="buy-btn" style="flex: 1; max-width: 160px; padding: 10px 16px;">Inquire Now</button>
+      
+      <button 
+        class="add-to-cart-icon"
+        data-title="150-Piece Tool Kit"
+        data-price="P 2,800.00"
+        data-image="images.web/hardware2.jpg"
+        title="Add to Cart"
+        style="background: none; border: none; font-size: 1.8rem; color: #FC6600; cursor: pointer; padding: 8px 12px; line-height: 1; transition: transform 0.2s;">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </button>
+    </div>
   </div>
-</div>
-<!-- Add-to-cart icon button – stays here, after the product card -->
-<div style="text-align:center; margin: 12px 0 20px;">
-  <button
-    class="add-to-cart-icon"
-    data-title="150-Piece Tool Kit"
-    data-price="P 2,800.00"
-    data-image="images.web/hardware2.jpg"
-    title="Add to cart"
-    style="background:none; border:none; font-size:2.1rem; color:#FC6600; cursor:pointer; padding:8px 14px; line-height:1; transition: transform 0.15s;">
-    🛒
-  </button>
 </div>
         
         <!-- PRODUCT 4 -->
@@ -593,6 +595,6 @@
   </div>
 
   <!-- Link to external JS file -->
-  <script src="featuredJS.js"></script>
+  <script src="featuredJS.js"></script
 </body>
 </html>
