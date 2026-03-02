@@ -350,7 +350,8 @@
     document.documentElement.style.scrollBehavior = 'smooth';
   </script>
 
-  <!-- Shopping Cart Section – paste this entire block before </body> on any page -->
+  <!-- Shopping Cart Section + Product Add-to-Cart – paste this entire block before </body> -->
+
 <style>
   /* Cart icons – orange, precise positioning */
   .cart-icon-wrapper {
@@ -385,7 +386,7 @@
     position: fixed;
     top: 0;
     right: 0;
-    width: 100vw; /* full screen width on mobile */
+    width: 100vw;
     height: 100vh;
     background: white;
     box-shadow: -8px 0 25px rgba(0,0,0,0.25);
@@ -431,6 +432,7 @@
     background: #e0e0e0;
     color: #000;
   }
+
   .cart-item {
     display: flex;
     align-items: center;
@@ -455,14 +457,8 @@
     color: #333;
     margin: 0;
   }
-  .cart-empty {
-    text-align: center;
-    color: #777;
-    font-size: 1.1rem;
-    padding: 50px 0;
-  }
 
-  /* Inquire button – narrower, smaller, icon inside, WhatsApp green */
+  /* Inquire button – WhatsApp green */
   #inquire-cart {
     display: flex;
     align-items: center;
@@ -491,7 +487,7 @@
     font-size: 1.3rem;
   }
 
-  /* Mobile/desktop icon switching & positioning */
+  /* Mobile/desktop switching */
   @media (max-width: 768px) {
     .cart-icon-desktop { display: none !important; }
     .cart-icon-mobile { display: block !important; }
@@ -503,15 +499,20 @@
     .cart-icon-mobile { display: none !important; }
     #cart-menu { max-width: 380px; }
   }
+
+  /* Optional: nicer hover effect for product cart icons */
+  .add-to-cart-icon:hover {
+    transform: scale(1.2);
+  }
 </style>
 
-<!-- Desktop cart icon (end of nav) -->
+<!-- Desktop cart icon (place at end of nav) -->
 <div class="cart-icon-wrapper cart-icon-desktop" id="cart-icon-desktop">
   <span class="cart-icon">🛒</span>
   <span id="cart-count-desktop" class="cart-count">0</span>
 </div>
 
-<!-- Mobile cart icon (BEFORE hamburger) -->
+<!-- Mobile cart icon (before hamburger) -->
 <div class="cart-icon-wrapper cart-icon-mobile" id="cart-icon-mobile">
   <span class="cart-icon">🛒</span>
   <span id="cart-count-mobile" class="cart-count">0</span>
@@ -523,11 +524,9 @@
     <h2 class="cart-title">Your Cart</h2>
     <button id="cart-close" class="cart-close">×</button>
   </div>
-
   <div id="cart-content">
     <!-- Cart items go here -->
   </div>
-
   <button id="inquire-cart">
     <i class="fab fa-whatsapp"></i>
     Inquire these products
@@ -535,88 +534,89 @@
 </div>
 
 <script>
-  // Cart logic – all in one place
-  document.addEventListener('DOMContentLoaded', () => {
-    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-
-    const cartMenu = document.getElementById('cart-menu');
-    const cartContent = document.getElementById('cart-content');
-    const inquireBtn = document.getElementById('inquire-cart');
-    const closeBtn = document.getElementById('cart-close');
-    const cartCountDesktop = document.getElementById('cart-count-desktop');
-    const cartCountMobile = document.getElementById('cart-count-mobile');
-
-    function updateCartCount() {
-      const count = cart.length;
-      if (cartCountDesktop) {
-        cartCountDesktop.textContent = count;
-        cartCountDesktop.style.display = count > 0 ? 'flex' : 'none';
-      }
-      if (cartCountMobile) {
-        cartCountMobile.textContent = count;
-        cartCountMobile.style.display = count > 0 ? 'flex' : 'none';
-      }
-    }
-
-    function renderCart() {
-      if (!cartContent) return;
-      cartContent.innerHTML = '';
-      if (cart.length === 0) {
-        cartContent.innerHTML = '<p style="text-align: center; color: #777; font-size: 1.1rem; padding: 50px 0;">Your cart is empty.</p>';
-      } else {
-        cart.forEach(product => {
-          const item = document.createElement('div');
-          item.className = 'cart-item';
-          item.innerHTML = `
-            <img src="${product.image}" alt="${product.title}">
-            <span class="cart-item-title">${product.title}</span>
-          `;
-          cartContent.appendChild(item);
-        });
-      }
-      updateCartCount();
-    }
-
-    function openCart() {
-      if (cartMenu) cartMenu.style.transform = 'translateX(0)';
-    }
-    function closeCart() {
-      if (cartMenu) cartMenu.style.transform = 'translateX(100%)';
-    }
-
-    document.getElementById('cart-icon-desktop')?.addEventListener('click', openCart);
-    document.getElementById('cart-icon-mobile')?.addEventListener('click', openCart);
-
-    closeBtn?.addEventListener('click', closeCart);
-    cartMenu?.addEventListener('click', (e) => {
-      if (e.target === cartMenu) closeCart();
-    });
-
-    inquireBtn?.addEventListener('click', () => {
-      if (cart.length === 0) {
-        alert('Your cart is empty.');
-        return;
-      }
-      const titles = cart.map(p => p.title).join(', ');
-      const message = encodeURIComponent(`Good day, I'd like to inquire about the following products: ${titles}`);
-      window.open(`https://wa.me/26771665187?text=${message}`, '_blank');
-    });
-
-    window.addEventListener('storage', (e) => {
-      if (e.key === 'cart') {
-        cart = JSON.parse(e.newValue || '[]');
-        renderCart();
-      }
-    });
-
-    renderCart();
-  });
-</script>
-
-  <script>
-// Add-to-cart functionality for product cards
+// ────────────────────────────────────────────────
+// Combined Cart + Add-to-Cart logic (single block)
+// ────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.cart-btn').forEach(btn => {
+  // ── Shared cart data ───────────────────────────
+  let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+  // ── DOM elements ───────────────────────────────
+  const cartMenu     = document.getElementById('cart-menu');
+  const cartContent  = document.getElementById('cart-content');
+  const inquireBtn   = document.getElementById('inquire-cart');
+  const closeBtn     = document.getElementById('cart-close');
+  const countDesktop = document.getElementById('cart-count-desktop');
+  const countMobile  = document.getElementById('cart-count-mobile');
+
+  // ── Core functions ─────────────────────────────
+  function updateCartCount() {
+    const count = cart.length;
+    if (countDesktop) {
+      countDesktop.textContent = count;
+      countDesktop.style.display = count > 0 ? 'flex' : 'none';
+    }
+    if (countMobile) {
+      countMobile.textContent = count;
+      countMobile.style.display = count > 0 ? 'flex' : 'none';
+    }
+  }
+
+  function renderCart() {
+    if (!cartContent) return;
+    cartContent.innerHTML = '';
+    if (cart.length === 0) {
+      cartContent.innerHTML = '<p class="cart-empty">Your cart is empty.</p>';
+    } else {
+      cart.forEach(product => {
+        const item = document.createElement('div');
+        item.className = 'cart-item';
+        item.innerHTML = `
+          <img src="${product.image}" alt="${product.title}">
+          <span class="cart-item-title">${product.title}</span>
+        `;
+        cartContent.appendChild(item);
+      });
+    }
+    updateCartCount();
+  }
+
+  function openCart() {
+    if (cartMenu) cartMenu.classList.add('open');
+  }
+
+  function closeCart() {
+    if (cartMenu) cartMenu.classList.remove('open');
+  }
+
+  // ── Event listeners ────────────────────────────
+  document.getElementById('cart-icon-desktop')?.addEventListener('click', openCart);
+  document.getElementById('cart-icon-mobile')?.addEventListener('click', openCart);
+  closeBtn?.addEventListener('click', closeCart);
+  cartMenu?.addEventListener('click', e => {
+    if (e.target === cartMenu) closeCart();
+  });
+
+  inquireBtn?.addEventListener('click', () => {
+    if (cart.length === 0) {
+      alert('Your cart is empty.');
+      return;
+    }
+    const titles = cart.map(p => p.title).join(', ');
+    const message = encodeURIComponent(`Good day, I'd like to inquire about the following products: ${titles}`);
+    window.open(`https://wa.me/26771665187?text=${message}`, '_blank');
+  });
+
+  // Listen for cart changes from other tabs/windows
+  window.addEventListener('storage', e => {
+    if (e.key === 'cart') {
+      cart = JSON.parse(e.newValue || '[]');
+      renderCart();
+    }
+  });
+
+  // ── Add-to-cart for product icons (.add-to-cart-icon) ────────────────
+  document.querySelectorAll('.add-to-cart-icon').forEach(btn => {
     btn.addEventListener('click', () => {
       const product = {
         title: btn.dataset.title,
@@ -624,34 +624,29 @@ document.addEventListener('DOMContentLoaded', () => {
         image: btn.dataset.image
       };
 
-      // Get current cart or start empty
-      let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-
-      // Simple check – avoid adding the exact same product multiple times
-      const alreadyExists = cart.some(item => item.title === product.title);
-      if (!alreadyExists) {
-        cart.push(product);
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-        // Trigger update in the cart display
-        updateCartCount();   // your existing function
-        renderCart();        // your existing function
-
-        // Optional: visual feedback
-        btn.style.transform = 'scale(1.4)';
-        setTimeout(() => { btn.style.transform = 'scale(1)'; }, 180);
-
-        // Optional: show brief toast / message
-        // alert(product.title + " added to cart!");
-      } else {
-        // Optional: tell user it's already in cart
+      // Prevent duplicates (you can comment out this block if you want multiples)
+      if (cart.some(item => item.title === product.title)) {
         btn.style.opacity = '0.5';
         setTimeout(() => { btn.style.opacity = '1'; }, 600);
+        return;
       }
+
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      renderCart();         // refresh side menu
+      updateCartCount();    // refresh badge
+
+      // Visual feedback
+      btn.style.transform = 'scale(1.4)';
+      setTimeout(() => { btn.style.transform = 'scale(1)'; }, 180);
     });
   });
+
+  // Initial render
+  renderCart();
 });
 </script>
-
+  
 </body>
 </html>
