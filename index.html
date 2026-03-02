@@ -613,5 +613,45 @@
   });
 </script>
 
+  <script>
+// Add-to-cart functionality for product cards
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.cart-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const product = {
+        title: btn.dataset.title,
+        price: btn.dataset.price,
+        image: btn.dataset.image
+      };
+
+      // Get current cart or start empty
+      let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+      // Simple check – avoid adding the exact same product multiple times
+      const alreadyExists = cart.some(item => item.title === product.title);
+      if (!alreadyExists) {
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Trigger update in the cart display
+        updateCartCount();   // your existing function
+        renderCart();        // your existing function
+
+        // Optional: visual feedback
+        btn.style.transform = 'scale(1.4)';
+        setTimeout(() => { btn.style.transform = 'scale(1)'; }, 180);
+
+        // Optional: show brief toast / message
+        // alert(product.title + " added to cart!");
+      } else {
+        // Optional: tell user it's already in cart
+        btn.style.opacity = '0.5';
+        setTimeout(() => { btn.style.opacity = '1'; }, 600);
+      }
+    });
+  });
+});
+</script>
+
 </body>
 </html>
