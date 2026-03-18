@@ -41,6 +41,24 @@
       margin: 0 0 20px;
       color: #cccccc;
     }
+
+    /* TikTok Styling - matching Facebook style */
+    .tiktok-btn {
+      background: linear-gradient(135deg, #000000, #1c1c1c);
+      border: 1px solid #ff0050;
+      color: white;
+    }
+    .tiktok-btn:hover {
+      background: linear-gradient(135deg, #1c1c1c, #000000);
+      border-color: #ff2a6b;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 0, 80, 0.3);
+    }
+
+    .instagram-btn {
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+    
     /* WhatsApp button */
     .whatsapp-btn {
       display: inline-flex;
@@ -263,7 +281,7 @@
     // TikTok
 const tiktok = document.getElementById('tiktokLink');
 if (tiktok) {
-  tiktok.href = 'https://www.tiktok.com/@kinvst?';   // ← change to your real TikTok username
+  tiktok.href = 'https://www.tiktok.com/@kinvst?';   // ←  real TikTok username
 }
   });
 </script>
